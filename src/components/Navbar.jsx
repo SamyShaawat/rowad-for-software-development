@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBarsStaggered, FaXmark } from "react-icons/fa6";
 
@@ -9,18 +9,18 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const closeMenuOnMaximize = () => {
+  const closeMenuOnMaximize = useCallback(() => {
     if (window.innerWidth > 768 && isMenuOpen) {
       setIsMenuOpen(false);
     }
-  };
+  }, [isMenuOpen]);
 
   useEffect(() => {
     window.addEventListener("resize", closeMenuOnMaximize);
     return () => {
       window.removeEventListener("resize", closeMenuOnMaximize);
     };
-  }, [isMenuOpen]);
+  }, [closeMenuOnMaximize]);
 
   const navItems = [
     { path: "/", title: "Home" },
@@ -34,9 +34,18 @@ const Navbar = () => {
     <header className="max-w-screen-2xl container mx-auto xl:px-24 px-4">
       <nav className="flex justify-between items-center py-6">
         {/* logo */}
-        <a href="/" className="flex items-center gap-3 text-2xl  text-black font-semibold">
-          <img src="../images/smallLogo.png" alt="" className="h-10  rounded-l"/>
-          <span className="text-blue">R<span className="text-primary">owad</span> </span>
+        <a
+          href="/"
+          className="flex items-center gap-3 text-2xl  text-black font-semibold"
+        >
+          <img
+            src="../images/smallLogo.png"
+            alt=""
+            className="h-10 rounded-l"
+          />
+          <span className="text-blue">
+            R<span className="text-primary">owad</span>
+          </span>
         </a>
 
         {/* nav items for large devices */}
@@ -52,8 +61,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-
-        
 
         {/* mobile menu */}
         <div className="lg:hidden block">
@@ -87,7 +94,6 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
- 
         </ul>
       </div>
     </header>

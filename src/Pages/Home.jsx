@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <main className="bg-white">
-        <div className="container min-h-[520px] flex mt-10 sm:mt-0 ">
+        <div className="container min-h-[620px] flex mt-10 sm:mt-0 ">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center">
             {/* Image Section */}
             <div className="order-1 sm:order-2 relative">
