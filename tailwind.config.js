@@ -11,12 +11,12 @@ export default {
       },
       colors: {
         "primary": "#141414",
-        "blue": "#3575e2"
+        "blue": "#2254D3"
       },
       container: {
         center: true,
         padding: {
-          DEFAULT:'1rem',
+          DEFAULT: '1rem',
           sm: '3rem'
         },
 

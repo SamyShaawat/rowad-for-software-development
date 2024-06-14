@@ -69,7 +69,7 @@ const Navbar = () => {
 
       {/* mobile menu items */}
       <div
-        className={`px-4 bg-blue py-5 rounded-sm ${
+        className={`px-4 bg-blue py-5 rounded-xl ${
           isMenuOpen ? "block" : "hidden"
         }`}
       >
