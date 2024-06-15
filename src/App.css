@@ -21,8 +21,12 @@ li {
   list-style: none;
 }
 
-/* .footerlogo{
-  width: 120px;
-  height: 90px;
-} */
+.footerlogo{
+  width: 280px;
+  height: 120px;
+}
 
+.logonavbar{
+  width: auto;
+  height: 50px;
+}

@@ -34,13 +34,10 @@ const Footer = () => {
                 className="flex items-center gap-3 text-2xl text-black font-semibold"
               >
                 <img
-                  src="../images/smallLogo.png"
+                  src="../images/rowadLogo.png"
                   alt=""
-                  className="h-10 rounded-l "
+                  className="footerlogo rounded-2xl "
                 />
-                <span className="text-blue">
-                  R<span className="text-white/80">owad</span>
-                </span>
               </a>
             </div>
             <p className="text-sm">
@@ -91,19 +88,19 @@ const Footer = () => {
                 <ul className="space-y-3">
                   <li className=" flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 items-center text-white/80 gap-2">
                     <FaLocationDot className="text-white/80" />
-                    <span>123 Main St, City, Country</span>
+                    <span>584 El-Horreya Road, Gleem Alexandria, Egypt </span>
                   </li>
                   <li className=" flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 items-center text-white/80 gap-2">
                     <IoMail className="text-white/80" />
-                    <span>email@example.com</span>
+                    <span>info@rowad.com</span>
                   </li>
                   <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 items-center text-white/80 gap-2">
                     <MdPhone className="text-white/80" />
-                    <span>+123 456 7890</span>
+                    <span>+20 109 1539396</span>
                   </li>
                   <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 items-center text-white/80 gap-2">
                     <FaFax className="text-white/80" />
-                    <span>+123 456 7891</span>
+                    <span>+203 425 7786</span>
                   </li>
                 </ul>
               </div>

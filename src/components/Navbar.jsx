@@ -45,13 +45,11 @@ const Navbar = () => {
             className="flex items-center gap-3 text-2xl text-black font-semibold "
           >
             <img
-              src="../images/smallLogo.png"
+              src="../images/rowadLogo.png"
               alt=""
-              className="h-10 rounded-l"
+              className="logonavbar rounded-sm"
             />
-            <span className="text-blue">
-              R<span className="text-primary">owad</span>
-            </span>
+
           </a>
 
           {/* nav items for large devices */}
