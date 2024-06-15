@@ -17,7 +17,7 @@ const FooterLinks = [
   { path: "/about-us", title: "About Us" },
   { path: "/our-services", title: "Our Services" },
   { path: "/our-clients", title: "Our Clients" },
-  { path: "/projects", title: "Projects" },
+  // { path: "/projects", title: "Projects" },
   { path: "/contact-us", title: "Contact Us" },
 ];
 
@@ -36,7 +36,7 @@ const Footer = () => {
                 <img
                   src="../images/rowadLogo.png"
                   alt=""
-                  className="footerlogo rounded-2xl "
+                  className="footerlogo rounded-lg "
                 />
               </a>
             </div>

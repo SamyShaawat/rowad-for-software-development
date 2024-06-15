@@ -1,13 +1,12 @@
 import React from "react";
-
-import ClientsLogos from "../components/ClientsLogos";
 import Hero from "../components/Hero";
+import ClientsCarousel from "../components/ClientsCarousel";
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <ClientsLogos />
+      <ClientsCarousel />
     </>
   );
 };

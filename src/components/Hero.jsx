@@ -25,7 +25,7 @@ const Hero = () => {
           </div>
         </div>
         {/* Text Content Section */}
-        <div className="space-y-5 order-2 sm:order-1 xl:pr-40">
+        <div className="space-y-5 order-2 sm:order-1 xl:pr-40 ">
           <h1 className="text-3xl sm:text-4xl font-semibold">
             Transforming Ideas into <span className="text-blue">Reality</span>
           </h1>
@@ -39,7 +39,7 @@ const Hero = () => {
             aperiam quasi?
           </p>
           <button
-            className="btn-primary flex items-center"
+            className="btn-primary flex items-center md:mb-5"
             onClick={handleReadMoreClick}
           >
             Read more

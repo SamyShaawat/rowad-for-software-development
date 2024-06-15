@@ -4,6 +4,6 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-blue text-white hover:bg-blue/80 hover:translate-x-2 duration-300 rounded-lg py-2 px-8;
+    @apply bg-blue text-white hover:bg-blue/80 hover:translate-x-0 duration-300  rounded-full py-2 px-8;
   }
 }
