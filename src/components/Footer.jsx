@@ -7,7 +7,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
-  FaTwitter,
+  FaXTwitter,
   FaFax,
   FaLocationDot,
 } from "react-icons/fa6";
@@ -62,7 +62,7 @@ const Footer = () => {
                 <FaLinkedin className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
               </a>
               <a href="#">
-                <FaTwitter className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+                <FaXTwitter className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
               </a>
             </div>
           </div>
