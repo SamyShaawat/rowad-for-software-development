@@ -1,110 +1,122 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
+import { MdPhone } from "react-icons/md";
+import { IoMail } from "react-icons/io5";
 import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
-  FaLocationArrow,
-  FaMobileAlt,
-} from "react-icons/fa";
+  FaTwitter,
+  FaFax,
+  FaLocationDot,
+} from "react-icons/fa6";
+
+const FooterLinks = [
+  { path: "/", title: "Home" },
+  { path: "/about-us", title: "About Us" },
+  { path: "/our-services", title: "Our Services" },
+  { path: "/our-clients", title: "Our Clients" },
+  { path: "/projects", title: "Projects" },
+  { path: "/contact-us", title: "Contact Us" },
+];
 
 const Footer = () => {
   return (
-    <div className="rounded-t-3xl bg-black">
-      <section className="mx-auto max-w-[1200px] text-white">
-        <div className=" grid py-5 md:grid-cols-3">
-          <div className=" px-4 py-8 ">
-            <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-3xl">
-              <a href="/#home" className="">
-                COZ
-                <span className="inline-block font-bold text-primary">WEB</span>
+    <div className="bg-black/90 text-white/80">
+      <section className="container">
+        <div className="grid md:grid-cols-2 py-5 ">
+          {/* Company Details */}
+          <div className="py-8 px-4">
+            <div className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3 ">
+              <a
+                href="/"
+                className="flex items-center gap-3 text-2xl text-black font-semibold"
+              >
+                <img
+                  src="../images/smallLogo.png"
+                  alt=""
+                  className="h-10 rounded-l "
+                />
+                <span className="text-blue">
+                  R<span className="text-white/80">owad</span>
+                </span>
               </a>
-            </h1>
-            <p className="">
-              Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Possimus, voluptate.{" "}
+            </div>
+            <p className="text-sm">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem
+              iure, sapiente illo accusamus aperiam eos nemo voluptate eaque,
+              nihil, repellat cumque similique. Numquam, necessitatibus beatae
+              nam aspernatur quis laboriosam culpa?
             </p>
             <br />
-            <div className="flex items-center gap-3">
-              <FaLocationArrow />
-              <p>Noida, Uttar Pradesh</p>
+            {/* Social Media handle */}
+            <div className="flex items-center gap-4 mt-6">
+              <a href="#">
+                <FaFacebook className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+              </a>
+              <a href="#">
+                <FaInstagram className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+              </a>
+              <a href="#">
+                <FaLinkedin className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+              </a>
+              <a href="#">
+                <FaTwitter className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+              </a>
             </div>
-            <div className="mt-3 flex items-center gap-3">
-              <FaMobileAlt />
-              <p>+91 123456789</p>
-            </div>
-            {/* Social Handle */}
           </div>
-          <div className="col-span-2 grid grid-cols-2 sm:grid-cols-3 md:pl-10 ">
-            <div className="">
-              <div className="px-4 py-8 ">
-                <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                  Important Links
-                </h1>
-                <ul className={`flex flex-col gap-3`}>
-                  <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    Home
-                  </li>
-                  <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    About
-                  </li>
-                  <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    Services
-                  </li>
-                  <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    Login
-                  </li>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 col-span-1 md:pl-10">
+            {/* Site Navigation Column */}
+            <div>
+              <div className="py-8 px-4">
+                <h1 className="text-xl font-bold mb-3">Site Navigation</h1>
+                <ul className="space-y-3">
+                  {FooterLinks.map((link) => (
+                    <li
+                      key={link.title}
+                      className="cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 text-white/80"
+                    >
+                      <NavLink to={link.path}>{link.title}</NavLink>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
-            <div className="">
-              <div className="px-4 py-8 ">
-                <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                  Links
-                </h1>
-                <ul className="flex flex-col gap-3">
-                  <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    Privacy Policy
+            {/* Contact Column */}
+            <div>
+              <div className="py-8 px-4">
+                <h1 className="text-xl font-bold mb-3">Contact</h1>
+                <ul className="space-y-3">
+                  <li className=" flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 items-center text-white/80 gap-2">
+                    <FaLocationDot className="text-white/80" />
+                    <span>123 Main St, City, Country</span>
                   </li>
-                  <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    Services
+                  <li className=" flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 items-center text-white/80 gap-2">
+                    <IoMail className="text-white/80" />
+                    <span>email@example.com</span>
                   </li>
-                  <li className="cursor-pointer transition-all duration-300 hover:translate-x-[2px]">
-                    About us
+                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 items-center text-white/80 gap-2">
+                    <MdPhone className="text-white/80" />
+                    <span>+123 456 7890</span>
+                  </li>
+                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 items-center text-white/80 gap-2">
+                    <FaFax className="text-white/80" />
+                    <span>+123 456 7891</span>
                   </li>
                 </ul>
-              </div>
-            </div>
-            <div className="">
-              <div className="px-4 py-8 ">
-                <h1 className="mb-3 text-justify text-xl font-bold sm:text-left sm:text-xl">
-                  Social Links
-                </h1>
-                <div className="flex flex-col gap-3">
-                  <h1>Subscribe to our newsletter</h1>
-                  <input
-                    className="rounded-full px-3 py-1 text-black focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 "
-                    type="text"
-                    placeholder="Email"
-                  />
-                  <div className="mt-6 flex items-center gap-3">
-                    <a href="#" className="duration-200 hover:scale-105">
-                      <FaInstagram className="text-3xl" />
-                    </a>
-                    <a href="#" className="duration-200 hover:scale-105">
-                      <FaFacebook className="text-3xl" />
-                    </a>
-                    <a href="#" className="duration-200 hover:scale-105">
-                      <FaLinkedin className="text-3xl" />
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
         <div>
           <div className="border-t-2 border-gray-300/50 py-6 text-center">
-            @copyright 2024 Travery || Dilshad
+            <span>Copyright © 2024 </span>
+            <a className="" href="/">
+              Rowad
+            </a>
+            <span> All Rights Reserved</span>
           </div>
         </div>
       </section>

@@ -1,10 +1,16 @@
 import React from "react";
-import Hero from "../components/Hero";
+import { FaArrowRight } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
-const About = () => {
+const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleReadMoreClick = () => {
+    navigate("/about-us");
+  };
+
   return (
-    <>
-<section className="container bg-white min-h-[355px] flex mt-10 sm:mt-0 ">
+    <section className="container bg-white min-h-[355px] flex mt-10 sm:mt-0">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center">
         {/* Image Section */}
         <div className="order-1 sm:order-2 relative">
@@ -19,7 +25,7 @@ const About = () => {
           </div>
         </div>
         {/* Text Content Section */}
-        <div className="space-y-5 order-2 sm:order-1 xl:pr-40 ">
+        <div className="space-y-5 order-2 sm:order-1 xl:pr-40">
           <h1 className="text-3xl sm:text-4xl font-semibold">
             Transforming Ideas into <span className="text-blue">Reality</span>
           </h1>
@@ -32,12 +38,17 @@ const About = () => {
             deserunt quo, ipsam cupiditate pariatur ipsum culpa accusamus beatae
             aperiam quasi?
           </p>
-
+          <button
+            className="btn-primary flex items-center"
+            onClick={handleReadMoreClick}
+          >
+            Read more
+            <FaArrowRight className="ml-2" />
+          </button>
         </div>
       </div>
     </section>
-    </>
   );
 };
 
-export default About;
+export default Hero;
