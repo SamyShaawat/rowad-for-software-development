@@ -48,17 +48,17 @@ const Footer = () => {
             <br />
             {/* Social Media handle */}
             <div className="flex items-center gap-4 mt-6">
-              <a href="#">
-                <FaFacebook className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+              <a href="#" className="scale-100 hover:scale-110 duration-300">
+                <FaFacebook className="text-2xl hover:text-blue scale-100 hover:scale-110 duration-300" />
               </a>
-              <a href="#">
-                <FaInstagram className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+              <a href="#" className="scale-100 hover:scale-110 duration-300">
+                <FaInstagram className="text-2xl hover:text-blue scale-100 hover:scale-110 duration-300" />
               </a>
-              <a href="#">
-                <FaLinkedin className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+              <a href="#" className="scale-100 hover:scale-110 duration-300">
+                <FaLinkedin className="text-2xl hover:text-blue scale-100 hover:scale-110 duration-300" />
               </a>
-              <a href="#">
-                <FaXTwitter className="text-2xl hover:text-blue hover:translate-x-1 duration-300" />
+              <a href="#" className="scale-100 hover:scale-110 duration-300">
+                <FaXTwitter className="text-2xl hover:text-blue scale-100 hover:scale-110 duration-300" />
               </a>
             </div>
           </div>
