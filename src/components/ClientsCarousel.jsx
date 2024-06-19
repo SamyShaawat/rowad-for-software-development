@@ -117,7 +117,7 @@ const ClientsCarousel = () => {
         </h2>
         <Slider {...settings}>
           {clients.map((client) => (
-            <div key={client.id} className="px-4 my-4">
+            <div key={client.id} className="px-4 my-7 ">
               <div
                 className="bg-white p-3 rounded-full h-32 w-32 scale-100 mx-auto flex items-center justify-center cursor-pointer duration-300 hover:scale-110 "
                 onClick={handleLogoClick}

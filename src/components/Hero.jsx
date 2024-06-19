@@ -16,9 +16,10 @@ const Hero = () => {
         <div className="order-1 sm:order-2 relative">
           <div>
             <dotlottie-player
-              src="https://lottie.host/92a7e98b-a886-4bf2-acbb-0aa563b1fc6b/1kQf5PUGVC.json"
+              src="https://lottie.host/4c6d0011-7cb8-4a0c-9f3d-11455d4e7641/sJe7fsJVQM.json"
               background="transparent"
               speed="1"
+   
               loop
               autoplay
             ></dotlottie-player>
