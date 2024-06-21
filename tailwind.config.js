@@ -11,7 +11,7 @@ export default {
       },
       colors: {
         "primary": "#141414",
-        "blue": "#FB8A02"
+        "secondary": "#FB8A02"
       },
       container: {
         center: true,

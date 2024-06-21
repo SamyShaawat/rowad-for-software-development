@@ -21,7 +21,7 @@ const About = () => {
           {/* Text Content Section */}
           <div className="space-y-5 order-2 sm:order-1 xl:pr-40 ">
             <h1 className="text-3xl sm:text-4xl font-semibold">
-              Transforming Ideas into <span className="text-blue">Reality</span>
+              Transforming Ideas into <span className="text-secondary">Reality</span>
             </h1>
             <h3 className="text-slate-500 text-xl sm:text-2xl font-semibold">
               Your Partner in Digital Growth

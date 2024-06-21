@@ -51,7 +51,7 @@ const ServicesCards = () => {
     <div className="bg-white-200">
       <section className="container mx-auto py-10 relative mt-1">
         <div>
-          <h2 className="text-3xl font-semibold text-center mb-6 text-blue">
+          <h2 className="text-3xl font-semibold text-center mb-6 text-secondary">
             Explore Our Services
           </h2>
         </div>

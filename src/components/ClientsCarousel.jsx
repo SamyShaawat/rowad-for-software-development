@@ -112,7 +112,7 @@ const ClientsCarousel = () => {
   return (
     <div className="bg-gray-200">
       <section className="container mx-auto py-10 relative mt-5">
-        <h2 className="text-3xl font-semibold text-center mb-6 text-blue">
+        <h2 className="text-3xl font-semibold text-center mb-6 text-secondary">
           Our Clients
         </h2>
         <Slider {...settings}>

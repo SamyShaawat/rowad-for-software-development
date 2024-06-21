@@ -49,16 +49,16 @@ const Footer = () => {
             {/* Social Media handle */}
             <div className="flex items-center gap-4 mt-6">
               <a href="#" className="scale-100 hover:scale-110 duration-300">
-                <FaFacebook className="text-2xl hover:text-blue scale-100 hover:scale-110 duration-300" />
+                <FaFacebook className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
               </a>
               <a href="#" className="scale-100 hover:scale-110 duration-300">
-                <FaInstagram className="text-2xl hover:text-blue scale-100 hover:scale-110 duration-300" />
+                <FaInstagram className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
               </a>
               <a href="#" className="scale-100 hover:scale-110 duration-300">
-                <FaLinkedin className="text-2xl hover:text-blue scale-100 hover:scale-110 duration-300" />
+                <FaLinkedin className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
               </a>
               <a href="#" className="scale-100 hover:scale-110 duration-300">
-                <FaXTwitter className="text-2xl hover:text-blue scale-100 hover:scale-110 duration-300" />
+                <FaXTwitter className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
               </a>
             </div>
           </div>
@@ -72,7 +72,7 @@ const Footer = () => {
                   {FooterLinks.map((link) => (
                     <li
                       key={link.title}
-                      className="cursor-pointer hover:translate-x-1 duration-300 hover:text-blue space-x-1 text-white/80"
+                      className="cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary space-x-1 text-white/80"
                     >
                       <NavLink to={link.path}>{link.title}</NavLink>
                     </li>
@@ -85,19 +85,19 @@ const Footer = () => {
               <div className="py-8">
                 <h1 className="text-xl font-bold mb-3">Contact</h1>
                 <ul className="space-y-3">
-                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue items-center text-white/80 gap-2">
+                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-white/80 gap-2">
                     <FaLocationDot className="text-xl sm:text-2xl" />
                     <span>584 El-Horreya Road, Gleem Alexandria, Egypt</span>
                   </li>
-                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue items-center text-white/80 gap-2">
+                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-white/80 gap-2">
                     <IoMail className="text-xl sm:text-2xl" />
                     <span>info@rowad.com</span>
                   </li>
-                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue items-center text-white/80 gap-2">
+                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-white/80 gap-2">
                     <MdPhone className="text-xl sm:text-2xl" />
                     <span>+20 109 1539396</span>
                   </li>
-                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-blue items-center text-white/80 gap-2">
+                  <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-white/80 gap-2">
                     <FaFax className="text-xl sm:text-2xl" />
                     <span>+203 425 7786</span>
                   </li>

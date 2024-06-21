@@ -57,7 +57,7 @@ const Navbar = () => {
             {navItems.map(({ path, title }) => (
               <li
                 key={path}
-                className="text-base text-primary hover:text-blue duration-300"
+                className="text-base text-primary hover:text-secondary duration-300"
               >
                 <NavLink
                   to={path}
