@@ -45,7 +45,7 @@ const Navbar = () => {
             className="flex items-center gap-3 text-2xl text-black font-semibold "
           >
             <img
-              src="../images/rowadLogo.png"
+              src="../images/RowadLogo/Rowad_Logo_Main.png"
               alt=""
               className="logonavbar rounded-sm"
             />

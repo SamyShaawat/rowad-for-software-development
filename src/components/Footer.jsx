@@ -32,11 +32,14 @@ const Footer = () => {
                 href="/"
                 className="flex items-center gap-3 text-2xl text-black font-semibold"
               >
-                <img
-                  src="../images/rowadLogo.png"
+                {/* <img
+                  src="../images/RowadLogo/RowadFooter.png"
                   alt=""
-                  className="footerlogo rounded-lg"
-                />
+                  className="footerlogo"
+                /> */}
+                <h1 className="text-white/85 footerlogo mb-3">
+                  R<span className="text-secondary">O</span>WAD
+                </h1>
               </a>
             </div>
             <p className="text-sm">
@@ -67,7 +70,7 @@ const Footer = () => {
             {/* Site Navigation Column */}
             <div>
               <div className="py-8">
-                <h1 className="text-xl font-bold mb-3">Site Navigation</h1>
+                <h1 className="text-xl font-bold mb-3 ">Site Navigation</h1>
                 <ul className="space-y-3">
                   {FooterLinks.map((link) => (
                     <li
