@@ -21,10 +21,22 @@ const clients = [
     logo: "../images/clientsImages/MackeanLawFirm.png",
   },
   { id: 7, name: "NofaFloors", logo: "../images/clientsImages/NofaFloors.png" },
-  { id: 8, name: "SmartSystem", logo: "../images/clientsImages/SmartSystem.png" },
+  {
+    id: 8,
+    name: "SmartSystem",
+    logo: "../images/clientsImages/SmartSystem.png",
+  },
   { id: 9, name: "Taiba", logo: "../images/clientsImages/Taiba.png" },
-  { id: 10, name: "ProkenChemicals", logo: "../images/clientsImages/ProkenChemicals.png" },
-  { id: 11, name: "MalakAlReem", logo: "../images/clientsImages/MalakAlReem.png" },
+  {
+    id: 10,
+    name: "ProkenChemicals",
+    logo: "../images/clientsImages/ProkenChemicals.png",
+  },
+  {
+    id: 11,
+    name: "MalakAlReem",
+    logo: "../images/clientsImages/MalakAlReem.png",
+  },
   { id: 12, name: "CSI", logo: "../images/clientsImages/CSI.png" },
 ];
 
@@ -110,38 +122,40 @@ const ClientsCarousel = () => {
   };
 
   return (
-    <div className="bg-gray-200">
-      <section className="container mx-auto py-10 relative mt-5">
-        <h2 className="text-3xl font-semibold text-center mb-6 text-secondary">
-          Our Clients
-        </h2>
-        <Slider {...settings}>
-          {clients.map((client) => (
-            <div key={client.id} className="px-4 my-7 ">
-              <div
-                className="bg-white p-3 rounded-full h-32 w-32 scale-100 mx-auto flex items-center justify-center cursor-pointer duration-300 hover:scale-110 "
-                onClick={handleLogoClick}
-              >
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="rounded-xl "
-                />
+    <>
+      <div className="bg-gray-200">
+        <section className="container mx-auto py-10 relative mt-5">
+          <h2 className="text-3xl font-semibold text-center mb-6 text-secondary">
+            Our Clients
+          </h2>
+          <Slider {...settings}>
+            {clients.map((client) => (
+              <div key={client.id} className="px-4 my-7 ">
+                <div
+                  className="bg-white p-3 rounded-full h-32 w-32 scale-100 mx-auto flex items-center justify-center cursor-pointer duration-300 hover:scale-110 "
+                  onClick={handleLogoClick}
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="rounded-xl "
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
-        <div className="flex justify-center mt-11">
-          <button
-            className="btn-primary flex items-center"
-            onClick={handleReadMoreClick}
-          >
-            View more
-            <FaArrowRight className="ml-2" />
-          </button>
-        </div>
-      </section>
-    </div>
+            ))}
+          </Slider>
+          <div className="flex justify-center mt-11">
+            <button
+              className="btn-primary flex items-center"
+              onClick={handleReadMoreClick}
+            >
+              View more
+              <FaArrowRight className="ml-2" />
+            </button>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 

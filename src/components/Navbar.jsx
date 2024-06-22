@@ -36,76 +36,79 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
-      <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4">
-        <nav className="flex justify-between items-center py-6">
-          {/* logo */}
-          <a
-            href="/"
-            className="flex items-center gap-3 text-2xl text-black font-semibold "
+    <>
+      <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4">
+          <nav className="flex justify-between items-center py-6">
+            {/* logo */}
+            <a
+              href="/"
+              className="flex items-center gap-3 text-2xl text-black font-semibold "
+            >
+              <img
+                src="../images/RowadLogo/Rowad_Logo_Main.png"
+                alt=""
+                className="logonavbar rounded-sm"
+              />
+            </a>
+
+            {/* nav items for large devices */}
+            <ul className="hidden lg:flex gap-12">
+              {navItems.map(({ path, title }) => (
+                <li
+                  key={path}
+                  className="text-base text-primary hover:text-secondary duration-300"
+                >
+                  <NavLink
+                    to={path}
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    {title}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+
+            {/* mobile menu */}
+            <div className="lg:hidden block">
+              <button onClick={handleMenuToggler}>
+                {isMenuOpen ? (
+                  <FaXmark className="w-5 h-5 text-primary" />
+                ) : (
+                  <FaBarsStaggered className="w-5 h-5 text-primary" />
+                )}
+              </button>
+            </div>
+          </nav>
+
+          {/* mobile menu items */}
+          <div
+            className={`px-4 bg-blue py-5 rounded-xl ${
+              isMenuOpen ? "block" : "hidden"
+            }`}
           >
-            <img
-              src="../images/RowadLogo/Rowad_Logo_Main.png"
-              alt=""
-              className="logonavbar rounded-sm"
-            />
-
-          </a>
-
-          {/* nav items for large devices */}
-          <ul className="hidden lg:flex gap-12">
-            {navItems.map(({ path, title }) => (
-              <li
-                key={path}
-                className="text-base text-primary hover:text-secondary duration-300"
-              >
-                <NavLink
-                  to={path}
-                  className={({ isActive }) => (isActive ? "active" : "")}
+            <ul>
+              {navItems.map(({ path, title }) => (
+                <li
+                  key={path}
+                  className="text-base text-white/85 first:text-white py-1 hover:text-primary duration-300"
                 >
-                  {title}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-
-          {/* mobile menu */}
-          <div className="lg:hidden block">
-            <button onClick={handleMenuToggler}>
-              {isMenuOpen ? (
-                <FaXmark className="w-5 h-5 text-primary" />
-              ) : (
-                <FaBarsStaggered className="w-5 h-5 text-primary" />
-              )}
-            </button>
+                  <NavLink
+                    to={path}
+                    className={({ isActive }) =>
+                      isActive ? "active-black" : ""
+                    }
+                    onClick={handleCloseMenu}
+                  >
+                    {title}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
           </div>
-        </nav>
-
-        {/* mobile menu items */}
-        <div
-          className={`px-4 bg-blue py-5 rounded-xl ${
-            isMenuOpen ? "block" : "hidden"
-          }`}
-        >
-          <ul>
-            {navItems.map(({ path, title }) => (
-              <li
-                key={path}
-                className="text-base text-white/85 first:text-white py-1 hover:text-primary duration-300"
-              >
-                <NavLink
-                  to={path}
-                  className={({ isActive }) => (isActive ? "active-black" : "")}
-                  onClick={handleCloseMenu}
-                >
-                  {title}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 };
 
