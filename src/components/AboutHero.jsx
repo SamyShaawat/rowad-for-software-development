@@ -29,10 +29,10 @@ const AboutHero = () => {
                 Your Partner in Digital Growth
               </h3>
               <p className="text-slate-600 text-lg sm:text-xl">
-                {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Corporis minima dolorem, at iure maiores vel quod excepturi
                 quibusdam earum deserunt quo, ipsam cupiditate pariatur ipsum
-                culpa accusamus beatae aperiam quasi? */}
+                culpa accusamus beatae aperiam quasi?
               </p>
             </div>
           </div>

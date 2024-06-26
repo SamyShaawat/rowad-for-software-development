@@ -10,13 +10,11 @@ const Mission = () => {
             {/* Image Section */}
             <div className="order-1 sm:order-2 relative">
               <div>
-                <dotlottie-player
-                  src="https://lottie.host/4c6d0011-7cb8-4a0c-9f3d-11455d4e7641/sJe7fsJVQM.json"
-                  background="transparent"
-                  speed="1"
-                  loop
-                  autoplay
-                ></dotlottie-player>
+                <img
+                  src="../images/aboutImages/our-mission.jpg"
+                  alt="WhoWeAre"
+                  className="rounded-full h-72 w-72"
+                />
               </div>
             </div>
             {/* Text Content Section */}

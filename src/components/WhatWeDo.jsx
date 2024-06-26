@@ -10,20 +10,16 @@ const WhatWeDo = () => {
             {/* Image Section */}
             <div className="order-1 sm:order-2 relative">
               <div>
-                <dotlottie-player
-                  src="https://lottie.host/4c6d0011-7cb8-4a0c-9f3d-11455d4e7641/sJe7fsJVQM.json"
-                  background="transparent"
-                  speed="1"
-                  loop
-                  autoplay
-                ></dotlottie-player>
+                <img
+                  src="../images/aboutImages/what-we-do.jpg"
+                  alt="WhoWeAre"
+                  className="rounded-3xl h-64 w-96"
+                />
               </div>
             </div>
             {/* Text Content Section */}
             <div className="space-y-5 order-2 sm:order-1 xl:pr-30 mb-7">
-              <h1 className="text-3xl sm:text-4xl font-semibold">
-                What We Do
-              </h1>
+              <h1 className="text-3xl sm:text-4xl font-semibold">What We Do</h1>
               <p className="text-slate-600 text-lg sm:text-xl ">
                 Our services range from web development and digital marketing to
                 custom software solutions. We aim to help businesses grow by
