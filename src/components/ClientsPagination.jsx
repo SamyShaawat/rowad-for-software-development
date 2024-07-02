@@ -7,44 +7,44 @@ const clients = [
       name: "Kadmar Group",
       logo: "../images/clientsImages/KadmarGroup.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "Kadmar Group offers a comprehensive range of services, including shipping, logistics, offshore support, and travel services. The company is committed to professionalism, efficiency, and quality, providing customized solutions to meet client needs. Kadmar Group serves various industries with specialized services such as vessel provision for the oil and gas industry and integrated supply chain management solutions. They focus on innovation and maintaining high standards to ensure customer satisfaction across their diverse service offerings.",
       linkWebsite: "https://www.kadmargroup.com"
     },
     {
       id: 2,
-      name: "Beit",
+      name: "Beit Shipping and Logistics",
       logo: "../images/clientsImages/Beit.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "Beit Shipping and Logistics provides comprehensive transportation and logistics services, including air, ocean, road, and train freight. They emphasize efficiency and global coverage, offering tailored solutions such as customs clearance and warehouse management. Beit Shipping ensures timely delivery and optimized supply chain management, catering to diverse industry needs with a strong focus on customer satisfaction.",
       linkWebsite: "https://www.beit.com"
     },
     {
       id: 3,
-      name: "EGL",
+      name: "Egyptian Global Logistics (EGL)",
       logo: "../images/clientsImages/EGL.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "Egyptian Global Logistics (EGL) is a leading provider of comprehensive shipping and logistics services in Egypt. They offer tailored solutions across air, ocean, and land freight, along with warehousing, distribution, and project cargo handling. EGL specializes in sectors like oil & gas, power, mining, and construction, ensuring efficient, cost-effective, and safe transport logistics. The company prides itself on its extensive network, innovative solutions, and strong client partnerships.",
       linkWebsite: "https://www.egl.com"
     },
     {
       id: 4,
-      name: "BCME",
+      name: "BC Marine Electronics (BCME)",
       logo: "../images/clientsImages/BCME.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "BC Marine Electronics (BCME) specializes in GMDSS & NAVCOM services, ensuring compliance with maritime regulations. Founded in 2023 in British Columbia, BCME offers comprehensive services including radio surveys, compass servicing, maintenance contracts, VDR repairs, and satellite communication solutions. Their certified engineers provide high-quality, cost-effective solutions tailored to the needs of ship owners and managers, emphasizing reliability and adherence to international standards.",
       linkWebsite: "https://www.bcme.com"
     },
     {
       id: 5,
-      name: "IMG",
+      name: "International Maritime Group (IMG)",
       logo: "../images/clientsImages/IMG.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "IMG provides specialized technical marine services, focusing on GMDSS & NAVCOM systems. Established in 2012 in Ontario, Canada, the company serves ship owners, managers, classification societies, and flag states. IMG offers a range of services including navigation and communication equipment, safety systems, and voyage data recorders. They emphasize reliability, compliance, and quality in their service offerings.",
       linkWebsite: "https://www.img.com"
     },
     {
       id: 6,
-      name: "MackeanLawFirm",
+      name: "Mackean Law Firm",
       logo: "../images/clientsImages/MackeanLawFirm.png",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
@@ -52,15 +52,15 @@ const clients = [
     },
     {
       id: 7,
-      name: "NofaFloors",
+      name: "Nofa Floors",
       logo: "../images/clientsImages/NofaFloors.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "Nofa Floors, established in 1950, specializes in high-quality wood flooring. The company emphasizes the artistry of parquetry, offering a variety of patterns, borders, and accents. They provide tailored wood flooring solutions, focusing on innovation and maintaining traditional craftsmanship. Nofa Floors aims to bring the art of parquetry to modern spaces, ensuring aesthetic appeal and durability.",
       linkWebsite: "https://www.nofafloors.com"
     },
     {
       id: 8,
-      name: "SmartSystem",
+      name: "Smart System",
       logo: "../images/clientsImages/SmartSystem.png",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
@@ -68,41 +68,41 @@ const clients = [
     },
     {
       id: 9,
-      name: "Taiba",
+      name: "Taiba for Electrical Construction",
       logo: "../images/clientsImages/Taiba.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "Taiba for Electrical Construction, established in 2008 in Egypt by Eng. Waleed Othman, specializes in electrical construction projects. They offer a wide range of services, including installation and maintenance of electrical systems for industrial and commercial facilities. The company is dedicated to achieving top certifications and adheres to high standards of quality and safety. Their portfolio includes projects in sectors such as steel production, fertilizer manufacturing, and solar energy.",
       linkWebsite: "https://www.taiba.com"
     },
     {
       id: 10,
-      name: "ProkenChemicals",
+      name: "Prokem Specialty Chemicals",
       logo: "../images/clientsImages/ProkenChemicals.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "Prokem Specialty Chemicals provides a wide range of chemical products for various construction needs, including mortar admixtures, bonding agents, repair and corrosion inhibitors, waterproofing, and protective coatings. The company emphasizes high-quality products and services, timely delivery, and strong customer support. Prokem is committed to client satisfaction, offering innovative and effective solutions tailored to the construction industry.",
       linkWebsite: "https://www.prokenchemicals.com"
     },
     {
       id: 11,
-      name: "MalakAlReem",
+      name: "Malak Al Reem Properties Development",
       logo: "../images/clientsImages/MalakAlReem.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "Malak Al Reem Properties Development, based in Dubai and established in 2005, specializes in residential and commercial real estate across the Gulf region. They emphasize sophistication, high-quality finishes, and sustainability, with projects in Dubai, Sharjah, and Ajman. Their in-house wood factory ensures superior craftsmanship and attention to detail, setting them apart in the market.",
       linkWebsite: "https://www.malakalreem.com"
     },
     {
       id: 12,
-      name: "CSI",
+      name: "Contracting & Services For Industry (CSI)",
       logo: "../images/clientsImages/CSI.png",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam exercitationem necessitatibus cupiditate laudantium iste? Officia deserunt saepe at assumenda? Dolorem, debitis. Rem, ratione vel odio delectus velit ducimus blanditiis laborum.",
+        "CSI specializes in construction and industrial services, focusing on new installations, plant revamp, and rehabilitation projects. They are committed to quality, safety, and client satisfaction through open communication and continuous innovation. CSI serves various industries, providing project support, mechanical, civil, electrical, painting, and insulation services. Their mission emphasizes honesty, integrity, and maintaining trust with clients.",
       linkWebsite: "https://www.csi.com"
     },
   ];
   
 const ClientsPagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const clientsPerPage = 6; // Two rows, three columns each
+  const clientsPerPage = 4; // Two rows, three columns each
 
   // Calculate indices for slicing clients array
   const indexOfLastClient = currentPage * clientsPerPage;
@@ -113,29 +113,29 @@ const ClientsPagination = () => {
 
   return (
     <div className="bg-white">
-      <section className="container min-h-[320px] ">
-        <h1 className="flex items-center justify-center text-5xl text-secondary mt-10">
+      <section className="container  ">
+        <h1 className="flex items-center justify-center text-5xl text-secondary mt-10 mb-10">
           Our Clients
         </h1>
       
       <div className="px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
           {currentClients.map((client) => (
             <div
               key={client.id}
               className="bg-white rounded-lg shadow-lg p-6 relative hover:shadow-[0_4px_8px_0_rgba(251,138,2,0.7)] hover:-translate-y-1 cursor-pointer"
             >
-              <div className="absolute top-0 left-5 m-4 bg-white p-3 rounded-full h-32 w-32  mx-auto flex     ">
+              <div className="absolute top-0 right-5 m-4 bg-white p-3 rounded-full h-32 w-32  mx-auto flex">
                 <img
                   src={client.logo}
                   alt={client.name}
                   className="rounded-xl"
                 />
               </div>
-              <div className="absolute top-11 right-5 m-4 text-2xl text-slate-700">
+              <div className="absolute top-11 left-5 m-4 text-2xl text-slate-700">
                 {client.name}
               </div>
-              <div className="mt-28 text-center mb-10">
+              <div className="mt-32 text-left mb-10">
                 <p>{client.description}</p>
               </div>
               <div className="absolute bottom-0 left-0 right-0 mb-4 text-center">

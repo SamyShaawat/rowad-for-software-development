@@ -1,18 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import ServicesPage from "../components/ServicesPage";
 
 const Services = () => {
-  return (
-    <>
-      <Helmet>
-        <title>Rowad For Software Development | Our Services</title>
-      </Helmet>
-      <div className="container bg-white min-h-[355px] flex mt-10 sm:mt-0 ">
-        Services
-      </div>
-      ;
-    </>
-  );
+  return <>
+    <Helmet>
+      <title>Rowad For Software Development | Our Services</title>
+    </Helmet>
+    <ServicesPage/>
+  </>;
 };
 
 export default Services;

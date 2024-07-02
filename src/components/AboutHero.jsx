@@ -5,7 +5,10 @@ const AboutHero = () => {
     <>
       {/* Hero About Section */}
       <div className="bg-white">
-        <section className="container min-h-[320px] flex mt-10 sm:mt-0">
+        <section className="container mt-10 sm:mt-0">
+          <h1 className="flex items-center justify-center text-5xl text-secondary mt-10">
+            About Us
+          </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center">
             {/* Image Section */}
             <div className="order-1 sm:order-2 relative">
@@ -21,18 +24,23 @@ const AboutHero = () => {
             </div>
             {/* Text Content Section */}
             <div className="space-y-5 order-2 sm:order-1 xl:pr-30 mb-7">
-              <h1 className="text-3xl sm:text-4xl font-semibold">
-                Transforming Ideas into{" "}
-                <span className="text-secondary">Reality</span>
+              <h1 className=" text-3xl sm:text-4xl font-semibold text-slate-800">
+                R<span className="text-secondary">O</span>WAD For Software
+                Development
               </h1>
               <h3 className="text-slate-500 text-xl sm:text-2xl font-semibold">
-                Your Partner in Digital Growth
+                Transforming Ideas into Reality
               </h3>
               <p className="text-slate-600 text-lg sm:text-xl">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Corporis minima dolorem, at iure maiores vel quod excepturi
-                quibusdam earum deserunt quo, ipsam cupiditate pariatur ipsum
-                culpa accusamus beatae aperiam quasi?
+                We are your partner in digital growth providing digital
+                solutions, specializing in reliable and secure web hosting,
+                website development and deployment, and innovative digital
+                marketing strategies. Our commitment to excellence drives us to
+                craft high-quality, responsive websites tailored to meet your
+                business objectives and deploy cutting-edge marketing tactics to
+                boost your online presence. At Rowad Tech, we empower your
+                digital journey by delivering solutions that help you thrive in
+                the online world.
               </p>
             </div>
           </div>

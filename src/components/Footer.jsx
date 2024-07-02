@@ -44,10 +44,14 @@ const Footer = () => {
                 </a>
               </div>
               <p className="text-sm">
-                {/* Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem
-                iure, sapiente illo accusamus aperiam eos nemo voluptate eaque,
-                nihil, repellat cumque similique. Numquam, necessitatibus beatae
-                nam aspernatur quis laboriosam culpa? */}
+                Welcome to{" "}
+                <span className="font-semibold">
+                  Rowad For Software Development
+                </span>
+                , We are your partner in digital growth providing digital
+                solutions, specializing in reliable and secure web hosting,
+                website development and deployment, and innovative digital
+                marketing strategies.
               </p>
               <br />
               {/* Social Media handle */}
