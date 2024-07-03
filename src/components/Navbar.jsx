@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBarsStaggered, FaXmark } from "react-icons/fa6";
+import links from "../data/links";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,14 +23,7 @@ const Navbar = () => {
     };
   }, [closeMenuOnMaximize]);
 
-  const navItems = [
-    { path: "/", title: "Home" },
-    { path: "/about-us", title: "About Us" },
-    { path: "/our-clients", title: "Our Clients" },
-    { path: "/our-services", title: "Our Services" },
-    // { path: "/projects", title: "Projects" },
-    { path: "/contact-us", title: "Contact Us" },
-  ];
+
 
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
@@ -54,7 +48,7 @@ const Navbar = () => {
 
             {/* nav items for large devices */}
             <ul className="hidden lg:flex gap-12">
-              {navItems.map(({ path, title }) => (
+              {links.map(({ path, title }) => (
                 <li
                   key={path}
                   className="text-base text-primary hover:text-secondary duration-300"
@@ -88,7 +82,7 @@ const Navbar = () => {
             }`}
           >
             <ul>
-              {navItems.map(({ path, title }) => (
+              {links.map(({ path, title }) => (
                 <li
                   key={path}
                   className="text-base text-white/85 first:text-white py-1 hover:text-primary duration-300"

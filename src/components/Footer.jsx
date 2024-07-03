@@ -11,6 +11,7 @@ import {
   FaFax,
   FaLocationDot,
 } from "react-icons/fa6";
+import links from "../data/links";
 
 const FooterLinks = [
   { path: "/", title: "Home" },
@@ -77,7 +78,7 @@ const Footer = () => {
                 <div className="py-8">
                   <h1 className="text-xl font-bold mb-3 ">Site Navigation</h1>
                   <ul className="space-y-3">
-                    {FooterLinks.map((link) => (
+                    {links.map((link) => (
                       <li
                         key={link.title}
                         className="cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary space-x-1 text-white/80"
