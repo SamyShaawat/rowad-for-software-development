@@ -6,7 +6,7 @@ const Mission = () => {
       <div className="bg-white">
         {/* Mission Section */}
         <section className="container  min-h-[355px] flex mt-10 sm:mt-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center mt-10 mb-10">
             {/* Image Section */}
             <div className="order-1 sm:order-2 relative">
               <div>

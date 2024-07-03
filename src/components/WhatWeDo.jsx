@@ -6,7 +6,7 @@ const WhatWeDo = () => {
       {/* What We Do Section */}
       <div className="bg-white">
         <section className="container  min-h-[320px] flex mt-6 sm:mt-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 place-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 place-items-center mt-10 mb-10">
             {/* Image Section */}
             <div className="order-1 sm:order-2 relative">
               <div>
