@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { NavLink } from "react-router-dom";
-
 import { MdPhone } from "react-icons/md";
 import { IoMail } from "react-icons/io5";
 import {
@@ -13,14 +14,6 @@ import {
 } from "react-icons/fa6";
 import links from "../data/links";
 
-const FooterLinks = [
-  { path: "/", title: "Home" },
-  { path: "/about-us", title: "About Us" },
-  { path: "/our-services", title: "Our Services" },
-  { path: "/our-clients", title: "Our Clients" },
-  { path: "/contact-us", title: "Contact Us" },
-];
-
 const Footer = () => {
   return (
     <>
@@ -28,17 +21,12 @@ const Footer = () => {
         <section className="container  px-4 ">
           <div className="grid md:grid-cols-2 py-5 ">
             {/* Company Details */}
-            <div className="py-8 ">
+            <div data-aos="fade-up" data-aos-delay="300" className="py-8 ">
               <div className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
                 <a
                   href="/"
                   className="flex items-center gap-3 text-2xl text-black font-semibold"
                 >
-                  {/* <img
-                  src="../images/RowadLogo/RowadFooter.png"
-                  alt=""
-                  className="footerlogo"
-                  /> */}
                   <h1 className="text-slate-300 footerlogo mb-3">
                     R<span className="text-secondary">O</span>WAD
                   </h1>
@@ -56,7 +44,11 @@ const Footer = () => {
               </p>
               <br />
               {/* Social Media handle */}
-              <div className="flex items-center gap-4 mt-2">
+              <div
+                data-aos="fade-up"
+                data-aos-delay="400"
+                className="flex items-center gap-4 mt-2"
+              >
                 <a href="#" className="scale-100 hover:scale-110 duration-300">
                   <FaFacebook className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
                 </a>
@@ -74,7 +66,7 @@ const Footer = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 col-span-1 md:pl-10">
               {/* Site Navigation Column */}
-              <div>
+              <div data-aos="fade-up" data-aos-delay="300">
                 <div className="py-8">
                   <h1 className="text-xl font-bold mb-3 ">Site Navigation</h1>
                   <ul className="space-y-3">
@@ -91,7 +83,7 @@ const Footer = () => {
               </div>
               {/* Contact Column */}
               <div>
-                <div className="py-8">
+                <div data-aos="fade-up" data-aos-delay="500" className="py-8">
                   <h1 className="text-xl font-bold mb-3">Contact</h1>
                   <ul className="space-y-3">
                     <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-slate-300 gap-2">
@@ -116,7 +108,12 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <div className="border-t-2 border-gray-300/50 py-6 text-center">
+            <div
+              className="border-t-2 border-gray-300/50 py-6 text-center"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-once="true"
+            >
               <span>Copyright © 2024 </span>
               <a className="" href="/">
                 Rowad

@@ -15,13 +15,19 @@ const ServicesCards = () => {
       <div className="bg-white-200">
         <section className="container mx-auto py-10 relative mt-1">
           <div>
-            <h2 className="text-3xl font-semibold text-center mb-6 text-secondary">
+            <h2
+              data-aos="fade-up"
+              data-aos-delay="300"
+              className="text-3xl font-semibold text-center mb-6 text-secondary"
+            >
               Explore Our Services
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <div
+                data-aos="zoom-in"
+                data-aos-delay="500"
                 key={service.id}
                 className={`bg-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:shadow-[0_4px_8px_0_rgba(251,138,2,0.7)] hover:-translate-y-1 cursor-pointer ${
                   service.comingSoon ? "opacity-50" : ""
@@ -41,7 +47,7 @@ const ServicesCards = () => {
                   {service.description}
                 </p>
                 {!service.comingSoon && (
-                  <div className="flex justify-end mt-5">
+                  <div data-aos="zoom-in" className="flex justify-end mt-5">
                     <button
                       className="btn-primary flex items-center"
                       onClick={handleReadMoreClick}

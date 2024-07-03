@@ -47,7 +47,11 @@ const NextArrow = (props) => {
       className="absolute top-1/2 transform -translate-y-1/2 right-4 z-10 cursor-pointer"
       onClick={onClick}
     >
-      <FaAngleRight className="text-3xl text-gray-700 hover:text-gray-900" />
+      <FaAngleRight
+        data-aos="slide-right"
+        data-aos-delay="300"
+        className="text-3xl text-gray-700 hover:text-gray-900"
+      />
     </div>
   );
 };
@@ -59,7 +63,11 @@ const PrevArrow = (props) => {
       className="absolute top-1/2 transform -translate-y-1/2 left-4 z-10 cursor-pointer"
       onClick={onClick}
     >
-      <FaAngleLeft className="text-3xl text-gray-700 hover:text-gray-900" />
+      <FaAngleLeft
+        data-aos="slide-left"
+        data-aos-delay="300"
+        className="text-3xl text-gray-700 hover:text-gray-900"
+      />
     </div>
   );
 };
@@ -125,13 +133,19 @@ const ClientsCarousel = () => {
     <>
       <div className="bg-gray-200">
         <section className="container mx-auto py-10 relative mt-5">
-          <h2 className="text-3xl font-semibold text-center mb-6 text-secondary">
+          <h2
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="text-3xl font-semibold text-center mb-6 text-secondary"
+          >
             Our Clients
           </h2>
           <Slider {...settings}>
             {clients.map((client) => (
               <div key={client.id} className="px-4 my-7 ">
                 <div
+                  data-aos="zoom-in"
+                  data-aos-delay="300"
                   className="bg-white p-3 rounded-full h-32 w-32 scale-100 mx-auto flex items-center justify-center cursor-pointer duration-300 hover:scale-110 "
                   onClick={handleLogoClick}
                 >
@@ -144,7 +158,11 @@ const ClientsCarousel = () => {
               </div>
             ))}
           </Slider>
-          <div className="flex justify-center mt-11">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="flex justify-center mt-11"
+          >
             <button
               className="btn-primary flex items-center"
               onClick={handleReadMoreClick}

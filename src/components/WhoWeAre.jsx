@@ -9,7 +9,7 @@ const WhoWeAre = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center mt-10 mb-10">
             {/* Image Section */}
             <div className="order-2 sm:order-1 relative">
-              <div>
+              <div data-aos="slide-right" data-aos-delay="200">
                 <img
                   src="../images/aboutImages/who-we-are.jpg"
                   alt="WhoWeAre"
@@ -19,8 +19,18 @@ const WhoWeAre = () => {
             </div>
             {/* Text Content Section */}
             <div className="space-y-5 order-2 sm:order-1 xl:pr-30 mb-7">
-              <h1 className="text-3xl sm:text-4xl font-semibold">Who We Are</h1>
-              <p className="text-slate-600 text-lg sm:text-xl">
+              <h1
+                data-aos="fade-up"
+                data-aos-delay="200"
+                className="text-3xl sm:text-4xl font-semibold"
+              >
+                Who We Are
+              </h1>
+              <p
+                data-aos="fade-up"
+                data-aos-delay="400"
+                className="text-slate-600 text-lg sm:text-xl"
+              >
                 We are a team of dedicated professionals committed to delivering
                 top-notch digital solutions to our clients. With a rich history
                 of innovation and excellence, we have transformed numerous ideas
