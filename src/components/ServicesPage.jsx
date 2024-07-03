@@ -6,7 +6,7 @@ import services from "../data/services";
 const ServicesPage = () => {
   return (
     <div className="bg-white">
-      <section className="container min-h-[750px]">
+      <section className="container min-h-[740px]">
         <h1 className="flex items-center justify-center text-5xl text-secondary mt-10 mb-10">
           Our Services
         </h1>

@@ -23,11 +23,11 @@ const FooterLinks = [
 const Footer = () => {
   return (
     <>
-      <div className="bg-black/90 text-slate-300">
-        <section className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 py-5">
+      <div className="bg-black/90 text-slate-300 w-[auto] h-auto">
+        <section className="container  px-4 ">
+          <div className="grid md:grid-cols-2 py-5 ">
             {/* Company Details */}
-            <div className="py-8">
+            <div className="py-8 ">
               <div className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
                 <a
                   href="/"

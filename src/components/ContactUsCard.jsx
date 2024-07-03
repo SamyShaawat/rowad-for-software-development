@@ -33,7 +33,7 @@ const ContactUsCard = () => {
           </div>
 
           <div className="space-y-5 order-2 sm:order-1   mb-1">
-            <div className="bg-gray-800 text-white p-6 h-[410px] items-center justify-center text-left rounded-lg shadow-lg max-w-xl  mx-auto hover:shadow-[0_4px_8px_0_rgba(31,41,55,0.7)]  cursor-pointer duration-300 hover:scale-105">
+            <div className="bg-gray-800 text-white p-6 h-auto items-center justify-center text-left rounded-lg shadow-lg max-w-xl  mx-auto hover:shadow-[0_4px_8px_0_rgba(31,41,55,0.7)]  cursor-pointer duration-300 hover:scale-105">
               <p className="mb-8">
                 <h1 className=" text-3xl mb-3">R<span className="text-secondary">O</span>WAD For Software Development</h1> We
                 specialize in reliable and secure website hosting, developing

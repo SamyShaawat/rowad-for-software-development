@@ -36,3 +36,12 @@ li {
   width: auto;
   height: 50px;
 }
+
+
+@media (min-width: 768px) {
+  .client-name {
+      font-size: 1.25rem /* 20px */;
+      line-height: 1.75rem /* 28px */;
+      width: 380px;
+  }
+}
