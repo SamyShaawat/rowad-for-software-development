@@ -91,6 +91,8 @@ const ClientsCarousel = () => {
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    autoplay: true,
+    autoplaySpeed: 1600,
     responsive: [
       {
         breakpoint: 1550,
