@@ -1,0 +1,8 @@
+# Allow all search engines to crawl the entire site
+User-agent: *
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /search/
+
+# Specify the location of your sitemap
+Sitemap: https://rowad.com/sitemap.txt

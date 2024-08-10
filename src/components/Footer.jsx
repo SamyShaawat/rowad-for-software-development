@@ -1,9 +1,4 @@
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { NavLink } from "react-router-dom";
-import { MdPhone } from "react-icons/md";
-import { IoMail } from "react-icons/io5";
+import React from "react";
 import {
   FaFacebook,
   FaInstagram,
@@ -12,16 +7,19 @@ import {
   FaFax,
   FaLocationDot,
 } from "react-icons/fa6";
+import { MdPhone } from "react-icons/md";
+import { IoMail } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 import links from "../data/links";
 
 const Footer = () => {
   return (
     <>
       <div className="bg-black/90 text-slate-300 w-[auto] h-auto">
-        <section className="container  px-4 ">
-          <div className="grid md:grid-cols-2 py-5 ">
+        <section className="container px-4">
+          <div className="grid md:grid-cols-2 py-5">
             {/* Company Details */}
-            <div data-aos="fade-up" data-aos-delay="300" className="py-8 ">
+            <div data-aos="fade-up" data-aos-delay="300" className="py-8">
               <div className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
                 <a
                   href="/"
@@ -37,13 +35,12 @@ const Footer = () => {
                 <span className="font-semibold">
                   Rowad For Software Development
                 </span>
-                , We are your partner in digital growth providing digital
-                solutions, specializing in reliable and secure web hosting,
-                website development and deployment, and innovative digital
-                marketing strategies.
+                , your partner in digital growth. We specialize in reliable and
+                secure web hosting, website development and deployment, and
+                innovative digital marketing strategies.
               </p>
               <br />
-              {/* Social Media handle */}
+              {/* Social Media handles */}
               <div
                 data-aos="fade-up"
                 data-aos-delay="400"
@@ -68,7 +65,7 @@ const Footer = () => {
               {/* Site Navigation Column */}
               <div data-aos="fade-up" data-aos-delay="300">
                 <div className="py-8">
-                  <h1 className="text-xl font-bold mb-3 ">Site Navigation</h1>
+                  <h1 className="text-xl font-bold mb-3">Site Navigation</h1>
                   <ul className="space-y-3">
                     {links.map((link) => (
                       <li

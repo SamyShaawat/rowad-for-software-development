@@ -1,4 +1,3 @@
-// src/components/ServicesPage.jsx
 import React from "react";
 import services from "../data/services";
 
@@ -16,7 +15,7 @@ const ServicesPage = () => {
         <div
           data-aos="fade-up"
           data-aos-delay="400"
-          className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 "
+          className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((service) => (
             <div
@@ -30,6 +29,8 @@ const ServicesPage = () => {
                   src={service.icon}
                   alt={`${service.name} icon`}
                   className="w-24 h-24 rounded-full"
+                  width="96" // Width attribute added
+                  height="96" // Height attribute added
                 />
               </div>
               <h2 className="text-center text-xl font-semibold mb-2">

@@ -5,7 +5,7 @@ const Vision = () => {
     <>
       {/* Vision Section */}
       <div className="bg-gray-200">
-        <section className="container  min-h-[355px] flex mt-10 sm:mt-0">
+        <section className="container min-h-[355px] flex mt-10 sm:mt-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center mt-10 mb-10">
             {/* Text Content Section */}
             <div className="space-y-5 order-1 sm:order-2 xl:pr-30">
@@ -34,6 +34,8 @@ const Vision = () => {
                   src="../images/aboutImages/our-vision.jpg"
                   alt="WhoWeAre"
                   className="rounded-full h-72 w-72"
+                  width="288" // Explicit width
+                  height="288" // Explicit height
                 />
               </div>
             </div>

@@ -144,17 +144,19 @@ const ClientsCarousel = () => {
           </h2>
           <Slider {...settings}>
             {clients.map((client) => (
-              <div key={client.id} className="px-4 my-7 ">
+              <div key={client.id} className="px-4 my-7">
                 <div
                   data-aos="zoom-in"
                   data-aos-delay="300"
-                  className="bg-white p-3 rounded-full h-32 w-32 scale-100 mx-auto flex items-center justify-center cursor-pointer duration-300 hover:scale-110 "
+                  className="bg-white p-3 rounded-full h-32 w-32 scale-100 mx-auto flex items-center justify-center cursor-pointer duration-300 hover:scale-110"
                   onClick={handleLogoClick}
                 >
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="rounded-xl "
+                    width="128" // Set to match h-32 (height) assuming square aspect ratio
+                    height="128" // Set to match w-32 (width) assuming square aspect ratio
+                    className="rounded-xl"
                   />
                 </div>
               </div>

@@ -25,17 +25,12 @@ const ContactUsCard = () => {
           {/* Image Section */}
           <div className="order-1 sm:order-2 relative">
             <div data-aos="zoom-in" data-aos-delay="400">
-              {/* <dotlottie-player
-                src="https://lottie.host/485d2939-ada0-480f-8c9e-cb6b2ae2d54a/DHREysNKSu.json"
-                background="transparent"
-                speed="1"
-                loop
-                autoplay
-              ></dotlottie-player> */}
               <img
                 src="../images/contactImages/contactus.png"
-                alt=""
+                alt="Contact Us"
                 className="rounded-full scale-100 duration-300 hover:scale-105 cursor-pointer"
+                width="400" // Specify the width of the image
+                height="400" // Specify the height of the image
               />
             </div>
           </div>
@@ -45,9 +40,9 @@ const ContactUsCard = () => {
             data-aos-delay="300"
             className="space-y-5 order-2 sm:order-1 mb-1"
           >
-            <div className="bg-gray-800 text-white p-6 h-auto items-center justify-center text-left rounded-lg shadow-lg max-w-xl  mx-auto hover:shadow-[0_4px_8px_0_rgba(31,41,55,0.7)]  cursor-pointer duration-300 hover:scale-105">
+            <div className="bg-gray-800 text-white p-6 h-auto items-center justify-center text-left rounded-lg shadow-lg max-w-xl mx-auto hover:shadow-[0_4px_8px_0_rgba(31,41,55,0.7)] cursor-pointer duration-300 hover:scale-105">
               <p className="mb-8">
-                <h1 className=" text-3xl mb-3">
+                <h1 className="text-3xl mb-3">
                   R<span className="text-secondary">O</span>WAD For Software
                   Development
                 </h1>{" "}

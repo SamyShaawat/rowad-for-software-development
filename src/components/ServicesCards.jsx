@@ -1,7 +1,6 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-
 import services from "../data/services";
 
 const ServicesCards = () => {
@@ -38,6 +37,8 @@ const ServicesCards = () => {
                     src={service.icon}
                     alt={`${service.name} icon`}
                     className="w-24 h-24 rounded-full"
+                    width="96" // Width attribute added
+                    height="96" // Height attribute added
                   />
                 </div>
                 <h2 className="text-center text-xl font-semibold mb-2">
@@ -52,7 +53,7 @@ const ServicesCards = () => {
                       className="btn-primary flex items-center"
                       onClick={handleReadMoreClick}
                     >
-                      <FaArrowRight className="hover:translate-x-2 duration-300 " />
+                      <FaArrowRight className="hover:translate-x-2 duration-300" />
                     </button>
                   </div>
                 )}

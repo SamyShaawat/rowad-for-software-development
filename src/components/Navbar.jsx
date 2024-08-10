@@ -23,8 +23,6 @@ const Navbar = () => {
     };
   }, [closeMenuOnMaximize]);
 
-
-
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
@@ -37,12 +35,14 @@ const Navbar = () => {
             {/* logo */}
             <a
               href="/"
-              className="flex items-center gap-3 text-2xl text-black font-semibold "
+              className="flex items-center gap-3 text-2xl text-black font-semibold"
             >
               <img
                 src="../images/RowadLogo/Rowad_Logo_Main.png"
-                alt=""
+                alt="Rowad Logo"
                 className="logonavbar rounded-sm"
+                width="150" // Adjust width as needed
+                height="40" // Adjust height as needed
               />
             </a>
 

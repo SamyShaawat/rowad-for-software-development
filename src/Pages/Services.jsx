@@ -1,14 +1,22 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import ServicesPage from "../components/ServicesPage";
 
 const Services = () => {
-  return <>
-    <Helmet>
-      <title>Rowad For Software Development | Our Services</title>
-    </Helmet>
-    <ServicesPage/>
-  </>;
+  const currentUrl = window.location.href;
+  return (
+    <>
+      <Helmet>
+        <title>Rowad | Our Services</title>
+        <meta
+          name="description"
+          content="Explore our range of digital solutions, including web hosting, development, and marketing strategies. Discover how Rowad can help grow your business."
+        />
+        <link rel="canonical" href={currentUrl} />
+      </Helmet>
+      <ServicesPage />
+    </>
+  );
 };
 
 export default Services;

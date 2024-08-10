@@ -16,22 +16,23 @@ const HomeHero = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center">
             {/* Image Section */}
             <div className="order-1 sm:order-2 relative">
-              <div data-aos="zoom-in" data-aos-delay="500" >
+              <div data-aos="zoom-in" data-aos-delay="500">
                 <dotlottie-player
                   src="https://lottie.host/4c6d0011-7cb8-4a0c-9f3d-11455d4e7641/sJe7fsJVQM.json"
                   background="transparent"
                   speed="1"
                   loop
                   autoplay
+                  style={{ width: "100%", height: "auto" }} // Ensure proper sizing for dotlottie-player
                 ></dotlottie-player>
               </div>
             </div>
             {/* Text Content Section */}
-            <div className="space-y-5 order-2 sm:order-1 xl:pr-30 ">
+            <div className="space-y-5 order-2 sm:order-1 xl:pr-30">
               <h1
                 data-aos="fade-up"
                 data-aos-delay="200"
-                className=" text-3xl sm:text-4xl font-semibold"
+                className="text-3xl sm:text-4xl font-semibold"
               >
                 R<span className="text-secondary">O</span>WAD For Software
                 Development

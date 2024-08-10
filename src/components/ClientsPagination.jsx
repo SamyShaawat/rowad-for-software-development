@@ -15,7 +15,7 @@ const ClientsPagination = () => {
 
   return (
     <div className="bg-white">
-      <section className="container  ">
+      <section className="container">
         <h1
           data-aos="zoom-in"
           data-aos-delay="100"
@@ -31,7 +31,7 @@ const ClientsPagination = () => {
                 data-aos="fade-up"
                 data-aos-delay="100"
                 key={client.id}
-                className="bg-white rounded-lg shadow-lg p-6 relative hover:shadow-[0_4px_8px_0_rgba(251,138,2,0.7)] hover:-translate-y-1 cursor-pointer "
+                className="bg-white rounded-lg shadow-lg p-6 relative hover:shadow-[0_4px_8px_0_rgba(251,138,2,0.7)] hover:-translate-y-1 cursor-pointer"
               >
                 <div className="absolute top-0 right-0 p-3 m-4 bg-white gap-5 rounded-full mx-auto flex h-32 w-32">
                   <img
@@ -40,9 +40,11 @@ const ClientsPagination = () => {
                     data-aos="zoom-in"
                     data-aos-delay="100"
                     className="rounded-xl"
+                    width="128" // Adjust width as needed
+                    height="128" // Adjust height as needed
                   />
                 </div>
-                <div className="absolute top-12 left-0 pr-3 m-4 text-center font-semibold xl:text-2xl md:text-xl  text-slate-700  lg:text-left lg:flex-1">
+                <div className="absolute top-12 left-0 pr-3 m-4 text-center font-semibold xl:text-2xl md:text-xl text-slate-700 lg:text-left lg:flex-1">
                   {client.name}
                 </div>
                 <div className="mt-32 text-left mb-10">
