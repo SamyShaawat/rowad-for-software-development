@@ -11,6 +11,7 @@ import { MdPhone } from "react-icons/md";
 import { IoMail } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import links from "../data/links";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const Footer = () => {
   return (
@@ -46,17 +47,29 @@ const Footer = () => {
                 data-aos-delay="400"
                 className="flex items-center gap-4 mt-2"
               >
-                <a href="#" className="scale-100 hover:scale-110 duration-300">
-                  <FaFacebook className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@rowad.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="scale-100 hover:scale-110 duration-300"
+                >
+                  <IoMail className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
                 </a>
-                <a href="#" className="scale-100 hover:scale-110 duration-300">
-                  <FaInstagram className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
+                <a
+                  href="https://www.linkedin.com/in/samyshaawat/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="scale-100 hover:scale-110 duration-300"
+                >
+                  <WhatsAppIcon className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
                 </a>
-                <a href="#" className="scale-100 hover:scale-110 duration-300">
+                <a
+                  href="https://www.linkedin.com/in/samyshaawat/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="scale-100 hover:scale-110 duration-300"
+                >
                   <FaLinkedin className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
-                </a>
-                <a href="#" className="scale-100 hover:scale-110 duration-300">
-                  <FaXTwitter className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
                 </a>
               </div>
             </div>
@@ -85,19 +98,33 @@ const Footer = () => {
                   <ul className="space-y-3">
                     <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-slate-300 gap-2">
                       <FaLocationDot className="text-xl sm:text-2xl" />
-                      <span>584 El-Horreya Road, Gleem Alexandria, Egypt</span>
+                      <a
+                        href="https://www.google.com/maps/place/Smart+System+LLC/@31.2391182,29.9597572,18z/data=!4m6!3m5!1s0x14f5c48ffef6c8a7:0x38b1014148770fe9!8m2!3d31.2395127!4d29.9637939!16s%2Fg%2F11b6d6m9lz?entry=ttu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        584 El-Horreya Road, Gleem Alexandria, Egypt
+                      </a>
                     </li>
                     <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-slate-300 gap-2">
                       <IoMail className="text-xl sm:text-2xl" />
-                      <span>info@rowad.com</span>
+                      <a
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=info@rowad.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        info@rowad.com
+                      </a>
                     </li>
                     <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-slate-300 gap-2">
                       <MdPhone className="text-xl sm:text-2xl" />
-                      <span>+20 109 1539396</span>
-                    </li>
-                    <li className="flex cursor-pointer hover:translate-x-1 duration-300 hover:text-secondary items-center text-slate-300 gap-2">
-                      <FaFax className="text-xl sm:text-2xl" />
-                      <span>+203 425 7786</span>
+                      <a
+                        href="tel:+201091539396"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        +20 109 1539396
+                      </a>
                     </li>
                   </ul>
                 </div>
