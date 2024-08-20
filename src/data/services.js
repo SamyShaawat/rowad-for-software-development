@@ -27,11 +27,13 @@ const services = [
   {
     id: 3,
     name: "Digital Marketing",
-    description:
-      "Boost your online presence with our digital marketing services.",
-    expand: "Boost your online presence with our digital marketing services, utilizing targeted strategies to enhance visibility, engagement, and conversions effectively.",
+    description: "Coming Soon",
+    // description:
+    //   "Boost your online presence with our digital marketing services.",
+    // expand: "Boost your online presence with our digital marketing services, utilizing targeted strategies to enhance visibility, engagement, and conversions effectively.",
+    expand: "Coming Soon",
     icon: "../images/servicesImages/DigitalMarketing.png",
-    comingSoon: false,
+    comingSoon: true,
   },
   {
     id: 5,
