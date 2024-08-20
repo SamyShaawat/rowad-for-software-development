@@ -50,7 +50,7 @@ const NextArrow = (props) => {
       <FaAngleRight
         data-aos="slide-right"
         data-aos-delay="300"
-        className="text-3xl text-gray-700 hover:text-gray-900"
+        className="text-3xl text-gray-500 hover:text-gray-900"
       />
     </div>
   );
@@ -66,7 +66,7 @@ const PrevArrow = (props) => {
       <FaAngleLeft
         data-aos="slide-left"
         data-aos-delay="300"
-        className="text-3xl text-gray-700 hover:text-gray-900"
+        className="text-3xl text-gray-500 hover:text-gray-900"
       />
     </div>
   );
@@ -87,12 +87,12 @@ const ClientsCarousel = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     autoplay: true,
-    autoplaySpeed: 1600,
+    autoplaySpeed: 1800,
     responsive: [
       {
         breakpoint: 1550,
@@ -133,7 +133,7 @@ const ClientsCarousel = () => {
 
   return (
     <>
-      <div className="bg-gray-200">
+      <div className="bg-white-200">
         <section className="container mx-auto py-10 relative mt-5">
           <h2
             data-aos="fade-up"
@@ -148,7 +148,7 @@ const ClientsCarousel = () => {
                 <div
                   data-aos="zoom-in"
                   data-aos-delay="300"
-                  className="bg-white p-3 rounded-full h-32 w-32 scale-100 mx-auto flex items-center justify-center cursor-pointer duration-300 hover:scale-110"
+                  className="bg-white p-3  border-2 border-slate-300 rounded-full h-32 w-32 scale-100 mx-auto flex items-center justify-center cursor-pointer duration-300 hover:scale-110"
                   onClick={handleLogoClick}
                 >
                   <img

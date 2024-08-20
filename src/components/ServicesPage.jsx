@@ -4,7 +4,7 @@ import services from "../data/services";
 const ServicesPage = () => {
   return (
     <div className="bg-white">
-      <section className="container min-h-[740px]">
+      <section className="container min-h-[860px]">
         <h1
           data-aos="zoom-in"
           data-aos-delay="100"

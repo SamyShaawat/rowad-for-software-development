@@ -17,8 +17,8 @@ const Home = () => {
         <link rel="canonical" href={currentUrl} />
       </Helmet>
       <HomeHero />
-      <ClientsCarousel />
       <ServicesCards />
+      <ClientsCarousel />
     </>
   );
 };

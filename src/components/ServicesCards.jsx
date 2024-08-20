@@ -11,7 +11,7 @@ const ServicesCards = () => {
 
   return (
     <>
-      <div className="bg-white-200">
+      <div className="bg-gray-200">
         <section className="container mx-auto py-10 relative mt-1">
           <div>
             <h2
