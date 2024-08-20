@@ -12,6 +12,7 @@ import { IoMail } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import links from "../data/links";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import MailIcon from "@mui/icons-material/Mail";
 
 const Footer = () => {
   return (
@@ -53,7 +54,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="scale-100 hover:scale-110 duration-300"
                 >
-                  <IoMail className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
+                  <MailIcon className="text-2xl hover:text-secondary scale-100 hover:scale-110 duration-300" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/samyshaawat/"

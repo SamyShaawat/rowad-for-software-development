@@ -86,7 +86,7 @@ const ContactUsCard = () => {
 
               <div className="flex text-center gap-4 mt-2">
                 <a
-                  href="https://wa.me/201091539396"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@rowad.com"
                   className="scale-100 hover:scale-110 duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
