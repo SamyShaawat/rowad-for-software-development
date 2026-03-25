@@ -19,25 +19,25 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white'}`}>
       <nav className="container-custom mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href={RouteConstants.HOME} className="flex items-center space-x-2">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2">
-              <div className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-2xl">R</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-lg flex items-center justify-center shadow-md">
+                <span className="text-white font-bold text-xl">R</span>
               </div>
               <div className="flex items-baseline">
-                <span className="font-display text-3xl font-bold text-primary-900">R</span>
-                <span className="font-display text-3xl font-bold text-secondary-500">O</span>
-                <span className="font-display text-3xl font-bold text-primary-900">WAD</span>
+                <span className="font-bold text-2xl text-primary-900">R</span>
+                <span className="font-bold text-2xl text-secondary-500">O</span>
+                <span className="font-bold text-2xl text-primary-900">WAD</span>
               </div>
             </motion.div>
           </Link>
@@ -48,13 +48,13 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-4 py-2 text-primary-700 hover:text-secondary-500 font-medium transition-colors duration-200 rounded-lg hover:bg-secondary-50"
+                className="px-3 py-2 text-primary-700 hover:text-secondary-500 font-medium transition-colors duration-200 rounded-lg hover:bg-secondary-50"
               >
                 {item.name}
               </Link>
             ))}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href={RouteConstants.CONTACT} className="btn-primary ml-4">
+              <Link href={RouteConstants.CONTACT} className="btn-primary ml-4 text-sm">
                 {NavigationConstants.GET_STARTED}
               </Link>
             </motion.div>

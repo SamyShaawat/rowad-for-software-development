@@ -10,23 +10,23 @@ const services: ServiceFeature[] = [
   { 
     icon: 'ComputerDesktop', 
     title: 'Website Development', 
-    description: 'Custom-built websites tailored to your business needs with modern technologies and responsive design.', 
-    features: ['Responsive Design', 'Modern Tech Stack', 'SEO Optimized'], 
-    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'] 
+    description: 'Custom-built websites tailored to your business needs with modern technologies.', 
+    features: ['Responsive Design', 'Modern Tech', 'SEO Optimized'], 
+    technologies: ['Next.js', 'React', 'TypeScript'] 
   },
   { 
     icon: 'CloudArrowUp', 
     title: 'Web Hosting', 
-    description: 'Reliable, secure, and scalable hosting solutions with 24/7 monitoring and support.', 
-    features: ['99.9% Uptime', 'SSL Certificates', '24/7 Support'], 
-    technologies: ['AWS', 'Cloudflare', 'Docker', 'Kubernetes'] 
+    description: 'Reliable, secure hosting solutions with 24/7 monitoring and support.', 
+    features: ['99.9% Uptime', 'SSL Included', '24/7 Support'], 
+    technologies: ['AWS', 'Cloudflare', 'Docker'] 
   },
   { 
     icon: 'RocketLaunch', 
-    title: 'Deployment Services', 
-    description: 'Seamless deployment and continuous integration with zero downtime deployments.', 
-    features: ['CI/CD Pipeline', 'Zero Downtime', 'Auto Scaling'], 
-    technologies: ['GitHub Actions', 'Docker', 'Kubernetes', 'Terraform'] 
+    title: 'Deployment', 
+    description: 'Seamless deployment with CI/CD pipelines and zero downtime.', 
+    features: ['CI/CD', 'Zero Downtime', 'Auto Scaling'], 
+    technologies: ['GitHub Actions', 'Kubernetes'] 
   },
 ];
 
@@ -38,7 +38,7 @@ const iconMap: Record<string, React.ComponentType<{ className: string }>> = {
 
 export function ServicesSection() {
   return (
-    <section className="section-padding bg-gradient-to-b from-white via-gray-50 to-white">
+    <section className="section-padding bg-gray-50">
       <div className="container-custom mx-auto">
         {/* Header */}
         <motion.div
@@ -46,15 +46,15 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 bg-secondary-100 text-secondary-600 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-3 py-1 bg-secondary-100 text-secondary-600 rounded-full text-xs font-semibold mb-3">
             Our Services
           </span>
-          <h2 className="heading-2 text-primary-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-900 mb-4">
             What We <span className="text-secondary-500">Offer</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
             {ServicesConstants.SUBTITLE}
           </p>
         </motion.div>
@@ -65,7 +65,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((service, index) => {
             const IconComponent = iconMap[service.icon] || ComputerDesktopIcon;
@@ -76,42 +76,39 @@ export function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 card-hover"
+                whileHover={{ y: -5 }}
+                className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 card-hover"
               >
-                {/* Orange accent bar on top */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary-500 to-secondary-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                
-                <div className="p-8 h-full flex flex-col">
+                <div className="p-6">
                   {/* Icon */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <IconComponent className="h-8 w-8 text-secondary-500" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="h-6 w-6 text-secondary-500" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="heading-3 text-primary-900 mb-4 group-hover:text-secondary-500 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-primary-900 mb-3 group-hover:text-secondary-500 transition-colors duration-300">
                     {service.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-gray-600 mb-6 flex-grow leading-relaxed">
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Features */}
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-2 mb-4">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-gray-700">
-                        <div className="w-2 h-2 bg-secondary-500 rounded-full mr-3" />
+                      <li key={feature} className="flex items-center text-gray-700 text-sm">
+                        <div className="w-1.5 h-1.5 bg-secondary-500 rounded-full mr-2" />
                         {feature}
                       </li>
                     ))}
                   </ul>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {service.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {service.technologies.map((tech) => (
+                      <span key={tech} className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium">
                         {tech}
                       </span>
                     ))}
@@ -120,10 +117,10 @@ export function ServicesSection() {
                   {/* Learn More Link */}
                   <Link 
                     href={RouteConstants.SERVICES} 
-                    className="inline-flex items-center font-semibold text-secondary-500 group-hover:text-secondary-600 transition-colors duration-300"
+                    className="inline-flex items-center font-semibold text-secondary-500 hover:text-secondary-600 transition-colors duration-300 text-sm"
                   >
-                    {ServicesConstants.CTA.split(' ')[0]} {ServicesConstants.CTA.split(' ')[1]} {ServicesConstants.CTA.split(' ')[2]}
-                    <ArrowRightIcon className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform duration-300" />
+                    Learn More
+                    <ArrowRightIcon className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </motion.div>
@@ -137,7 +134,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16"
+          className="text-center mt-12"
         >
           <Link href={RouteConstants.CONTACT} className="btn-primary">
             {ServicesConstants.CTA}
