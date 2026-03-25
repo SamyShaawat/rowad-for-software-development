@@ -4,10 +4,10 @@
   "description": "Rowad For Software Development - Modern Digital Solutions",
   "private": true,
   "scripts": {
-    "dev": "nx serve rowad-web",
-    "build": "nx build rowad-web",
-    "start": "nx serve rowad-web --prod",
-    "lint": "nx lint rowad-web",
+    "dev": "nx serve rowad",
+    "build": "nx build rowad",
+    "start": "nx serve rowad --prod",
+    "lint": "nx lint rowad",
     "format": "nx format:write"
   },
   "dependencies": {

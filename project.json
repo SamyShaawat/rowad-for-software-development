@@ -1,5 +1,5 @@
 {
-  "name": "rowad-web",
+  "name": "rowad",
   "$schema": "./node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "src",
@@ -10,11 +10,11 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/rowad-web"
+        "outputPath": "dist/rowad"
       },
       "configurations": {
         "development": {
-          "outputPath": "dist/rowad-web"
+          "outputPath": "dist/rowad"
         },
         "production": {}
       }
@@ -23,18 +23,18 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "rowad-web:build",
+        "buildTarget": "rowad:build",
         "dev": true,
         "port": 3000
       },
       "configurations": {
         "development": {
-          "buildTarget": "rowad-web:build:development",
+          "buildTarget": "rowad:build:development",
           "dev": true,
           "port": 3000
         },
         "production": {
-          "buildTarget": "rowad-web:build:production",
+          "buildTarget": "rowad:build:production",
           "dev": false,
           "port": 3000
         }
