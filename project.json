@@ -1,0 +1,47 @@
+{
+  "name": "rowad-web",
+  "$schema": "./node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "src",
+  "tags": ["scope:frontend", "type:app"],
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/rowad-web"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "dist/rowad-web"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "rowad-web:build",
+        "dev": true,
+        "port": 3000
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "rowad-web:build:development",
+          "dev": true,
+          "port": 3000
+        },
+        "production": {
+          "buildTarget": "rowad-web:build:production",
+          "dev": false,
+          "port": 3000
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
