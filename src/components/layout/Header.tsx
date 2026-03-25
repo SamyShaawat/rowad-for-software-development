@@ -24,34 +24,49 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const textColor = isScrolled ? 'text-secondary-900' : 'text-white';
-  const bgColor = isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent';
-
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${bgColor}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white'}`}>
       <nav className="container-custom mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href={RouteConstants.HOME} className="flex items-center space-x-3">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-500 rounded-lg flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">R</span>
+          {/* Logo */}
+          <Link href={RouteConstants.HOME} className="flex items-center space-x-2">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2">
+              <div className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-2xl">R</span>
+              </div>
+              <div className="flex items-baseline">
+                <span className="font-display text-3xl font-bold text-primary-900">R</span>
+                <span className="font-display text-3xl font-bold text-secondary-500">O</span>
+                <span className="font-display text-3xl font-bold text-primary-900">WAD</span>
               </div>
             </motion.div>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
             {navigation.map((item) => (
-              <Link key={item.name} href={item.href} className={`font-medium transition-colors duration-200 ${isScrolled ? 'text-secondary-700 hover:text-primary-600' : 'text-white/90 hover:text-white'}`}>
+              <Link
+                key={item.name}
+                href={item.href}
+                className="px-4 py-2 text-primary-700 hover:text-secondary-500 font-medium transition-colors duration-200 rounded-lg hover:bg-secondary-50"
+              >
                 {item.name}
               </Link>
             ))}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href={RouteConstants.CONTACT} className="btn-primary">{NavigationConstants.GET_STARTED}</Link>
+              <Link href={RouteConstants.CONTACT} className="btn-primary ml-4">
+                {NavigationConstants.GET_STARTED}
+              </Link>
             </motion.div>
           </div>
 
+          {/* Mobile menu button */}
           <div className="md:hidden">
-            <button type="button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className={`p-2 rounded-lg ${textColor}`}>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-primary-700 hover:bg-secondary-50"
+            >
               <span className="sr-only">Toggle menu</span>
               {mobileMenuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
             </button>
@@ -59,17 +74,35 @@ export function Header() {
         </div>
       </nav>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="md:hidden bg-white border-t border-secondary-200 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white border-t border-gray-200 overflow-hidden"
+          >
             <div className="px-4 pt-2 pb-6 space-y-2">
               {navigation.map((item) => (
-                <Link key={item.name} href={item.href} className="block px-4 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg font-medium transition-colors duration-200" onClick={() => setMobileMenuOpen(false)}>
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block px-4 py-3 text-primary-700 hover:text-secondary-500 hover:bg-secondary-50 rounded-lg font-medium transition-colors duration-200"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   {item.name}
                 </Link>
               ))}
               <div className="pt-4">
-                <Link href={RouteConstants.CONTACT} className="block w-full text-center btn-primary" onClick={() => setMobileMenuOpen(false)}>{NavigationConstants.GET_STARTED}</Link>
+                <Link
+                  href={RouteConstants.CONTACT}
+                  className="block w-full text-center btn-primary"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {NavigationConstants.GET_STARTED}
+                </Link>
               </div>
             </div>
           </motion.div>

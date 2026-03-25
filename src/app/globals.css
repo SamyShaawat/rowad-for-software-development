@@ -1,71 +1,95 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  --color-primary-950: #172554;
+  /* Primary Colors - Rowad Brand */
+  --color-primary-50: #fafafa;
+  --color-primary-100: #f4f4f5;
+  --color-primary-200: #e4e4e7;
+  --color-primary-300: #d4d4d8;
+  --color-primary-400: #a1a1aa;
+  --color-primary-500: #71717a;
+  --color-primary-600: #3f3f46;
+  --color-primary-700: #27272a;
+  --color-primary-800: #18181b;
+  --color-primary-900: #141414;
+  --color-primary-950: #09090b;
 
-  --color-secondary-50: #f8fafc;
-  --color-secondary-100: #f1f5f9;
-  --color-secondary-200: #e2e8f0;
-  --color-secondary-300: #cbd5e1;
-  --color-secondary-400: #94a3b8;
-  --color-secondary-500: #64748b;
-  --color-secondary-600: #475569;
-  --color-secondary-700: #334155;
-  --color-secondary-800: #1e293b;
-  --color-secondary-900: #0f172a;
-  --color-secondary-950: #020617;
+  /* Secondary/Orange - Rowad Brand */
+  --color-secondary-50: #fff7ed;
+  --color-secondary-100: #ffedd5;
+  --color-secondary-200: #fed7aa;
+  --color-secondary-300: #fdba74;
+  --color-secondary-400: #fb923c;
+  --color-secondary-500: #fb8a02;
+  --color-secondary-600: #ea580c;
+  --color-secondary-700: #c2410c;
+  --color-secondary-800: #9a3412;
+  --color-secondary-900: #7c2d12;
+  --color-secondary-950: #431407;
 
-  --color-accent-50: #ecfeff;
-  --color-accent-100: #cffafe;
-  --color-accent-200: #a5f3fc;
-  --color-accent-300: #67e8f9;
-  --color-accent-400: #22d3ee;
-  --color-accent-500: #06b6d4;
-  --color-accent-600: #0891b2;
-  --color-accent-700: #0e7490;
-  --color-accent-800: #155e75;
-  --color-accent-900: #164e63;
-  --color-accent-950: #083344;
+  /* Neutral Grays */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-950: #030712;
 
-  --font-family-sans: var(--font-inter), system-ui, sans-serif;
-  --font-family-heading: var(--font-poppins), system-ui, sans-serif;
+  /* Fonts */
+  --font-family-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-family-display: var(--font-copperplate), system-ui, sans-serif;
 
+  /* Animations */
   --animate-fade-in: fadeIn 0.5s ease-in-out;
-  --animate-slide-up: slideUp 0.5s ease-out;
-  --animate-slide-down: slideDown 0.5s ease-out;
+  --animate-fade-up: fadeUp 0.6s ease-out;
+  --animate-fade-down: fadeDown 0.6s ease-out;
+  --animate-slide-in-right: slideInRight 0.5s ease-out;
+  --animate-slide-in-left: slideInLeft 0.5s ease-out;
   --animate-scale-in: scaleIn 0.3s ease-out;
+  --animate-bounce-slow: bounceSlow 2s infinite;
 
   @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
   }
 
-  @keyframes slideUp {
-    0% { transform: translateY(20px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes slideDown {
-    0% { transform: translateY(-20px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+  @keyframes fadeDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(30px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes scaleIn {
-    0% { transform: scale(0.95); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes bounceSlow {
+    0%, 100% { transform: translateY(-5%); }
+    50% { transform: translateY(5%); }
   }
 }
 
+/* Custom utilities */
 @utility section-padding {
   @apply py-16 md:py-24 px-4 sm:px-6 lg:px-8;
 }
@@ -75,27 +99,37 @@
 }
 
 @utility heading-1 {
-  @apply font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  @apply font-sans text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
 }
 
 @utility heading-2 {
-  @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+  @apply font-sans text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
 }
 
 @utility heading-3 {
-  @apply font-heading text-2xl md:text-3xl lg:text-4xl font-semibold;
+  @apply font-sans text-2xl md:text-3xl lg:text-4xl font-semibold;
 }
 
 @utility heading-4 {
-  @apply font-heading text-xl md:text-2xl font-semibold;
+  @apply font-sans text-xl md:text-2xl font-semibold;
 }
 
+/* Button variants - Rowad Brand */
 @utility btn-primary {
-  @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5;
+  @apply bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5;
 }
 
 @utility btn-secondary {
-  @apply bg-white hover:bg-secondary-50 text-primary-600 font-semibold py-3 px-8 rounded-lg border-2 border-primary-600 shadow-md hover:shadow-lg transition-all duration-300;
+  @apply bg-transparent hover:bg-secondary-500/10 text-secondary-500 font-semibold py-3 px-8 rounded-full border-2 border-secondary-500 shadow-md hover:shadow-lg transition-all duration-300;
+}
+
+@utility btn-dark {
+  @apply bg-primary-900 hover:bg-primary-800 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5;
+}
+
+/* Card hover effect with orange glow */
+@utility card-hover {
+  @apply hover:shadow-[0_8px_16px_0_rgba(251,138,2,0.3)] hover:-translate-y-2 transition-all duration-300;
 }
 
 * {
@@ -109,6 +143,24 @@ html {
 }
 
 body {
-  color: rgb(15, 23, 42);
-  background: linear-gradient(to bottom, transparent, rgb(248, 250, 252)) rgb(255, 255, 255);
+  color: rgb(20, 20, 20);
+  background: linear-gradient(to bottom, transparent, rgb(249, 250, 251)) rgb(255, 255, 255);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fb8a02;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
 }
