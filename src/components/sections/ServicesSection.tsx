@@ -2,142 +2,213 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ComputerDesktopIcon, CloudArrowUpIcon, RocketLaunchIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, ServicesConstants } from '@/constants';
-import type { ServiceFeature } from '@/types';
 
-const services: ServiceFeature[] = [
-  { 
-    icon: 'ComputerDesktop', 
-    title: 'Website Development', 
-    description: 'Custom-built websites tailored to your business needs with modern technologies.', 
-    features: ['Responsive Design', 'Modern Tech', 'SEO Optimized'], 
-    technologies: ['Next.js', 'React', 'TypeScript'] 
+const services = [
+  {
+    id: 'web-dev',
+    name: 'Website Development',
+    tagline: 'Custom-built for growth',
+    description: 'We create modern, responsive websites that are fast, beautiful, and optimized for conversions.',
+    features: ['Responsive Design', 'SEO Optimized', 'E-Commerce', 'API Integration'],
+    technologies: ['Next.js', 'React', 'TypeScript'],
+    icon: '/images/servicesImages/WebDevelopment.png',
+    gradient: 'from-orange-500/20 to-amber-500/10',
+    accentColor: 'text-orange-400',
+    borderColor: 'border-orange-500/20 hover:border-orange-500/50',
+    glowColor: 'hover:shadow-[0_20px_60px_-10px_rgba(249,115,22,0.25)]',
+    comingSoon: false,
   },
-  { 
-    icon: 'CloudArrowUp', 
-    title: 'Web Hosting', 
-    description: 'Reliable, secure hosting solutions with 24/7 monitoring and support.', 
-    features: ['99.9% Uptime', 'SSL Included', '24/7 Support'], 
-    technologies: ['AWS', 'Cloudflare', 'Docker'] 
+  {
+    id: 'hosting',
+    name: 'Web Hosting',
+    tagline: 'Reliable & always online',
+    description: 'Premium hosting solutions with 99.9% uptime, SSL certificates, and round-the-clock support.',
+    features: ['99.9% Uptime', 'Free SSL', 'DDoS Protection', '24/7 Monitoring'],
+    technologies: ['AWS', 'Cloudflare', 'Docker'],
+    icon: '/images/servicesImages/WebHosting.png',
+    gradient: 'from-blue-500/20 to-cyan-500/10',
+    accentColor: 'text-blue-400',
+    borderColor: 'border-blue-500/20 hover:border-blue-500/50',
+    glowColor: 'hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.2)]',
+    comingSoon: false,
   },
-  { 
-    icon: 'RocketLaunch', 
-    title: 'Deployment', 
-    description: 'Seamless deployment with CI/CD pipelines and zero downtime.', 
-    features: ['CI/CD', 'Zero Downtime', 'Auto Scaling'], 
-    technologies: ['GitHub Actions', 'Kubernetes'] 
+  {
+    id: 'mobile',
+    name: 'Mobile Development',
+    tagline: 'iOS & Android apps',
+    description: 'Cross-platform mobile applications that deliver seamless user experiences on every device.',
+    features: ['iOS & Android', 'Offline Support', 'Push Notifications', 'Analytics'],
+    technologies: ['React Native', 'Flutter', 'Expo'],
+    icon: '/images/servicesImages/MobileDevelopment1.png',
+    gradient: 'from-violet-500/20 to-purple-500/10',
+    accentColor: 'text-violet-400',
+    borderColor: 'border-violet-500/20 hover:border-violet-500/50',
+    glowColor: 'hover:shadow-[0_20px_60px_-10px_rgba(139,92,246,0.2)]',
+    comingSoon: false,
+  },
+  {
+    id: 'marketing',
+    name: 'Digital Marketing',
+    tagline: 'Grow your audience',
+    description: 'Data-driven marketing strategies to boost your online presence and drive qualified traffic.',
+    features: ['SEO', 'Social Media', 'PPC Ads', 'Analytics'],
+    technologies: ['Google Ads', 'Facebook Ads', 'SEMrush'],
+    icon: '/images/servicesImages/DigitalMarketing.png',
+    gradient: 'from-pink-500/20 to-rose-500/10',
+    accentColor: 'text-pink-400',
+    borderColor: 'border-pink-500/20 hover:border-pink-500/50',
+    glowColor: 'hover:shadow-[0_20px_60px_-10px_rgba(236,72,153,0.2)]',
+    comingSoon: true,
+  },
+  {
+    id: 'ai-chatbots',
+    name: 'AI Chat Bots',
+    tagline: 'Automate conversations',
+    description: 'Intelligent AI-powered chatbots that engage customers and automate support around the clock.',
+    features: ['NLP', '24/7 Availability', 'CRM Integration', 'Analytics'],
+    technologies: ['OpenAI', 'LangChain', 'Python'],
+    icon: '/images/servicesImages/AIChatBot.png',
+    gradient: 'from-green-500/20 to-emerald-500/10',
+    accentColor: 'text-green-400',
+    borderColor: 'border-green-500/20 hover:border-green-500/50',
+    glowColor: 'hover:shadow-[0_20px_60px_-10px_rgba(34,197,94,0.2)]',
+    comingSoon: true,
   },
 ];
 
-const iconMap: Record<string, React.ComponentType<{ className: string }>> = {
-  ComputerDesktop: ComputerDesktopIcon,
-  CloudArrowUp: CloudArrowUpIcon,
-  RocketLaunch: RocketLaunchIcon,
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
 export function ServicesSection() {
   return (
-    <section className="section-padding bg-gray-50">
-      <div className="container-custom mx-auto">
+    <section className="relative section-padding bg-[#0d0d1a] overflow-hidden">
+      {/* BG decoration */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/[0.04] rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative container-custom mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <span className="inline-block px-3 py-1 bg-secondary-100 text-secondary-600 rounded-full text-xs font-semibold mb-3">
-            Our Services
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-900 mb-4">
-            What We <span className="text-secondary-500">Offer</span>
+          <span className="section-badge mb-4">Our Services</span>
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            What We <span className="gradient-text">Offer</span>
           </h2>
-          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+          <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             {ServicesConstants.SUBTITLE}
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {services.map((service, index) => {
-            const IconComponent = iconMap[service.icon] || ComputerDesktopIcon;
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 card-hover"
-              >
-                <div className="p-6">
-                  {/* Icon */}
-                  <div className="w-12 h-12 bg-gradient-to-br from-secondary-100 to-secondary-200 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="h-6 w-6 text-secondary-500" />
-                  </div>
+          {services.map((service) => (
+            <motion.div
+              key={service.id}
+              variants={cardVariants}
+              whileHover={{ y: -6 }}
+              className={`relative group rounded-2xl border bg-white/[0.03] backdrop-blur-sm
+                          ${service.borderColor} ${service.glowColor}
+                          transition-all duration-500 overflow-hidden
+                          ${service.comingSoon ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
+            >
+              {/* Coming soon ribbon */}
+              {service.comingSoon && (
+                <div className="absolute top-4 right-4 z-10 px-2.5 py-1 rounded-full bg-white/[0.08] border border-white/[0.12] text-[10px] font-semibold text-slate-400 uppercase tracking-widest">
+                  Coming Soon
+                </div>
+              )}
 
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-primary-900 mb-3 group-hover:text-secondary-500 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
+              {/* Card inner gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                  {/* Features */}
-                  <ul className="space-y-2 mb-4">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-gray-700 text-sm">
-                        <div className="w-1.5 h-1.5 bg-secondary-500 rounded-full mr-2" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+              <div className="relative p-6 sm:p-7">
+                {/* Icon */}
+                <div className="mb-5 w-16 h-16 rounded-2xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                  <Image
+                    src={service.icon}
+                    alt={service.name}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                </div>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {service.technologies.map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                {/* Title + tagline */}
+                <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${service.accentColor}`}>
+                  {service.tagline}
+                </p>
+                <h3 className="font-heading text-lg sm:text-xl font-bold text-white mb-3 group-hover:gradient-text transition-colors duration-300">
+                  {service.name}
+                </h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-5">
+                  {service.description}
+                </p>
 
-                  {/* Learn More Link */}
-                  <Link 
-                    href={RouteConstants.SERVICES} 
-                    className="inline-flex items-center font-semibold text-secondary-500 hover:text-secondary-600 transition-colors duration-300 text-sm"
+                {/* Features */}
+                <ul className="space-y-1.5 mb-5">
+                  {service.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-slate-300 text-xs">
+                      <span className={`w-1.5 h-1.5 rounded-full ${service.accentColor.replace('text-', 'bg-')} flex-shrink-0`} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {service.technologies.map((tech) => (
+                    <span key={tech} className="px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/[0.08] text-slate-400 text-[10px] font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* CTA link */}
+                {!service.comingSoon && (
+                  <Link
+                    href={RouteConstants.SERVICES}
+                    className={`btn-ghost text-sm font-semibold ${service.accentColor}`}
                   >
                     Learn More
-                    <ArrowRightIcon className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRightIcon className="ml-1.5 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                   </Link>
-                </div>
-              </motion.div>
-            );
-          })}
+                )}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
-        {/* CTA */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-14"
         >
           <Link href={RouteConstants.CONTACT} className="btn-primary">
             {ServicesConstants.CTA}
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </Link>
         </motion.div>
       </div>

@@ -1,15 +1,22 @@
 import type { Metadata } from 'next';
-import { DM_Sans } from 'next/font/google';
+import { Inter, Syne } from 'next/font/google';
 import './globals.css';
 import { Header } from '@components/layout/Header';
 import { Footer } from '@components/layout/Footer';
 import { CompanyConstants } from '@/constants';
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-inter',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+});
+
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
 export const metadata: Metadata = {
@@ -24,16 +31,20 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: CompanyConstants.NAME,
   },
-  twitter: { card: 'summary_large_image', title: CompanyConstants.FULL_NAME, description: 'Transforming Ideas into Reality' },
+  twitter: {
+    card: 'summary_large_image',
+    title: CompanyConstants.FULL_NAME,
+    description: 'Transforming Ideas into Reality',
+  },
   robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={dmSans.variable}>
-      <body className="font-sans antialiased text-primary-900 bg-white">
+    <html lang="en" className={`${inter.variable} ${syne.variable}`}>
+      <body className="font-sans antialiased bg-dark-400 text-slate-200">
         <Header />
-        <main className="min-h-screen pt-20">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

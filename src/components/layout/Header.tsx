@@ -2,100 +2,139 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, NavigationConstants } from '@/constants';
 import type { NavigationItem } from '@/types';
 
 const navigation: NavigationItem[] = [
-  { name: NavigationConstants.HOME, href: RouteConstants.HOME },
+  { name: NavigationConstants.HOME,     href: RouteConstants.HOME },
   { name: NavigationConstants.SERVICES, href: RouteConstants.SERVICES },
   { name: NavigationConstants.ABOUT_US, href: RouteConstants.ABOUT },
-  { name: NavigationConstants.CONTACT, href: RouteConstants.CONTACT },
+  { name: NavigationConstants.CONTACT,  href: RouteConstants.CONTACT },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled,     setIsScrolled]     = useState(false);
+  const [activeHover,    setActiveHover]    = useState<string | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white'}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-[#0a0a0f]/90 backdrop-blur-2xl border-b border-white/[0.06] shadow-dark-lg py-2'
+          : 'bg-transparent py-4'
+      }`}
+    >
       <nav className="container-custom mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href={RouteConstants.HOME} className="flex items-center space-x-2">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-lg flex items-center justify-center shadow-md">
-                <span className="text-white font-bold text-xl">R</span>
+        <div className="flex items-center justify-between h-14">
+          {/* ── Logo ── */}
+          <Link href={RouteConstants.HOME} className="flex items-center gap-3 group">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-3"
+            >
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden glow-sm">
+                <Image
+                  src="/images/RowadLogo/Rowad_Icon_Round.png"
+                  alt="Rowad Logo"
+                  fill
+                  className="object-contain"
+                  sizes="40px"
+                />
               </div>
               <div className="flex items-baseline">
-                <span className="font-bold text-2xl text-primary-900">R</span>
-                <span className="font-bold text-2xl text-secondary-500">O</span>
-                <span className="font-bold text-2xl text-primary-900">WAD</span>
+                <span className="font-heading font-bold text-2xl text-white">R</span>
+                <span className="font-heading font-bold text-2xl gradient-text">O</span>
+                <span className="font-heading font-bold text-2xl text-white">WAD</span>
               </div>
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          {/* ── Desktop Nav ── */}
+          <div className="hidden md:flex items-center gap-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-3 py-2 text-primary-700 hover:text-secondary-500 font-medium transition-colors duration-200 rounded-lg hover:bg-secondary-50"
+                onMouseEnter={() => setActiveHover(item.name)}
+                onMouseLeave={() => setActiveHover(null)}
+                className="relative px-4 py-2 text-slate-300 hover:text-white font-medium transition-colors duration-200 text-sm"
               >
                 {item.name}
+                <AnimatePresence>
+                  {activeHover === item.name && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      initial={{ opacity: 0, scaleX: 0 }}
+                      animate={{ opacity: 1, scaleX: 1 }}
+                      exit={{ opacity: 0, scaleX: 0 }}
+                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-r from-orange-500 to-amber-400 rounded-full"
+                    />
+                  )}
+                </AnimatePresence>
               </Link>
             ))}
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href={RouteConstants.CONTACT} className="btn-primary ml-4 text-sm">
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="ml-4">
+              <Link href={RouteConstants.CONTACT} className="btn-primary text-sm py-2.5 px-6">
                 {NavigationConstants.GET_STARTED}
               </Link>
             </motion.div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* ── Mobile toggle ── */}
           <div className="md:hidden">
             <button
               type="button"
+              id="mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-primary-700 hover:bg-secondary-50"
+              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-all"
+              aria-label="Toggle navigation menu"
             >
-              <span className="sr-only">Toggle menu</span>
               {mobileMenuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* ── Mobile menu ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-gray-200 overflow-hidden"
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="md:hidden bg-[#0d0d1a]/95 backdrop-blur-2xl border-t border-white/[0.06] overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-6 space-y-2">
-              {navigation.map((item) => (
-                <Link
+            <div className="container-custom mx-auto px-4 py-4 space-y-1">
+              {navigation.map((item, i) => (
+                <motion.div
                   key={item.name}
-                  href={item.href}
-                  className="block px-4 py-3 text-primary-700 hover:text-secondary-500 hover:bg-secondary-50 rounded-lg font-medium transition-colors duration-200"
-                  onClick={() => setMobileMenuOpen(false)}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 }}
                 >
-                  {item.name}
-                </Link>
+                  <Link
+                    href={item.href}
+                    className="block px-4 py-3 text-slate-300 hover:text-white hover:bg-white/[0.06] rounded-xl font-medium transition-all duration-200 text-sm"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
               ))}
-              <div className="pt-4">
+              <div className="pt-3 pb-2">
                 <Link
                   href={RouteConstants.CONTACT}
                   className="block w-full text-center btn-primary"
