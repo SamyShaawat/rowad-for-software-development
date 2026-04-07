@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import type { ContactFormData } from '@/types';
-import { validateEmail, validatePhone } from '@/utils/validation';
+import type { ContactFormData } from '@types';
+import { validateEmail, validatePhone } from '@utils/validation';
 
 /**
  * Encapsulated contact feature hook. Handles the state, validation, 

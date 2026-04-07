@@ -1,7 +1,7 @@
 /**
  * Form Types
  */
-import { FormFieldType } from '@/enums';
+import { FormFieldType } from '@enums';
 
 export interface ContactFormData {
   name: string;

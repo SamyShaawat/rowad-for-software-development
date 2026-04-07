@@ -10,7 +10,7 @@ import {
   RouteConstants,
   ContactConstants,
   CompanyConstants,
-} from '@/constants';
+} from '@constants';
 import ContactForm from '@/features/contact/components/ContactForm';
 
 export const metadata: Metadata = {
