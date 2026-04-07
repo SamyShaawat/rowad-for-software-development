@@ -69,39 +69,6 @@ export function Footer() {
 
   return (
     <footer className="relative bg-white dark:bg-[#070710] border-t border-slate-200 dark:border-white/[0.06] overflow-hidden transition-colors pt-20">
-      {/* ── CTA Banner (Pre-Footer) ── */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500" />
-      
-      <div className="container-custom mx-auto px-4 mb-20">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="relative rounded-[2.5rem] overflow-hidden p-10 md:p-16 bg-slate-900 shadow-2xl"
-        >
-          {/* Animated Glows */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px]" />
-          
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
-                Ready to transform your <span className="text-orange-500">digital</span> presence?
-              </h2>
-              <p className="text-slate-400 text-lg max-w-md">
-                Let&lsquo;s collaborate to build something that truly stands out in today&lsquo;s competitive landscape.
-              </p>
-            </div>
-            <div className="flex justify-start lg:justify-end">
-              <Link href={RouteConstants.CONTACT} className="btn-primary group py-4 px-10 text-lg">
-                Get Started Now
-                <ArrowRightIcon className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
       <div className="relative container-custom mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* ── Brand & Description ── */}

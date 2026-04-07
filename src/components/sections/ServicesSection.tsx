@@ -144,7 +144,7 @@ export function ServicesSection() {
               <div className="relative p-6 sm:p-7">
                 {/* Icon */}
                 <div className="mb-5 w-16 h-16 rounded-2xl bg-white dark:bg-white/[0.06] border border-slate-100 dark:border-white/[0.08] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-sm">
-                  <Image priority
+                  <Image 
                     src={service.icon}
                     alt={service.name}
                     width={48}

@@ -124,7 +124,7 @@ export default function ServicesPage() {
                       <div className="absolute w-[60%] h-[60%] rounded-full border border-white/[0.05] animate-[spin_15s_linear_reverse_infinite] pointer-events-none" />
                       
                       <div className={`w-36 h-36 md:w-48 md:h-48 rounded-3xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center overflow-hidden transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-2`}>
-                        <Image priority
+                        <Image 
                           src={service.icon}
                           alt={service.name}
                           width={120}

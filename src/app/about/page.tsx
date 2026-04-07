@@ -101,7 +101,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center flex-col">
                   <div className="w-24 h-24 mb-6 rounded-2xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center relative overflow-hidden">
-                    <Image priority src="/images/RowadLogo/Rowad_Icon_Round.png" alt="Icon" width={64} height={64} className="object-contain w-16 h-16 opacity-80 mix-blend-screen" />
+                    <Image src="/images/RowadLogo/Rowad_Icon_Round.png" alt="Icon" width={64} height={64} className="object-contain w-16 h-16 opacity-80 mix-blend-screen" />
                   </div>
                   <SparklesIcon className="w-8 h-8 text-orange-400 absolute top-8 right-8 animate-pulse" />
                   <p className="text-white/30 font-heading font-bold text-9xl absolute -bottom-10 -left-10 select-none pointer-events-none">

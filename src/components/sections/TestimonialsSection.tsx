@@ -127,7 +127,7 @@ export function TestimonialsSection() {
                   rel="noopener noreferrer" 
                   className="w-24 sm:w-32 h-16 relative grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110"
                 >
-                  <Image priority
+                  <Image 
                     src={client.logo}
                     alt={client.name}
                     fill
@@ -145,7 +145,7 @@ export function TestimonialsSection() {
                   rel="noopener noreferrer" 
                   className="w-24 sm:w-32 h-16 relative grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110"
                 >
-                  <Image priority
+                  <Image 
                     src={client.logo}
                     alt={client.name}
                     fill
