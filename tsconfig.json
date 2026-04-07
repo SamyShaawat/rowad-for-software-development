@@ -33,20 +33,38 @@
       "@constants/*": [
         "./src/constants/*"
       ],
+      "@constants": [
+        "./src/constants/index.ts"
+      ],
       "@enums/*": [
         "./src/enums/*"
+      ],
+      "@enums": [
+        "./src/enums/index.ts"
       ],
       "@lib/*": [
         "./src/lib/*"
       ],
+      "@lib": [
+        "./src/lib/index.ts"
+      ],
       "@types/*": [
         "./src/types/*"
+      ],
+      "@types": [
+        "./src/types/index.ts"
       ],
       "@hooks/*": [
         "./src/hooks/*"
       ],
+      "@hooks": [
+        "./src/hooks/index.ts"
+      ],
       "@utils/*": [
         "./src/utils/*"
+      ],
+      "@utils": [
+        "./src/utils/index.ts"
       ]
     }
   },
