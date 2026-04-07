@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -73,12 +74,14 @@ module.exports = {
         'slide-in-left':'slideInLeft 0.5s ease-out',
         'bounce-slow':  'bounceSlow 3s ease-in-out infinite',
         'spin-slow':    'spin 20s linear infinite',
+        'marquee':      'marquee 35s linear infinite',
       },
       keyframes: {
         fadeIn:      { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
         fadeUp:      { '0%': { opacity: '0', transform: 'translateY(24px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
         slideInLeft: { '0%': { opacity: '0', transform: 'translateX(-24px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
         bounceSlow:  { '0%, 100%': { transform: 'translateY(-6%)' }, '50%': { transform: 'translateY(6%)' } },
+        marquee:     { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
       },
       backgroundImage: {
         'hero-gradient':    'radial-gradient(ellipse 100% 80% at 50% -20%, rgba(249,115,22,0.15) 0%, transparent 60%)',
