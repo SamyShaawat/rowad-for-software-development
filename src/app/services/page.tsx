@@ -9,8 +9,8 @@ import {
   RouteConstants,
   ServicesConstants,
   CompanyConstants,
-} from '@/constants';
-import { ServiceType } from '@/enums';
+} from '@constants';
+import { ServiceType } from '@enums';
 
 const detailedServices = [
   {

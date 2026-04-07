@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { RouteConstants } from '@/constants';
+import { RouteConstants } from '@constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://rowad.com';

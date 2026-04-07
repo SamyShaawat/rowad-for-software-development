@@ -17,7 +17,7 @@ import {
   StatsConstants,
   CommonConstants,
   HeroConstants,
-} from '@/constants';
+} from '@constants';
 
 export const metadata: Metadata = {
   title: `About Us | ${CompanyConstants.FULL_NAME}`,

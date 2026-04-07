@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ClientsSection } from '@/components/sections/ClientsSection';
 import { CTASection } from '@/components/sections/CTASection';
-import { CompanyConstants } from '@/constants';
+import { CompanyConstants } from '@constants';
 
 export const metadata: Metadata = {
   title: `Our Clients | ${CompanyConstants.FULL_NAME}`,

@@ -1,7 +1,7 @@
 /**
  * Component Types
  */
-import { ButtonVariant, ButtonSize } from '@/enums';
+import { ButtonVariant, ButtonSize } from '@enums';
 
 export interface ButtonProps {
   variant?: ButtonVariant;
