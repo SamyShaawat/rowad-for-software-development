@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
-import { useThemeSwitch } from '@hooks';
+import { useThemeSwitch } from '../../hooks';
 
 export function ThemeToggle() {
   const { currentTheme, toggleTheme, mounted } = useThemeSwitch();
