@@ -14,7 +14,7 @@ import {
   CompanyConstants,
   FooterConstants,
   NavigationConstants,
-} from '@/constants';
+} from '@constants';
 
 const navLinks = {
   company: [

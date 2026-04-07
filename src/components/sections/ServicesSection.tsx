@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import { RouteConstants, ServicesConstants } from '@/constants';
+import { RouteConstants, ServicesConstants } from '@constants';
 
 const services = [
   {

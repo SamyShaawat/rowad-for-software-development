@@ -14,3 +14,4 @@ export type { FAQItem } from './faq.types';
 export type { ContactFormData, FormFieldConfig } from './form.types';
 export type { ButtonProps, SectionProps, CardProps, InputProps } from './component.types';
 export type { MetaConfig } from './meta.types';
+export type { Client } from './client.types';

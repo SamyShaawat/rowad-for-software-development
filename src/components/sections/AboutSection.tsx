@@ -8,7 +8,7 @@ import {
   ShieldCheckIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
-import { RouteConstants, AboutConstants, StatsConstants } from '@/constants';
+import { RouteConstants, AboutConstants, StatsConstants } from '@constants';
 
 const features = [
   {

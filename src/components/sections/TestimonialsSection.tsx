@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import { TestimonialsConstants, RouteConstants, ClientsConstants } from '@/constants';
+import { RouteConstants, TestimonialsConstants, ClientsConstants } from '@constants';
 import type { Testimonial } from '@/types';
 
 const testimonials: Testimonial[] = [

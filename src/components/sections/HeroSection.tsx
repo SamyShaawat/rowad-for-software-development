@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRightIcon, SparklesIcon } from '@heroicons/react/24/outline';
-import { RouteConstants, HeroConstants, StatsConstants } from '@/constants';
-import type { StatItem } from '@/types';
+import { RouteConstants, HeroConstants, StatsConstants } from '@constants';
+import type { StatItem } from '@types';
 
 export function HeroSection() {
   const stats: StatItem[] = StatsConstants as unknown as StatItem[];
