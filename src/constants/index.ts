@@ -18,3 +18,5 @@ export { FormConstants } from './form.constants';
 export { TestimonialsConstants } from './testimonials.constants';
 export { FooterConstants } from './footer.constants';
 export { CommonConstants } from './common.constants';
+export { ClientsConstants } from './clients.constants';
+

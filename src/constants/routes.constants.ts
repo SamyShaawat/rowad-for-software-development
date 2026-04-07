@@ -6,6 +6,7 @@ export const RouteConstants = {
   HOME: '/',
   ABOUT: '/about',
   SERVICES: '/services',
+  CLIENTS: '/clients',
   CONTACT: '/contact',
   ID_PARAM: ':id',
   SLUG_PARAM: ':slug',
