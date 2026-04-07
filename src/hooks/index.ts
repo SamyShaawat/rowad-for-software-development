@@ -1,4 +1,4 @@
-export * from './use-contact';
-export * from './use-media-query';
-export * from './use-scroll-position';
-export * from './use-theme-switch';
+export { useContact } from './use-contact';
+export { useMediaQuery } from './use-media-query';
+export { useScrollPosition } from './use-scroll-position';
+export { useThemeSwitch } from './use-theme-switch';
