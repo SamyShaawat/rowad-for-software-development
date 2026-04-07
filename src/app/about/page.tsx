@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   LightBulbIcon,
   ShieldCheckIcon,
@@ -100,7 +101,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center flex-col">
                   <div className="w-24 h-24 mb-6 rounded-2xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center relative overflow-hidden">
-                    <img src="/images/RowadLogo/Rowad_Icon_Round.png" alt="Icon" className="object-contain w-16 h-16 opacity-80 mix-blend-screen" />
+                    <Image src="/images/RowadLogo/Rowad_Icon_Round.png" alt="Icon" width={64} height={64} className="object-contain w-16 h-16 opacity-80 mix-blend-screen" />
                   </div>
                   <SparklesIcon className="w-8 h-8 text-orange-400 absolute top-8 right-8 animate-pulse" />
                   <p className="text-white/30 font-heading font-bold text-9xl absolute -bottom-10 -left-10 select-none pointer-events-none">
@@ -215,9 +216,9 @@ export default function AboutPage() {
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.83-54.627 54.628L0 54.628 54.627 0zm-17.5 0l.83.83-37.127 37.128L0 37.128 37.127 0zm-17.5 0l.83.83-19.627 19.628L0 19.628 19.627 0z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E\")" }} />
         
         <div className="container-custom mx-auto relative z-10 py-10 lg:py-16">
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">Let's Build Something Great</h2>
+          <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">Let&apos;s Build Something Great</h2>
           <p className="text-white/80 text-xl max-w-2xl mx-auto mb-12">
-            Whether you're looking to launch a startup or scale an enterprise, we're ready for the challenge.
+            Whether you&apos;re looking to launch a startup or scale an enterprise, we&apos;re ready for the challenge.
           </p>
           <div className="flex justify-center">
             <Link href={RouteConstants.CONTACT} className="inline-flex items-center justify-center bg-white hover:bg-slate-100 text-orange-600 font-bold py-4 px-10 rounded-full shadow-2xl transition-all transform hover:scale-105">
