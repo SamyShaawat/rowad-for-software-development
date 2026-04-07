@@ -42,7 +42,7 @@ export function CTASection() {
               <span className="gradient-text italic pr-2">Digital Journey?</span>
             </h2>
             <p className="text-slate-400 text-lg sm:text-xl leading-relaxed mb-12 max-w-2xl mx-auto">
-              Let's collaborate to create innovative digital solutions that drive your business forward, enhance user engagement, and boost your revenue.
+              Let&apos;s collaborate to create innovative digital solutions that drive your business forward, enhance user engagement, and boost your revenue.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
