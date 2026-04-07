@@ -43,7 +43,7 @@ export default function AboutPage() {
   const stats = StatsConstants as unknown as typeof StatsConstants;
 
   return (
-    <div className="pt-20 bg-[#0a0a0f]">
+    <div className="pt-20 bg-white dark:bg-[#0a0a0f] transition-colors">
       {/* ── Hero Section ── */}
       <section className="relative overflow-hidden py-20 md:py-32">
         {/* Glow */}
@@ -54,11 +54,11 @@ export default function AboutPage() {
           <span className="section-badge mb-6 tracking-widest uppercase text-orange-400 border-orange-500/20 bg-orange-500/10 inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold">
             Discover {CompanyConstants.NAME}
           </span>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 dark:text-white leading-tight mb-8 transition-colors">
             Your Strategic Partner <br className="hidden sm:block" />
             in <span className="gradient-text">Digital Excellence</span>
           </h1>
-          <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-12">
+          <p className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-12 transition-colors">
             We exist to bridge the gap between complex business challenges and elegant, scalable digital technology solutions.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -73,12 +73,12 @@ export default function AboutPage() {
       </section>
 
       {/* ── Stats Strip ── */}
-      <section className="relative border-y border-white/[0.06] bg-[#0d0d1a]">
+      <section className="relative border-y border-slate-200 dark:border-white/[0.06] bg-slate-50 dark:bg-[#0d0d1a] transition-colors">
         <div className="container-custom mx-auto px-4 py-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center group">
-                <div className="text-4xl md:text-5xl font-heading font-bold text-white mb-2 group-hover:text-orange-500 transition-colors duration-300">
+                <div className="text-4xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white mb-2 group-hover:text-orange-500 transition-colors duration-300">
                   {stat.value}
                 </div>
                 <div className="text-slate-500 font-medium uppercase tracking-wider text-sm">
@@ -101,7 +101,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center flex-col">
                   <div className="w-24 h-24 mb-6 rounded-2xl bg-white/[0.05] border border-white/[0.1] flex items-center justify-center relative overflow-hidden">
-                    <Image src="/images/RowadLogo/Rowad_Icon_Round.png" alt="Icon" width={64} height={64} className="object-contain w-16 h-16 opacity-80 mix-blend-screen" />
+                    <Image priority src="/images/RowadLogo/Rowad_Icon_Round.png" alt="Icon" width={64} height={64} className="object-contain w-16 h-16 opacity-80 mix-blend-screen" />
                   </div>
                   <SparklesIcon className="w-8 h-8 text-orange-400 absolute top-8 right-8 animate-pulse" />
                   <p className="text-white/30 font-heading font-bold text-9xl absolute -bottom-10 -left-10 select-none pointer-events-none">
@@ -113,18 +113,18 @@ export default function AboutPage() {
 
             <div className="space-y-6">
               <span className="section-badge">Our Story</span>
-              <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 transition-colors">
                 {AboutConstants.OUR_STORY_TITLE}
               </h2>
-              <div className="space-y-5 text-slate-400 leading-relaxed text-lg">
+              <div className="space-y-5 text-slate-600 dark:text-slate-400 leading-relaxed text-lg transition-colors">
                 <p>
                   Founded with a vision to bridge the gap between businesses and sophisticated digital technology, {CompanyConstants.NAME} has rapidly grown into a trusted partner across the region.
                 </p>
                 <p>
-                  We firmly believe that technology should empower businesses, streamline processes, and delight users—not create complications. That principle drives every line of code we write and every design decision we make.
+                  We are a team of dedicated professionals committed to delivering top-notch digital solutions. With a rich history of innovation and excellence, we have transformed numerous ideas into successful projects.
                 </p>
                 <p>
-                  Today, we are proud to have partnered with startups, SMEs, and large enterprises across diverse industries, delivering robust solutions that stand the test of time.
+                  We are your partner in digital growth — specializing in reliable and secure web hosting, website development and deployment, and innovative digital marketing strategies.
                 </p>
               </div>
             </div>
@@ -137,21 +137,19 @@ export default function AboutPage() {
       <section className="section-padding relative">
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="relative overflow-hidden group p-10 sm:p-14 rounded-[2rem] glass-card border border-orange-500/20 bg-gradient-to-br from-[#0d0d1a] to-orange-500/[0.02] hover:border-orange-500/40 transition-all duration-500">
+            <div className="relative overflow-hidden group p-10 sm:p-14 rounded-[2rem] glass-card border border-orange-500/20 bg-gradient-to-br from-white to-orange-500/[0.02] dark:from-[#0d0d1a] dark:to-orange-500/[0.02] hover:border-orange-500/40 transition-all duration-500">
               <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
               <TrophyIcon className="w-14 h-14 text-orange-500 mb-8" />
-              <h3 className="font-heading text-3xl font-bold text-white mb-4">{AboutConstants.MISSION_TITLE}</h3>
-              <p className="text-slate-400 text-lg leading-relaxed max-w-md">
-                To empower businesses with innovative, scalable, and secure digital solutions that drive measurable growth and create lasting competitive advantage.
+              <h3 className="font-heading text-3xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{AboutConstants.MISSION_TITLE}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-md transition-colors">    Our mission is to empower businesses with cutting-edge digital solutions that drive growth and success. We strive to deliver exceptional value through our expertise, innovation, and commitment to excellence.
               </p>
             </div>
             
-            <div className="relative overflow-hidden group p-10 sm:p-14 rounded-[2rem] glass-card border border-blue-500/20 bg-gradient-to-br from-[#0d0d1a] to-blue-500/[0.02] hover:border-blue-500/40 transition-all duration-500">
+            <div className="relative overflow-hidden group p-10 sm:p-14 rounded-[2rem] glass-card border border-blue-500/20 bg-gradient-to-br from-white to-blue-500/[0.02] dark:from-[#0d0d1a] dark:to-blue-500/[0.02] hover:border-blue-500/40 transition-all duration-500">
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
               <SparklesIcon className="w-14 h-14 text-blue-500 mb-8" />
-              <h3 className="font-heading text-3xl font-bold text-white mb-4">{AboutConstants.VISION_TITLE}</h3>
-              <p className="text-slate-400 text-lg leading-relaxed max-w-md">
-                To be the leading digital transformation partner globally, recognized for technical excellence, creative design, and an unwavering commitment to client success.
+              <h3 className="font-heading text-3xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{AboutConstants.VISION_TITLE}</h3>
+              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-md transition-colors">    To be a global leader in digital solutions, recognized for innovation, quality, and a customer-centric approach — where every business can achieve its full potential through the power of technology.
               </p>
             </div>
           </div>
@@ -159,14 +157,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── Core Values ── */}
-      <section className="section-padding relative bg-[#0d0d1a] border-y border-white/[0.06]">
+      <section className="section-padding relative bg-slate-50 dark:bg-[#0d0d1a] border-y border-slate-200 dark:border-white/[0.06] transition-colors">
         <div className="container-custom mx-auto">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <span className="section-badge mb-4">Core Principles</span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 transition-colors">
               {AboutConstants.CORE_VALUES_TITLE}
             </h2>
-            <p className="text-slate-400 text-lg sm:text-xl">
+            <p className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl transition-colors">
               These shared values define our culture, guide our decisions, and drive how we build products.
             </p>
           </div>
@@ -174,11 +172,11 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
               <div key={v.name} className="p-8 rounded-2xl glass-card hover:bg-white/[0.06] transition-all duration-300">
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-white/[0.05] border border-white/[0.08] mb-6 ${v.color}`}>
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-black/5 dark:bg-white/[0.05] border border-black/[0.08] dark:border-white/[0.08] mb-6 ${v.color}`}>
                   <v.icon className="w-7 h-7" />
                 </div>
-                <h3 className="font-heading text-xl font-bold text-white mb-3">{v.name}</h3>
-                <p className="text-slate-400 leading-relaxed text-sm">{v.description}</p>
+                <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors">{v.name}</h3>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm transition-colors">{v.description}</p>
               </div>
             ))}
           </div>
@@ -191,19 +189,19 @@ export default function AboutPage() {
         <div className="container-custom mx-auto relative z-10">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <span className="section-badge mb-4">Expertise</span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 transition-colors">
               {AboutConstants.WHAT_WE_OFFER_TITLE}
             </h2>
-            <p className="text-slate-400 text-lg">
+            <p className="text-slate-600 dark:text-slate-400 text-lg transition-colors">
               Beyond code, we deliver comprehensive, end-to-end solutions that cover the entire product lifecycle.
             </p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 max-w-5xl mx-auto">
             {whatWeOffer.map((item) => (
-              <div key={item} className="flex items-center gap-4 p-4 lg:p-5 rounded-xl glass-card hover:bg-white/[0.05] transition-colors border-l-4 border-l-orange-500/50">
+              <div key={item} className="flex items-center gap-4 p-4 lg:p-5 rounded-xl glass-card border-l-4 border-l-orange-500/50">
                 <CheckCircleIcon className="w-6 h-6 text-orange-500 shrink-0" />
-                <span className="text-slate-300 font-medium">{item}</span>
+                <span className="text-slate-800 dark:text-slate-300 font-medium transition-colors">{item}</span>
               </div>
             ))}
           </div>

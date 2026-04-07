@@ -6,8 +6,12 @@ import {
   MapPinIcon,
   ClockIcon,
 } from '@heroicons/react/24/outline';
-import { RouteConstants, CompanyConstants, ContactConstants } from '@/constants';
-import ContactForm from '@/components/contact/ContactForm';
+import {
+  RouteConstants,
+  ContactConstants,
+  CompanyConstants,
+} from '@/constants';
+import ContactForm from '@/features/contact/components/ContactForm';
 
 export const metadata: Metadata = {
   title: `Contact Us | ${CompanyConstants.FULL_NAME}`,
@@ -16,7 +20,7 @@ export const metadata: Metadata = {
 
 const contactInfo = [
   { icon: PhoneIcon, title: 'Phone', content: CompanyConstants.PHONE, subtext: CompanyConstants.WORKING_HOURS },
-  { icon: EnvelopeIcon, title: 'Email', content: CompanyConstants.EMAIL, subtext: 'We aim to reply within 24 hours' },
+  { icon: EnvelopeIcon, title: 'Email', content: CompanyConstants.EMAIL, subtext: 'We reply within 24 hours' },
   { icon: MapPinIcon, title: 'Office', content: CompanyConstants.LOCATION, subtext: 'Available for in-person meetings by appointment' },
   { icon: ClockIcon, title: 'Working Hours', content: CompanyConstants.WORKING_HOURS, subtext: CompanyConstants.WEEKEND },
 ];
@@ -170,12 +174,20 @@ export default function ContactPage() {
           <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
             {ContactConstants.CTA_SUBTITLE}
           </p>
-          <div className="flex justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href={`tel:${CompanyConstants.PHONE.replace(/\s+/g, '')}`}
+              href={`tel:${CompanyConstants.PHONE_HREF}`}
               className="btn-primary"
             >
               {ContactConstants.CTA_BUTTON}
+            </Link>
+            <Link
+              href={CompanyConstants.WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              Chat on WhatsApp
             </Link>
           </div>
         </div>
