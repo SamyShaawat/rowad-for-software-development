@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { RouteConstants, HeroConstants, CompanyConstants } from '@/constants';
+import { RouteConstants, HeroConstants, CompanyConstants } from '@constants';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 export function CTASection() {

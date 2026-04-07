@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { ArrowTopRightOnSquareIcon, MagnifyingGlassIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { ClientsConstants, CompanyConstants } from '@constants';
 import type { Client } from '@types';
-import { cn } from '@/lib/utils';
+import { cn } from '@lib/utils';
 
 const containerVariants = {
   hidden: {},
