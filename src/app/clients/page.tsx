@@ -12,7 +12,6 @@ export default function ClientsPage() {
   return (
     <div className="pt-20 bg-[#0a0a0f]">
       <ClientsSection />
-      <CTASection />
     </div>
   );
 }

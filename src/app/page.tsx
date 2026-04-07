@@ -14,7 +14,6 @@ export default function HomePage() {
       <ServicesSection />
       <AboutSection />
       <TestimonialsSection />
-      <CTASection />
     </>
   );
 }
