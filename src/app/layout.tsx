@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter, Syne } from 'next/font/google';
 import './globals.css';
-import { Header } from '@components/layout/Header';
-import { Footer } from '@components/layout/Footer';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 import { CompanyConstants } from '@/constants';
 
 const inter = Inter({
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable}`}>
-      <body className="font-sans antialiased bg-dark-400 text-slate-200">
+    <html lang="en" className={`${inter.variable} ${syne.variable}`} suppressHydrationWarning>
+      <body className="font-sans antialiased bg-dark-400 text-slate-200" suppressHydrationWarning>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

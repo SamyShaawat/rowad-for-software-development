@@ -29,29 +29,29 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-secondary-700 mb-2">{FormConstants.NAME_LABEL} *</label>
-            <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder={FormConstants.NAME_PLACEHOLDER} />
+            <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">{FormConstants.NAME_LABEL} *</label>
+            <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-colors" placeholder={FormConstants.NAME_PLACEHOLDER} />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-secondary-700 mb-2">{FormConstants.EMAIL_LABEL} *</label>
-            <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder={FormConstants.EMAIL_PLACEHOLDER} />
+            <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">{FormConstants.EMAIL_LABEL} *</label>
+            <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-colors" placeholder={FormConstants.EMAIL_PLACEHOLDER} />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="company" className="block text-sm font-medium text-secondary-700 mb-2">{FormConstants.COMPANY_LABEL}</label>
-            <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder={FormConstants.COMPANY_PLACEHOLDER} />
+            <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-2">{FormConstants.COMPANY_LABEL}</label>
+            <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-colors" placeholder={FormConstants.COMPANY_PLACEHOLDER} />
           </div>
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-secondary-700 mb-2">{FormConstants.PHONE_LABEL}</label>
-            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder={FormConstants.PHONE_PLACEHOLDER} />
+            <label htmlFor="phone" className="block text-sm font-medium text-slate-300 mb-2">{FormConstants.PHONE_LABEL}</label>
+            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-colors" placeholder={FormConstants.PHONE_PLACEHOLDER} />
           </div>
         </div>
 
         <div>
-          <label htmlFor="service" className="block text-sm font-medium text-secondary-700 mb-2">{FormConstants.SERVICE_LABEL}</label>
-          <select id="service" name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+          <label htmlFor="service" className="block text-sm font-medium text-slate-300 mb-2">{FormConstants.SERVICE_LABEL}</label>
+          <select id="service" name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-colors appearance-none">
             <option value="">{FormConstants.SERVICE_SELECT}</option>
             <option value={ServiceType.DEVELOPMENT}>Website Development</option>
             <option value={ServiceType.HOSTING}>Web Hosting</option>
@@ -62,8 +62,8 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-secondary-700 mb-2">{FormConstants.MESSAGE_LABEL} *</label>
-          <textarea id="message" name="message" required rows={6} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none" placeholder={FormConstants.MESSAGE_PLACEHOLDER} />
+          <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">{FormConstants.MESSAGE_LABEL} *</label>
+          <textarea id="message" name="message" required rows={6} value={formData.message} onChange={handleChange} className="w-full px-4 py-3 bg-white/[0.02] border border-white/[0.08] rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-colors resize-none" placeholder={FormConstants.MESSAGE_PLACEHOLDER} />
         </div>
 
         <button type="submit" disabled={isSubmitting} className="btn-primary w-full md:w-auto flex items-center justify-center space-x-2 disabled:opacity-50">
