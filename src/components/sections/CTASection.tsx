@@ -33,7 +33,7 @@ export function CTASection() {
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.15 }}
             className="relative z-10 text-center max-w-3xl mx-auto"
           >
             <span className="section-badge mb-6">{CompanyConstants.NAME}</span>

@@ -11,14 +11,14 @@ export function HeroSection() {
   const stats: StatItem[] = StatsConstants as unknown as StatItem[];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0f] pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-[#0a0a0f] pt-20 transition-colors">
       {/* ── Multi-layer background ── */}
       <div className="absolute inset-0">
         {/* Radial hero glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_0%,rgba(249,115,22,0.12)_0%,transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_0%,rgba(249,115,22,0.08)_0%,transparent_70%)] dark:bg-[radial-gradient(ellipse_100%_60%_at_50%_0%,rgba(249,115,22,0.12)_0%,transparent_70%)]" />
         {/* Grid pattern */}
         <div
-          className="absolute inset-0 opacity-[0.025]"
+          className="absolute inset-0 opacity-[0.05] dark:opacity-[0.025]"
           style={{
             backgroundImage: `linear-gradient(rgba(249,115,22,0.5) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(249,115,22,0.5) 1px, transparent 1px)`,
@@ -31,11 +31,11 @@ export function HeroSection() {
       <motion.div
         animate={{ y: [0, -24, 0], x: [0, 8, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-16 left-[8%] w-80 h-80 bg-orange-500/10 rounded-full blur-[80px] pointer-events-none"
+        className="absolute top-16 left-[8%] w-80 h-80 bg-orange-500/10 dark:bg-orange-500/20 rounded-full blur-[80px] pointer-events-none"
       />
       <motion.div
         animate={{ y: [0, 20, 0], x: [0, -10, 0], scale: [1, 1.15, 1] }}
-        transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        transition={{ duration: 0.21, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
         className="absolute bottom-24 right-[6%] w-96 h-96 bg-orange-600/8 rounded-full blur-[100px] pointer-events-none"
       />
       <motion.div
@@ -54,7 +54,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.15 }}
               className="inline-flex items-center gap-2 section-badge mb-8"
             >
               <SparklesIcon className="w-3.5 h-3.5" />
@@ -65,8 +65,8 @@ export function HeroSection() {
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.08] text-white mb-6"
+              transition={{ duration: 0.15, delay: 0.02 }}
+              className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.08] text-slate-900 dark:text-white mb-6 transition-colors"
             >
               {HeroConstants.TITLE_PART_1}
               <br />
@@ -77,8 +77,8 @@ export function HeroSection() {
             <motion.p
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-slate-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-xl"
+              transition={{ duration: 0.15, delay: 0.02 }}
+              className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed mb-10 max-w-xl transition-colors"
             >
               {HeroConstants.SUBTITLE}
             </motion.p>
@@ -87,7 +87,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.45 }}
+              transition={{ duration: 0.15, delay: 0.02 }}
               className="flex flex-wrap gap-4 mb-14"
             >
               <Link href={RouteConstants.CONTACT} className="btn-primary group">
@@ -103,15 +103,15 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-white/[0.06] pt-8"
+              transition={{ duration: 0.15, delay: 0.02 }}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-slate-200 dark:border-white/[0.06] pt-8 transition-colors"
             >
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.7 + i * 0.08 }}
+                  transition={{ duration: 0.1, delay: 0.02 + i * 0.08 }}
                   className="text-center sm:text-left"
                 >
                   <div className="text-2xl sm:text-3xl font-heading font-bold gradient-text mb-1">
@@ -127,7 +127,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 0.2, delay: 0.02 }}
             className="relative hidden lg:flex items-center justify-center"
           >
             {/* Outer ring */}
@@ -135,7 +135,7 @@ export function HeroSection() {
             <div className="absolute w-[340px] h-[340px] rounded-full border border-orange-500/15 animate-[spin_12s_linear_reverse_infinite]" />
 
             {/* Logo card */}
-            <div className="relative z-10 w-72 h-72 rounded-[2.5rem] overflow-hidden glass-card glow-orange flex items-center justify-center">
+            <div className="relative z-10 w-72 h-72 rounded-[2.5rem] overflow-hidden glass-card glow-orange flex items-center justify-center border-slate-200 dark:border-white/[0.08] shadow-2xl shadow-orange-500/10 dark:shadow-none">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent" />
               <Image
                 src="/images/RowadLogo/Rowad_Logo_Main.png"
@@ -151,7 +151,7 @@ export function HeroSection() {
             <motion.div
               animate={{ y: [0, -12, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-6 -left-8 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm"
+              className="absolute top-6 -left-8 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm shadow-xl shadow-slate-200/50 dark:shadow-none bg-white/80 dark:bg-white/[0.04]"
             >
               <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
                 <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -159,15 +159,15 @@ export function HeroSection() {
                 </svg>
               </div>
               <div>
-                <p className="text-white text-xs font-semibold">Fast Delivery</p>
+                <p className="text-slate-900 dark:text-white text-xs font-semibold">Fast Delivery</p>
                 <p className="text-slate-500 text-[10px]">2–6 week projects</p>
               </div>
             </motion.div>
 
             <motion.div
               animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute bottom-8 -right-6 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm"
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.02 }}
+              className="absolute bottom-8 -right-6 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm shadow-xl shadow-slate-200/50 dark:shadow-none bg-white/80 dark:bg-white/[0.04]"
             >
               <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
                 <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -175,7 +175,7 @@ export function HeroSection() {
                 </svg>
               </div>
               <div>
-                <p className="text-white text-xs font-semibold">99.9% Uptime</p>
+                <p className="text-slate-900 dark:text-white text-xs font-semibold">99.9% Uptime</p>
                 <p className="text-slate-500 text-[10px]">Guaranteed hosting</p>
               </div>
             </motion.div>
@@ -183,7 +183,7 @@ export function HeroSection() {
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              className="absolute -bottom-4 left-8 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm"
+              className="absolute -bottom-4 left-8 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm shadow-xl shadow-slate-200/50 dark:shadow-none bg-white/80 dark:bg-white/[0.04]"
             >
               <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
                 <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -191,7 +191,7 @@ export function HeroSection() {
                 </svg>
               </div>
               <div>
-                <p className="text-white text-xs font-semibold">50+ Clients</p>
+                <p className="text-slate-900 dark:text-white text-xs font-semibold">50+ Clients</p>
                 <p className="text-slate-500 text-[10px]">Trusted globally</p>
               </div>
             </motion.div>
@@ -210,7 +210,7 @@ export function HeroSection() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-5 h-8 border border-white/20 rounded-full flex justify-center pt-1.5"
+          className="w-5 h-8 border border-slate-300 dark:border-white/20 rounded-full flex justify-center pt-1.5 transition-colors"
         >
           <motion.div className="w-1 h-1.5 bg-orange-500 rounded-full" />
         </motion.div>

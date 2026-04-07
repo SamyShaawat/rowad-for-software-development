@@ -50,7 +50,7 @@ export function AboutSection() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.15 }}
           >
             <span className="section-badge mb-6">Why Choose Us</span>
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
@@ -68,7 +68,7 @@ export function AboutSection() {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.1, delay: i * 0.02 }}
                   className={`flex items-start gap-4 p-4 sm:p-5 rounded-2xl border bg-gradient-to-br ${feature.color} backdrop-blur-sm transition-all duration-300 hover:scale-[1.01]`}
                 >
                   <div className={`flex-shrink-0 w-10 h-10 rounded-xl bg-white/[0.06] flex items-center justify-center ${feature.iconColor}`}>
@@ -97,7 +97,7 @@ export function AboutSection() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.15 }}
             className="relative"
           >
             {/* Decorative glow behind stat grid */}
@@ -110,7 +110,7 @@ export function AboutSection() {
                   initial={{ opacity: 0, scale: 0.85 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.1, delay: i * 0.02 }}
                   whileHover={{ scale: 1.04, y: -4 }}
                   className="relative rounded-2xl p-6 sm:p-8 glass-card border overflow-hidden transition-all duration-400"
                 >
@@ -136,7 +136,7 @@ export function AboutSection() {
             {/* Logo watermark */}
             <div className="relative mt-6 rounded-2xl glass-card p-6 flex items-center gap-5 border border-white/[0.08]">
               <div className="w-16 h-16 relative flex-shrink-0">
-                <Image
+                <Image priority
                   src="/images/RowadLogo/Rowad_Icon_Round.png"
                   alt="Rowad"
                   fill
