@@ -3,7 +3,7 @@
  * Import all enums from this file
  * 
  * Example:
- * import { ServiceType, ButtonVariant } from '@/enums';
+ * import { ServiceType, ButtonVariant } from '@enums';
  */
 
 export { ServiceType } from './service-type.enum';

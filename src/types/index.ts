@@ -3,7 +3,7 @@
  * Import all types from this file
  * 
  * Example:
- * import type { NavigationItem, StatItem } from '@/types';
+ * import type { NavigationItem, StatItem } from '@types';
  */
 
 export type { NavigationItem } from './navigation.types';

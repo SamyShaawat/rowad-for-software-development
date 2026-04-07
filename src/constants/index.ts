@@ -3,7 +3,7 @@
  * Import all constants from this file
  * 
  * Example:
- * import { RouteConstants, CompanyConstants } from '@/constants';
+ * import { RouteConstants, CompanyConstants } from '@constants';
  */
 
 export { RouteConstants } from './routes.constants';

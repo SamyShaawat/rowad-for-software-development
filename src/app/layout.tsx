@@ -3,7 +3,7 @@ import { Inter, Syne } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { CompanyConstants } from '@/constants';
+import { CompanyConstants } from '@constants';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 
 const inter = Inter({
