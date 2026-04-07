@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
 import { Toaster } from 'react-hot-toast';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { FormConstants } from '@constants';
-import { ServiceType } from '@enums';
-import { useContact } from '@hooks';
-import { cn } from '@/lib/utils';
-import type { ContactFormData } from '@types';
+import { FormConstants } from '../../../constants';
+import { ServiceType } from '../../../enums';
+import { useContact } from '../../../hooks';
+import { cn } from '../../../lib/utils';
+import type { ContactFormData } from '../../../types';
 
 export default function ContactForm() {
   const { isSubmitting, recaptchaToken, setRecaptchaToken, submitContact } = useContact();
