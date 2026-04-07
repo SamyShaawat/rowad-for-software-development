@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap');
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -15,10 +13,7 @@ html {
 }
 
 body {
-  background: #0a0a0f;
-  color: #e2e8f0;
-  font-family: 'Inter', system-ui, sans-serif;
-  overflow-x: hidden;
+  @apply bg-[#ffffff] text-slate-900 dark:bg-[#0a0a0f] dark:text-slate-200 font-sans overflow-x-hidden transition-colors duration-500;
 }
 
 /* ── Scrollbar ── */
@@ -44,8 +39,9 @@ body {
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center bg-transparent
-           border-2 border-white/20 hover:border-orange-500/60 text-white font-semibold
+    @apply inline-flex items-center justify-center bg-white/50 dark:bg-transparent
+           border-2 border-slate-200 dark:border-white/20 hover:border-orange-500/60 
+           text-slate-800 dark:text-white font-semibold
            py-3 px-7 rounded-full backdrop-blur-sm hover:bg-orange-500/10
            transition-all duration-300 cursor-pointer;
   }
@@ -57,8 +53,8 @@ body {
 
   /* Cards */
   .glass-card {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08]
-           rounded-2xl hover:border-orange-500/30 transition-all duration-500;
+    @apply bg-white/70 dark:bg-white/[0.04] backdrop-blur-xl border border-slate-200/50 dark:border-white/[0.08]
+           rounded-2xl hover:border-orange-500/30 transition-all duration-500 shadow-xl shadow-slate-200/50 dark:shadow-none;
   }
 
   .card-hover { @apply hover:shadow-[0_20px_60px_-10px_rgba(249,115,22,0.2)] hover:-translate-y-2 transition-all duration-500; }
