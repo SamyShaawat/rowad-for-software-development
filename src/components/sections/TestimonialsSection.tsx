@@ -119,9 +119,9 @@ export function TestimonialsSection() {
             
             <div className="flex w-max min-w-full animate-marquee items-center gap-10 sm:gap-16 px-8">
               {/* First set */}
-              {ClientsConstants.map((client, idx) => (
+              {ClientsConstants.map((client) => (
                 <a 
-                  key={"m1-" + client.name + "-" + idx} 
+                  key={`marquee-1-${client.id}`} 
                   href={client.website} 
                   target="_blank" 
                   rel="noopener noreferrer" 
@@ -137,9 +137,9 @@ export function TestimonialsSection() {
                 </a>
               ))}
               {/* Duplicate set for seamless loop */}
-              {ClientsConstants.map((client, idx) => (
+              {ClientsConstants.map((client) => (
                 <a 
-                  key={"m2-" + client.name + "-" + idx} 
+                  key={`marquee-2-${client.id}`} 
                   href={client.website} 
                   target="_blank" 
                   rel="noopener noreferrer" 

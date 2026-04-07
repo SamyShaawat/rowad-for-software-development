@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { FormConstants } from '@/constants';
 import { ServiceType } from '@/enums';
-import { useContact } from '@/hooks/use-contact';
+import { useContact } from '@/hooks';
 import { cn } from '@/lib/utils';
 import type { ContactFormData } from '@/types';
 

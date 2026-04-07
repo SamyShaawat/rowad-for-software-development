@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, NavigationConstants } from '@/constants';
 import { ThemeToggle } from './ThemeToggle';
-import { useScrollPosition } from '@/hooks/use-scroll-position';
+import { useScrollPosition } from '@/hooks';
 import { cn } from '@/lib/utils';
 import type { NavigationItem } from '@/types';
 

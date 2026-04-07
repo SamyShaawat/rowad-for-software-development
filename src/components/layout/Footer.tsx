@@ -162,24 +162,27 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* ── Solutions Links ── */}
-          <div>
-            <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-6 text-xs uppercase tracking-[0.2em]">
-              Solutions
+          {/* ── Newsletter ── */}
+          <div className="space-y-6">
+            <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-2 text-xs uppercase tracking-[0.2em]">
+              Stay Updated
             </h3>
-            <ul className="space-y-4">
-              {navLinks.services.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-slate-600 dark:text-slate-400 hover:text-orange-500 text-sm font-medium transition-all flex items-center group"
-                  >
-                    <span className="w-0 group-hover:w-4 h-0.5 bg-orange-500 mr-0 group-hover:mr-2 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              Subscribe to our newsletter for latest tech insights and company news.
+            </p>
+            <form className="relative group" onSubmit={(e) => { e.preventDefault(); alert("Thanks for subscribing!"); }}>
+              <input 
+                type="email" 
+                placeholder="Your email address" 
+                className="w-full pl-4 pr-12 py-3 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] rounded-xl text-sm text-slate-900 dark:text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 transition-all shadow-sm"
+              />
+              <button 
+                type="submit" 
+                className="absolute right-1.5 top-1.5 bottom-1.5 px-3 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center justify-center"
+              >
+                <ArrowRightIcon className="w-4 h-4" />
+              </button>
+            </form>
           </div>
 
           {/* ── Reach Us ── */}
