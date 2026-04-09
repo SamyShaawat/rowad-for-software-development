@@ -11,70 +11,80 @@ const services = [
     id: 'web-dev',
     name: 'Website Development',
     tagline: 'Custom-built for growth',
-    description: 'We create modern, responsive websites that are fast, beautiful, and optimized for conversions.',
+    description:
+      'We create modern, responsive websites that are fast, beautiful, and optimized for conversions.',
     features: ['Responsive Design', 'SEO Optimized', 'E-Commerce', 'API Integration'],
     technologies: ['Next.js', 'React', 'TypeScript'],
     icon: '/images/servicesImages/WebDevelopment.png',
     gradient: 'from-orange-500/20 to-amber-500/10',
     accentColor: 'text-orange-500',
     borderColor: 'border-slate-200 dark:border-orange-500/20 hover:border-orange-500/50',
-    glowColor: 'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(249,115,22,0.25)]',
+    glowColor:
+      'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(249,115,22,0.25)]',
     comingSoon: false,
   },
   {
     id: 'hosting',
     name: 'Web Hosting',
     tagline: 'Reliable & always online',
-    description: 'Premium hosting solutions with 99.9% uptime, SSL certificates, and round-the-clock support.',
+    description:
+      'Premium hosting solutions with 99.9% uptime, SSL certificates, and round-the-clock support.',
     features: ['99.9% Uptime', 'Free SSL', 'DDoS Protection', '24/7 Monitoring'],
     technologies: ['AWS', 'Cloudflare', 'Docker'],
     icon: '/images/servicesImages/WebHosting.png',
     gradient: 'from-blue-500/20 to-cyan-500/10',
     accentColor: 'text-blue-600 dark:text-blue-400',
     borderColor: 'border-slate-200 dark:border-blue-500/20 hover:border-blue-500/50',
-    glowColor: 'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.2)]',
+    glowColor:
+      'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.2)]',
     comingSoon: false,
   },
   {
     id: 'mobile',
     name: 'Mobile Development',
     tagline: 'iOS & Android apps',
-    description: 'Cross-platform mobile applications that deliver seamless user experiences on every device.',
+    description:
+      'Cross-platform mobile applications that deliver seamless user experiences on every device.',
     features: ['iOS & Android', 'Offline Support', 'Push Notifications', 'Analytics'],
     technologies: ['React Native', 'Flutter', 'Expo'],
     icon: '/images/servicesImages/MobileDevelopment1.png',
     gradient: 'from-violet-500/20 to-purple-500/10',
     accentColor: 'text-violet-600 dark:text-violet-400',
     borderColor: 'border-slate-200 dark:border-violet-500/20 hover:border-violet-500/50',
-    glowColor: 'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(139,92,246,0.2)]',
+    glowColor:
+      'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(139,92,246,0.2)]',
     comingSoon: false,
   },
   {
     id: 'marketing',
     name: 'Digital Marketing',
     tagline: 'Grow your audience',
-    description: 'Data-driven marketing strategies to boost your online presence and drive qualified traffic.',
+    description:
+      'Data-driven marketing strategies to boost your online presence and drive qualified traffic.',
     features: ['SEO', 'Social Media', 'PPC Ads', 'Analytics'],
     technologies: ['Google Ads', 'Facebook Ads', 'SEMrush'],
     icon: '/images/servicesImages/DigitalMarketing.png',
     gradient: 'from-pink-500/20 to-rose-500/10',
     accentColor: 'text-pink-600 dark:text-pink-400',
     borderColor: 'border-slate-200 dark:border-pink-500/20 hover:border-pink-500/50',
-    glowColor: 'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(236,72,153,0.2)]',
+    glowColor:
+      'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(236,72,153,0.2)]',
     comingSoon: true,
   },
   {
     id: 'ai-chatbots',
     name: 'AI Chat Bots',
     tagline: 'Automate conversations',
-    description: 'Intelligent AI-powered chatbots that engage customers and automate support around the clock.',
+    description:
+      'Intelligent AI-powered chatbots that engage customers and automate support around the clock.',
     features: ['NLP', '24/7 Availability', 'CRM Integration', 'Analytics'],
     technologies: ['OpenAI', 'LangChain', 'Python'],
     icon: '/images/servicesImages/AIChatBot.png',
     gradient: 'from-green-500/20 to-emerald-500/10',
     accentColor: 'text-green-600 dark:text-green-400',
     borderColor: 'border-slate-200 dark:border-green-500/20 hover:border-green-500/50',
-    glowColor: 'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(34,197,94,0.2)]',
+    glowColor:
+      'hover:shadow-xl shadow-slate-200/50 dark:hover:shadow-[0_20px_60px_-10px_rgba(34,197,94,0.2)]',
     comingSoon: true,
   },
 ];
@@ -139,12 +149,14 @@ export function ServicesSection() {
               )}
 
               {/* Card inner gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+              />
 
               <div className="relative p-6 sm:p-7">
                 {/* Icon */}
                 <div className="mb-5 w-16 h-16 rounded-2xl bg-white dark:bg-white/[0.06] border border-slate-100 dark:border-white/[0.08] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-sm">
-                  <Image 
+                  <Image
                     src={service.icon}
                     alt={service.name}
                     width={48}
@@ -154,7 +166,9 @@ export function ServicesSection() {
                 </div>
 
                 {/* Title + tagline */}
-                <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${service.accentColor}`}>
+                <p
+                  className={`text-xs font-semibold uppercase tracking-widest mb-1 ${service.accentColor}`}
+                >
                   {service.tagline}
                 </p>
                 <h3 className="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:gradient-text transition-colors duration-300">
@@ -167,8 +181,13 @@ export function ServicesSection() {
                 {/* Features */}
                 <ul className="space-y-1.5 mb-5">
                   {service.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-slate-600 dark:text-slate-300 text-xs transition-colors">
-                      <span className={`w-1.5 h-1.5 rounded-full \${service.accentColor.replace('text-', 'bg-').split(' ')[0]} flex-shrink-0`} />
+                    <li
+                      key={f}
+                      className="flex items-center gap-2 text-slate-600 dark:text-slate-300 text-xs transition-colors"
+                    >
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full \${service.accentColor.replace('text-', 'bg-').split(' ')[0]} flex-shrink-0`}
+                      />
                       {f}
                     </li>
                   ))}
@@ -177,7 +196,10 @@ export function ServicesSection() {
                 {/* Tech tags */}
                 <div className="flex flex-wrap gap-1.5 mb-5">
                   {service.technologies.map((tech) => (
-                    <span key={tech} className="px-2.5 py-1 rounded-full bg-slate-200/50 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.08] text-slate-500 dark:text-slate-400 text-[10px] font-medium transition-colors">
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 rounded-full bg-slate-200/50 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.08] text-slate-500 dark:text-slate-400 text-[10px] font-medium transition-colors"
+                    >
                       {tech}
                     </span>
                   ))}

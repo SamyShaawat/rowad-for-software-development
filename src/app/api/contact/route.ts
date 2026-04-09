@@ -7,19 +7,23 @@ export async function POST(req: Request) {
 
     // 1. Verify reCAPTCHA token if provided
     if (recaptchaToken) {
-      const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'; // Fallback to Google test key
+      const recaptchaSecret =
+        process.env.RECAPTCHA_SECRET_KEY || '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'; // Fallback to Google test key
       const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaToken}`;
 
       const response = await fetch(verificationUrl, { method: 'POST' });
       const recaptchaResult = await response.json();
 
       if (!recaptchaResult.success) {
-        return NextResponse.json({ success: false, error: 'reCAPTCHA verification failed. Please try again.' }, { status: 400 });
+        return NextResponse.json(
+          { success: false, error: 'reCAPTCHA verification failed. Please try again.' },
+          { status: 400 }
+        );
       }
     }
 
     // 2. Set up Nodemailer transporter
-    // For development/demonstration, we use basic SMTP. 
+    // For development/demonstration, we use basic SMTP.
     // In production, ensure SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS are set in .env
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.ethereal.email',

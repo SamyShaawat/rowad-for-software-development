@@ -3,31 +3,30 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  LightBulbIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
-} from '@heroicons/react/24/outline';
+import { LightBulbIcon, ShieldCheckIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, AboutConstants, StatsConstants } from '@constants';
 
 const features = [
   {
     name: 'Innovation First',
-    description: 'We leverage cutting-edge technologies and modern approaches to future-proof your digital presence.',
+    description:
+      'We leverage cutting-edge technologies and modern approaches to future-proof your digital presence.',
     icon: LightBulbIcon,
     color: 'from-orange-500/20 to-amber-500/10 border-orange-500/20',
     iconColor: 'text-orange-400',
   },
   {
     name: 'Quality Assured',
-    description: 'Rigorous testing and code review ensures flawless, production-ready delivery every time.',
+    description:
+      'Rigorous testing and code review ensures flawless, production-ready delivery every time.',
     icon: ShieldCheckIcon,
     color: 'from-blue-500/20 to-cyan-500/10 border-blue-500/20',
     iconColor: 'text-blue-400',
   },
   {
     name: 'Client Focused',
-    description: 'Your goals drive our process — transparent communication from kickoff to launch and beyond.',
+    description:
+      'Your goals drive our process — transparent communication from kickoff to launch and beyond.',
     icon: UserGroupIcon,
     color: 'from-violet-500/20 to-purple-500/10 border-violet-500/20',
     iconColor: 'text-violet-400',
@@ -44,7 +43,6 @@ export function AboutSection() {
 
       <div className="relative container-custom mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-
           {/* ── Left: Text ── */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -71,11 +69,15 @@ export function AboutSection() {
                   transition={{ duration: 0.1, delay: i * 0.02 }}
                   className={`flex items-start gap-4 p-4 sm:p-5 rounded-2xl border bg-gradient-to-br ${feature.color} backdrop-blur-sm transition-all duration-300 hover:scale-[1.01]`}
                 >
-                  <div className={`flex-shrink-0 w-10 h-10 rounded-xl bg-white/[0.06] flex items-center justify-center ${feature.iconColor}`}>
+                  <div
+                    className={`flex-shrink-0 w-10 h-10 rounded-xl bg-white/[0.06] flex items-center justify-center ${feature.iconColor}`}
+                  >
                     <feature.icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1 text-sm sm:text-base">{feature.name}</h3>
+                    <h3 className="font-semibold text-white mb-1 text-sm sm:text-base">
+                      {feature.name}
+                    </h3>
                     <p className="text-slate-400 text-sm leading-relaxed">{feature.description}</p>
                   </div>
                 </motion.div>
@@ -117,10 +119,13 @@ export function AboutSection() {
                   {/* Inner gradient accent */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-br opacity-40 ${
-                      i === 0 ? 'from-orange-500/15 to-transparent' :
-                      i === 1 ? 'from-blue-500/15 to-transparent' :
-                      i === 2 ? 'from-violet-500/15 to-transparent' :
-                      'from-green-500/15 to-transparent'
+                      i === 0
+                        ? 'from-orange-500/15 to-transparent'
+                        : i === 1
+                          ? 'from-blue-500/15 to-transparent'
+                          : i === 2
+                            ? 'from-violet-500/15 to-transparent'
+                            : 'from-green-500/15 to-transparent'
                     }`}
                   />
                   <div className="relative">
@@ -136,7 +141,8 @@ export function AboutSection() {
             {/* Logo watermark */}
             <div className="relative mt-6 rounded-2xl glass-card p-6 flex items-center gap-5 border border-white/[0.08]">
               <div className="w-16 h-16 relative flex-shrink-0">
-                <Image priority
+                <Image
+                  priority
                   src="/images/RowadLogo/Rowad_Icon_Round.png"
                   alt="Rowad"
                   fill

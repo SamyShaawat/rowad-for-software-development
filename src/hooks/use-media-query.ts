@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 /**
  * Returns true if the current window size matches the given media query string.
  * Helpful for conditional rendering of components (e.g. mobile vs desktop variants).
- * 
+ *
  * @example
  * const isMobile = useMediaQuery('(max-width: 768px)')
  */

@@ -42,10 +42,16 @@ export const metadata: Metadata = {
   authors: [{ name: 'Rowad Team', url: 'https://rowad.com' }],
   creator: 'Rowad For Software Development',
   publisher: 'Rowad For Software Development',
-  robots: { 
-    index: true, 
-    follow: true, 
-    googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 } 
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: CompanyConstants.FULL_NAME,
@@ -70,7 +76,7 @@ export const metadata: Metadata = {
     images: ['/images/RowadLogo/Rowad_Logo_Main.png'],
   },
   verification: {
-    google: "enter-google-verification-code",
+    google: 'enter-google-verification-code',
   },
   alternates: {
     canonical: 'https://rowad.com',
@@ -84,8 +90,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${syne.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-dark-400 dark:text-slate-200 transition-colors duration-300" suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
+      <body
+        className="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-dark-400 dark:text-slate-200 transition-colors duration-300"
+        suppressHydrationWarning
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />

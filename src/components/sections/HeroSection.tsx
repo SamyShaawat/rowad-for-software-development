@@ -47,7 +47,6 @@ export function HeroSection() {
       {/* ── Content ── */}
       <div className="relative z-10 container-custom mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[80vh]">
-
           {/* Left: Text */}
           <div>
             {/* Badge */}
@@ -154,12 +153,24 @@ export function HeroSection() {
               className="absolute top-6 -left-8 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm shadow-xl shadow-slate-200/50 dark:shadow-none bg-white/80 dark:bg-white/[0.04]"
             >
               <div className="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
-                <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <svg
+                  className="w-4 h-4 text-orange-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
                 </svg>
               </div>
               <div>
-                <p className="text-slate-900 dark:text-white text-xs font-semibold">Fast Delivery</p>
+                <p className="text-slate-900 dark:text-white text-xs font-semibold">
+                  Fast Delivery
+                </p>
                 <p className="text-slate-500 text-[10px]">2–6 week projects</p>
               </div>
             </motion.div>
@@ -170,8 +181,18 @@ export function HeroSection() {
               className="absolute bottom-8 -right-6 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm shadow-xl shadow-slate-200/50 dark:shadow-none bg-white/80 dark:bg-white/[0.04]"
             >
               <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
-                <svg className="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  className="w-4 h-4 text-green-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
               <div>
@@ -186,8 +207,18 @@ export function HeroSection() {
               className="absolute -bottom-4 left-8 glass-card px-4 py-3 flex items-center gap-2.5 glow-sm shadow-xl shadow-slate-200/50 dark:shadow-none bg-white/80 dark:bg-white/[0.04]"
             >
               <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                <svg
+                  className="w-4 h-4 text-blue-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
                 </svg>
               </div>
               <div>

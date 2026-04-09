@@ -12,26 +12,26 @@ import { cn } from '@lib/utils';
 import type { NavigationItem } from '@types';
 
 const navigation: NavigationItem[] = [
-  { name: NavigationConstants.HOME,     href: RouteConstants.HOME },
+  { name: NavigationConstants.HOME, href: RouteConstants.HOME },
   { name: NavigationConstants.SERVICES, href: RouteConstants.SERVICES },
-  { name: NavigationConstants.CLIENTS,  href: RouteConstants.CLIENTS },
+  { name: NavigationConstants.CLIENTS, href: RouteConstants.CLIENTS },
   { name: NavigationConstants.ABOUT_US, href: RouteConstants.ABOUT },
-  { name: NavigationConstants.CONTACT,  href: RouteConstants.CONTACT },
+  { name: NavigationConstants.CONTACT, href: RouteConstants.CONTACT },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeHover,    setActiveHover]    = useState<string | null>(null);
+  const [activeHover, setActiveHover] = useState<string | null>(null);
   const scrollY = useScrollPosition();
   const isScrolled = scrollY > 20;
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
         isScrolled
-          ? "bg-white/80 dark:bg-[#0a0a0f]/90 backdrop-blur-2xl border-b border-black/[0.06] dark:border-white/[0.06] shadow-sm dark:shadow-dark-lg py-2"
-          : "bg-transparent py-4"
+          ? 'bg-white/80 dark:bg-[#0a0a0f]/90 backdrop-blur-2xl border-b border-black/[0.06] dark:border-white/[0.06] shadow-sm dark:shadow-dark-lg py-2'
+          : 'bg-transparent py-4'
       )}
     >
       <nav className="container-custom mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,7 +44,8 @@ export function Header() {
               className="flex items-center gap-3"
             >
               <div className="relative w-10 h-10 rounded-xl overflow-hidden glow-sm">
-                <Image priority
+                <Image
+                  priority
                   src="/images/RowadLogo/Rowad_Icon_Round.png"
                   alt="Rowad Logo"
                   fill
@@ -53,9 +54,13 @@ export function Header() {
                 />
               </div>
               <div className="flex items-baseline">
-                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white transition-colors">R</span>
+                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white transition-colors">
+                  R
+                </span>
                 <span className="font-heading font-bold text-2xl gradient-text">O</span>
-                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white transition-colors">WAD</span>
+                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white transition-colors">
+                  WAD
+                </span>
               </div>
             </motion.div>
           </Link>
@@ -105,7 +110,11 @@ export function Header() {
               className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+              {mobileMenuOpen ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>

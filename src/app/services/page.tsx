@@ -1,15 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  CheckCircleIcon,
-  ArrowRightIcon,
-} from '@heroicons/react/24/outline';
-import {
-  RouteConstants,
-  ServicesConstants,
-  CompanyConstants,
-} from '@constants';
+import { CheckCircleIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { RouteConstants, ServicesConstants, CompanyConstants } from '@constants';
 import { ServiceType } from '@enums';
 
 const detailedServices = [
@@ -17,7 +10,8 @@ const detailedServices = [
     id: ServiceType.DEVELOPMENT,
     name: 'Website Development',
     tagline: 'Custom-built for growth',
-    description: 'We create modern, responsive, and blazing-fast standalone websites and entire web applications. Whether it’s an immersive landing page or a complex SaaS platform, we prioritize performance, seamless UX, and robust architecture.',
+    description:
+      'We create modern, responsive, and blazing-fast standalone websites and entire web applications. Whether it’s an immersive landing page or a complex SaaS platform, we prioritize performance, seamless UX, and robust architecture.',
     icon: '/images/servicesImages/WebDevelopment.png',
     features: [
       'Responsive & Mobile-First Design',
@@ -36,7 +30,8 @@ const detailedServices = [
     id: ServiceType.HOSTING,
     name: 'Web Hosting & Cloud',
     tagline: 'Reliable & secure infrastructure',
-    description: 'Stop worrying about downtime. We provide premium, managed hosting solutions powered by industry-leading cloud providers. We handle scaling, security patches, and monitoring so you can focus on building your business.',
+    description:
+      'Stop worrying about downtime. We provide premium, managed hosting solutions powered by industry-leading cloud providers. We handle scaling, security patches, and monitoring so you can focus on building your business.',
     icon: '/images/servicesImages/WebHosting.png',
     features: [
       '99.9% Uptime Guarantee',
@@ -55,7 +50,8 @@ const detailedServices = [
     id: ServiceType.DEPLOYMENT,
     name: 'Deployment & DevOps',
     tagline: 'Ship faster, break nothing',
-    description: 'Continuous Integration and Deployment (CI/CD) isn’t just a buzzword—it’s the backbone of modern software. We build robust deployment pipelines that enable your team to release updates securely, automatically, and with zero downtime.',
+    description:
+      'Continuous Integration and Deployment (CI/CD) isn’t just a buzzword—it’s the backbone of modern software. We build robust deployment pipelines that enable your team to release updates securely, automatically, and with zero downtime.',
     icon: '/images/servicesImages/MobileDevelopment1.png',
     features: [
       'Automated CI/CD Pipelines',
@@ -85,7 +81,7 @@ export default function ServicesPage() {
         {/* Abstract background blur */}
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 to-amber-500/5 blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        
+
         <div className="container-custom mx-auto px-4 relative z-10 text-center">
           <span className="section-badge mb-6 tracking-widest text-orange-400 border-orange-500/20 bg-orange-500/10">
             Our Offerings
@@ -112,19 +108,21 @@ export default function ServicesPage() {
           >
             <div className="container-custom mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                
                 {/* Visual Side */}
                 <div className={`relative ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                  <div className={`relative aspect-[4/3] sm:aspect-square w-full rounded-[3rem] p-1 bg-gradient-to-br ${service.gradient} shadow-2xl overflow-hidden glass-card border ${service.borderColor} group`}>
+                  <div
+                    className={`relative aspect-[4/3] sm:aspect-square w-full rounded-[3rem] p-1 bg-gradient-to-br ${service.gradient} shadow-2xl overflow-hidden glass-card border ${service.borderColor} group`}
+                  >
                     <div className="absolute inset-0 bg-[#0d0d1a] m-[6px] rounded-[calc(3rem-6px)] z-0" />
                     <div className="absolute inset-0 flex items-center justify-center flex-col z-10">
-                      
                       {/* Decorative rings */}
                       <div className="absolute w-[80%] h-[80%] rounded-full border border-white/[0.03] animate-spin-slow pointer-events-none" />
                       <div className="absolute w-[60%] h-[60%] rounded-full border border-white/[0.05] animate-[spin_15s_linear_reverse_infinite] pointer-events-none" />
-                      
-                      <div className={`w-36 h-36 md:w-48 md:h-48 rounded-3xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center overflow-hidden transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-2`}>
-                        <Image 
+
+                      <div
+                        className={`w-36 h-36 md:w-48 md:h-48 rounded-3xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center overflow-hidden transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-2`}
+                      >
+                        <Image
                           src={service.icon}
                           alt={service.name}
                           width={120}
@@ -138,10 +136,12 @@ export default function ServicesPage() {
 
                 {/* Content Side */}
                 <div className={`${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                  <span className={`inline-flex items-center text-xs font-bold uppercase tracking-widest ${service.iconColor} mb-4`}>
+                  <span
+                    className={`inline-flex items-center text-xs font-bold uppercase tracking-widest ${service.iconColor} mb-4`}
+                  >
                     {service.tagline}
                   </span>
-                  
+
                   <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
                     {service.name}
                   </h2>
@@ -156,7 +156,9 @@ export default function ServicesPage() {
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {service.features.map((feature) => (
                         <li key={feature} className="flex items-start gap-3">
-                          <CheckCircleIcon className={`w-5 h-5 ${service.iconColor} flex-shrink-0 mt-0.5`} />
+                          <CheckCircleIcon
+                            className={`w-5 h-5 ${service.iconColor} flex-shrink-0 mt-0.5`}
+                          />
                           <span className="text-slate-300 text-sm leading-snug">{feature}</span>
                         </li>
                       ))}
@@ -164,9 +166,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-white font-heading font-bold text-lg mb-4">
-                      Powered By
-                    </h3>
+                    <h3 className="text-white font-heading font-bold text-lg mb-4">Powered By</h3>
                     <div className="flex flex-wrap gap-2.5">
                       {service.technologies.map((tech) => (
                         <span
@@ -178,9 +178,7 @@ export default function ServicesPage() {
                       ))}
                     </div>
                   </div>
-                  
                 </div>
-
               </div>
             </div>
           </section>
@@ -191,9 +189,12 @@ export default function ServicesPage() {
       <section className="section-padding relative overflow-hidden text-center bg-[#0a0a0f]">
         <div className="absolute inset-0 bg-hero-gradient opacity-30 pointer-events-none" />
         <div className="container-custom mx-auto relative z-10 py-12">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Get Started?</h2>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Ready to Get Started?
+          </h2>
           <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
-            Let&apos;s discuss your project and architect the perfect digital solution for your business goals.
+            Let&apos;s discuss your project and architect the perfect digital solution for your
+            business goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
             <Link href={RouteConstants.CONTACT} className="btn-primary group">

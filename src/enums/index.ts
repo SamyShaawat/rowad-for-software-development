@@ -1,7 +1,7 @@
 /**
  * Enums Barrel Export
  * Import all enums from this file
- * 
+ *
  * Example:
  * import { ServiceType, ButtonVariant } from '@enums';
  */

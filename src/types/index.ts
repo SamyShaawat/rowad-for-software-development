@@ -1,7 +1,7 @@
 /**
  * Types Barrel Export
  * Import all types from this file
- * 
+ *
  * Example:
  * import type { NavigationItem, StatItem } from '@types';
  */

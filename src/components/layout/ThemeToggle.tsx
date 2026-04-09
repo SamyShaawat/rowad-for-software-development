@@ -9,9 +9,7 @@ export function ThemeToggle() {
   const { currentTheme, toggleTheme, mounted } = useThemeSwitch();
 
   if (!mounted) {
-    return (
-      <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.08]" />
-    );
+    return <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.08]" />;
   }
 
   return (
