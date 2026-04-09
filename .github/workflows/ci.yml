@@ -84,10 +84,10 @@ jobs:
       - name: Deploy to cPanel deploy branch
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.GH_PAT }}
           publish_dir: ./out
           publish_branch: deploy
-          force_orphan: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'deploy: ${{ github.event.head_commit.message }}'
+          keep_files: true
