@@ -10,6 +10,18 @@ import { useContact } from '@hooks';
 import { cn } from '@lib/utils';
 import type { ContactFormData } from '@types';
 
+/** Get reCAPTCHA site key or throw descriptive error */
+function getRecaptchaSiteKey(): string {
+  const key = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  if (!key) {
+    throw new Error(
+      'NEXT_PUBLIC_RECAPTCHA_SITE_KEY is not configured. ' +
+      'Add it to your .env file (see .env.example).'
+    );
+  }
+  return key;
+}
+
 export default function ContactForm() {
   const { isSubmitting, recaptchaToken, setRecaptchaToken, submitContact } = useContact();
   const [formData, setFormData] = useState<ContactFormData>({ 
@@ -73,7 +85,7 @@ export default function ContactForm() {
         <div className="flex flex-col space-y-4">
           <div className="flex justify-start">
             <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
+              sitekey={getRecaptchaSiteKey()}
               onChange={setRecaptchaToken}
               theme="dark"
             />

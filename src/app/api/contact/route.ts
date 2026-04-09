@@ -5,17 +5,32 @@ export async function POST(req: Request) {
   try {
     const { name, email, company, phone, service, message, recaptchaToken } = await req.json();
 
-    // 1. Verify reCAPTCHA token if provided
-    if (recaptchaToken) {
-      const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'; // Fallback to Google test key
-      const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaToken}`;
+    // 1. Enforce reCAPTCHA on EVERY submission (no bypass allowed)
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { success: false, error: 'reCAPTCHA verification required. Please complete the CAPTCHA challenge.' },
+        { status: 400 }
+      );
+    }
 
-      const response = await fetch(verificationUrl, { method: 'POST' });
-      const recaptchaResult = await response.json();
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
 
-      if (!recaptchaResult.success) {
-        return NextResponse.json({ success: false, error: 'reCAPTCHA verification failed. Please try again.' }, { status: 400 });
-      }
+    if (!recaptchaSecret) {
+      return NextResponse.json(
+        { success: false, error: 'Server configuration error. reCAPTCHA secret key is not set.' },
+        { status: 500 }
+      );
+    }
+
+    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${recaptchaToken}`;
+    const response = await fetch(verificationUrl, { method: 'POST' });
+    const recaptchaResult = await response.json();
+
+    if (!recaptchaResult.success) {
+      return NextResponse.json(
+        { success: false, error: 'reCAPTCHA verification failed. Please try again.' },
+        { status: 400 }
+      );
     }
 
     // 2. Set up Nodemailer transporter
