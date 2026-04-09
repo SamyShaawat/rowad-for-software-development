@@ -37,12 +37,16 @@ if (!$input) {
     exit;
 }
 
-// Extract form fields
+// Extract and sanitize form fields
 $name = trim($input['name'] ?? '');
+$name = preg_replace('/[\r\n]/', '', $name); // Prevent header injection
 $email = filter_var($input['email'] ?? '', FILTER_SANITIZE_EMAIL);
 $company = trim($input['company'] ?? 'N/A');
+$company = preg_replace('/[\r\n]/', '', $company);
 $phone = trim($input['phone'] ?? 'N/A');
+$phone = preg_replace('/[\r\n]/', '', $phone);
 $service = trim($input['service'] ?? 'N/A');
+$service = preg_replace('/[\r\n]/', '', $service);
 $message = trim($input['message'] ?? '');
 $recaptchaToken = $input['recaptchaToken'] ?? null;
 
