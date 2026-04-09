@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#ffffff] text-slate-900 dark:bg-[#0a0a0f] dark:text-slate-200 font-sans overflow-x-hidden transition-colors duration-500;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0f0f1a; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #f97316, #ea580c); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #fb923c, #f97316); }
+
+/* ── Selection ── */
+::selection { background: rgba(249, 115, 22, 0.25); color: #fff; }
+
+@layer utilities {
+  /* Layout */
+  .section-padding { @apply py-16 md:py-24 px-4 sm:px-6 lg:px-8; }
+  .container-custom { @apply max-w-7xl mx-auto; }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-600
+           hover:from-orange-400 hover:to-orange-500 text-white font-semibold py-3 px-7
+           rounded-full shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40
+           transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center bg-white/50 dark:bg-transparent
+           border-2 border-slate-200 dark:border-white/20 hover:border-orange-500/60 
+           text-slate-800 dark:text-white font-semibold
+           py-3 px-7 rounded-full backdrop-blur-sm hover:bg-orange-500/10
+           transition-all duration-300 cursor-pointer;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center font-semibold text-orange-400 hover:text-orange-300
+           transition-colors duration-200 cursor-pointer;
+  }
+
+  /* Cards */
+  .glass-card {
+    @apply bg-white/70 dark:bg-white/[0.04] backdrop-blur-xl border border-slate-200/50 dark:border-white/[0.08]
+           rounded-2xl hover:border-orange-500/30 transition-all duration-500 shadow-xl shadow-slate-200/50 dark:shadow-none;
+  }
+
+  .card-hover { @apply hover:shadow-[0_20px_60px_-10px_rgba(249,115,22,0.2)] hover:-translate-y-2 transition-all duration-500; }
+
+  /* Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-orange-400 via-orange-500 to-amber-400 bg-clip-text text-transparent;
+  }
+
+  .section-badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full
+           bg-orange-500/10 border border-orange-500/20 text-orange-400
+           text-xs font-semibold uppercase tracking-widest;
+  }
+
+  /* Glow effects */
+  .glow-orange { box-shadow: 0 0 40px rgba(249, 115, 22, 0.2); }
+  .glow-sm { box-shadow: 0 0 20px rgba(249, 115, 22, 0.15); }
+
+  /* Noise texture overlay */
+  .noise-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* ── Animations ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-16px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+.animate-float         { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float-delayed 8s ease-in-out 1s infinite; }
+.animate-pulse-glow    { animation: pulse-glow 4s ease-in-out infinite; }
+.animate-marquee       { animation: marquee 30s linear infinite; }
+.animate-spin-slow     { animation: spin-slow 20s linear infinite; }
+.animate-gradient      { background-size: 400% 400%; animation: gradient-shift 8s ease infinite; }
