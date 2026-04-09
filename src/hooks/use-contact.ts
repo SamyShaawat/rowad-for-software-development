@@ -41,8 +41,7 @@ export function useContact() {
 
     try {
       // Use configured endpoint (PHP script on cPanel or external service)
-      const endpoint =
-        process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || '/contact-mailer.php';
+      const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || '/contact-mailer.php';
 
       const response = await fetch(endpoint, {
         method: 'POST',
