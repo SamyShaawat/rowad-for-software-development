@@ -1,0 +1,49 @@
+{
+  "name": "rowad",
+  "$schema": "./node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "src",
+  "tags": ["scope:frontend", "type:app"],
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/rowad"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "dist/rowad"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "rowad:build",
+        "dev": true,
+        "port": 3000,
+        "turbo": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "rowad:build:development",
+          "dev": true,
+          "port": 3000,
+          "turbo": true
+        },
+        "production": {
+          "buildTarget": "rowad:build:production",
+          "dev": false,
+          "port": 3000
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

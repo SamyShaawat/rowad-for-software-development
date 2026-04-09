@@ -1,0 +1,55 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
+    "serve": {
+      "cache": false
+    },
+    "lint": {
+      "cache": true
+    }
+  },
+  "defaultBase": "main",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": [
+      "default",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.js",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s"
+    ]
+  },
+  "nxCloudAccessToken": "",
+  "generators": {
+    "@nx/next:application": {
+      "style": "tailwind",
+      "linter": "eslint",
+      "src": "app",
+      "appDir": true,
+      "globalCss": "styles/globals.css"
+    },
+    "@nx/next:component": {
+      "style": "tailwind",
+      "skipTests": true
+    }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/next/plugin",
+      "options": {
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "serveStaticTargetName": "serve-static"
+      }
+    }
+  ]
+}
