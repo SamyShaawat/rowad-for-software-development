@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
 /**
- * Enhanced Theme Switch hook. Manages system preference 
+ * Enhanced Theme Switch hook. Manages system preference
  * and user-defined light/dark toggling with hydration safety.
  */
 export function useThemeSwitch() {

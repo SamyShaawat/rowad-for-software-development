@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -24,58 +20,22 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@constants/*": [
-        "./src/constants/*"
-      ],
-      "@constants": [
-        "./src/constants/index.ts"
-      ],
-      "@enums/*": [
-        "./src/enums/*"
-      ],
-      "@enums": [
-        "./src/enums/index.ts"
-      ],
-      "@lib/*": [
-        "./src/lib/*"
-      ],
-      "@lib": [
-        "./src/lib/index.ts"
-      ],
-      "@types/*": [
-        "./src/types/*"
-      ],
-      "@types": [
-        "./src/types/index.ts"
-      ],
-      "@hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@hooks": [
-        "./src/hooks/index.ts"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ],
-      "@utils": [
-        "./src/utils/index.ts"
-      ]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants": ["./src/constants/index.ts"],
+      "@constants/*": ["./src/constants/*"],
+      "@enums": ["./src/enums/index.ts"],
+      "@enums/*": ["./src/enums/*"],
+      "@hooks": ["./src/hooks/index.ts"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@lib": ["./src/lib/index.ts"],
+      "@lib/*": ["./src/lib/*"],
+      "@types": ["./src/types/index.ts"],
+      "@types/*": ["./src/types/*"],
+      "@utils": ["./src/utils/index.ts"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "next-env.d.ts",
-    "build/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next-env.d.ts", "build/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

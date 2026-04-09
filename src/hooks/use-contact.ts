@@ -8,7 +8,7 @@ import { validateEmail, validatePhone } from '@utils/validation';
 /**
  * Encapsulated contact feature hook. Handles the state, validation,
  * ReCaptcha, and API calls for the contact form.
- * 
+ *
  * For cPanel deployment, we use a PHP backend endpoint instead of Next.js API routes.
  * The endpoint is configured via NEXT_PUBLIC_CONTACT_ENDPOINT env variable.
  * Options:
@@ -42,7 +42,7 @@ export function useContact() {
     try {
       // Use configured endpoint (PHP script on cPanel or external service)
       const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || '/api/contact-mailer.php';
-      
+
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
