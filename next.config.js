@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Static export for cPanel deployment (generates ./out directory)
+  // Note: API routes are NOT included in static export.
+  // Contact form uses client-side email service via EmailJS/Formspree or similar.
+  output: 'export',
   distDir: process.env.NODE_ENV === 'production' ? 'build' : '.next',
   images: {
     formats: ['image/avif', 'image/webp'],
+    unoptimized: true, // Required for static export
   },
   poweredByHeader: false,
   eslint: {
