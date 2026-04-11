@@ -10,19 +10,22 @@ import { useContact } from '@hooks';
 import { cn } from '@lib/utils';
 import type { ContactFormData } from '@types';
 
+const INITIAL_FORM_STATE: ContactFormData = {
+  name: '',
+  email: '',
+  company: '',
+  phone: '',
+  service: '',
+  message: '',
+};
+
 export default function ContactForm() {
   const { isSubmitting, recaptchaToken, setRecaptchaToken, submitContact } = useContact();
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    service: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM_STATE);
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -31,19 +34,41 @@ export default function ContactForm() {
     e.preventDefault();
     const success = await submitContact(formData);
     if (success) {
-      setFormData({ name: '', email: '', company: '', phone: '', service: '', message: '' });
+      setFormData({ ...INITIAL_FORM_STATE });
     }
   };
+
+  // Graceful fallback when reCAPTCHA is not configured — avoids throwing during render
+  if (!recaptchaSiteKey) {
+    return (
+      <div className="rounded-lg bg-amber-50 p-6 text-center dark:bg-amber-900/20">
+        <p className="text-sm font-medium text-amber-800 dark:text-amber-200">
+          Contact form is currently unavailable.
+        </p>
+        <p className="mt-2 text-sm text-amber-600 dark:text-amber-400">
+          Please email us directly at{' '}
+          <a
+            href="mailto:info@rowad.com"
+            className="font-medium text-amber-700 underline dark:text-amber-300"
+          >
+            info@rowad.com
+          </a>
+          .
+        </p>
+      </div>
+    );
+  }
 
   return (
     <>
       <Toaster position="top-right" />
       <form onSubmit={handleFormSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Name & Email */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors"
+              className="mb-2 block text-sm font-medium text-slate-700 transition-colors dark:text-slate-300"
             >
               {FormConstants.NAME_LABEL} *
             </label>
@@ -54,14 +79,14 @@ export default function ContactForm() {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] rounded-lg text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-all"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
               placeholder={FormConstants.NAME_PLACEHOLDER}
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors"
+              className="mb-2 block text-sm font-medium text-slate-700 transition-colors dark:text-slate-300"
             >
               {FormConstants.EMAIL_LABEL} *
             </label>
@@ -72,17 +97,18 @@ export default function ContactForm() {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] rounded-lg text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-all"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
               placeholder={FormConstants.EMAIL_PLACEHOLDER}
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Company & Phone */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div>
             <label
               htmlFor="company"
-              className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors"
+              className="mb-2 block text-sm font-medium text-slate-700 transition-colors dark:text-slate-300"
             >
               {FormConstants.COMPANY_LABEL}
             </label>
@@ -92,14 +118,14 @@ export default function ContactForm() {
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] rounded-lg text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-all"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
               placeholder={FormConstants.COMPANY_PLACEHOLDER}
             />
           </div>
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors"
+              className="mb-2 block text-sm font-medium text-slate-700 transition-colors dark:text-slate-300"
             >
               {FormConstants.PHONE_LABEL}
             </label>
@@ -109,16 +135,17 @@ export default function ContactForm() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] rounded-lg text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-all"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
               placeholder={FormConstants.PHONE_PLACEHOLDER}
             />
           </div>
         </div>
 
+        {/* Service Select */}
         <div>
           <label
             htmlFor="service"
-            className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors"
+            className="mb-2 block text-sm font-medium text-slate-700 transition-colors dark:text-slate-300"
           >
             {FormConstants.SERVICE_LABEL}
           </label>
@@ -127,7 +154,7 @@ export default function ContactForm() {
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] rounded-lg text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-all appearance-none"
+            className="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
           >
             <option value="">{FormConstants.SERVICE_SELECT}</option>
             <option value={ServiceType.DEVELOPMENT}>Website Development</option>
@@ -138,10 +165,11 @@ export default function ContactForm() {
           </select>
         </div>
 
+        {/* Message */}
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors"
+            className="mb-2 block text-sm font-medium text-slate-700 transition-colors dark:text-slate-300"
           >
             {FormConstants.MESSAGE_LABEL} *
           </label>
@@ -152,18 +180,16 @@ export default function ContactForm() {
             rows={6}
             value={formData.message}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] rounded-lg text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:bg-white/[0.04] transition-all resize-none"
+            className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all resize-none dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
             placeholder={FormConstants.MESSAGE_PLACEHOLDER}
           />
         </div>
 
+        {/* reCAPTCHA & Submit */}
         <div className="flex flex-col space-y-4">
           <div className="flex justify-start">
             <ReCAPTCHA
-              sitekey={
-                process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
-                '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
-              }
+              sitekey={recaptchaSiteKey}
               onChange={setRecaptchaToken}
               theme="dark"
             />
@@ -171,7 +197,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting || !recaptchaToken}
-            className="btn-primary w-full md:w-auto flex items-center justify-center space-x-2 disabled:opacity-50"
+            className="btn-primary flex w-full items-center justify-center space-x-2 disabled:opacity-50 md:w-auto"
           >
             <PaperAirplaneIcon className="h-5 w-5" />
             <span>{isSubmitting ? FormConstants.SUBMITTING : FormConstants.SUBMIT_BUTTON}</span>
