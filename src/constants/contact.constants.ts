@@ -3,7 +3,8 @@
  */
 export const ContactConstants = {
   TITLE: 'Get in Touch',
-  SUBTITLE: 'Have a project in mind? We would love to hear from you. Let us discuss how we can help.',
+  SUBTITLE:
+    'Have a project in mind? We would love to hear from you. Let us discuss how we can help.',
   FORM_TITLE: 'Send Us a Message',
   FORM_SUBTITLE: 'Fill out the form below and we will get back to you within 24 hours.',
   CONTACT_INFO_TITLE: 'Contact Information',

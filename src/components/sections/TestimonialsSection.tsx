@@ -10,19 +10,22 @@ import type { Testimonial } from '@types';
 
 const testimonials: Testimonial[] = [
   {
-    content: 'Rowad built our website with speed and precision. Their team was professional and delivered exactly what we envisioned.',
+    content:
+      'Rowad built our website with speed and precision. Their team was professional and delivered exactly what we envisioned.',
     author: 'Kadmar Group',
     role: 'Shipping & Logistics, Egypt',
     rating: 5,
   },
   {
-    content: 'The hosting service is impeccable. Our website has never been faster or more reliable. Outstanding 24/7 support.',
+    content:
+      'The hosting service is impeccable. Our website has never been faster or more reliable. Outstanding 24/7 support.',
     author: 'Smart System',
     role: 'IT Solutions, Egypt & MENA',
     rating: 5,
   },
   {
-    content: 'Working with Rowad was a game-changer. They delivered on time and within budget, ensuring our digital success.',
+    content:
+      'Working with Rowad was a game-changer. They delivered on time and within budget, ensuring our digital success.',
     author: 'Mackean Law Firm',
     role: 'Legal Services',
     rating: 5,
@@ -73,7 +76,10 @@ export function TestimonialsSection() {
               {/* Rating */}
               <div className="flex gap-1 mb-6">
                 {[...Array(testimonial.rating)].map((_, j) => (
-                  <StarIcon key={j} className="h-5 w-5 text-amber-500 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]" />
+                  <StarIcon
+                    key={j}
+                    className="h-5 w-5 text-amber-500 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]"
+                  />
                 ))}
               </div>
 
@@ -91,9 +97,7 @@ export function TestimonialsSection() {
                   <div className="font-heading font-semibold text-slate-900 dark:text-white text-base transition-colors">
                     {testimonial.author}
                   </div>
-                  <div className="text-xs text-orange-500 font-medium">
-                    {testimonial.role}
-                  </div>
+                  <div className="text-xs text-orange-500 font-medium">{testimonial.role}</div>
                 </div>
               </div>
             </motion.div>
@@ -111,23 +115,23 @@ export function TestimonialsSection() {
           <p className="text-slate-500 text-sm uppercase tracking-widest font-semibold mb-10">
             {TestimonialsConstants.TRUST_TEXT}
           </p>
-          
+
           <div className="relative w-full overflow-hidden flex items-center">
             {/* Fade gradients for marquee edges */}
             <div className="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-slate-50 dark:from-[#070710] to-transparent z-10 transition-colors" />
             <div className="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-slate-50 dark:from-[#070710] to-transparent z-10 transition-colors" />
-            
+
             <div className="flex w-max min-w-full animate-marquee items-center gap-10 sm:gap-16 px-8">
               {/* First set */}
               {ClientsConstants.map((client) => (
-                <a 
-                  key={`marquee-1-${client.id}`} 
-                  href={client.website} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  key={`marquee-1-${client.id}`}
+                  href={client.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-24 sm:w-32 h-16 relative grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110"
                 >
-                  <Image 
+                  <Image
                     src={client.logo}
                     alt={client.name}
                     fill
@@ -138,14 +142,14 @@ export function TestimonialsSection() {
               ))}
               {/* Duplicate set for seamless loop */}
               {ClientsConstants.map((client) => (
-                <a 
-                  key={`marquee-2-${client.id}`} 
-                  href={client.website} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  key={`marquee-2-${client.id}`}
+                  href={client.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-24 sm:w-32 h-16 relative grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110"
                 >
-                  <Image 
+                  <Image
                     src={client.logo}
                     alt={client.name}
                     fill
@@ -164,7 +168,6 @@ export function TestimonialsSection() {
             </Link>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/rowad/public_html
+    - /bin/cp -R . $DEPLOYPATH
+    - echo "Deployed successfully to $DEPLOYPATH"

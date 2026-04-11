@@ -1,16 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  PhoneIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  ClockIcon,
-} from '@heroicons/react/24/outline';
-import {
-  RouteConstants,
-  ContactConstants,
-  CompanyConstants,
-} from '@constants';
+import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { RouteConstants, ContactConstants, CompanyConstants } from '@constants';
 import ContactForm from '@/features/contact/components/ContactForm';
 
 export const metadata: Metadata = {
@@ -19,17 +10,49 @@ export const metadata: Metadata = {
 };
 
 const contactInfo = [
-  { icon: PhoneIcon, title: 'Phone', content: CompanyConstants.PHONE, subtext: CompanyConstants.WORKING_HOURS },
-  { icon: EnvelopeIcon, title: 'Email', content: CompanyConstants.EMAIL, subtext: 'We reply within 24 hours' },
-  { icon: MapPinIcon, title: 'Office', content: CompanyConstants.LOCATION, subtext: 'Available for in-person meetings by appointment' },
-  { icon: ClockIcon, title: 'Working Hours', content: CompanyConstants.WORKING_HOURS, subtext: CompanyConstants.WEEKEND },
+  {
+    icon: PhoneIcon,
+    title: 'Phone',
+    content: CompanyConstants.PHONE,
+    subtext: CompanyConstants.WORKING_HOURS,
+  },
+  {
+    icon: EnvelopeIcon,
+    title: 'Email',
+    content: CompanyConstants.EMAIL,
+    subtext: 'We reply within 24 hours',
+  },
+  {
+    icon: MapPinIcon,
+    title: 'Office',
+    content: CompanyConstants.LOCATION,
+    subtext: 'Available for in-person meetings by appointment',
+  },
+  {
+    icon: ClockIcon,
+    title: 'Working Hours',
+    content: CompanyConstants.WORKING_HOURS,
+    subtext: CompanyConstants.WEEKEND,
+  },
 ];
 
 const faqs = [
-  { q: 'How long does a typical website project take?', a: 'Most standard websites take 2–6 weeks from kickoff to launch. More complex applications or e-commerce platforms typically require 6–12 weeks depending on features and integrations.' },
-  { q: 'What is your pricing structure?', a: 'Because every project is unique, we provide custom quotes based on your specific requirements, timeline, and requested features. Contact us to schedule a free initial consultation.' },
-  { q: 'Do you provide ongoing support?', a: 'Yes! We offer flexible maintenance packages for routine updates and backups, and 24/7 priority support for clients on our managed hosting plans.' },
-  { q: 'Can you work alongside our existing team?', a: 'Absolutely! We regularly collaborate with in-house developers, designers, and marketing teams to augment your capabilities and accelerate project delivery.' },
+  {
+    q: 'How long does a typical website project take?',
+    a: 'Most standard websites take 2–6 weeks from kickoff to launch. More complex applications or e-commerce platforms typically require 6–12 weeks depending on features and integrations.',
+  },
+  {
+    q: 'What is your pricing structure?',
+    a: 'Because every project is unique, we provide custom quotes based on your specific requirements, timeline, and requested features. Contact us to schedule a free initial consultation.',
+  },
+  {
+    q: 'Do you provide ongoing support?',
+    a: 'Yes! We offer flexible maintenance packages for routine updates and backups, and 24/7 priority support for clients on our managed hosting plans.',
+  },
+  {
+    q: 'Can you work alongside our existing team?',
+    a: 'Absolutely! We regularly collaborate with in-house developers, designers, and marketing teams to augment your capabilities and accelerate project delivery.',
+  },
 ];
 
 export default function ContactPage() {
@@ -40,7 +63,7 @@ export default function ContactPage() {
         {/* Glow */}
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 to-transparent blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-bl from-amber-500/5 to-transparent blur-[120px] pointer-events-none" />
-        
+
         <div className="container-custom mx-auto px-4 relative z-10 text-center">
           <span className="section-badge mb-6 tracking-widest text-orange-400 border-orange-500/20 bg-orange-500/10">
             Let&apos;s Talk
@@ -58,7 +81,6 @@ export default function ContactPage() {
       <section className="section-padding bg-[#0d0d1a]">
         <div className="container-custom mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-            
             {/* Form Column */}
             <div className="lg:col-span-7">
               <div className="mb-10">
@@ -83,11 +105,9 @@ export default function ContactPage() {
                 <h2 className="font-heading text-2xl font-bold text-white mb-3">
                   {ContactConstants.CONTACT_INFO_TITLE}
                 </h2>
-                <p className="text-slate-400">
-                  {ContactConstants.CONTACT_INFO_SUBTITLE}
-                </p>
+                <p className="text-slate-400">{ContactConstants.CONTACT_INFO_SUBTITLE}</p>
               </div>
-              
+
               <div className="space-y-4">
                 {contactInfo.map((item) => (
                   <div
@@ -111,17 +131,17 @@ export default function ContactPage() {
                 {/* Simulated map grid overlay */}
                 <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                
+
                 <div className="text-center relative z-10 px-6">
                   <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg group-hover:scale-110 transition-transform duration-500">
                     <MapPinIcon className="h-7 w-7 text-white" />
                   </div>
-                  <p className="font-heading font-bold text-white tracking-wide text-sm">{CompanyConstants.LOCATION}</p>
+                  <p className="font-heading font-bold text-white tracking-wide text-sm">
+                    {CompanyConstants.LOCATION}
+                  </p>
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
       </section>
@@ -175,10 +195,7 @@ export default function ContactPage() {
             {ContactConstants.CTA_SUBTITLE}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href={`tel:${CompanyConstants.PHONE_HREF}`}
-              className="btn-primary"
-            >
+            <Link href={`tel:${CompanyConstants.PHONE_HREF}`} className="btn-primary">
               {ContactConstants.CTA_BUTTON}
             </Link>
             <Link

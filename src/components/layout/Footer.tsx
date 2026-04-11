@@ -3,31 +3,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import {
-  PhoneIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  ArrowRightIcon,
-} from '@heroicons/react/24/outline';
-import {
-  RouteConstants,
-  CompanyConstants,
-  FooterConstants,
-  NavigationConstants,
-} from '@constants';
+import { PhoneIcon, EnvelopeIcon, MapPinIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { RouteConstants, CompanyConstants, FooterConstants, NavigationConstants } from '@constants';
 
 const navLinks = {
   company: [
-    { name: NavigationConstants.HOME,     href: RouteConstants.HOME },
+    { name: NavigationConstants.HOME, href: RouteConstants.HOME },
     { name: NavigationConstants.ABOUT_US, href: RouteConstants.ABOUT },
     { name: NavigationConstants.SERVICES, href: RouteConstants.SERVICES },
-    { name: NavigationConstants.CONTACT,  href: RouteConstants.CONTACT },
+    { name: NavigationConstants.CONTACT, href: RouteConstants.CONTACT },
   ],
   services: [
     { name: 'Website Development', href: `${RouteConstants.SERVICES}#development` },
-    { name: 'Web Hosting',         href: `${RouteConstants.SERVICES}#hosting` },
-    { name: 'Mobile Development',  href: `${RouteConstants.SERVICES}#mobile` },
-    { name: 'Digital Marketing',   href: `${RouteConstants.SERVICES}#marketing` },
+    { name: 'Web Hosting', href: `${RouteConstants.SERVICES}#hosting` },
+    { name: 'Mobile Development', href: `${RouteConstants.SERVICES}#mobile` },
+    { name: 'Digital Marketing', href: `${RouteConstants.SERVICES}#marketing` },
   ],
 };
 
@@ -75,7 +65,8 @@ export function Footer() {
           <div className="lg:col-span-1 space-y-8">
             <Link href={RouteConstants.HOME} className="inline-flex items-center gap-3 group">
               <div className="relative w-12 h-12 rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Image priority
+                <Image
+                  priority
                   src="/images/RowadLogo/Rowad_Icon_Round.png"
                   alt="Rowad Logo"
                   fill
@@ -83,9 +74,13 @@ export function Footer() {
                 />
               </div>
               <div className="flex items-baseline tracking-tighter">
-                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white">R</span>
+                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white">
+                  R
+                </span>
                 <span className="font-heading font-bold text-2xl text-orange-500">O</span>
-                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white">WAD</span>
+                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white">
+                  WAD
+                </span>
               </div>
             </Link>
 
@@ -137,14 +132,20 @@ export function Footer() {
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
               Subscribe to our newsletter for latest tech insights and company news.
             </p>
-            <form className="relative group" onSubmit={(e) => { e.preventDefault(); alert("Thanks for subscribing!"); }}>
-              <input 
-                type="email" 
-                placeholder="Your email address" 
+            <form
+              className="relative group"
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert('Thanks for subscribing!');
+              }}
+            >
+              <input
+                type="email"
+                placeholder="Your email address"
                 className="w-full pl-4 pr-12 py-3 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] rounded-xl text-sm text-slate-900 dark:text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 transition-all shadow-sm"
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="absolute right-1.5 top-1.5 bottom-1.5 px-3 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center justify-center"
               >
                 <ArrowRightIcon className="w-4 h-4" />
@@ -163,8 +164,13 @@ export function Footer() {
                   <PhoneIcon className="h-5 w-5 text-orange-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Call Center</span>
-                  <a href={`tel:${CompanyConstants.PHONE_HREF}`} className="hover:text-orange-500 font-bold transition-colors">
+                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
+                    Call Center
+                  </span>
+                  <a
+                    href={`tel:${CompanyConstants.PHONE_HREF}`}
+                    className="hover:text-orange-500 font-bold transition-colors"
+                  >
                     {CompanyConstants.PHONE}
                   </a>
                 </div>
@@ -174,8 +180,13 @@ export function Footer() {
                   <EnvelopeIcon className="h-5 w-5 text-blue-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Inquiries</span>
-                  <a href={`mailto:${CompanyConstants.EMAIL}`} className="hover:text-orange-500 font-bold transition-colors truncate max-w-[180px]">
+                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
+                    Inquiries
+                  </span>
+                  <a
+                    href={`mailto:${CompanyConstants.EMAIL}`}
+                    className="hover:text-orange-500 font-bold transition-colors truncate max-w-[180px]"
+                  >
                     {CompanyConstants.EMAIL}
                   </a>
                 </div>
@@ -185,15 +196,21 @@ export function Footer() {
                   <MapPinIcon className="h-5 w-5 text-green-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Main Office</span>
-                  <a href={CompanyConstants.MAPS_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-orange-500 font-bold transition-colors">
+                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
+                    Main Office
+                  </span>
+                  <a
+                    href={CompanyConstants.MAPS_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-orange-500 font-bold transition-colors"
+                  >
                     {CompanyConstants.LOCATION}
                   </a>
                 </div>
               </li>
             </ul>
           </div>
-
         </div>
 
         {/* ── Final Credits ── */}
@@ -203,25 +220,40 @@ export function Footer() {
               <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-left">
                 © {currentYear} {CompanyConstants.FULL_NAME}
               </p>
-              <p className="text-slate-400 text-[10px] mt-1">
-                Handcrafted with passion globally
-              </p>
+              <p className="text-slate-400 text-[10px] mt-1">Handcrafted with passion globally</p>
             </div>
-            
+
             <div className="flex gap-8">
-              <Link href="#" className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors">Privacy</Link>
-              <Link href="#" className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors">Terms</Link>
-              <Link href="#" className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors">Support</Link>
+              <Link
+                href="#"
+                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="#"
+                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors"
+              >
+                Terms
+              </Link>
+              <Link
+                href="#"
+                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors"
+              >
+                Support
+              </Link>
             </div>
-            
+
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08]">
-               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-               <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">System Ready</span>
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                System Ready
+              </span>
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Decorative bottom line */}
       <div className="h-2 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 opacity-20" />
     </footer>
