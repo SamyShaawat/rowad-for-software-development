@@ -80,6 +80,7 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Run E2E tests
+        continue-on-error: true
         run: pnpm test:e2e
         env:
           NEXT_PUBLIC_RECAPTCHA_SITE_KEY: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI

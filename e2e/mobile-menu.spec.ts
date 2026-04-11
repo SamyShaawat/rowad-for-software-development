@@ -41,7 +41,8 @@ test.describe('Mobile Menu', () => {
     await hamburgerBtn.click();
 
     // Mobile menu should be visible
-    const mobileMenu = page.locator('.md\\\\:hidden').filter({ hasText: /home|services|contact/i });
+    // Use a more reliable selector: the mobile menu container has the animation classes
+    const mobileMenu = page.locator('header > nav > div.md\\:hidden > div').last();
     await expect(mobileMenu).toBeVisible();
 
     // All navigation links should be visible

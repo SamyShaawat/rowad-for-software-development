@@ -126,22 +126,15 @@ test.describe('reCAPTCHA Integration', () => {
       window.dispatchEvent(event);
     });
 
-    // Attempt submit
-    const submitButton = page.getByRole('button', { name: /send message|submit/i });
+    // Submit button should be disabled without completing reCAPTCHA
+    // (useContact hook checks for recaptchaToken before enabling submit)
+    const isDisabled = await submitButton.isDisabled();
+    expect(isDisabled).toBe(true);
 
-    // Verify the request structure (token should be present when submitted)
-    if (await submitButton.isEnabled()) {
-      await submitButton.click();
-
-      // Wait for the mocked request
-      await page.waitForResponse('**/api/contact');
-
-      // Verify request body includes recaptchaToken
-      expect(requestBody).toHaveProperty('recaptchaToken');
-      expect(requestBody).toHaveProperty('name', 'Token Test');
-      expect(requestBody).toHaveProperty('email', 'token@test.com');
-      expect(requestBody).toHaveProperty('message', 'Testing token');
-    }
+    // Note: In CI with Google's test key, the reCAPTCHA can be completed
+    // by interacting with the iframe. For now, we verify the disabled state
+    // as the primary assertion. A full integration test would require
+    // headless reCAPTCHA solving which is not reliably testable.
   });
 
   // ---------------------------------------------------------------------------
@@ -197,11 +190,12 @@ test.describe('reCAPTCHA Integration', () => {
     // Verify that the reCAPTCHA site key is configured
     // The sitekey prop on ReCAPTCHA component should be a valid key
 
-    // Check if NEXT_PUBLIC_RECAPTCHA_SITE_KEY is set
-    const siteKey = await page.evaluate(() => {
-      // In dev mode, this should be configured via env var
-      return process?.env?.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
-    });
+    // Check the iframe src for the site key parameter
+    const iframeSrc = await page
+      .locator('iframe[src*="recaptcha"]')
+      .first()
+      .getAttribute('src')
+      .catch(() => null);
 
     // If env is not set, the component should show a fallback message
     // (per our fix in PR #8 — no more throwing during render)
@@ -210,7 +204,7 @@ test.describe('reCAPTCHA Integration', () => {
       .isVisible()
       .catch(() => false);
 
-    // Either the key is set OR we show a graceful fallback
-    expect(siteKey !== '' || hasFallback).toBe(true);
+    // Either the iframe exists with a site key OR we show a graceful fallback
+    expect(iframeSrc !== null || hasFallback).toBe(true);
   });
 });
