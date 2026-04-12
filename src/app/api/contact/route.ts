@@ -16,7 +16,10 @@ const DEFAULT_CONTACT_EMAIL = 'info@rowad.com';
 /** Remove newlines, trim, and cap length to prevent header injection. */
 function sanitize(str: string | undefined): string {
   if (!str) return '';
-  return str.replace(/[\r\n]/g, '').trim().slice(0, MAX_FIELD_LENGTH);
+  return str
+    .replace(/[\r\n]/g, '')
+    .trim()
+    .slice(0, MAX_FIELD_LENGTH);
 }
 
 /** Basic email format check. */
@@ -30,33 +33,26 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(req: Request) {
   try {
-    const { name, email, company, phone, service, message, recaptchaToken } =
-      await req.json();
+    const { name, email, company, phone, service, message, recaptchaToken } = await req.json();
 
     // --- 1. Validate & sanitize user input --------------------------------
     const safeName = sanitize(name);
     const safeEmail = sanitize(email);
 
     if (!safeName) {
-      return NextResponse.json(
-        { success: false, error: 'Name is required.' },
-        { status: 400 },
-      );
+      return NextResponse.json({ success: false, error: 'Name is required.' }, { status: 400 });
     }
 
     if (!safeEmail || !isValidEmail(safeEmail)) {
       return NextResponse.json(
         { success: false, error: 'A valid email address is required.' },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
     const safeMessage = sanitize(message);
     if (!safeMessage) {
-      return NextResponse.json(
-        { success: false, error: 'Message is required.' },
-        { status: 400 },
-      );
+      return NextResponse.json({ success: false, error: 'Message is required.' }, { status: 400 });
     }
 
     const safeCompany = sanitize(company);
@@ -68,10 +64,9 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           success: false,
-          error:
-            'reCAPTCHA verification required. Please complete the CAPTCHA challenge.',
+          error: 'reCAPTCHA verification required. Please complete the CAPTCHA challenge.',
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -80,17 +75,14 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           success: false,
-          error:
-            'Server configuration error. reCAPTCHA secret key is not set.',
+          error: 'Server configuration error. reCAPTCHA secret key is not set.',
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
     // URL-encode parameters to prevent injection
-    const verificationUrl = new URL(
-      'https://www.google.com/recaptcha/api/siteverify',
-    );
+    const verificationUrl = new URL('https://www.google.com/recaptcha/api/siteverify');
     verificationUrl.searchParams.set('secret', recaptchaSecret);
     verificationUrl.searchParams.set('response', recaptchaToken);
 
@@ -109,10 +101,9 @@ export async function POST(req: Request) {
         return NextResponse.json(
           {
             success: false,
-            error:
-              'CAPTCHA verification service unavailable. Please try again later.',
+            error: 'CAPTCHA verification service unavailable. Please try again later.',
           },
-          { status: 503 },
+          { status: 503 }
         );
       }
 
@@ -127,7 +118,7 @@ export async function POST(req: Request) {
           success: false,
           error: 'reCAPTCHA verification failed. Please try again.',
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -141,10 +132,9 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           success: false,
-          error:
-            'Email service is not configured. Please contact support.',
+          error: 'Email service is not configured. Please contact support.',
         },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
@@ -186,9 +176,6 @@ ${safeMessage}
     // eslint-disable-next-line no-console
     console.error('Contact form submission failed:', reason);
 
-    return NextResponse.json(
-      { success: false, error: 'Internal Server Error' },
-      { status: 500 },
-    );
+    return NextResponse.json({ success: false, error: 'Internal Server Error' }, { status: 500 });
   }
 }

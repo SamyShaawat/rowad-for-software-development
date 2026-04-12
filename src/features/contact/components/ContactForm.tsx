@@ -25,7 +25,7 @@ export default function ContactForm() {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -188,11 +188,7 @@ export default function ContactForm() {
         {/* reCAPTCHA & Submit */}
         <div className="flex flex-col space-y-4">
           <div className="flex justify-start">
-            <ReCAPTCHA
-              sitekey={recaptchaSiteKey}
-              onChange={setRecaptchaToken}
-              theme="dark"
-            />
+            <ReCAPTCHA sitekey={recaptchaSiteKey} onChange={setRecaptchaToken} theme="dark" />
           </div>
           <button
             type="submit"
