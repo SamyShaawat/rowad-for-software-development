@@ -83,7 +83,7 @@ export function Header() {
                     'relative px-4 py-2 font-medium transition-colors duration-200 text-sm',
                     active
                       ? 'text-orange-500 dark:text-orange-400'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white',
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                   )}
                 >
                   {item.name}
@@ -164,7 +164,7 @@ export function Header() {
                         'block px-4 py-3 font-medium transition-all duration-200 text-sm rounded-xl',
                         active
                           ? 'text-orange-500 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-500/5'
-                          : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/[0.06]',
+                          : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/[0.06]'
                       )}
                       onClick={() => setMobileMenuOpen(false)}
                     >
