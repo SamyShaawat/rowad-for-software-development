@@ -1,6 +1,5 @@
----
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/irowad/public_html
-    - /bin/cp -R out/* $DEPLOYPATH/
+    - export DEPLOYPATH=/home/irowad/public_html/rowad
+    - /bin/cp -R * $DEPLOYPATH/
     - echo "Deployed successfully to $DEPLOYPATH"
