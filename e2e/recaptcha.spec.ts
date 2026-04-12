@@ -128,6 +128,7 @@ test.describe('reCAPTCHA Integration', () => {
 
     // Submit button should be disabled without completing reCAPTCHA
     // (useContact hook checks for recaptchaToken before enabling submit)
+    const submitButton = page.getByRole('button', { name: /send message|submit/i });
     const isDisabled = await submitButton.isDisabled();
     expect(isDisabled).toBe(true);
 
