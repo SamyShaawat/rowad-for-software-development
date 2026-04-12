@@ -142,11 +142,16 @@ jobs:
         env:
           NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
 
+      - name: Copy deployment config to build output
+        run: |
+          cp .cpanel.yml build/.cpanel.yml
+          cp .env.example build/.env.example 2>/dev/null || true
+
       - name: Deploy to cPanel deploy branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GH_PAT }}
-          publish_dir: ./out
+          publish_dir: ./build
           publish_branch: deploy
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
