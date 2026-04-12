@@ -122,17 +122,18 @@ export function ClientsSection() {
                     <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/5 group-hover:to-amber-500/5 transition-colors duration-500 pointer-events-none" />
 
                     {/* Logo container */}
-                    <div className="relative flex items-center justify-center w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-transparent dark:from-orange-500/15 dark:via-amber-500/10 dark:to-transparent border-2 border-orange-500/20 group-hover:border-orange-500/40 transition-all duration-500 shadow-lg shadow-orange-500/5 overflow-hidden">
+                    <div className="relative flex items-center justify-center w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-transparent dark:from-orange-500/15 dark:via-amber-500/10 dark:to-transparent border-2 border-orange-500/20 group-hover:border-orange-500/40 transition-all duration-500 shadow-lg shadow-orange-500/5">
                       {/* Circular ring decoration */}
                       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-500/20 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                      <div className="relative w-24 h-24 rounded-full overflow-hidden ring-2 ring-white dark:ring-white/10 shadow-inner">
+                      {/* Inner circle with subtle background for logo */}
+                      <div className="relative w-24 h-24 rounded-full overflow-hidden ring-2 ring-white dark:ring-white/10 shadow-inner bg-white dark:bg-white/[0.03]">
                         <Image
                           priority
                           src={client.logo}
                           alt={client.name}
                           fill
-                          className="object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                          className="object-contain p-3 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                           sizes="96px"
                         />
                       </div>
