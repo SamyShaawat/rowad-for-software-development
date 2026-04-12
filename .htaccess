@@ -1,0 +1,27 @@
+# Security Headers (migrated from next.config.js)
+<IfModule mod_headers.c>
+  Header set X-DNS-Prefetch-Control "on"
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+</IfModule>
+
+# Enable compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
