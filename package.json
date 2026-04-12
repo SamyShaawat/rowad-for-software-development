@@ -8,7 +8,23 @@
     "build": "nx build rowad",
     "start": "nx serve rowad --prod",
     "lint": "nx lint rowad",
-    "format": "nx format:write"
+    "format": "nx format:write",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:report": "playwright show-report",
+    "nx:typecheck": "nx typecheck rowad",
+    "nx:lint": "nx lint rowad",
+    "nx:build": "nx build rowad",
+    "nx:test": "nx test rowad",
+    "nx:test:e2e": "nx test:e2e rowad",
+    "nx:test:ci": "nx test:ci rowad",
+    "nx:test:deploy": "nx test:deploy rowad",
+    "nx:test:build": "nx test:build rowad",
+    "nx:test:errors": "nx test:errors rowad",
+    "nx:test:all": "nx test:all rowad",
+    "nx:clean": "nx clean rowad",
+    "nx:deploy": "nx deploy rowad"
   },
   "dependencies": {
     "@heroicons/react": "2.2.0",
@@ -28,6 +44,7 @@
   },
   "devDependencies": {
     "@nx/next": "^21.1.2",
+    "@playwright/test": "^1.59.1",
     "@types/node": "22.13.14",
     "@types/nodemailer": "^8.0.0",
     "@types/react": "19.0.12",

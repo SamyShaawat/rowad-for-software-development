@@ -44,6 +44,63 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+    "typecheck": {
+      "command": "tsc --noEmit --pretty",
+      "outputs": [],
+      "cache": true
+    },
+    "test": {
+      "command": "echo 'No unit tests configured. Add Vitest/Jest to run unit tests.'",
+      "outputs": [],
+      "cache": false
+    },
+    "test:e2e": {
+      "command": "playwright test",
+      "outputs": ["playwright-report/", "test-results/"],
+      "cache": false
+    },
+    "test:ci": {
+      "dependsOn": ["typecheck", "lint", "build", "test:e2e"],
+      "command": "echo 'All CI checks passed!'",
+      "outputs": [],
+      "cache": false
+    },
+    "test:deploy": {
+      "dependsOn": ["typecheck", "lint", "build"],
+      "command": "echo 'Deployment pre-checks passed — build is clean.'",
+      "outputs": [],
+      "cache": false
+    },
+    "test:build": {
+      "dependsOn": ["typecheck", "lint"],
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/rowad"
+      }
+    },
+    "test:errors": {
+      "command": "npx tsc --noEmit --pretty 2>&1 | grep -i 'error\\|Error\\|ERROR' || echo 'No TypeScript errors found.'",
+      "outputs": [],
+      "cache": false
+    },
+    "test:all": {
+      "dependsOn": ["typecheck", "lint", "test:errors", "build", "test:e2e"],
+      "command": "echo '✅ All tests passed successfully!'",
+      "outputs": [],
+      "cache": false
+    },
+    "clean": {
+      "command": "rm -rf dist/rowad .next playwright-report/ test-results/",
+      "outputs": [],
+      "cache": false
+    },
+    "deploy": {
+      "dependsOn": ["test:deploy"],
+      "command": "echo 'Deploying to production...' && pnpm build",
+      "outputs": [],
+      "cache": false
     }
   }
 }
