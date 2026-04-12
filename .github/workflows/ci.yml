@@ -145,6 +145,7 @@ jobs:
       - name: Copy deployment config to build output
         run: |
           cp .cpanel.yml build/.cpanel.yml
+          cp .htaccess build/.htaccess
           cp .env.example build/.env.example 2>/dev/null || true
 
       - name: Deploy to cPanel deploy branch
