@@ -52,25 +52,32 @@ test.describe('Contact Form', () => {
   // 2. Form Fields (when form is rendered)
   // ---------------------------------------------------------------------------
 
-  test.skip('contact form has all required fields when reCAPTCHA is configured', async ({
+  test('contact form has all required fields when reCAPTCHA is configured', async ({
     page,
   }) => {
-    // Skip: requires NEXT_PUBLIC_RECAPTCHA_SITE_KEY to be set for form rendering
-    const form = page.locator('form').first();
-    const hasForm = await form.isVisible().catch(() => false);
-    if (!hasForm) return;
+    // Wait for client-side hydration
+    await page.waitForTimeout(5000);
 
-    await page.waitForTimeout(500);
+    // Check if the fallback is shown (no reCAPTCHA key configured)
+    const hasFallback = await page
+      .getByText(/contact form is currently unavailable/i)
+      .isVisible()
+      .catch(() => false);
 
+    if (hasFallback) {
+      // Fallback is shown - verify it has email link
+      const emailLink = page.locator('a[href^="mailto:"]').first();
+      await expect(emailLink).toBeVisible({ timeout: 5000 });
+      return;
+    }
+
+    // Form is rendered with inputs - check for required fields
     const nameInput = page.locator('input[name="name"]');
+    await expect(nameInput).toBeVisible({ timeout: 10000 });
     const emailInput = page.locator('input[name="email"]');
+    await expect(emailInput).toBeVisible({ timeout: 10000 });
     const messageInput = page.locator('textarea[name="message"]');
-
-    const hasName = await nameInput.isVisible().catch(() => false);
-    const hasEmail = await emailInput.isVisible().catch(() => false);
-    const hasMessage = await messageInput.isVisible().catch(() => false);
-
-    expect(hasName || hasEmail || hasMessage).toBe(true);
+    await expect(messageInput).toBeVisible({ timeout: 10000 });
   });
 
   // ---------------------------------------------------------------------------
