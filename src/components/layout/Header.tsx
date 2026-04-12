@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -20,10 +21,13 @@ const navigation: NavigationItem[] = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeHover, setActiveHover] = useState<string | null>(null);
   const scrollY = useScrollPosition();
   const isScrolled = scrollY > 20;
+
+  const isActive = (href: string) => pathname === href;
 
   return (
     <header
@@ -67,28 +71,42 @@ export function Header() {
 
           {/* ── Desktop Nav ── */}
           <div className="hidden md:flex items-center gap-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onMouseEnter={() => setActiveHover(item.name)}
-                onMouseLeave={() => setActiveHover(null)}
-                className="relative px-4 py-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-medium transition-colors duration-200 text-sm"
-              >
-                {item.name}
-                <AnimatePresence>
-                  {activeHover === item.name && (
+            {navigation.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onMouseEnter={() => setActiveHover(item.name)}
+                  onMouseLeave={() => setActiveHover(null)}
+                  className={cn(
+                    'relative px-4 py-2 font-medium transition-colors duration-200 text-sm',
+                    active
+                      ? 'text-orange-500 dark:text-orange-400'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white',
+                  )}
+                >
+                  {item.name}
+                  {/* Active indicator — always show for current page */}
+                  {active && (
                     <motion.span
-                      layoutId="nav-underline"
-                      initial={{ opacity: 0, scaleX: 0 }}
-                      animate={{ opacity: 1, scaleX: 1 }}
-                      exit={{ opacity: 0, scaleX: 0 }}
+                      layoutId="nav-active-underline"
                       className="absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-r from-orange-500 to-amber-400 rounded-full"
                     />
                   )}
-                </AnimatePresence>
-              </Link>
-            ))}
+                  {/* Hover indicator — only show when not active */}
+                  {!active && activeHover === item.name && (
+                    <motion.span
+                      layoutId="nav-hover-underline"
+                      initial={{ opacity: 0, scaleX: 0 }}
+                      animate={{ opacity: 1, scaleX: 1 }}
+                      exit={{ opacity: 0, scaleX: 0 }}
+                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-r from-orange-500/50 to-amber-400/50 rounded-full"
+                    />
+                  )}
+                </Link>
+              );
+            })}
 
             <div className="flex items-center gap-3 ml-4">
               <ThemeToggle />
@@ -131,22 +149,33 @@ export function Header() {
             className="md:hidden bg-[#0d0d1a]/95 backdrop-blur-2xl border-t border-white/[0.06] overflow-hidden"
           >
             <div className="container-custom mx-auto px-4 py-4 space-y-1">
-              {navigation.map((item, i) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block px-4 py-3 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/[0.06] rounded-xl font-medium transition-all duration-200 text-sm"
-                    onClick={() => setMobileMenuOpen(false)}
+              {navigation.map((item, i) => {
+                const active = isActive(item.href);
+                return (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 }}
                   >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        'block px-4 py-3 font-medium transition-all duration-200 text-sm rounded-xl',
+                        active
+                          ? 'text-orange-500 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-500/5'
+                          : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/[0.06]',
+                      )}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                      {active && (
+                        <span className="ml-2 inline-block w-1.5 h-1.5 rounded-full bg-orange-500" />
+                      )}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <div className="pt-3 pb-2">
                 <Link
                   href={RouteConstants.CONTACT}
