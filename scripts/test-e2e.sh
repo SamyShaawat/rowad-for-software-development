@@ -5,7 +5,7 @@
 set -e
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  🧪 Running E2E Tests (Playwright)"
+echo "  🧪 Running E2E Tests (Playwright) — http://localhost:3001"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 

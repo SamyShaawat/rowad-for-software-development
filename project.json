@@ -25,20 +25,20 @@
       "options": {
         "buildTarget": "rowad:build",
         "dev": true,
-        "port": 3000,
+        "port": 3001,
         "turbo": true
       },
       "configurations": {
         "development": {
           "buildTarget": "rowad:build:development",
           "dev": true,
-          "port": 3000,
+          "port": 3001,
           "turbo": true
         },
         "production": {
           "buildTarget": "rowad:build:production",
           "dev": false,
-          "port": 3000
+          "port": 3001
         }
       }
     },
