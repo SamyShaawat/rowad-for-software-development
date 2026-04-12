@@ -121,20 +121,20 @@ export function ClientsSection() {
                   >
                     <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/5 group-hover:to-amber-500/5 transition-colors duration-500 pointer-events-none" />
 
-                    {/* Logo container */}
-                    <div className="relative flex items-center justify-center w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-transparent dark:from-orange-500/15 dark:via-amber-500/10 dark:to-transparent border-2 border-orange-500/20 group-hover:border-orange-500/40 transition-all duration-500 shadow-lg shadow-orange-500/5">
-                      {/* Circular ring decoration */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-500/20 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    {/* Logo container — filled circle with no inner background */}
+                    <div className="relative flex items-center justify-center w-32 h-32 mx-auto mb-8">
+                      {/* Outer ring — filled gradient circle */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-500 via-amber-400 to-orange-600 group-hover:from-orange-400 group-hover:via-amber-300 group-hover:to-orange-500 transition-all duration-500 shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-105" />
 
-                      {/* Inner circle with subtle background for logo */}
-                      <div className="relative w-24 h-24 rounded-full overflow-hidden ring-2 ring-white dark:ring-white/10 shadow-inner bg-white dark:bg-white/[0.03]">
+                      {/* Inner white circle for logo */}
+                      <div className="relative w-[112px] h-[112px] rounded-full overflow-hidden">
                         <Image
                           priority
                           src={client.logo}
                           alt={client.name}
                           fill
-                          className="object-contain p-3 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                          sizes="96px"
+                          className="object-contain p-4 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                          sizes="112px"
                         />
                       </div>
                     </div>
@@ -155,15 +155,15 @@ export function ClientsSection() {
 
                       {/* Optional link out */}
                       {client.website && (
-                        <div className="mt-auto pt-4 border-t border-slate-100 dark:border-white/[0.06]">
+                        <div className="mt-auto pt-6 border-t border-slate-100 dark:border-white/[0.06] flex justify-center">
                           <a
                             href={client.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-slate-500 hover:text-orange-500 transition-colors duration-300"
+                            className="group/btn inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30 hover:scale-105 transition-all duration-300"
                           >
                             Visit Website
-                            <ArrowTopRightOnSquareIcon className="ml-2 w-4 h-4" />
+                            <ArrowTopRightOnSquareIcon className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                           </a>
                         </div>
                       )}
