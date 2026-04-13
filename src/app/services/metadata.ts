@@ -4,7 +4,7 @@ import { CompanyConstants } from '@constants';
 export const servicesMetadata: Metadata = {
   title: 'Our Services - Web Development, Mobile Apps, AI & Hosting | Rowad',
   description:
-    'Explore Rowad\'s comprehensive software development services: custom web development, mobile app development, AI chatbot solutions, digital marketing strategies, DevOps & deployment, and managed web hosting with 99.9% uptime guarantee.',
+    "Explore Rowad's comprehensive software development services: custom web development, mobile app development, AI chatbot solutions, digital marketing strategies, DevOps & deployment, and managed web hosting with 99.9% uptime guarantee.",
   keywords: [
     'rowad services',
     'web development services',

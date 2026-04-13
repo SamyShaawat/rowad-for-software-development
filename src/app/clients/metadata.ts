@@ -37,8 +37,7 @@ export const clientsMetadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Our Clients & Success Stories | Rowad',
-    description:
-      'Discover the industry leaders that trust Rowad for their digital transformation.',
+    description: 'Discover the industry leaders that trust Rowad for their digital transformation.',
     images: ['/images/RowadLogo/Rowad_Logo_Main.png'],
   },
   alternates: {
