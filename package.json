@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "nx serve rowad",
-    "build": "nx build rowad && bash scripts/generate-error-pages.sh",
+    "build": "nx build rowad && bash scripts/generate-error-pages.sh && bash scripts/generate-sitemap.sh",
     "build:errors": "bash scripts/generate-error-pages.sh",
     "start": "nx serve rowad --prod",
     "lint": "nx lint rowad",

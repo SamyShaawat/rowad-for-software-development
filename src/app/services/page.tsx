@@ -4,6 +4,9 @@ import Image from 'next/image';
 import { CheckCircleIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, ServicesConstants, CompanyConstants } from '@constants';
 import { ServiceType } from '@enums';
+import { servicesMetadata } from './metadata';
+
+export const metadata: Metadata = servicesMetadata;
 
 const detailedServices = [
   {
@@ -67,11 +70,6 @@ const detailedServices = [
     iconColor: 'text-violet-400',
   },
 ];
-
-export const metadata: Metadata = {
-  title: `Our Services | ${CompanyConstants.FULL_NAME}`,
-  description: ServicesConstants.SUBTITLE,
-};
 
 export default function ServicesPage() {
   return (

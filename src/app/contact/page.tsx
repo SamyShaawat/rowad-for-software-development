@@ -3,11 +3,9 @@ import Link from 'next/link';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, ContactConstants, CompanyConstants } from '@constants';
 import ContactForm from '@/features/contact/components/ContactForm';
+import { contactMetadata } from './metadata';
 
-export const metadata: Metadata = {
-  title: `Contact Us | ${CompanyConstants.FULL_NAME}`,
-  description: ContactConstants.SUBTITLE,
-};
+export const metadata: Metadata = contactMetadata;
 
 const contactInfo = [
   {

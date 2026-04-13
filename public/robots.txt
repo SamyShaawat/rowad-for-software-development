@@ -1,8 +1,61 @@
-# Allow all search engines to crawl the entire site
+# =============================================================================
+# robots.txt for Rowad for Software Development - https://rowad.com
+# =============================================================================
+# Last Updated: 2026-04-13
+# =============================================================================
+
+# ── Global Rules for All Crawlers ─────────────────────────────────────────────
 User-agent: *
+Allow: /
+
+# Disallow administrative and private paths
 Disallow: /private/
+Disallow: /admin/
 Disallow: /tmp/
 Disallow: /search/
+Disallow: /api/
+Disallow: /fonts/
+Disallow: /*?*
+Disallow: /*.json$
 
-# Specify the location of your sitemap
-Sitemap: https://rowad.com/sitemap.txt
+# ── Google Crawler Specific Rules ─────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
+
+# ── Bing Crawler Specific Rules ──────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
+
+# ── Social Media Crawlers ────────────────────────────────────────────────────
+User-agent: Twitterbot
+Allow: /images/
+
+User-agent: facebookexternalhit
+Allow: /images/
+
+User-agent: LinkedInBot
+Allow: /images/
+
+# ── AI/ML Crawlers (Allow responsible AI indexing) ──────────────────────────
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+# ── Crawl Delay (polite crawling) ────────────────────────────────────────────
+# Note: Google ignores crawl-delay, but Bing/Yandex respect it
+Crawl-delay: 1
+
+# ── Sitemap Location ─────────────────────────────────────────────────────────
+Sitemap: https://rowad.com/sitemap.xml

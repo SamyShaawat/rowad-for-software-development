@@ -18,11 +18,9 @@ import {
   CommonConstants,
   HeroConstants,
 } from '@constants';
+import { aboutMetadata } from './metadata';
 
-export const metadata: Metadata = {
-  title: `About Us | ${CompanyConstants.FULL_NAME}`,
-  description: `Learn about ${CompanyConstants.NAME} - your trusted partner in digital transformation.`,
-};
+export const metadata: Metadata = aboutMetadata;
 
 const values = [
   {
