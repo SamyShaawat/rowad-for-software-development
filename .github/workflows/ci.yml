@@ -167,8 +167,42 @@ jobs:
           key: ${{ secrets.CPANEL_SSH_KEY }}
           port: 22
           script: |
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "  ⚠️  WARNING: This will OVERWRITE existing files!"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            
+            DEPLOYPATH=/home/irowad/public_html
+            BACKUP_PATH=/home/irowad/backups
+            TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+            
+            # Create backup of existing files
+            echo "📦 Creating backup of existing files..."
+            mkdir -p $BACKUP_PATH
+            if [ -d "$DEPLOYPATH" ] && [ "$(ls -A $DEPLOYPATH 2>/dev/null)" ]; then
+              cp -R $DEPLOYPATH $BACKUP_PATH/public_html_backup_$TIMESTAMP
+              echo "✅ Backup created: $BACKUP_PATH/public_html_backup_$TIMESTAMP"
+              echo ""
+              echo "📋 Backed up files:"
+              ls -la $DEPLOYPATH | head -15
+              echo ""
+            else
+              echo "⚠️  public_html is empty, no backup needed"
+            fi
+            
+            # Deploy new files
+            echo "🚀 Deploying new files..."
             cd /home/irowad/repositories/rowad-for-software-development
             git fetch origin deploy
             git reset --hard origin/deploy
-            cp -R * /home/irowad/public_html/
-            echo "✅ Deployed to /home/irowad/public_html/"
+            
+            # Copy with overwrite
+            cp -Rf * $DEPLOYPATH/
+            cp -Rf .[a-zA-Z0-9]* $DEPLOYPATH/ 2>/dev/null || true
+            
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "  ✅ Deployment Complete!"
+            echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+            echo "📍 Location: $DEPLOYPATH"
+            echo "💾 Backup: $BACKUP_PATH/public_html_backup_$TIMESTAMP"
+            echo "⚠️  Old files were OVERWRITTEN by new deployment"
+            echo "🌐 Visit: https://rowad.com"

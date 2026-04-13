@@ -1,5 +1,10 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/irowad/public_html
-    - /bin/cp -R * $DEPLOYPATH/
-    - echo "Deployed successfully to $DEPLOYPATH"
+    - echo "🚀 Starting deployment to $DEPLOYPATH"
+    - echo "📦 Deploying new files (will overwrite existing files)..."
+    - /bin/cp -Rf * $DEPLOYPATH/
+    - /bin/cp -Rf .[a-zA-Z0-9]* $DEPLOYPATH/ 2>/dev/null || true
+    - echo "✅ Deployed successfully to $DEPLOYPATH"
+    - echo "⚠️  NOTE: Old files in $DEPLOYPATH were overwritten"
+    - echo "Deployment completed at $(date)"
