@@ -15,8 +15,8 @@ export default function ClientsPage() {
             Our {CompanyConstants.NAME} Clients
           </h1>
           <p className="text-lg text-slate-300 text-center max-w-3xl mx-auto mb-12">
-            We&apos;re proud to partner with leading organizations across industries,
-            delivering exceptional software solutions that drive business growth and innovation.
+            We&apos;re proud to partner with leading organizations across industries, delivering
+            exceptional software solutions that drive business growth and innovation.
           </p>
         </div>
         <ClientsSection />
