@@ -1,5 +1,54 @@
-# Security Headers (migrated from next.config.js)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#  Rowad - Professional .htaccess for Next.js Static Export
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ── Enable Rewrite Engine ──
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ── Force HTTPS ──
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ── Force www (optional - uncomment if needed) ──
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
+
+  # ── Remove trailing slash (except for directories) ──
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [L,R=301]
+
+  # ── Remove .html extension from URLs ──
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # ── Handle Next.js Static Routes ──
+  # If request doesn't match a file, try to serve index.html from that directory
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/_next/
+  RewriteCond %{REQUEST_URI} !^/images/
+  RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json|map)$ [NC]
+  RewriteRule ^(.*)$ /$1/index.html [L]
+
+  # ── Fallback to 404.html if route doesn't exist ──
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/404\.html$
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html !-f
+  RewriteRule ^ /404.html [L]
+</IfModule>
+
+# ── Security Headers ──
 <IfModule mod_headers.c>
+  # Remove server signature
+  Header unset Server
+  Header unset X-Powered-By
+
+  # Security headers
   Header set X-DNS-Prefetch-Control "on"
   Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
   Header set X-XSS-Protection "1; mode=block"
@@ -7,21 +56,110 @@
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "origin-when-cross-origin"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+  
+  # Content Security Policy (adjust as needed)
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google.com; frame-src https://www.google.com;"
 </IfModule>
 
-# Enable compression
+# ── Enable Compression ──
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml font/ttf font/otf application/font-sfnt
 </IfModule>
 
-# Cache static assets
+# ── Browser Caching ──
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType image/avif "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
+
+  # HTML - no cache
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS and JS - 1 month
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
+
+  # Images - 1 year
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Fonts - 1 year
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType application/font-sfnt "access plus 1 year"
+
+  # Next.js static assets - 1 year (immutable)
+  ExpiresByType application/json "access plus 1 year"
 </IfModule>
 
-# Prevent directory listing
+# ── Cache Control Headers ──
+<IfModule mod_headers.c>
+  # HTML - no cache
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # CSS, JS - 1 month
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # Images - 1 year
+  <FilesMatch "\.(png|jpg|jpeg|gif|svg|webp|avif|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Fonts - 1 year
+  <FilesMatch "\.(ttf|otf|woff|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Next.js static files (_next) - 1 year with immutable
+  <IfModule mod_rewrite.c>
+    <LocationMatch "^/_next/static/">
+      Header set Cache-Control "public, max-age=31536000, immutable"
+    </LocationMatch>
+  </IfModule>
+</IfModule>
+
+# ── Prevent Directory Listing ──
 Options -Indexes
+
+# ── Server Signature ──
+ServerSignature Off
+
+# ── Error Pages ──
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+ErrorDocument 403 /403.html
+
+# ── File Protection ──
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|orig|psd|sh|sql|sw[op])|~)$">
+  Require all denied
+</FilesMatch>
+
+# ── MIME Types ──
+<IfModule mod_mime.c>
+  AddType application/javascript js mjs
+  AddType text/css css
+  AddType image/svg+xml svg svgz
+  AddEncoding gzip svgz
+  AddType font/woff woff
+  AddType font/woff2 woff2
+  AddType application/manifest+json webmanifest
+</IfModule>
+
+# ── Gzip Compression for SVG ──
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
