@@ -27,7 +27,6 @@ const services = [
       'Design system and build in short sprints',
       'Launch, measure and improve',
     ],
-    stack: ['Next.js', 'React', 'TypeScript', 'Node.js', 'Tailwind CSS'],
   },
   {
     id: 'mobile',
@@ -45,7 +44,6 @@ const services = [
       'Build with Flutter or React Native',
       'Store release, analytics and updates',
     ],
-    stack: ['Flutter', 'React Native', 'Expo', 'Firebase', 'REST / GraphQL'],
   },
   {
     id: 'erp',
@@ -63,7 +61,6 @@ const services = [
       'Configure, customise and test with your data',
       'Migrate, train your team and go live',
     ],
-    stack: ['Odoo', 'Python', 'PostgreSQL', 'REST APIs', 'Reporting'],
   },
   {
     id: 'agents',
@@ -81,7 +78,6 @@ const services = [
       'Prototype on your data and measure accuracy',
       'Deploy with guardrails and monitoring',
     ],
-    stack: ['LLMs', 'RAG', 'LangChain', 'Python', 'Vector databases'],
   },
   {
     id: 'chatbot',
@@ -99,7 +95,6 @@ const services = [
       'Build, connect to CRM and test in both languages',
       'Launch and improve from conversation data',
     ],
-    stack: ['WhatsApp Business API', 'OpenAI', 'Dialogflow', 'Node.js'],
   },
   {
     id: 'cloud',
@@ -117,7 +112,6 @@ const services = [
       'Automate build, test and deploy',
       'Monitor, back up and improve',
     ],
-    stack: ['AWS', 'Cloudflare', 'Docker', 'GitHub Actions', 'Linux'],
   },
 ];
 
@@ -187,7 +181,7 @@ export default function ServicesPage() {
               <ServiceIllustration id={s.id} className={i % 2 === 1 ? 'lg:order-1' : ''} />
             </div>
 
-            <div className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-slate-200 dark:bg-slate-700 md:grid-cols-3">
+            <div className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-slate-200 dark:bg-slate-700 md:grid-cols-2">
               <div className="bg-white p-6 dark:bg-[#161616]">
                 <h3 className="text-sm text-slate-600 dark:text-slate-300">What we build</h3>
                 <ul className="mt-4 space-y-3 text-sm text-slate-900 dark:text-slate-100">
@@ -214,19 +208,6 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ol>
-              </div>
-              <div className="bg-white p-6 dark:bg-[#161616]">
-                <h3 className="text-sm text-slate-600 dark:text-slate-300">Built with</h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {s.stack.map((t) => (
-                    <li
-                      key={t}
-                      className="rounded-full bg-slate-100 px-3 py-1 font-mono text-xs text-slate-800 dark:bg-slate-800 dark:text-slate-200"
-                    >
-                      {t}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </div>
