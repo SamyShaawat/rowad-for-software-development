@@ -1,6 +1,11 @@
 # Rowad - .htaccess for Next.js Static Export on cPanel
 # Minimal safe configuration
 
+# Folders such as ar/ share a name with a page (ar.html). Without this Apache redirects
+# /ar to /ar/ (a folder with no index) before the rewrite rules can serve ar.html.
+# Safe because directory listing is off (Options -Indexes below).
+DirectorySlash Off
+
 # Enable Rewrite Engine
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -15,6 +20,14 @@
   RewriteRule ^our-services/?$ /services [L,R=301]
   RewriteRule ^contact-us/?$ /contact [L,R=301]
   RewriteRule ^our-clients/?$ /clients [L,R=301]
+
+  # /ar/ is a folder with no index page: send it to the Arabic home page /ar
+  RewriteRule ^ar/$ /ar [L,R=301]
+
+  # /ar is also a folder (the Arabic pages), so serve the page ar.html that shares its name
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*[^/])$ $1.html [L]
 
   # Remove trailing slash
   RewriteCond %{REQUEST_FILENAME} !-d
