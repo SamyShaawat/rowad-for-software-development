@@ -25,7 +25,7 @@ test.describe('Contact Form', () => {
 
   test('renders the contact page with hero and form sections', async ({ page }) => {
     // Hero section
-    await expect(page.getByRole('heading', { name: /get in touch/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /tell us what you want to build/i })).toBeVisible();
 
     // Form section title
     await expect(page.getByRole('heading', { name: /send us a message/i })).toBeVisible();
@@ -186,6 +186,6 @@ test.describe('Contact Form', () => {
     });
 
     // Page should still render
-    await expect(page.getByRole('heading', { name: /get in touch/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /tell us what you want to build/i })).toBeVisible();
   });
 });

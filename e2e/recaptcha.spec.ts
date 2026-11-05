@@ -26,7 +26,7 @@ test.describe('reCAPTCHA Integration', () => {
   test('contact page renders regardless of reCAPTCHA configuration', async ({ page }) => {
     // Page should always render - either with form or fallback
     const hasHeading = await page
-      .getByRole('heading', { name: /get in touch/i })
+      .getByRole('heading', { name: /tell us what you want to build/i })
       .isVisible();
     expect(hasHeading).toBe(true);
   });
@@ -116,7 +116,7 @@ test.describe('reCAPTCHA Integration', () => {
 
     // Page should still be accessible
     await expect(
-      page.getByRole('heading', { name: /get in touch/i }),
+      page.getByRole('heading', { name: /tell us what you want to build/i }),
     ).toBeVisible();
   });
 
@@ -133,7 +133,7 @@ test.describe('reCAPTCHA Integration', () => {
     });
 
     await expect(
-      page.getByRole('heading', { name: /get in touch/i }),
+      page.getByRole('heading', { name: /tell us what you want to build/i }),
     ).toBeVisible();
   });
 });

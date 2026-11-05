@@ -64,7 +64,7 @@ test.describe('Navigation', () => {
     await contactLink.click();
 
     await expect(page).toHaveURL(/.*\/contact/);
-    await expect(page.getByRole('heading', { name: /get in touch/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /tell us what you want to build/i })).toBeVisible();
   });
 
   // ---------------------------------------------------------------------------
