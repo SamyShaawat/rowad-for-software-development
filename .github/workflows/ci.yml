@@ -2,9 +2,8 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main, dev]
-  pull_request:
-    branches: [main, dev]
+    branches: [dev] # runs when a PR is merged into dev, not on PR pushes
+  workflow_dispatch: # manual re-run
 
 jobs:
   # ──────────────────────────────────────────────
