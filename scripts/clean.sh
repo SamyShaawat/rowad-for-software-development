@@ -12,8 +12,8 @@ echo ""
 echo "Removing dist/..."
 rm -rf dist/
 
-echo "Removing .next/..."
-rm -rf .next/
+echo "Removing .next/ and .next-dev/..."
+rm -rf .next/ .next-dev/
 
 echo "Removing build/..."
 rm -rf build/
