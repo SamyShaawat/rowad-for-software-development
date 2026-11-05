@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: `%s | ${CompanyConstants.NAME}`,
   },
   description:
-    'Rowad for Software Development is a software team in Alexandria, Egypt. We design, build and run websites, mobile apps, ERP systems, AI agents and chatbots, with reliable hosting and DevOps behind them.',
+    'Rowad for Software Development is a software company in Alexandria, Egypt. We design, build and run custom software for businesses, from idea to production.',
   keywords: [
     'rowad',
     'rowad software',
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     siteName: 'Rowad for Software Development',
     title: 'Rowad - Software Development Company | Web, Mobile, ERP & AI',
     description:
-      'Software team in Alexandria, Egypt building websites, mobile apps, ERP systems, AI agents and chatbots, with hosting and DevOps.',
+      'Software company in Alexandria, Egypt designing, building and running custom software, from idea to production.',
     images: [
       {
         url: '/images/brand/og-image.jpg',
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Rowad - Software Development Company',
     description:
-      'Software team in Alexandria, Egypt building websites, mobile apps, ERP systems, AI agents and chatbots, with hosting and DevOps.',
+      'Software company in Alexandria, Egypt designing, building and running custom software, from idea to production.',
     images: ['/images/brand/og-image.jpg'],
     creator: '@rowad',
     site: '@rowad',
@@ -146,7 +146,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         },
         image: 'https://rowad.com/images/brand/og-image.jpg',
         description:
-          'Rowad for Software Development is a software team in Alexandria, Egypt. We design, build and run websites, mobile apps, ERP systems, AI agents and chatbots, with reliable hosting and DevOps behind them.',
+          'Rowad for Software Development is a software company in Alexandria, Egypt. We design, build and run custom software for businesses, from idea to production.',
         foundingDate: '2020',
         numberOfEmployees: {
           '@type': 'QuantitativeValue',
@@ -196,7 +196,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         url: 'https://rowad.com',
         name: 'Rowad for Software Development',
         description:
-          'Software team in Alexandria, Egypt building websites, mobile apps, ERP systems, AI agents and chatbots, with hosting and DevOps.',
+          'Software company in Alexandria, Egypt designing, building and running custom software, from idea to production.',
         publisher: {
           '@id': 'https://rowad.com/#organization',
         },

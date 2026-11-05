@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { CompanyConstants } from '@constants';
 
 export const aboutMetadata: Metadata = {
-  title: 'About Rowad - A Software Team for Web, Mobile, ERP & AI',
+  title: 'About Rowad - A Software Team in Alexandria, Egypt',
   description:
-    'Meet Rowad for Software Development, a software team in Alexandria, Egypt. We build and run websites, mobile apps, ERP systems, AI agents and chatbots for companies across the region.',
+    'Meet Rowad for Software Development, a software team in Alexandria, Egypt. We design, build and run custom software for companies across the region.',
   keywords: [
     'about rowad',
     'rowad company',
@@ -19,9 +19,8 @@ export const aboutMetadata: Metadata = {
     'software developers alexandria',
   ],
   openGraph: {
-    title: 'About Rowad - A Software Team for Web, Mobile, ERP & AI',
-    description:
-      'Meet the Alexandria software team behind websites, mobile apps, ERP systems, AI agents and chatbots.',
+    title: 'About Rowad - A Software Team in Alexandria, Egypt',
+    description: 'Meet the Alexandria software team that takes your idea to production.',
     url: 'https://rowad.com/about',
     siteName: 'Rowad for Software Development',
     type: 'website',
