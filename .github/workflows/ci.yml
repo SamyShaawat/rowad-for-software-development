@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, dev]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 
 jobs:
   # ──────────────────────────────────────────────
@@ -109,12 +109,12 @@ jobs:
           retention-days: 30
 
   # ──────────────────────────────────────────────
-  # 3. Deploy to cPanel via Git (only on main push)
+  # 3. Deploy to cPanel over SSH (only on dev push)
   # ──────────────────────────────────────────────
   deploy:
     needs: [quality-checks, e2e-tests]
     runs-on: ubuntu-24.04
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.quality-checks.result == 'success'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev' && needs.quality-checks.result == 'success'
 
     steps:
       - name: Checkout code
@@ -142,32 +142,20 @@ jobs:
         env:
           NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
 
-      - name: Copy deployment config to build output
-        run: |
-          cp .cpanel.yml build/.cpanel.yml
-          cp .htaccess build/.htaccess
-          cp .env.example build/.env.example 2>/dev/null || true
+      - name: Copy .htaccess to build output
+        run: cp .htaccess build/.htaccess
 
-      - name: Deploy to cPanel deploy branch
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          personal_token: ${{ secrets.GH_PAT }}
-          publish_dir: ./build
-          publish_branch: deploy
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'deploy: ${{ github.event.head_commit.message }}'
-          keep_files: true
+      - name: Deploy build to cPanel over SSH
+        env:
+          SSH_KEY: ${{ secrets.CPANEL_SSH_KEY }}
+          HOST: ${{ secrets.CPANEL_HOST }}
+          USER_: ${{ secrets.CPANEL_USER }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
+          # no --delete: keeps server-only files (mailer env, etc.)
+          rsync -rltz -e "ssh -i ~/.ssh/id_deploy" build/ "$USER_@$HOST:public_html/"
 
       - name: Deployment Summary
-        run: |
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo "  ✅ Deployment Complete!"
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo "📍 Build pushed to 'deploy' branch"
-          echo "🔄 cPanel Git Version Control will auto-pull"
-          echo "🌐 Visit: https://rowad.com"
-          echo ""
-          echo "⚠️  IMPORTANT: Make sure cPanel Git Version"
-          echo "    Control is configured to auto-deploy"
-          echo "    from the 'deploy' branch!"
+        run: echo "Deployed dev to https://rowad.com via rsync (public_html/)"
