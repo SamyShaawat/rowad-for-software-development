@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { RouteConstants, CompanyConstants, StatsConstants } from '@constants';
+import { RouteConstants, CompanyConstants } from '@constants';
+import { getDictionary } from '@/i18n';
 import { CTASection } from '@/components/sections/CTASection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { PageHero } from '@/components/ui/PageHero';
@@ -33,7 +34,7 @@ export default function AboutPage() {
 
       <section className="border-b border-slate-200 dark:border-white/10">
         <dl className="container-custom mx-auto grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-slate-200 dark:bg-white/10 lg:grid-cols-4">
-          {StatsConstants.map((s) => (
+          {getDictionary('en').stats.map((s) => (
             <div key={s.label} className="bg-white px-6 py-10 dark:bg-[#161616]">
               <dd className="text-4xl font-extrabold text-slate-900 dark:text-white">{s.value}</dd>
               <dt className="mt-1 text-sm text-slate-500">{s.label}</dt>
