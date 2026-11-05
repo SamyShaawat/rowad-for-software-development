@@ -47,7 +47,7 @@ jobs:
         run: pnpm build
 
   # ──────────────────────────────────────────────
-  # 2. E2E Tests with Playwright (runs on PRs + pushes)
+  # 2. E2E Tests with Playwright against the built site (a failure blocks deploy)
   # ──────────────────────────────────────────────
   e2e-tests:
     needs: quality-checks
@@ -79,8 +79,10 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps chromium
 
-      - name: Run E2E tests
-        continue-on-error: true
+      - name: Build static export (the files that get deployed)
+        run: pnpm build
+
+      - name: Run E2E tests against the built site
         run: BASE_URL=http://localhost:3001 pnpm playwright test
 
       - name: Upload test results
@@ -105,7 +107,7 @@ jobs:
   deploy:
     needs: [quality-checks, e2e-tests]
     runs-on: ubuntu-24.04
-    if: github.event_name == 'push' && github.ref == 'refs/heads/dev' && needs.quality-checks.result == 'success'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev' && needs.quality-checks.result == 'success' && needs.e2e-tests.result == 'success'
 
     steps:
       - name: Checkout code

@@ -78,9 +78,10 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
+  /* CI tests the real static export (what gets deployed); locally use the dev server.
+     Run `pnpm build` first when CI=1 is set. */
   webServer: {
-    command: 'pnpm dev -- --port 3001',
+    command: process.env.CI ? 'pnpm dlx serve@14.2.4 --listen 3001 build' : 'pnpm dev -- --port 3001',
     url: 'http://localhost:3001',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
