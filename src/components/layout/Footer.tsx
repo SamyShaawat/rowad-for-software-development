@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
+import { CurrentYear } from '@/components/ui/CurrentYear';
 import { motion } from 'framer-motion';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, CompanyConstants, FooterConstants, NavigationConstants } from '@constants';
@@ -61,8 +62,6 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="relative bg-white dark:bg-[#161616] border-t border-slate-200 dark:border-white/[0.06] overflow-hidden transition-colors pt-20">
       <div className="relative container-custom mx-auto px-4 sm:px-6 lg:px-8 pb-8">
@@ -207,7 +206,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col items-center md:items-start">
               <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-left">
-                © {currentYear} {CompanyConstants.FULL_NAME}
+                © <CurrentYear /> {CompanyConstants.FULL_NAME}
               </p>
             </div>
 
