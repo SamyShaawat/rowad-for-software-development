@@ -154,6 +154,8 @@ jobs:
           install -m 700 -d ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy && chmod 600 ~/.ssh/id_deploy
           ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
+          # prints the PUBLIC key so it can be matched against cPanel > SSH Access > Authorize
+          ssh-keygen -y -f ~/.ssh/id_deploy || { echo "CPANEL_SSH_KEY is not a valid unencrypted private key"; exit 1; }
           # no --delete: keeps server-only files (mailer env, etc.)
           rsync -rltz -e "ssh -i ~/.ssh/id_deploy" build/ "$USER_@$HOST:public_html/"
 
