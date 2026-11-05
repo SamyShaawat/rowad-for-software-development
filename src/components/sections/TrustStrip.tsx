@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ClientsConstants } from '@constants';
 
 /** Client ids to keep out of the home strip (they still appear on the Clients page). */
@@ -17,17 +18,22 @@ function Row({ hidden }: { hidden?: boolean }) {
       aria-hidden={hidden || undefined}
     >
       {clients.map((c) => (
-        <li
-          key={c.id}
-          className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-[#ffffff] p-5"
-        >
-          <Image
-            src={c.logo}
-            alt={hidden ? '' : c.name}
-            width={120}
-            height={64}
-            className="max-h-14 w-auto max-w-full object-contain"
-          />
+        <li key={c.id}>
+          <Link
+            href={`/clients#client-${c.id}`}
+            tabIndex={hidden ? -1 : undefined}
+            aria-label={hidden ? undefined : `${c.name}: view client`}
+            title={c.name}
+            className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-[#ffffff] p-5 transition-all duration-150 hover:-translate-y-0.5 hover:border-orange-500 hover:shadow-md"
+          >
+            <Image
+              src={c.logo}
+              alt={hidden ? '' : c.name}
+              width={120}
+              height={64}
+              className="max-h-14 w-auto max-w-full object-contain"
+            />
+          </Link>
         </li>
       ))}
     </ul>
