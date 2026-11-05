@@ -92,7 +92,7 @@
       "cache": false
     },
     "clean": {
-      "command": "rm -rf dist/rowad .next playwright-report/ test-results/",
+      "command": "rm -rf dist/rowad .next .next-dev playwright-report/ test-results/",
       "outputs": [],
       "cache": false
     },
