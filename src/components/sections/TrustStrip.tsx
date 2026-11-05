@@ -14,7 +14,7 @@ const clients = ClientsConstants.filter((c) => !HIDDEN_IDS.includes(c.id));
 function Row({ hidden }: { hidden?: boolean }) {
   return (
     <ul
-      className="flex min-w-[calc(100vw+8rem)] shrink-0 items-center justify-around gap-4 pr-4"
+      className="flex min-w-[calc(100vw+8rem)] shrink-0 items-center justify-around gap-4 pe-4"
       aria-hidden={hidden || undefined}
     >
       {clients.map((c) => (

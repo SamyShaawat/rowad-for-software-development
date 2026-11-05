@@ -66,7 +66,7 @@ export function ClientsSection() {
     <section className="section-padding bg-white dark:bg-[#161616]" aria-label="Client list">
       <div className="container-custom mx-auto">
         <div className="relative mb-12 max-w-xl">
-          <MagnifyingGlassIcon className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+          <MagnifyingGlassIcon className="pointer-events-none absolute start-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
           <input
             type="search"
             aria-label="Search clients"
@@ -76,7 +76,7 @@ export function ClientsSection() {
               setQuery(e.target.value);
               setPage(1);
             }}
-            className="w-full rounded-lg border border-slate-300 bg-white py-3 pl-11 pr-4 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:outline-none focus:ring-1 focus:ring-orange-600 dark:border-white/15 dark:bg-white/[0.03] dark:text-white"
+            className="w-full rounded-lg border border-slate-300 bg-white py-3 ps-11 pe-4 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:outline-none focus:ring-1 focus:ring-orange-600 dark:border-white/15 dark:bg-white/[0.03] dark:text-white"
           />
         </div>
 
@@ -87,7 +87,7 @@ export function ClientsSection() {
                 key={c.id}
                 id={`client-${c.id}`}
                 className={cn(
-                  'glass-card flex scroll-mt-28 flex-col p-6 text-center transition-shadow sm:text-left',
+                  'glass-card flex scroll-mt-28 flex-col p-6 text-center transition-shadow sm:text-start',
                   focusedId === c.id && 'ring-2 ring-orange-500'
                 )}
               >
@@ -115,7 +115,7 @@ export function ClientsSection() {
                     className="btn-ghost mt-5 text-sm"
                   >
                     Visit website
-                    <ArrowTopRightOnSquareIcon className="ml-1.5 h-4 w-4" />
+                    <ArrowTopRightOnSquareIcon className="ms-1.5 h-4 w-4" />
                   </a>
                 )}
               </li>
@@ -134,7 +134,7 @@ export function ClientsSection() {
               disabled={page === 1}
               onClick={() => setPage((p) => Math.max(1, p - 1))}
             >
-              <ChevronLeftIcon className="h-5 w-5" />
+              <ChevronLeftIcon className="h-5 w-5 rtl:rotate-180" />
             </button>
             {Array.from({ length: totalPages }, (_, i) => (
               <button
@@ -158,7 +158,7 @@ export function ClientsSection() {
               disabled={page === totalPages}
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             >
-              <ChevronRightIcon className="h-5 w-5" />
+              <ChevronRightIcon className="h-5 w-5 rtl:rotate-180" />
             </button>
           </nav>
         )}

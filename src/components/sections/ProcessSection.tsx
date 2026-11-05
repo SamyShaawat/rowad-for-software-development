@@ -57,7 +57,7 @@ export function ProcessSection() {
           {/* the route (desktop) */}
           <span
             aria-hidden="true"
-            className="absolute left-[12.5%] right-[12.5%] top-9 hidden h-1.5 rounded-full bg-blue-200 dark:bg-slate-600 md:block"
+            className="absolute start-[12.5%] end-[12.5%] top-9 hidden h-1.5 rounded-full bg-blue-200 dark:bg-slate-600 md:block"
           />
           {stops.map(({ title, text, Icon, color }) => (
             <li

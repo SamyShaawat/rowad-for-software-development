@@ -198,6 +198,18 @@ body {
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
+/* In right-to-left the track starts at the right edge, so it must scroll the other way. */
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+[dir='rtl'] .animate-marquee {
+  animation-name: marquee-rtl;
+}
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
 }
