@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
 import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
-import Script from 'next/script';
-import './globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
+import '../globals.css';
 import { CompanyConstants } from '@constants';
-import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { RootDocument } from '@/components/layout/RootDocument';
 
 const plex = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -338,31 +335,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${plex.variable} ${plexMono.variable}`} suppressHydrationWarning>
-      <head>
-        {/* JSON-LD Structured Data */}
-        <Script
-          id="json-ld-organization"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body
-        className="font-sans antialiased bg-slate-50 text-slate-900 dark:bg-dark-400 dark:text-slate-200 transition-colors duration-300"
-        suppressHydrationWarning
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <RootDocument locale="en" fontClass={`${plex.variable} ${plexMono.variable}`} jsonLd={jsonLd}>
+      {children}
+    </RootDocument>
   );
 }

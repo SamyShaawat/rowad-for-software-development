@@ -5,25 +5,8 @@ import { Logo } from '@/components/ui/Logo';
 import { CurrentYear } from '@/components/ui/CurrentYear';
 import { motion } from 'framer-motion';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { RouteConstants, CompanyConstants, FooterConstants, NavigationConstants } from '@constants';
-
-const navLinks = {
-  company: [
-    { name: NavigationConstants.HOME, href: RouteConstants.HOME },
-    { name: NavigationConstants.ABOUT_US, href: RouteConstants.ABOUT },
-    { name: NavigationConstants.SERVICES, href: RouteConstants.SERVICES },
-    { name: NavigationConstants.CLIENTS, href: RouteConstants.CLIENTS },
-    { name: NavigationConstants.CONTACT, href: RouteConstants.CONTACT },
-  ],
-  services: [
-    { name: 'Websites & web apps', href: `${RouteConstants.SERVICES}#web` },
-    { name: 'Mobile apps', href: `${RouteConstants.SERVICES}#mobile` },
-    { name: 'ERP systems', href: `${RouteConstants.SERVICES}#erp` },
-    { name: 'AI agents', href: `${RouteConstants.SERVICES}#agents` },
-    { name: 'Chatbots', href: `${RouteConstants.SERVICES}#chatbot` },
-    { name: 'Hosting & DevOps', href: `${RouteConstants.SERVICES}#cloud` },
-  ],
-};
+import { RouteConstants, CompanyConstants } from '@constants';
+import { getDictionary, localePath, type Locale } from '@/i18n';
 
 const socialLinks = [
   {
@@ -61,19 +44,38 @@ const socialLinks = [
   },
 ];
 
-export function Footer() {
+export function Footer({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale);
+  const navLinks = {
+    company: [
+      { name: t.nav.home, href: localePath(locale, RouteConstants.HOME) },
+      { name: t.nav.about, href: localePath(locale, RouteConstants.ABOUT) },
+      { name: t.nav.services, href: localePath(locale, RouteConstants.SERVICES) },
+      { name: t.nav.clients, href: localePath(locale, RouteConstants.CLIENTS) },
+      { name: t.nav.contact, href: localePath(locale, RouteConstants.CONTACT) },
+    ],
+    services: [
+      { name: 'Websites & web apps', href: `${localePath(locale, RouteConstants.SERVICES)}#web` },
+      { name: 'Mobile apps', href: `${localePath(locale, RouteConstants.SERVICES)}#mobile` },
+      { name: 'ERP systems', href: `${localePath(locale, RouteConstants.SERVICES)}#erp` },
+      { name: 'AI agents', href: `${localePath(locale, RouteConstants.SERVICES)}#agents` },
+      { name: 'Chatbots', href: `${localePath(locale, RouteConstants.SERVICES)}#chatbot` },
+      { name: 'Hosting & DevOps', href: `${localePath(locale, RouteConstants.SERVICES)}#cloud` },
+    ],
+  };
+
   return (
     <footer className="relative bg-white dark:bg-[#161616] border-t border-slate-200 dark:border-white/[0.06] overflow-hidden transition-colors pt-20">
       <div className="relative container-custom mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* ── Brand & Description ── */}
           <div className="lg:col-span-1 space-y-8">
-            <Link href={RouteConstants.HOME} aria-label="Rowad home">
+            <Link href={localePath(locale, RouteConstants.HOME)} aria-label={t.a11y.homeLabel}>
               <Logo />
             </Link>
 
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed transition-colors">
-              {FooterConstants.DESCRIPTION}
+              {t.footer.description}
             </p>
 
             <div className="flex gap-4">
@@ -104,7 +106,7 @@ export function Footer() {
                     href={item.href}
                     className="text-slate-600 dark:text-slate-400 hover:text-orange-500 text-sm font-medium transition-all flex items-center group"
                   >
-                    <span className="w-0 group-hover:w-4 h-0.5 bg-orange-500 mr-0 group-hover:mr-2 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                    <span className="w-0 group-hover:w-4 h-0.5 bg-orange-500 me-0 group-hover:me-2 opacity-0 group-hover:opacity-100 transition-all duration-300" />
                     {item.name}
                   </Link>
                 </li>
@@ -130,13 +132,13 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="w-full pl-4 pr-12 py-3 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] rounded-xl text-sm text-slate-900 dark:text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 transition-all shadow-sm"
+                className="w-full ps-4 pe-12 py-3 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] rounded-xl text-sm text-slate-900 dark:text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 transition-all shadow-sm"
               />
               <button
                 type="submit"
-                className="absolute right-1.5 top-1.5 bottom-1.5 px-3 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center justify-center"
+                className="absolute end-1.5 top-1.5 bottom-1.5 px-3 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center justify-center"
               >
-                <ArrowRightIcon className="w-4 h-4" />
+                <ArrowRightIcon className="w-4 h-4 rtl:rotate-180" />
               </button>
             </form>
           </div>
@@ -205,7 +207,7 @@ export function Footer() {
         <div className="border-t border-slate-200 dark:border-white/[0.06] pt-10 mt-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col items-center md:items-start">
-              <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-left">
+              <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-start">
                 © <CurrentYear /> {CompanyConstants.FULL_NAME}
               </p>
             </div>

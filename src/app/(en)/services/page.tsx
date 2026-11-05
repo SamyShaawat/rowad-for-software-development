@@ -181,7 +181,7 @@ export default function ServicesPage() {
                 <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">{s.text}</p>
                 <Link href={RouteConstants.CONTACT} className="btn-primary mt-8">
                   Start a project
-                  <ArrowRightIcon className="h-4 w-4" />
+                  <ArrowRightIcon className="h-4 w-4 rtl:rotate-180" />
                 </Link>
               </div>
               <ServiceIllustration id={s.id} className={i % 2 === 1 ? 'lg:order-1' : ''} />

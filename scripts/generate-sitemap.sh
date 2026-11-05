@@ -90,7 +90,8 @@ for html_file in $(find "$BUILD_DIR" -name "*.html" -not -name "404.html" -not -
   dir_path=$(dirname "$rel_path")
 
   # Skip if it's a known route or in special directories
-  if [[ "$dir_path" == "." ]] || [[ "$dir_path" == *"_"* ]] || [[ "$dir_path" == "images"* ]] || [[ "$dir_path" == "fonts"* ]]; then
+  if [[ "$dir_path" == "." ]] || [[ "$dir_path" == *"_"* ]] || [[ "$dir_path" == "images"* ]] || [[ "$dir_path" == "fonts"* ]] || [[ "$dir_path" == "ar"* ]]; then
+    # ar/* = Arabic pages: hidden (noindex) until the owner approves; add them here when they go public
     continue
   fi
 

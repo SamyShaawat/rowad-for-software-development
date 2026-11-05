@@ -23,7 +23,7 @@ export function CTASection() {
             href={RouteConstants.CONTACT}
             className="inline-flex items-center rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-orange-400"
           >
-            Book a free consultation <ArrowRightIcon className="ml-2 h-4 w-4" />
+            Book a free consultation <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
           </Link>
           <a
             href={CompanyConstants.WHATSAPP}
