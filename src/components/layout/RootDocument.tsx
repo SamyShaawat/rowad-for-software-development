@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
@@ -19,10 +18,10 @@ export function RootDocument({ locale, fontClass, jsonLd, children }: RootDocume
     <html lang={locale} dir={dirOf(locale)} className={fontClass} suppressHydrationWarning>
       <head>
         {jsonLd && (
-          <Script
+          // Plain tag in the HTML, so crawlers and validators that do not run JavaScript still see it.
+          <script
             id="json-ld-organization"
             type="application/ld+json"
-            strategy="beforeInteractive"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
         )}
