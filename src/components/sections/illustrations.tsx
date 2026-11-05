@@ -4,6 +4,7 @@
  * one brand accent (orange) plus functional colour (green = success, blue = info).
  * Each service illustration shows HOW the service works, not a generic icon.
  */
+import { getDictionary, type Locale } from '@/i18n';
 import type { ReactNode } from 'react';
 import { cn } from '@lib/utils';
 
@@ -109,7 +110,7 @@ function Canvas({ id, label, children }: { id: string; label: string; children: 
       viewBox="0 0 480 320"
       role="img"
       aria-label={label}
-      className="h-full w-full text-slate-900 dark:text-slate-100"
+      className="h-full w-full text-slate-900 [direction:ltr] dark:text-slate-100"
     >
       <defs>
         <pattern id={`g-${id}`} width="16" height="16" patternUnits="userSpaceOnUse">
@@ -135,11 +136,14 @@ function Canvas({ id, label, children }: { id: string; label: string; children: 
 const arrow = (id: string) => ({ markerEnd: `url(#a-${id})` });
 
 /* ---------- 1. WEB: one site, every screen, measured quality ---------- */
-function WebArt() {
+function WebArt({ label }: { label?: string }) {
   return (
     <Canvas
       id="web"
-      label="Responsive website shown on desktop and phone with a perfect performance score and a passing build"
+      label={
+        label ??
+        'Responsive website shown on desktop and phone with a perfect performance score and a passing build'
+      }
     >
       <Box x={24} y={24} w={296} h={196} />
       <Line x1={24} y1={52} x2={320} y2={52} />
@@ -243,11 +247,14 @@ function Phone({
     </g>
   );
 }
-function MobileArt() {
+function MobileArt({ label }: { label?: string }) {
   return (
     <Canvas
       id="mob"
-      label="Three mobile app screens with a push notification and iOS and Android store badges"
+      label={
+        label ??
+        'Three mobile app screens with a push notification and iOS and Android store badges'
+      }
     >
       <Phone x={60} y={76} rot={-8}>
         <Box x={68} y={94} w={80} h={96} tone={layer} stroke="none" />
@@ -364,7 +371,7 @@ const erpRight: [string, string][] = [
 ];
 const flow = ['Quote', 'Order', 'Delivery', 'Invoice', 'Payment'];
 
-function ErpArt() {
+function ErpArt({ label }: { label?: string }) {
   const chip = (label: string, color: string, x: number, y: number, side: 'l' | 'r') => (
     <g key={label}>
       <Line
@@ -385,7 +392,10 @@ function ErpArt() {
   return (
     <Canvas
       id="erp"
-      label="An ERP system: a quote-to-cash flow across the top, a central dashboard, and sales, CRM, purchasing, inventory, accounting, HR, production and reports all connected to one shared database"
+      label={
+        label ??
+        'An ERP system: a quote-to-cash flow across the top, a central dashboard, and sales, CRM, purchasing, inventory, accounting, HR, production and reports all connected to one shared database'
+      }
     >
       {/* quote to cash */}
       {flow.map((f, i) => {
@@ -517,13 +527,16 @@ function ErpArt() {
 }
 
 /* ---------- 4. AI AGENT: perceive, reason, act, with a human gate ---------- */
-function AgentArt() {
+function AgentArt({ label }: { label?: string }) {
   const inputs = ['Documents', 'Email', 'Database'];
   const tools = ['ERP API', 'CRM', 'Calendar'];
   return (
     <Canvas
       id="ag"
-      label="An AI agent reads documents, email and databases, reasons, calls tools like your ERP and CRM, with human approval before it acts"
+      label={
+        label ??
+        'An AI agent reads documents, email and databases, reasons, calls tools like your ERP and CRM, with human approval before it acts'
+      }
     >
       {inputs.map((t, i) => (
         <g key={t}>
@@ -598,7 +611,7 @@ function AgentArt() {
 }
 
 /* ---------- 5. CHATBOT: every channel in, handover to humans out ---------- */
-function ChatbotArt() {
+function ChatbotArt({ label }: { label?: string }) {
   const channels: [string, number, string, ReactNode][] = [
     ['WhatsApp', 66, '#25d366', <path key="w" d="M-9 8 L-7 2 A10 10 0 1 1 -2 7 Z" fill="#fff" />],
     ['Messenger', 160, BLUE, <path key="m" d="M-3 -9 L-8 2 H-2 L-4 10 L7 -2 H1 Z" fill="#fff" />],
@@ -614,7 +627,10 @@ function ChatbotArt() {
   return (
     <Canvas
       id="cb"
-      label="A chatbot receiving Arabic and English messages from WhatsApp, Messenger and web chat, answering, and handing over to a human agent while updating the CRM"
+      label={
+        label ??
+        'A chatbot receiving Arabic and English messages from WhatsApp, Messenger and web chat, answering, and handing over to a human agent while updating the CRM'
+      }
     >
       {channels.map(([name, y, color, glyph]) => (
         <g key={name}>
@@ -685,12 +701,15 @@ function ChatbotArt() {
 }
 
 /* ---------- 6. HOSTING & DEVOPS: ship safely, watch always ---------- */
-function CloudArt() {
+function CloudArt({ label }: { label?: string }) {
   const stages = ['Commit', 'Build', 'Test', 'Deploy', 'Live'];
   return (
     <Canvas
       id="do"
-      label="A deployment pipeline from commit to live, with staging and production servers and a monitoring panel showing 99.9 percent uptime"
+      label={
+        label ??
+        'A deployment pipeline from commit to live, with staging and production servers and a monitoring panel showing 99.9 percent uptime'
+      }
     >
       {stages.map((s, i) => {
         const x = 16 + i * 96;
@@ -780,7 +799,7 @@ function CloudArt() {
   );
 }
 
-const art: Record<string, () => ReactNode> = {
+const art: Record<string, (props: { label?: string }) => ReactNode> = {
   web: WebArt,
   mobile: MobileArt,
   erp: ErpArt,
@@ -790,8 +809,21 @@ const art: Record<string, () => ReactNode> = {
 };
 
 /** Large service diagram on a Carbon layer background. */
-export function ServiceIllustration({ id, className }: { id: string; className?: string }) {
+export function ServiceIllustration({
+  id,
+  className,
+  locale = 'en',
+}: {
+  id: string;
+  className?: string;
+  locale?: Locale;
+}) {
   const Art = art[id] ?? CloudArt;
+  // Only the accessible description is translated for now; the drawn labels are replaced in the redesign.
+  const label =
+    getDictionary(locale).illustrations[
+      id as keyof ReturnType<typeof getDictionary>['illustrations']
+    ];
   return (
     <div
       className={cn(
@@ -799,16 +831,16 @@ export function ServiceIllustration({ id, className }: { id: string; className?:
         className
       )}
     >
-      <Art />
+      <Art label={label} />
     </div>
   );
 }
 
 /** Hero: three product surfaces — web/ERP dashboard, phone app, AI chat. */
-export function HeroVisual() {
+export function HeroVisual({ locale = 'en' }: { locale?: Locale }) {
   return (
     <div className="mx-auto w-full max-w-[600px]">
-      <ServiceIllustration id="erp" className="border-0" />
+      <ServiceIllustration id="erp" className="border-0" locale={locale} />
     </div>
   );
 }

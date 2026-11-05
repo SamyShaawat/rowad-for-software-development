@@ -8,9 +8,6 @@
 
 export { RouteConstants } from './routes.constants';
 export { CompanyConstants } from './company.constants';
-export { HeroConstants } from './hero.constants';
-export { StatsConstants } from './stats.constants';
-export { ServicesConstants } from './services.constants';
 export { AboutConstants } from './about.constants';
 export { ContactConstants } from './contact.constants';
 export { TestimonialsConstants } from './testimonials.constants';

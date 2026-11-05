@@ -58,6 +58,34 @@ test.describe('Languages', () => {
     }
   });
 
+  test('Arabic home is fully translated and stays inside /ar', async ({ page }) => {
+    await page.goto('/ar');
+    await expect(page.locator('h1')).toHaveText('فريق واحد لكل برمجياتك.');
+    const main = page.locator('main');
+    for (const english of [
+      'One team for every',
+      'Book a free consultation',
+      'Explore services',
+      'How we work',
+    ]) {
+      await expect(main).not.toContainText(english);
+    }
+    const hrefs = await main
+      .locator('a[href^="/"]')
+      .evaluateAll((els) => els.map((e) => e.getAttribute('href') ?? ''));
+    expect(hrefs.length).toBeGreaterThan(5);
+    expect(hrefs.filter((h) => !h.startsWith('/ar'))).toEqual([]);
+  });
+
+  test('English home keeps its text and links', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('h1')).toHaveText('One team for every piece of your software.');
+    await expect(page.getByRole('link', { name: 'Explore services' })).toHaveAttribute(
+      'href',
+      '/services'
+    );
+  });
+
   test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);
