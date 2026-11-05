@@ -11,7 +11,7 @@ jobs:
   # 1. Quality Checks (runs on PRs + pushes)
   # ──────────────────────────────────────────────
   quality-checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     strategy:
       matrix:
@@ -52,7 +52,7 @@ jobs:
   # ──────────────────────────────────────────────
   e2e-tests:
     needs: quality-checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: always() && needs.quality-checks.result == 'success'
 
     strategy:
@@ -113,7 +113,7 @@ jobs:
   # ──────────────────────────────────────────────
   deploy:
     needs: [quality-checks, e2e-tests]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.quality-checks.result == 'success'
 
     steps:
