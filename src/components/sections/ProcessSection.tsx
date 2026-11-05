@@ -12,7 +12,7 @@ const steps = [
 export function ProcessSection() {
   return (
     <section
-      className="section-padding border-y border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.02]"
+      className="section-padding border-y border-blue-100 bg-blue-50 dark:border-slate-700 dark:bg-blue-400/[0.06]"
       aria-labelledby="process-title"
     >
       <div className="container-custom mx-auto">
@@ -25,8 +25,8 @@ export function ProcessSection() {
         </h2>
         <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map(([n, t, d]) => (
-            <li key={n} className="border-t-2 border-slate-900 pt-5 dark:border-orange-500">
-              <span className="font-mono text-sm text-orange-700 dark:text-orange-400">{n}</span>
+            <li key={n} className="border-t-2 border-blue-600 pt-5 dark:border-blue-400">
+              <span className="font-mono text-sm text-blue-700 dark:text-blue-300">{n}</span>
               <h3 className="mt-2 text-lg font-bold text-slate-900 dark:text-white">{t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{d}</p>
             </li>

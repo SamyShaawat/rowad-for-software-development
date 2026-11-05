@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        white: '#fbfbf9', // off-white: easier on the eyes than #fff
         // Carbon gray ramp (gray 10 -> gray 100) mapped onto slate so every existing class follows
         slate: {
           50: '#f4f4f4', 100: '#e8e8e8', 200: '#e0e0e0', 300: '#c6c6c6', 400: '#a8a8a8',

@@ -9,6 +9,7 @@ import {
   Squares2X2Icon,
 } from '@heroicons/react/24/outline';
 import { RouteConstants } from '@constants';
+import { serviceTheme } from './service-theme';
 
 const services = [
   {
@@ -81,7 +82,11 @@ export function ServicesSection() {
                 href={`${RouteConstants.SERVICES}#${id}`}
                 className="group relative flex min-h-[280px] flex-col p-6 pb-16 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
               >
-                <Icon className="h-8 w-8 text-orange-600 dark:text-orange-400" strokeWidth={1.5} />
+                <span
+                  className={`grid h-12 w-12 place-items-center rounded-full ${serviceTheme[id].icon}`}
+                >
+                  <Icon className="h-6 w-6" strokeWidth={1.6} />
+                </span>
                 <h3 className="mt-8 text-xl text-slate-900 dark:text-white">{name}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                   {text}

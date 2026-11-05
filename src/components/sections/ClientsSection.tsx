@@ -55,7 +55,7 @@ export function ClientsSection() {
           <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {visible.map((c) => (
               <li key={c.id} className="glass-card flex flex-col p-6 text-center sm:text-left">
-                <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full border border-slate-200 bg-white p-6">
+                <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full border border-slate-200 bg-[#ffffff] p-6">
                   <Image
                     src={c.logo}
                     alt={c.name}

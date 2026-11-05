@@ -5,6 +5,7 @@ import { CTASection } from '@/components/sections/CTASection';
 import { ServiceIllustration } from '@/components/sections/illustrations';
 import { PageHero } from '@/components/ui/PageHero';
 import { RouteConstants } from '@constants';
+import { serviceTheme } from '@/components/sections/service-theme';
 import { servicesMetadata } from './metadata';
 
 export const metadata: Metadata = servicesMetadata;
@@ -150,7 +151,7 @@ export default function ServicesPage() {
             <li key={s.id} className="shrink-0">
               <a
                 href={`#${s.id}`}
-                className="block border-b-2 border-transparent px-4 py-3.5 text-sm text-slate-600 transition-colors hover:border-orange-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+                className={`block border-b-2 border-transparent px-4 py-3.5 text-sm text-slate-600 transition-colors ${serviceTheme[s.id].tab} hover:text-slate-900 dark:text-slate-300 dark:hover:text-white`}
               >
                 {s.name}
               </a>
@@ -164,13 +165,13 @@ export default function ServicesPage() {
           key={s.id}
           id={s.id}
           className={`scroll-mt-28 border-b border-slate-200 px-4 py-16 dark:border-slate-700 sm:px-6 lg:px-8 lg:py-24 ${
-            i % 2 === 0 ? 'bg-white dark:bg-[#161616]' : 'bg-slate-50 dark:bg-[#1c1c1c]'
+            i % 2 === 0 ? 'bg-white dark:bg-[#161616]' : serviceTheme[s.id].tint
           }`}
         >
           <div className="container-custom mx-auto">
             <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
               <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-                <p className="font-mono text-sm text-orange-600 dark:text-orange-400">
+                <p className={`font-mono text-sm ${serviceTheme[s.id].text}`}>
                   {String(i + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
                 </p>
                 <h2 className="mt-3 text-3xl leading-tight text-slate-900 dark:text-white sm:text-4xl">

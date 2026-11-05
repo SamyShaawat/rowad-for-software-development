@@ -5,7 +5,7 @@ import { HeroVisual } from './illustrations';
 
 export function HeroSection() {
   return (
-    <section className="border-b border-slate-200 bg-slate-50 pt-12 dark:border-slate-700 dark:bg-[#161616]">
+    <section className="border-b border-slate-200 bg-orange-50 pt-12 dark:border-slate-700 dark:bg-[#161616]">
       <div className="container-custom mx-auto grid items-center gap-12 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:pb-24 lg:pt-24">
         <div>
           <h1 className="text-5xl leading-[1.1] text-slate-900 dark:text-white lg:text-6xl">
