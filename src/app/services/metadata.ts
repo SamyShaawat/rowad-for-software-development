@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CompanyConstants } from '@constants';
 
 export const servicesMetadata: Metadata = {
-  title: 'Our Services - Web Development, Mobile Apps, AI & Hosting | Rowad',
+  title: 'Our Services - Web, Mobile Apps, Odoo ERP, AI Agents & Chatbots',
   description:
     "Explore Rowad's comprehensive software development services: custom web development, mobile app development, AI chatbot solutions, digital marketing strategies, DevOps & deployment, and managed web hosting with 99.9% uptime guarantee.",
   keywords: [
@@ -24,7 +24,7 @@ export const servicesMetadata: Metadata = {
     'deployment automation',
   ],
   openGraph: {
-    title: 'Our Services - Web Development, Mobile Apps, AI & Hosting',
+    title: 'Our Services - Web, Mobile Apps, Odoo ERP, AI Agents & Chatbots',
     description:
       "Explore Rowad's comprehensive software development services: custom web development, mobile apps, AI chatbots, digital marketing, DevOps, and managed web hosting.",
     url: 'https://rowad.com/services',
@@ -32,11 +32,11 @@ export const servicesMetadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/RowadLogo/Rowad_Logo_Main.png',
+        url: '/images/brand/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Rowad Software Development Services',
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -45,7 +45,7 @@ export const servicesMetadata: Metadata = {
     title: 'Our Services - Web, Mobile, AI & Hosting Solutions',
     description:
       "Explore Rowad's comprehensive software development services and digital solutions.",
-    images: ['/images/RowadLogo/Rowad_Logo_Main.png'],
+    images: ['/images/brand/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://rowad.com/services',

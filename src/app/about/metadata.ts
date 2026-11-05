@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CompanyConstants } from '@constants';
 
 export const aboutMetadata: Metadata = {
-  title: 'About Rowad - Our Story, Mission & Core Values | Software Development Company',
+  title: 'About Rowad - Our Story, Mission & Core Values',
   description:
     'Discover Rowad for Software Development - your trusted partner in digital transformation. Learn about our mission, vision, core values, and the team behind our innovative software solutions in Alexandria, Egypt.',
   keywords: [
@@ -26,11 +26,11 @@ export const aboutMetadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/RowadLogo/Rowad_Logo_Main.png',
+        url: '/images/brand/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'About Rowad - Software Development Company',
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -39,7 +39,7 @@ export const aboutMetadata: Metadata = {
     title: 'About Rowad - Our Story & Mission',
     description:
       'Discover Rowad for Software Development - your trusted partner in digital transformation.',
-    images: ['/images/RowadLogo/Rowad_Logo_Main.png'],
+    images: ['/images/brand/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://rowad.com/about',

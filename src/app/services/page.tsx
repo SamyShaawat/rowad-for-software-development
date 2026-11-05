@@ -1,210 +1,153 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
-import { CheckCircleIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { RouteConstants, ServicesConstants, CompanyConstants } from '@constants';
-import { ServiceType } from '@enums';
+import { CheckIcon } from '@heroicons/react/24/outline';
+import { CTASection } from '@/components/sections/CTASection';
+import { ServiceArt } from '@/components/sections/illustrations';
+import { PageHero } from '@/components/ui/PageHero';
+import { RouteConstants } from '@constants';
 import { servicesMetadata } from './metadata';
 
 export const metadata: Metadata = servicesMetadata;
 
-const detailedServices = [
+const services = [
   {
-    id: ServiceType.DEVELOPMENT,
-    name: 'Website Development',
-    tagline: 'Custom-built for growth',
-    description:
-      'We create modern, responsive, and blazing-fast standalone websites and entire web applications. Whether it’s an immersive landing page or a complex SaaS platform, we prioritize performance, seamless UX, and robust architecture.',
-    icon: '/images/servicesImages/WebDevelopment.png',
+    id: 'web',
+    name: 'Websites & Web Apps',
+    text: 'Company sites, e-commerce stores, customer portals and SaaS platforms that load fast, rank well and convert.',
     features: [
-      'Responsive & Mobile-First Design',
-      'E-Commerce & Payment Integrations',
-      'Headless CMS & Content Strategy',
-      'Progressive Web Apps (PWA)',
-      'Legacy System Modernization',
-      'SEO & Conversion Optimization',
+      'Responsive, mobile-first design',
+      'E-commerce and payments',
+      'Headless CMS',
+      'PWA and SEO',
+      'Legacy modernisation',
     ],
-    technologies: ['Next.js', 'React', 'TypeScript', 'Node.js', 'TailwindCSS'],
-    gradient: 'from-orange-500/20 to-amber-500/10',
-    borderColor: 'border-orange-500/20',
-    iconColor: 'text-orange-400',
+    tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'Tailwind'],
   },
   {
-    id: ServiceType.HOSTING,
-    name: 'Web Hosting & Cloud',
-    tagline: 'Reliable & secure infrastructure',
-    description:
-      'Stop worrying about downtime. We provide premium, managed hosting solutions powered by industry-leading cloud providers. We handle scaling, security patches, and monitoring so you can focus on building your business.',
-    icon: '/images/servicesImages/WebHosting.png',
+    id: 'mobile',
+    name: 'Mobile Apps',
+    text: 'iOS and Android apps from a single codebase, from first prototype to store release and updates.',
     features: [
-      '99.9% Uptime Guarantee',
-      'Automated Daily Backups',
-      'Free SSL Certificates',
-      'DDoS Protection & WAF',
-      'Global CDN for Fast Load Times',
-      '24/7 Proactive Monitoring',
+      'iOS and Android',
+      'Offline mode and sync',
+      'Push notifications',
+      'Payments and maps',
+      'Store submission',
     ],
-    technologies: ['AWS', 'DigitalOcean', 'Cloudflare', 'Linux', 'Vercel'],
-    gradient: 'from-blue-500/20 to-cyan-500/10',
-    borderColor: 'border-blue-500/20',
-    iconColor: 'text-blue-400',
+    tech: ['Flutter', 'React Native', 'Expo', 'Firebase'],
   },
   {
-    id: ServiceType.DEPLOYMENT,
-    name: 'Deployment & DevOps',
-    tagline: 'Ship faster, break nothing',
-    description:
-      'Continuous Integration and Deployment (CI/CD) isn’t just a buzzword—it’s the backbone of modern software. We build robust deployment pipelines that enable your team to release updates securely, automatically, and with zero downtime.',
-    icon: '/images/servicesImages/MobileDevelopment1.png',
+    id: 'erp',
+    name: 'Odoo ERP',
+    text: 'We implement and customise Odoo so sales, inventory, accounting, HR and manufacturing run in one system.',
     features: [
-      'Automated CI/CD Pipelines',
-      'Zero Downtime Deployments',
-      'Automated Testing Workflows',
-      'Infrastructure as Code (IaC)',
-      'Multi-Environment Setup (Staging/Prod)',
-      'Automated Rollbacks on Error',
+      'Implementation and data migration',
+      'Custom modules',
+      'Integrations (e-commerce, payments, APIs)',
+      'Reports and dashboards',
+      'User training and support',
     ],
-    technologies: ['GitHub Actions', 'Docker', 'Kubernetes', 'Terraform'],
-    gradient: 'from-violet-500/20 to-purple-500/10',
-    borderColor: 'border-violet-500/20',
-    iconColor: 'text-violet-400',
+    tech: ['Odoo 17/18', 'Python', 'PostgreSQL', 'QWeb', 'REST APIs'],
+  },
+  {
+    id: 'agents',
+    name: 'AI Agents',
+    text: 'Agents that read your documents and systems, call your tools and complete real work like triage, quoting and reporting.',
+    features: [
+      'Retrieval over your own data',
+      'Tool use and workflow automation',
+      'Human approval steps',
+      'Evaluation and monitoring',
+      'Private deployment options',
+    ],
+    tech: ['LLMs', 'RAG', 'LangChain', 'Python', 'Vector DBs'],
+  },
+  {
+    id: 'chatbot',
+    name: 'Chatbots',
+    text: 'Arabic and English bots that answer customers, capture leads and hand over to your team when needed.',
+    features: [
+      'WhatsApp, web and Messenger',
+      'Arabic and English',
+      'CRM and Odoo integration',
+      'Live-agent handover',
+      'Conversation analytics',
+    ],
+    tech: ['WhatsApp Business API', 'OpenAI', 'Dialogflow', 'Node.js'],
+  },
+  {
+    id: 'cloud',
+    name: 'Hosting & DevOps',
+    text: 'Managed hosting, deployment pipelines and monitoring so releases are routine and downtime is rare.',
+    features: [
+      '99.9% uptime hosting',
+      'Daily backups and SSL',
+      'CI/CD pipelines',
+      'Zero-downtime releases',
+      '24/7 monitoring',
+    ],
+    tech: ['AWS', 'Cloudflare', 'Docker', 'GitHub Actions'],
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="pt-20 bg-[#0a0a0f]">
-      {/* ── Header Section ── */}
-      <section className="relative overflow-hidden py-24 md:py-32 border-b border-white/[0.06]">
-        {/* Abstract background blur */}
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 to-amber-500/5 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <>
+      <PageHero eyebrow="Services" title="Web, mobile, ERP and AI from one team.">
+        Pick one service or combine them. Most clients start with one and add the next as they grow.
+      </PageHero>
 
-        <div className="container-custom mx-auto px-4 relative z-10 text-center">
-          <span className="section-badge mb-6 tracking-widest text-orange-400 border-orange-500/20 bg-orange-500/10">
-            Our Offerings
-          </span>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-8">
-            Comprehensive <br className="hidden sm:block" />
-            <span className="gradient-text italic">Digital Solutions</span>
-          </h1>
-          <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
-            {ServicesConstants.SUBTITLE}
-          </p>
-        </div>
-      </section>
-
-      {/* ── Services Detail List ── */}
-      <div className="bg-[#0d0d1a]">
-        {detailedServices.map((service, index) => (
+      <div className="bg-white dark:bg-[#0B1220]">
+        {services.map((s) => (
           <section
-            key={service.id}
-            id={service.id}
-            className={`section-padding border-b border-white/[0.04] ${
-              index % 2 !== 0 ? 'bg-white/[0.02]' : ''
-            }`}
+            key={s.id}
+            id={s.id}
+            className="border-b border-slate-200 px-4 py-16 dark:border-white/10 sm:px-6 lg:px-8 lg:py-20"
           >
-            <div className="container-custom mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                {/* Visual Side */}
-                <div className={`relative ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                  <div
-                    className={`relative aspect-[4/3] sm:aspect-square w-full rounded-[3rem] p-1 bg-gradient-to-br ${service.gradient} shadow-2xl overflow-hidden glass-card border ${service.borderColor} group`}
-                  >
-                    <div className="absolute inset-0 bg-[#0d0d1a] m-[6px] rounded-[calc(3rem-6px)] z-0" />
-                    <div className="absolute inset-0 flex items-center justify-center flex-col z-10">
-                      {/* Decorative rings */}
-                      <div className="absolute w-[80%] h-[80%] rounded-full border border-white/[0.03] animate-spin-slow pointer-events-none" />
-                      <div className="absolute w-[60%] h-[60%] rounded-full border border-white/[0.05] animate-[spin_15s_linear_reverse_infinite] pointer-events-none" />
-
-                      <div
-                        className={`w-36 h-36 md:w-48 md:h-48 rounded-3xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center overflow-hidden transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-2`}
-                      >
-                        <Image
-                          src={service.icon}
-                          alt={service.name}
-                          width={120}
-                          height={120}
-                          className="object-contain p-4 drop-shadow-xl"
-                        />
-                      </div>
-                    </div>
-                  </div>
+            <div className="container-custom mx-auto grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+              <div>
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-white/10 dark:bg-white/[0.03]">
+                  <ServiceArt id={s.id} />
                 </div>
-
-                {/* Content Side */}
-                <div className={`${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                  <span
-                    className={`inline-flex items-center text-xs font-bold uppercase tracking-widest ${service.iconColor} mb-4`}
-                  >
-                    {service.tagline}
-                  </span>
-
-                  <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-                    {service.name}
-                  </h2>
-                  <p className="text-slate-400 text-base sm:text-lg leading-relaxed mb-10">
-                    {service.description}
-                  </p>
-
-                  <div className="mb-10">
-                    <h3 className="text-white font-heading font-bold text-xl mb-6 flex items-center border-b border-white/[0.08] pb-3">
-                      Key Capabilities
-                    </h3>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <CheckCircleIcon
-                            className={`w-5 h-5 ${service.iconColor} flex-shrink-0 mt-0.5`}
-                          />
-                          <span className="text-slate-300 text-sm leading-snug">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h3 className="text-white font-heading font-bold text-lg mb-4">Powered By</h3>
-                    <div className="flex flex-wrap gap-2.5">
-                      {service.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-4 py-2 bg-white/[0.04] border border-white/[0.08] text-slate-300 rounded-full text-xs font-semibold hover:bg-white/[0.08] transition-colors"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <h2 className="mt-6 text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+                  {s.name}
+                </h2>
+                <p className="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">{s.text}</p>
+              </div>
+              <div className="lg:pt-2">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  What you get
+                </h3>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {s.features.map((f) => (
+                    <li key={f} className="flex gap-3 text-slate-800 dark:text-slate-200">
+                      <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-orange-600" />
+                      <span className="text-sm leading-snug">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  Built with
+                </h3>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {s.tech.map((t) => (
+                    <li
+                      key={t}
+                      className="rounded-md border border-slate-300 px-3 py-1 font-mono text-xs text-slate-700 dark:border-white/15 dark:text-slate-300"
+                    >
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+                <Link href={RouteConstants.CONTACT} className="btn-ghost mt-8">
+                  Ask about {s.name.toLowerCase()} →
+                </Link>
               </div>
             </div>
           </section>
         ))}
       </div>
-
-      {/* ── Bottom CTA ── */}
-      <section className="section-padding relative overflow-hidden text-center bg-[#0a0a0f]">
-        <div className="absolute inset-0 bg-hero-gradient opacity-30 pointer-events-none" />
-        <div className="container-custom mx-auto relative z-10 py-12">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
-            Let&apos;s discuss your project and architect the perfect digital solution for your
-            business goals.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <Link href={RouteConstants.CONTACT} className="btn-primary group">
-              Contact Us Today
-              <ArrowRightIcon className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link href={RouteConstants.ABOUT} className="btn-secondary">
-              Learn More About Us
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      <CTASection />
+    </>
   );
 }

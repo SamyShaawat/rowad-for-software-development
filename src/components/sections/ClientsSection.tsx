@@ -1,232 +1,130 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   ArrowTopRightOnSquareIcon,
   MagnifyingGlassIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@heroicons/react/24/outline';
-import { ClientsConstants, CompanyConstants } from '@constants';
-import type { Client } from '@types';
+import { ClientsConstants } from '@constants';
 import { cn } from '@lib/utils';
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.02 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, scale: 0.95, y: 20 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.15, ease: 'easeOut' } },
-};
 
 const ITEMS_PER_PAGE = 6;
 
+const pageBtn =
+  'grid h-10 w-10 place-items-center rounded-lg border border-slate-300 text-sm font-medium text-slate-700 transition-colors hover:border-slate-900 disabled:opacity-30 dark:border-white/15 dark:text-slate-300 dark:hover:border-white';
+
 export function ClientsSection() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
 
-  // Filter clients based on search only
-  const filteredClients = useMemo(() => {
-    return ClientsConstants.filter((client) => {
-      const matchesSearch =
-        client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        client.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        client.category.toLowerCase().includes(searchQuery.toLowerCase());
+  const filtered = useMemo(() => {
+    const q = query.toLowerCase();
+    return ClientsConstants.filter(
+      (c) =>
+        c.name.toLowerCase().includes(q) ||
+        c.description.toLowerCase().includes(q) ||
+        c.category.toLowerCase().includes(q)
+    );
+  }, [query]);
 
-      return matchesSearch;
-    });
-  }, [searchQuery]);
-
-  // Paginate filtered clients
-  const totalPages = Math.ceil(filteredClients.length / ITEMS_PER_PAGE);
-  const paginatedClients = useMemo(() => {
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    return filteredClients.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-  }, [filteredClients, currentPage]);
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-    setCurrentPage(1);
-  };
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+  const visible = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   return (
-    <section className="relative section-padding bg-white dark:bg-[#0d0d1a] overflow-hidden min-h-screen transition-colors">
-      <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-orange-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-blue-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="relative container-custom mx-auto px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.15 }}
-          className="text-center mb-12 max-w-3xl mx-auto"
-        >
-          <span className="section-badge mb-4">Our Network</span>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Trusted by Industry <span className="gradient-text">Leaders</span>
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed">
-            We are proud to have partnered with these outstanding organizations, delivering tailored
-            digital solutions that drive their success and future growth.
-          </p>
-        </motion.div>
-
-        {/* Filter Controls (Search Only) */}
-        <div className="max-w-2xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="relative"
-          >
-            <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <MagnifyingGlassIcon className="h-5 w-5 text-slate-500 group-focus-within:text-orange-500 transition-colors" />
-              </div>
-              <input
-                type="text"
-                placeholder="Search clients by name, industry or description..."
-                value={searchQuery}
-                onChange={handleSearch}
-                className="w-full pl-11 pr-4 py-4 bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08] rounded-2xl text-slate-900 dark:text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 focus:bg-white/[0.04] transition-all shadow-sm"
-              />
-            </div>
-          </motion.div>
+    <section className="section-padding bg-white dark:bg-[#0B1220]" aria-label="Client list">
+      <div className="container-custom mx-auto">
+        <div className="relative mb-12 max-w-xl">
+          <MagnifyingGlassIcon className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+          <input
+            type="search"
+            aria-label="Search clients"
+            placeholder="Search by name or industry"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setPage(1);
+            }}
+            className="w-full rounded-lg border border-slate-300 bg-white py-3 pl-11 pr-4 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:outline-none focus:ring-1 focus:ring-orange-600 dark:border-white/15 dark:bg-white/[0.03] dark:text-white"
+          />
         </div>
 
-        {/* Clients Grid */}
-        <div className="min-h-[400px]">
-          <AnimatePresence mode="wait">
-            {paginatedClients.length > 0 ? (
-              <motion.div
-                key={`grid-\${currentPage}-\${searchQuery}`}
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit={{ opacity: 0, y: -10, transition: { duration: 0.1 } }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto"
-              >
-                {paginatedClients.map((client) => (
-                  <motion.div
-                    key={client.id}
-                    variants={cardVariants}
-                    whileHover={{ y: -6 }}
-                    className="group relative flex flex-col p-6 sm:p-8 rounded-[2rem] glass-card border border-slate-200 dark:border-white/[0.06] hover:border-orange-500/30 transition-all duration-500 bg-gradient-to-br from-white to-slate-50 dark:from-[#0d0d1a] dark:to-white/[0.01]"
+        {visible.length > 0 ? (
+          <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {visible.map((c) => (
+              <li key={c.id} className="glass-card flex flex-col p-6">
+                <div className="flex h-24 items-center justify-center rounded-lg border border-slate-200 bg-white p-3">
+                  <Image
+                    src={c.logo}
+                    alt={c.name}
+                    width={160}
+                    height={72}
+                    className="max-h-[72px] w-auto object-contain"
+                  />
+                </div>
+                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-orange-700 dark:text-orange-400">
+                  {c.category}
+                </p>
+                <h3 className="mt-1 text-lg font-bold text-slate-900 dark:text-white">{c.name}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                  {c.description}
+                </p>
+                {c.website && (
+                  <a
+                    href={c.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost mt-5 text-sm"
                   >
-                    <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-orange-500/0 to-amber-500/0 group-hover:from-orange-500/5 group-hover:to-amber-500/5 transition-colors duration-500 pointer-events-none" />
+                    Visit website
+                    <ArrowTopRightOnSquareIcon className="ml-1.5 h-4 w-4" />
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="py-16 text-center text-slate-500">No clients match your search.</p>
+        )}
 
-                    {/* Logo container — filled circle with no inner background */}
-                    <div className="relative flex items-center justify-center w-32 h-32 mx-auto mb-8">
-                      {/* Outer ring — filled gradient circle */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-500 via-amber-400 to-orange-600 group-hover:from-orange-400 group-hover:via-amber-300 group-hover:to-orange-500 transition-all duration-500 shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 group-hover:scale-105" />
-
-                      {/* Inner white circle for logo */}
-                      <div className="relative w-[112px] h-[112px] rounded-full overflow-hidden">
-                        <Image
-                          priority
-                          src={client.logo}
-                          alt={client.name}
-                          fill
-                          className="object-contain p-4 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                          sizes="112px"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 flex flex-col">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500 px-2 py-1 rounded bg-orange-500/10 border border-orange-500/20">
-                          {client.category}
-                        </span>
-                      </div>
-                      <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-orange-500 transition-colors duration-300">
-                        {client.name}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1">
-                        {client.description}
-                      </p>
-
-                      {/* Optional link out */}
-                      {client.website && (
-                        <div className="mt-auto pt-6 border-t border-slate-100 dark:border-white/[0.06] flex justify-center">
-                          <a
-                            href={client.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group/btn inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-semibold shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30 hover:scale-105 transition-all duration-300"
-                          >
-                            Visit Website
-                            <ArrowTopRightOnSquareIcon className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="flex flex-col items-center justify-center h-64 text-center"
-              >
-                <MagnifyingGlassIcon className="h-12 w-12 text-slate-600 mb-4" />
-                <h3 className="text-xl font-bold text-slate-700 dark:text-slate-300 mb-2">
-                  No clients found
-                </h3>
-                <p className="text-slate-500">Try adjusting your search criteria.</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Pagination Controls */}
         {totalPages > 1 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex items-center justify-center gap-4 mt-16"
-          >
+          <nav className="mt-12 flex items-center gap-2" aria-label="Pagination">
             <button
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-              className="p-2 rounded-xl bg-slate-100 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] text-slate-900 dark:text-white disabled:opacity-30 hover:bg-orange-500/10 hover:border-orange-500/30 transition-all"
+              type="button"
+              aria-label="Previous page"
+              className={pageBtn}
+              disabled={page === 1}
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
             >
               <ChevronLeftIcon className="h-5 w-5" />
             </button>
-
-            <div className="flex gap-2">
-              {[...Array(totalPages)].map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentPage(i + 1)}
-                  className={cn(
-                    'w-10 h-10 rounded-xl font-medium text-sm transition-all duration-300',
-                    currentPage === i + 1
-                      ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-[0_0_15px_rgba(249,115,22,0.3)]'
-                      : 'bg-slate-100 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] text-slate-600 dark:text-slate-400 hover:text-orange-500'
-                  )}
-                >
-                  {i + 1}
-                </button>
-              ))}
-            </div>
-
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-current={page === i + 1 ? 'page' : undefined}
+                onClick={() => setPage(i + 1)}
+                className={cn(
+                  pageBtn,
+                  page === i + 1 &&
+                    '!border-slate-900 bg-slate-900 text-white dark:!border-orange-500 dark:bg-orange-500 dark:text-slate-950'
+                )}
+              >
+                {i + 1}
+              </button>
+            ))}
             <button
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-              className="p-2 rounded-xl bg-slate-100 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] text-slate-900 dark:text-white disabled:opacity-30 hover:bg-orange-500/10 hover:border-orange-500/30 transition-all"
+              type="button"
+              aria-label="Next page"
+              className={pageBtn}
+              disabled={page === totalPages}
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             >
               <ChevronRightIcon className="h-5 w-5" />
             </button>
-          </motion.div>
+          </nav>
         )}
       </div>
     </section>

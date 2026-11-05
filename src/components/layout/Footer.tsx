@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import { Logo } from '@/components/ui/Logo';
 import { motion } from 'framer-motion';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, CompanyConstants, FooterConstants, NavigationConstants } from '@constants';
@@ -11,6 +11,7 @@ const navLinks = {
     { name: NavigationConstants.HOME, href: RouteConstants.HOME },
     { name: NavigationConstants.ABOUT_US, href: RouteConstants.ABOUT },
     { name: NavigationConstants.SERVICES, href: RouteConstants.SERVICES },
+    { name: NavigationConstants.CLIENTS, href: RouteConstants.CLIENTS },
     { name: NavigationConstants.CONTACT, href: RouteConstants.CONTACT },
   ],
   services: [
@@ -63,25 +64,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* ── Brand & Description ── */}
           <div className="lg:col-span-1 space-y-8">
-            <Link href={RouteConstants.HOME} className="inline-flex items-center gap-3 group">
-              <div className="relative w-12 h-12 rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Image
-                  priority
-                  src="/images/RowadLogo/Rowad_Icon_Round.png"
-                  alt="Rowad Logo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="flex items-baseline tracking-tighter">
-                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white">
-                  R
-                </span>
-                <span className="font-heading font-bold text-2xl text-orange-500">O</span>
-                <span className="font-heading font-bold text-2xl text-slate-900 dark:text-white">
-                  WAD
-                </span>
-              </div>
+            <Link href={RouteConstants.HOME} aria-label="Rowad home">
+              <Logo />
             </Link>
 
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed transition-colors">
@@ -253,9 +237,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Decorative bottom line */}
-      <div className="h-2 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 opacity-20" />
     </footer>
   );
 }

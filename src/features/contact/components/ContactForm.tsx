@@ -79,7 +79,7 @@ export default function ContactForm() {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:ring-1 focus:ring-orange-600 focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
               placeholder={FormConstants.NAME_PLACEHOLDER}
             />
           </div>
@@ -97,7 +97,7 @@ export default function ContactForm() {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:ring-1 focus:ring-orange-600 focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
               placeholder={FormConstants.EMAIL_PLACEHOLDER}
             />
           </div>
@@ -118,7 +118,7 @@ export default function ContactForm() {
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:ring-1 focus:ring-orange-600 focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
               placeholder={FormConstants.COMPANY_PLACEHOLDER}
             />
           </div>
@@ -135,7 +135,7 @@ export default function ContactForm() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:ring-1 focus:ring-orange-600 focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
               placeholder={FormConstants.PHONE_PLACEHOLDER}
             />
           </div>
@@ -154,12 +154,16 @@ export default function ContactForm() {
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
+            className="w-full appearance-none rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:ring-1 focus:ring-orange-600 focus:outline-none transition-all dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
           >
             <option value="">{FormConstants.SERVICE_SELECT}</option>
-            <option value={ServiceType.DEVELOPMENT}>Website Development</option>
-            <option value={ServiceType.HOSTING}>Web Hosting</option>
-            <option value={ServiceType.DEPLOYMENT}>Deployment Services</option>
+            <option value={ServiceType.DEVELOPMENT}>Website / Web App</option>
+            <option value={ServiceType.MOBILE}>Mobile App</option>
+            <option value={ServiceType.ERP}>Odoo ERP</option>
+            <option value={ServiceType.AI_AGENTS}>AI Agent</option>
+            <option value={ServiceType.CHATBOTS}>Chatbot</option>
+            <option value={ServiceType.HOSTING}>Hosting &amp; Cloud</option>
+            <option value={ServiceType.DEPLOYMENT}>DevOps &amp; Deployment</option>
             <option value={ServiceType.CONSULTING}>Technical Consulting</option>
             <option value={ServiceType.OTHER}>Other</option>
           </select>
@@ -180,7 +184,7 @@ export default function ContactForm() {
             rows={6}
             value={formData.message}
             onChange={handleChange}
-            className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-500/50 focus:bg-white/[0.04] focus:outline-none transition-all resize-none dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
+            className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-orange-600 focus:ring-1 focus:ring-orange-600 focus:outline-none transition-all resize-none dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-white dark:placeholder:text-slate-500"
             placeholder={FormConstants.MESSAGE_PLACEHOLDER}
           />
         </div>

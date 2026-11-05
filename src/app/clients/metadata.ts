@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CompanyConstants } from '@constants';
 
 export const clientsMetadata: Metadata = {
-  title: 'Our Clients & Success Stories - Trusted by Industry Leaders | Rowad',
+  title: 'Our Clients & Success Stories - Trusted by Industry Leaders',
   description:
     'See the businesses and industry leaders that trust Rowad for Software Development. Discover how our web development, mobile apps, and digital solutions have driven success for clients across Egypt and the Middle East.',
   keywords: [
@@ -26,11 +26,11 @@ export const clientsMetadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/RowadLogo/Rowad_Logo_Main.png',
+        url: '/images/brand/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Rowad Clients and Success Stories',
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -38,7 +38,7 @@ export const clientsMetadata: Metadata = {
     card: 'summary_large_image',
     title: 'Our Clients & Success Stories | Rowad',
     description: 'Discover the industry leaders that trust Rowad for their digital transformation.',
-    images: ['/images/RowadLogo/Rowad_Logo_Main.png'],
+    images: ['/images/brand/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://rowad.com/clients',

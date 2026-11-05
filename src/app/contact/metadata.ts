@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CompanyConstants } from '@constants';
 
 export const contactMetadata: Metadata = {
-  title: 'Contact Us - Get a Free Consultation | Rowad Software Development',
+  title: 'Contact Us - Get a Free Consultation',
   description:
     'Get in touch with Rowad for Software Development. Request a free consultation for your web development, mobile app, AI chatbot, digital marketing, or web hosting project. Located in Alexandria, Egypt - serving clients worldwide.',
   keywords: [
@@ -27,11 +27,11 @@ export const contactMetadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/RowadLogo/Rowad_Logo_Main.png',
+        url: '/images/brand/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Contact Rowad for Software Development',
-        type: 'image/png',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -40,7 +40,7 @@ export const contactMetadata: Metadata = {
     title: 'Contact Rowad - Get a Free Consultation',
     description:
       'Get in touch with Rowad for your next web development, mobile app, or digital project.',
-    images: ['/images/RowadLogo/Rowad_Logo_Main.png'],
+    images: ['/images/brand/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://rowad.com/contact',

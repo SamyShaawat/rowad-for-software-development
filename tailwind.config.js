@@ -60,7 +60,7 @@ module.exports = {
       },
       fontFamily: {
         sans:    ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-syne)', 'Syne', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'heading-1': ['3.5rem',  { lineHeight: '1.1', fontWeight: '800' }],

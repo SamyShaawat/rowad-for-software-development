@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { PageHero } from '@/components/ui/PageHero';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, ContactConstants, CompanyConstants } from '@constants';
 import ContactForm from '@/features/contact/components/ContactForm';
@@ -36,8 +37,8 @@ const contactInfo = [
 
 const faqs = [
   {
-    q: 'How long does a typical website project take?',
-    a: 'Most standard websites take 2–6 weeks from kickoff to launch. More complex applications or e-commerce platforms typically require 6–12 weeks depending on features and integrations.',
+    q: 'How long does a typical project take?',
+    a: 'Standard websites take 2–6 weeks. Mobile apps, Odoo implementations and AI agents usually take 6–12 weeks depending on scope and integrations. You get a firm estimate after the first call.',
   },
   {
     q: 'What is your pricing structure?',
@@ -55,158 +56,86 @@ const faqs = [
 
 export default function ContactPage() {
   return (
-    <div className="pt-20 bg-[#0a0a0f]">
-      {/* ── Hero Section ── */}
-      <section className="relative overflow-hidden py-24 md:py-32 border-b border-white/[0.06]">
-        {/* Glow */}
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/10 to-transparent blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-bl from-amber-500/5 to-transparent blur-[120px] pointer-events-none" />
+    <>
+      <PageHero eyebrow="Contact" title="Tell us what you want to build.">
+        {ContactConstants.SUBTITLE}
+      </PageHero>
 
-        <div className="container-custom mx-auto px-4 relative z-10 text-center">
-          <span className="section-badge mb-6 tracking-widest text-orange-400 border-orange-500/20 bg-orange-500/10">
-            Let&apos;s Talk
-          </span>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-8">
-            Get in <span className="gradient-text italic">Touch</span>
-          </h1>
-          <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
-            {ContactConstants.SUBTITLE}
-          </p>
-        </div>
-      </section>
-
-      {/* ── Contact Layout ── */}
-      <section className="section-padding bg-[#0d0d1a]">
-        <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-            {/* Form Column */}
-            <div className="lg:col-span-7">
-              <div className="mb-10">
-                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
-                  {ContactConstants.FORM_TITLE}
-                </h2>
-                <p className="text-slate-400 text-lg leading-relaxed">
-                  {ContactConstants.FORM_SUBTITLE}
-                </p>
-              </div>
-
-              {/* Form Component inside Glass Card */}
-              <div className="glass-card p-6 sm:p-10 border border-white/[0.08] relative overflow-hidden group">
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <ContactForm />
-              </div>
-            </div>
-
-            {/* Info Column */}
-            <div className="lg:col-span-5 space-y-12 lg:pt-2">
-              <div>
-                <h2 className="font-heading text-2xl font-bold text-white mb-3">
-                  {ContactConstants.CONTACT_INFO_TITLE}
-                </h2>
-                <p className="text-slate-400">{ContactConstants.CONTACT_INFO_SUBTITLE}</p>
-              </div>
-
-              <div className="space-y-4">
-                {contactInfo.map((item) => (
-                  <div
-                    key={item.title}
-                    className="flex flex-col sm:flex-row items-start gap-4 p-5 sm:p-6 rounded-[1.25rem] glass-card border border-white/[0.06] hover:bg-white/[0.04] hover:border-orange-500/30 transition-all duration-300"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex flex-shrink-0 items-center justify-center">
-                      <item.icon className="h-6 w-6 text-orange-500" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-semibold text-white mb-1.5">{item.title}</h3>
-                      <p className="text-orange-400 font-medium text-sm mb-1">{item.content}</p>
-                      <p className="text-xs text-slate-500 leading-relaxed">{item.subtext}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Minimal Map Box */}
-              <div className="relative h-48 md:h-56 w-full rounded-[1.5rem] bg-[#141424] border border-white/[0.06] flex items-center justify-center overflow-hidden group">
-                {/* Simulated map grid overlay */}
-                <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0,transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                <div className="text-center relative z-10 px-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg group-hover:scale-110 transition-transform duration-500">
-                    <MapPinIcon className="h-7 w-7 text-white" />
-                  </div>
-                  <p className="font-heading font-bold text-white tracking-wide text-sm">
-                    {CompanyConstants.LOCATION}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ Section ── */}
-      <section className="section-padding bg-[#0a0a0f] border-t border-white/[0.06]">
-        <div className="container-custom mx-auto">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <span className="section-badge mb-4">Support</span>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-              {ContactConstants.FAQ_TITLE}
+      <section className="section-padding bg-white dark:bg-[#0B1220]">
+        <div className="container-custom mx-auto grid gap-12 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-7">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+              {ContactConstants.FORM_TITLE}
             </h2>
-            <p className="text-slate-400 text-lg leading-relaxed">
-              {ContactConstants.FAQ_SUBTITLE}
+            <p className="mb-8 mt-2 text-slate-600 dark:text-slate-400">
+              {ContactConstants.FORM_SUBTITLE}
             </p>
+            <div className="rounded-xl border border-slate-200 p-6 dark:border-white/10 sm:p-8">
+              <ContactForm />
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-2xl glass-card border border-white/[0.06] hover:bg-white/[0.02] transition-colors"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="text-orange-500 font-heading font-black text-2xl leading-none mt-1 opacity-70">
-                    Q.
-                  </div>
+          <div className="lg:col-span-5">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+              {ContactConstants.CONTACT_INFO_TITLE}
+            </h2>
+            <ul className="mt-6 divide-y divide-slate-200 border-y border-slate-200 dark:divide-white/10 dark:border-white/10">
+              {contactInfo.map((item) => (
+                <li key={item.title} className="flex gap-4 py-5">
+                  <item.icon className="mt-0.5 h-6 w-6 shrink-0 text-orange-600" />
                   <div>
-                    <h3 className="font-heading text-lg font-bold text-white mb-4 leading-snug">
-                      {faq.q}
+                    <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
+                      {item.title}
                     </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed border-l-2 border-white/[0.1] pl-4">
-                      {faq.a}
-                    </p>
+                    <p className="mt-0.5 text-slate-700 dark:text-slate-300">{item.content}</p>
+                    <p className="mt-0.5 text-xs text-slate-500">{item.subtext}</p>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Bottom CTA ── */}
-      <section className="section-padding relative overflow-hidden text-center bg-[#070710] border-t border-white/[0.06]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.08)_0,transparent_50%)] pointer-events-none" />
-        <div className="container-custom mx-auto relative z-10 py-12">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            {ContactConstants.CTA_TITLE}
-          </h2>
-          <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
-            {ContactConstants.CTA_SUBTITLE}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`tel:${CompanyConstants.PHONE_HREF}`} className="btn-primary">
-              {ContactConstants.CTA_BUTTON}
-            </Link>
-            <Link
-              href={CompanyConstants.WHATSAPP}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href={`tel:${CompanyConstants.PHONE_HREF}`} className="btn-primary">
+                {ContactConstants.CTA_BUTTON}
+              </Link>
+              <Link
+                href={CompanyConstants.WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                Chat on WhatsApp
+              </Link>
+            </div>
+            <a
+              href={CompanyConstants.MAPS_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary"
+              className="btn-ghost mt-6"
             >
-              Chat on WhatsApp
-            </Link>
+              Open in Google Maps →
+            </a>
           </div>
         </div>
       </section>
-    </div>
+
+      <section className="section-padding border-t border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.02]">
+        <div className="container-custom mx-auto">
+          <p className="section-badge mb-3">FAQ</p>
+          <h2 className="max-w-2xl text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            {ContactConstants.FAQ_TITLE}
+          </h2>
+          <dl className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
+            {faqs.map((f) => (
+              <div key={f.q} className="border-t border-slate-300 pt-5 dark:border-white/15">
+                <dt className="font-bold text-slate-900 dark:text-white">{f.q}</dt>
+                <dd className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                  {f.a}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+    </>
   );
 }

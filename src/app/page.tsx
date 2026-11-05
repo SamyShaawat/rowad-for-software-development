@@ -1,27 +1,19 @@
-import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { TrustStrip } from '@/components/sections/TrustStrip';
+import { ServicesSection } from '@/components/sections/ServicesSection';
+import { ProcessSection } from '@/components/sections/ProcessSection';
+import { CTASection } from '@/components/sections/CTASection';
 
-// Lazy load below-the-fold components
-const ServicesSection = dynamic(() =>
-  import('@/components/sections/ServicesSection').then((mod) => mod.ServicesSection)
-);
-const AboutSection = dynamic(() =>
-  import('@/components/sections/AboutSection').then((mod) => mod.AboutSection)
-);
-const TestimonialsSection = dynamic(() =>
-  import('@/components/sections/TestimonialsSection').then((mod) => mod.TestimonialsSection)
-);
-const CTASection = dynamic(() =>
-  import('@/components/sections/CTASection').then((mod) => mod.CTASection)
-);
+export const metadata = { alternates: { canonical: 'https://rowad.com' } };
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <TrustStrip />
       <ServicesSection />
-      <AboutSection />
-      <TestimonialsSection />
+      <ProcessSection />
+      <CTASection />
     </>
   );
 }

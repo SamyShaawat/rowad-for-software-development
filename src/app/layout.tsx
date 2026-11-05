@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Syne } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
@@ -14,17 +14,10 @@ const inter = Inter({
   weight: ['300', '400', '500', '600', '700', '800', '900'],
 });
 
-const syne = Syne({
-  subsets: ['latin'],
-  variable: '--font-syne',
-  display: 'swap',
-  weight: ['400', '500', '600', '700', '800'],
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://rowad.com'),
   title: {
-    default: 'Rowad - Leading Software Development Company | Web, Mobile & AI Solutions',
+    default: 'Rowad - Software Development Company | Web, Mobile, Odoo ERP & AI',
     template: `%s | ${CompanyConstants.NAME}`,
   },
   description:
@@ -89,11 +82,11 @@ export const metadata: Metadata = {
       'Premier software development company in Alexandria, Egypt. Specializing in web development, mobile apps, AI chatbots, digital marketing, and cloud hosting solutions.',
     images: [
       {
-        url: '/images/RowadLogo/Rowad_Logo_Main.png',
+        url: '/images/brand/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Rowad For Software Development Logo',
-        type: 'image/png',
+        alt: 'Rowad For Software Development',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -102,20 +95,16 @@ export const metadata: Metadata = {
     title: 'Rowad - Leading Software Development Company',
     description:
       'Premier software development company specializing in web, mobile, AI chatbots, digital marketing & cloud hosting.',
-    images: ['/images/RowadLogo/Rowad_Logo_Main.png'],
+    images: ['/images/brand/og-image.jpg'],
     creator: '@rowad',
     site: '@rowad',
   },
-  verification: {
-    google: 'enter-google-verification-code',
-  },
-  alternates: {
-    canonical: 'https://rowad.com',
-  },
   icons: {
-    icon: '/images/RowadLogo/Rowad_Icon_Round.png',
-    apple: '/images/RowadLogo/Rowad_Icon_Round.png',
-    shortcut: '/images/RowadLogo/Rowad_Icon_Round.png',
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/images/brand/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: '/images/brand/icon-180.png',
   },
   manifest: '/manifest.json',
   category: 'technology',
@@ -139,11 +128,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         url: 'https://rowad.com',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://rowad.com/images/RowadLogo/Rowad_Logo_Main.png',
-          width: 1200,
-          height: 630,
+          url: 'https://rowad.com/images/brand/icon-512.png',
+          width: 512,
+          height: 512,
         },
-        image: 'https://rowad.com/images/RowadLogo/Rowad_Logo_Main.png',
+        image: 'https://rowad.com/images/brand/og-image.jpg',
         description:
           'Rowad for Software Development is a premier software company specializing in web development, mobile app development, AI chatbots, digital marketing, and web hosting.',
         foundingDate: '2020',
@@ -199,17 +188,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           '@id': 'https://rowad.com/#organization',
         },
         inLanguage: 'en-US',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: 'https://rowad.com/search?q={search_term_string}',
-          'query-input': 'required name=search_term_string',
-        },
       },
       {
         '@type': 'ProfessionalService',
         '@id': 'https://rowad.com/#localbusiness',
         name: 'Rowad for Software Development',
-        image: 'https://rowad.com/images/RowadLogo/Rowad_Logo_Main.png',
+        image: 'https://rowad.com/images/brand/og-image.jpg',
         url: 'https://rowad.com',
         telephone: '+20-109-1539-396',
         email: 'info@rowad.com',
@@ -332,7 +316,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <head>
         {/* JSON-LD Structured Data */}
         <Script
