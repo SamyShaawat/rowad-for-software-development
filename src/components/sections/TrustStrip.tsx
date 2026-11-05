@@ -21,18 +21,18 @@ export function TrustStrip() {
         <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
           Trusted by teams across Egypt and the Gulf
         </p>
-        <ul className="grid grid-cols-2 items-center gap-6 sm:grid-cols-4 lg:grid-cols-8">
+        <ul className="mx-auto grid max-w-5xl grid-cols-2 items-center gap-4 sm:grid-cols-4">
           {clients.map((c) => (
             <li
               key={c}
-              className="flex h-16 items-center justify-center rounded-lg border border-slate-200 bg-white p-2"
+              className="flex h-24 items-center justify-center rounded-lg border border-slate-200 bg-white p-4"
             >
               <Image
                 src={`/images/clientsImages/${c}.png`}
                 alt={c}
-                width={120}
-                height={48}
-                className="max-h-11 w-auto object-contain grayscale transition hover:grayscale-0"
+                width={200}
+                height={80}
+                className="max-h-16 w-auto max-w-full object-contain"
               />
             </li>
           ))}
