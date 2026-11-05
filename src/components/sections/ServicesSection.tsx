@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import {
-  ArrowRightIcon,
   ChatBubbleLeftRightIcon,
   CloudArrowUpIcon,
   ComputerDesktopIcon,
@@ -71,7 +70,7 @@ export function ServicesSection() {
             <li key={id} className="bg-white dark:bg-[#161616]">
               <Link
                 href={`${RouteConstants.SERVICES}#${id}`}
-                className="group relative flex min-h-[280px] flex-col items-center p-6 pb-16 text-center transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="group relative flex min-h-[240px] flex-col items-center p-8 text-center transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
               >
                 <span
                   className={`grid h-16 w-16 place-items-center rounded-full ${serviceTheme[id].icon}`}
@@ -82,7 +81,6 @@ export function ServicesSection() {
                 <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                   {text}
                 </p>
-                <ArrowRightIcon className="absolute bottom-5 left-1/2 h-5 w-5 -translate-x-1/2 text-slate-900 transition-transform group-hover:translate-y-0.5 dark:text-white" />
               </Link>
             </li>
           ))}
