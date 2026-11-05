@@ -10,6 +10,12 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+  # Legacy URLs -> current pages (301, also stops 5xx on old links)
+  RewriteRule ^about-us/?$ /about [L,R=301]
+  RewriteRule ^our-services/?$ /services [L,R=301]
+  RewriteRule ^contact-us/?$ /contact [L,R=301]
+  RewriteRule ^our-clients/?$ /clients [L,R=301]
+
   # Remove trailing slash
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} (.+)/$
@@ -26,6 +32,8 @@
   RewriteCond %{REQUEST_URI} !^/_next/
   RewriteCond %{REQUEST_URI} !^/images/
   RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json|map|xml|txt)$ [NC]
+  # Only if the target exists; otherwise fall through to a real 404 (a missing target caused 500s)
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
   RewriteRule ^(.*)$ /$1/index.html [L]
 </IfModule>
 
