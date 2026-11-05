@@ -4,7 +4,6 @@ import { PageHero } from '@/components/ui/PageHero';
 import { CTASection } from '@/components/sections/CTASection';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, ContactConstants, CompanyConstants } from '@constants';
-import ContactForm from '@/features/contact/components/ContactForm';
 import { contactMetadata } from './metadata';
 
 export const metadata: Metadata = contactMetadata;
@@ -20,7 +19,7 @@ const contactInfo = [
     icon: EnvelopeIcon,
     title: 'Email',
     content: CompanyConstants.EMAIL,
-    subtext: 'We reply within 24 hours',
+    subtext: 'Best for longer project briefs',
   },
   {
     icon: MapPinIcon,
@@ -66,13 +65,24 @@ export default function ContactPage() {
         <div className="container-custom mx-auto grid gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-7">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-              {ContactConstants.FORM_TITLE}
+              Message us directly
             </h2>
             <p className="mb-8 mt-2 text-slate-600 dark:text-slate-400">
-              {ContactConstants.FORM_SUBTITLE}
+              Tell us what you want to build. WhatsApp is the fastest way to reach us, and email
+              works for longer briefs.
             </p>
-            <div className="rounded-xl border border-slate-200 p-6 dark:border-white/10 sm:p-8">
-              <ContactForm />
+            <div className="flex flex-wrap gap-3 rounded-xl border border-slate-200 p-6 dark:border-white/10 sm:p-8">
+              <a
+                href={CompanyConstants.WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Chat on WhatsApp
+              </a>
+              <a href={`mailto:${CompanyConstants.EMAIL}`} className="btn-secondary">
+                {CompanyConstants.EMAIL}
+              </a>
             </div>
           </div>
 

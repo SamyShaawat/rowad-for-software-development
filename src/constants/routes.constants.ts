@@ -11,7 +11,6 @@ export const RouteConstants = {
   ID_PARAM: ':id',
   SLUG_PARAM: ':slug',
   API: '/api',
-  API_CONTACT: '/api/contact',
 } as const;
 
 export type RouteKey = keyof typeof RouteConstants;
