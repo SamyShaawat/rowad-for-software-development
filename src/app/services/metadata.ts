@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CompanyConstants } from '@constants';
 
 export const servicesMetadata: Metadata = {
-  title: 'Our Services - Web, Mobile Apps, Odoo ERP, AI Agents & Chatbots',
+  title: 'Our Services - Web, Mobile Apps, ERP Systems, AI Agents & Chatbots',
   description:
     "Explore Rowad's comprehensive software development services: custom web development, mobile app development, AI chatbot solutions, digital marketing strategies, DevOps & deployment, and managed web hosting with 99.9% uptime guarantee.",
   keywords: [
@@ -24,7 +24,7 @@ export const servicesMetadata: Metadata = {
     'deployment automation',
   ],
   openGraph: {
-    title: 'Our Services - Web, Mobile Apps, Odoo ERP, AI Agents & Chatbots',
+    title: 'Our Services - Web, Mobile Apps, ERP Systems, AI Agents & Chatbots',
     description:
       "Explore Rowad's comprehensive software development services: custom web development, mobile apps, AI chatbots, digital marketing, DevOps, and managed web hosting.",
     url: 'https://rowad.com/services',

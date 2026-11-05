@@ -49,11 +49,11 @@ const services = [
   },
   {
     id: 'erp',
-    name: 'Odoo ERP',
+    name: 'ERP systems',
     lead: 'Every department on one system and one source of truth.',
-    text: 'We implement, customise and support Odoo so sales, inventory, accounting, HR and manufacturing work together instead of in separate spreadsheets.',
+    text: 'We implement, customise and support ERP systems so sales, inventory, accounting, HR and manufacturing work together instead of in separate spreadsheets. We build on Odoo and adapt it to the way your business runs.',
     projects: [
-      'Odoo implementation and data migration',
+      'ERP implementation and data migration',
       'Custom modules and workflows',
       'Integrations with e-commerce, payments and shipping',
       'Reports, dashboards and user training',
@@ -63,7 +63,7 @@ const services = [
       'Configure, customise and test with your data',
       'Migrate, train your team and go live',
     ],
-    stack: ['Odoo 17/18', 'Python', 'PostgreSQL', 'QWeb', 'REST APIs'],
+    stack: ['Odoo', 'Python', 'PostgreSQL', 'REST APIs', 'Reporting'],
   },
   {
     id: 'agents',
@@ -74,7 +74,7 @@ const services = [
       'Question answering over your own documents',
       'Sales and support triage',
       'Back-office automation: quotes, invoices, reports',
-      'Agents connected to Odoo and your CRM',
+      'Agents connected to your ERP and CRM',
     ],
     steps: [
       'Choose one workflow worth automating',
@@ -124,7 +124,7 @@ const services = [
 const engagements = [
   [
     'Fixed-scope project',
-    'A defined outcome, timeline and price. Best for a new website, app or Odoo rollout.',
+    'A defined outcome, timeline and price. Best for a new website, app or ERP rollout.',
   ],
   ['Dedicated team', 'Developers and a designer working as part of your team month to month.'],
   [

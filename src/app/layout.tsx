@@ -24,7 +24,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://rowad.com'),
   title: {
-    default: 'Rowad - Software Development Company | Web, Mobile, Odoo ERP & AI',
+    default: 'Rowad - Software Development Company | Web, Mobile, ERP & AI',
     template: `%s | ${CompanyConstants.NAME}`,
   },
   description:

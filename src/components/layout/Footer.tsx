@@ -17,7 +17,7 @@ const navLinks = {
   services: [
     { name: 'Websites & web apps', href: `${RouteConstants.SERVICES}#web` },
     { name: 'Mobile apps', href: `${RouteConstants.SERVICES}#mobile` },
-    { name: 'Odoo ERP', href: `${RouteConstants.SERVICES}#erp` },
+    { name: 'ERP systems', href: `${RouteConstants.SERVICES}#erp` },
     { name: 'AI agents', href: `${RouteConstants.SERVICES}#agents` },
     { name: 'Chatbots', href: `${RouteConstants.SERVICES}#chatbot` },
     { name: 'Hosting & DevOps', href: `${RouteConstants.SERVICES}#cloud` },
@@ -209,7 +209,6 @@ export function Footer() {
               <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-left">
                 © {currentYear} {CompanyConstants.FULL_NAME}
               </p>
-              <p className="text-slate-400 text-[10px] mt-1">Handcrafted with passion globally</p>
             </div>
 
             <div className="flex gap-8">

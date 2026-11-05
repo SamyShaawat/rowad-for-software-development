@@ -12,8 +12,8 @@ export function HeroSection() {
             One team for every piece of your software.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Websites, mobile apps, Odoo ERP, AI agents and chatbots. We design, build and run them,
-            so you deal with one partner from idea to production.
+            Websites, mobile apps, ERP systems, AI agents and chatbots. We design, build and run
+            them, so you deal with one partner from idea to production.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Link href={RouteConstants.CONTACT} className="btn-primary">

@@ -347,140 +347,170 @@ function MobileArt() {
   );
 }
 
-/* ---------- 3. ODOO ERP: every department on one database ---------- */
-const modules: [string, number, number, ReactNode][] = [
-  [
-    'Sales',
-    28,
-    28,
-    <polyline key="s" points="0,14 6,8 10,11 18,2" fill="none" stroke={ORANGE} strokeWidth={2.5} />,
-  ],
-  [
-    'Inventory',
-    28,
-    138,
-    <g key="i">
-      <rect rx={4} x="0" y="9" width="8" height="8" fill="currentColor" />
-      <rect rx={4} x="10" y="9" width="8" height="8" fill={ORANGE} />
-      <rect rx={4} x="5" y="0" width="8" height="8" fill="currentColor" />
-    </g>,
-  ],
-  [
-    'HR',
-    28,
-    248,
-    <g key="h">
-      <circle cx="9" cy="5" r="4" fill={ORANGE} />
-      <path d="M1 17 a8 7 0 0 1 16 0" fill="currentColor" />
-    </g>,
-  ],
-  [
-    'CRM',
-    360,
-    28,
-    <g key="c">
-      <circle cx="5" cy="8" r="5" fill={ORANGE} />
-      <circle cx="14" cy="8" r="5" fill="currentColor" opacity=".6" />
-    </g>,
-  ],
-  [
-    'Accounting',
-    360,
-    138,
-    <g key="a">
-      <rect
-        rx={4}
-        x="0"
-        y="0"
-        width="16"
-        height="18"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-      <path d="M4 6h8M4 11h8" stroke={ORANGE} strokeWidth="2" />
-    </g>,
-  ],
-  [
-    'Production',
-    360,
-    248,
-    <polygon
-      key="m"
-      points="9,0 17,4 17,13 9,18 1,13 1,4"
-      fill="none"
-      stroke={ORANGE}
-      strokeWidth="2.5"
-    />,
-  ],
+/* ---------- 3. ERP: every department on one system, quote to cash ---------- */
+const VIOLET = '#a56eff';
+const TEAL = '#08bdba';
+const erpLeft: [string, string][] = [
+  ['Sales', ORANGE],
+  ['CRM', BLUE],
+  ['Purchasing', VIOLET],
+  ['Inventory', TEAL],
 ];
+const erpRight: [string, string][] = [
+  ['Accounting', GREEN],
+  ['HR & Payroll', ORANGE],
+  ['Production', BLUE],
+  ['Reports', VIOLET],
+];
+const flow = ['Quote', 'Order', 'Delivery', 'Invoice', 'Payment'];
+
 function ErpArt() {
+  const chip = (label: string, color: string, x: number, y: number, side: 'l' | 'r') => (
+    <g key={label}>
+      <Line
+        x1={side === 'l' ? x + 100 : x}
+        y1={y + 17}
+        x2={side === 'l' ? 136 : 344}
+        y2={y + 17}
+        strokeWidth={1.5}
+      />
+      <Dot x={side === 'l' ? 136 : 344} y={y + 17} r={3.5} />
+      <Box x={x} y={y} w={100} h={34} r={17} />
+      <Dot x={x + 17} y={y + 17} r={6} fill={color} />
+      <Txt x={x + 30} y={y + 21} size={9} weight={600} mono={false}>
+        {label}
+      </Txt>
+    </g>
+  );
   return (
     <Canvas
       id="erp"
-      label="Odoo modules for sales, CRM, inventory, accounting, HR and manufacturing all connected to one central database"
+      label="An ERP system: a quote-to-cash flow across the top, a central dashboard, and sales, CRM, purchasing, inventory, accounting, HR, production and reports all connected to one shared database"
     >
-      <circle
-        cx={240}
-        cy={160}
-        r={92}
-        fill="none"
-        stroke="currentColor"
-        strokeDasharray="4 6"
-        opacity={0.5}
-      />
-      {modules.map(([name, x, y]) => {
-        const left = x < 200;
-        const ex = left ? x + 92 : x;
+      {/* quote to cash */}
+      {flow.map((f, i) => {
+        const x = 12 + i * 92;
+        const last = i === flow.length - 1;
         return (
-          <g key={name}>
-            <Line x1={240} y1={160} x2={ex} y2={y + 22} />
-            <Dot x={(240 + ex) / 2} y={(160 + y + 22) / 2} r={4} />
+          <g key={f}>
+            {i > 0 && (
+              <Line x1={x - 16} y1={25} x2={x} y2={25} strokeWidth={1.5} {...arrow('erp')} />
+            )}
+            <rect
+              x={x}
+              y={12}
+              width={76}
+              height={26}
+              rx={13}
+              stroke="currentColor"
+              strokeWidth={2}
+              className={last ? '' : paper}
+              fill={last ? 'currentColor' : undefined}
+            />
+            <Txt
+              x={x + 38}
+              y={29}
+              size={9}
+              anchor="middle"
+              weight={600}
+              mono={false}
+              cls={last ? onInk : ''}
+              fill={last ? '' : undefined}
+            >
+              {f}
+            </Txt>
           </g>
         );
       })}
-      {modules.map(([name, x, y, glyph]) => (
-        <g key={name}>
-          <Box x={x} y={y} w={92} h={44} />
-          <g transform={`translate(${x + 10} ${y + 13})`}>{glyph}</g>
-          <Txt x={x + 34} y={y + 26} size={9} mono={false} weight={600}>
-            {name}
+
+      {erpLeft.map(([l, c], i) => chip(l, c, 12, 76 + i * 48, 'l'))}
+      {erpRight.map(([l, c], i) => chip(l, c, 368, 76 + i * 48, 'r'))}
+
+      {/* dashboard */}
+      <Box x={136} y={58} w={208} h={192} r={14} />
+      <Line x1={136} y1={82} x2={344} y2={82} strokeWidth={1.5} />
+      {[150, 160, 170].map((x, i) => (
+        <Dot key={x} x={x} y={70} r={3} fill={['#fa4d56', '#f1c21b', '#42be65'][i]} />
+      ))}
+      <Txt x={190} y={73} size={8}>
+        ERP · Overview
+      </Txt>
+      {[ORANGE, BLUE, VIOLET, TEAL, GREEN].map((c, i) => (
+        <rect key={c} x={146} y={94 + i * 22} width={14} height={14} rx={4} fill={c} />
+      ))}
+      {[
+        ['Revenue', '$128k'],
+        ['Orders', '1,942'],
+        ['Stock', '98%'],
+      ].map(([k, v], i) => (
+        <g key={k}>
+          <rect x={172 + i * 56} y={92} width={52} height={36} rx={8} className={layer} />
+          <Txt
+            x={178 + i * 56}
+            y={104}
+            size={7}
+            cls="fill-slate-600 dark:fill-slate-300"
+            fill=""
+            mono={false}
+          >
+            {k}
+          </Txt>
+          <Txt x={178 + i * 56} y={120} size={12} weight={600} mono={false}>
+            {v}
           </Txt>
         </g>
       ))}
-      {/* central database */}
-      <path
-        d="M200 142 v40 a40 12 0 0 0 80 0 v-40"
-        className={paper}
-        stroke="currentColor"
-        strokeWidth={2}
+      {[22, 34, 28, 46, 38, 56, 66].map((h, i) => (
+        <rect
+          key={i}
+          x={176 + i * 22}
+          y={236 - h}
+          width={14}
+          height={h}
+          rx={4}
+          fill={i > 4 ? ORANGE : undefined}
+          className={i > 4 ? '' : mute}
+        />
+      ))}
+      <polyline
+        points="183,200 205,188 227,194 249,176 271,182 293,162 315,152"
+        fill="none"
+        stroke={BLUE}
+        strokeWidth={2.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <path d="M200 162 a40 12 0 0 0 80 0" fill="none" stroke="currentColor" strokeWidth={2} />
+      <Line x1={170} y1={237} x2={334} y2={237} strokeWidth={1.5} />
+
+      {/* shared database */}
+      <Box x={136} y={262} w={208} h={34} r={17} tone={layer} />
       <ellipse
-        cx={240}
-        cy={142}
-        rx={40}
-        ry={12}
-        className={layer}
+        cx={160}
+        cy={274}
+        rx={9}
+        ry={3.5}
+        fill="none"
         stroke="currentColor"
-        strokeWidth={2}
+        strokeWidth={1.8}
       />
-      <rect rx={4} x={210} y={104} width={60} height={20} fill={ORANGE} />
-      <Txt x={240} y={118} size={10} anchor="middle" weight={600} fill="#161616" mono={false}>
-        ODOO
-      </Txt>
-      <Txt x={240} y={208} size={9} anchor="middle">
-        PostgreSQL
+      <path
+        d="M151 274 v10 a9 3.5 0 0 0 18 0 v-10"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      />
+      <Txt x={180} y={283} size={9} weight={600} mono={false}>
+        One shared database
       </Txt>
       <Txt
         x={240}
-        y={304}
-        size={9}
+        y={312}
+        size={8}
         anchor="middle"
         cls="fill-slate-600 dark:fill-slate-300"
         fill=""
       >
-        one system · one source of truth
+        no more spreadsheets in between
       </Txt>
     </Canvas>
   );
@@ -489,11 +519,11 @@ function ErpArt() {
 /* ---------- 4. AI AGENT: perceive, reason, act, with a human gate ---------- */
 function AgentArt() {
   const inputs = ['Documents', 'Email', 'Database'];
-  const tools = ['Odoo API', 'CRM', 'Calendar'];
+  const tools = ['ERP API', 'CRM', 'Calendar'];
   return (
     <Canvas
       id="ag"
-      label="An AI agent reads documents, email and databases, reasons, calls tools like Odoo and CRM, with human approval before it acts"
+      label="An AI agent reads documents, email and databases, reasons, calls tools like your ERP and CRM, with human approval before it acts"
     >
       {inputs.map((t, i) => (
         <g key={t}>
@@ -637,7 +667,7 @@ function ChatbotArt() {
       <Box x={366} y={84} w={98} h={150} />
       <rect rx={4} x={366} y={84} width={98} height={22} className={layer} />
       <Txt x={374} y={99} size={9} weight={600} mono={false}>
-        Odoo CRM
+        CRM
       </Txt>
       {['Lead captured', 'Order found', 'Ticket logged', 'Rating 5/5'].map((t, i) => (
         <g key={t}>

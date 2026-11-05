@@ -17,7 +17,7 @@ const values = [
 const capabilities = [
   'Websites and web apps',
   'Mobile apps (iOS and Android)',
-  'Odoo ERP implementation and modules',
+  'ERP implementation and custom modules',
   'AI agents and automation',
   'Chatbots on WhatsApp and web',
   'Cloud hosting and DevOps',
@@ -72,21 +72,18 @@ export default function AboutPage() {
       </section>
 
       <section className="section-padding border-y border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.02]">
-        <div className="container-custom mx-auto">
-          <p className="section-badge mb-3">How we work</p>
-          <h2 className="max-w-2xl text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
-            What you can expect from us
-          </h2>
-          <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="container-custom mx-auto max-w-5xl">
+          <h2 className="mb-12 text-sm text-slate-600 dark:text-slate-300">How we work</h2>
+          <div className="space-y-10">
             {values.map(([t, d]) => (
-              <li key={t} className="border-t-2 border-slate-900 pt-5 dark:border-orange-500">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                  {d}
-                </p>
-              </li>
+              <p
+                key={t}
+                className="text-2xl font-light leading-snug text-slate-500 dark:text-slate-400 sm:text-3xl"
+              >
+                <strong className="font-normal text-slate-900 dark:text-white">{t}.</strong> {d}
+              </p>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
