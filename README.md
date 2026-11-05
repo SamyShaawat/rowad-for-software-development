@@ -29,8 +29,8 @@ Welcome to **Rowad For Software Development** - your trusted partner for digital
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd rowad-for-software-development
+git clone https://github.com/SamyShaawat/Rowad.git
+cd Rowad
 ```
 
 2. Install dependencies:
@@ -48,7 +48,7 @@ pnpm dev
 ## 📁 Project Structure
 
 ```
-rowad-for-software-development/
+Rowad/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── about/             # About Us page

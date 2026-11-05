@@ -1,5 +1,11 @@
 # 🚀 Quick Deployment Guide for cPanel (No SSH, No Auto-Deploy)
 
+> **Repository name:** the GitHub repository is now `SamyShaawat/Rowad` (renamed from `rowad-for-software-development`).
+> The old URL redirects, so cPanel keeps working. The folder on the server is still
+> `/home/irowad/repositories/rowad-for-software-development`; renaming the GitHub repo does not change it,
+> and `scripts/deploy-webhook.php` points at that folder, so leave both as they are.
+> Optional: in that folder run `git remote set-url origin https://github.com/SamyShaawat/Rowad.git`.
+
 ## Your Situation
 - ❌ SSH access: **Disabled** on your hosting
 - ❌ Auto-deploy toggle: **Not available** in cPanel
@@ -47,7 +53,7 @@
 
 ### Step 3: Add Webhook to GitHub
 
-1. Go to: https://github.com/SamyShaawat/rowad-for-software-development/settings/hooks/new
+1. Go to: https://github.com/SamyShaawat/Rowad/settings/hooks/new
 
 2. Fill in:
    - **Payload URL**: `https://rowad.com/deploy.php?secret=your-secret-password-here`
@@ -79,7 +85,7 @@
 
 ### Check GitHub Actions
 ```
-https://github.com/SamyShaawat/rowad-for-software-development/actions
+https://github.com/SamyShaawat/Rowad/actions
 ```
 
 Look for green checkmarks ✅
