@@ -227,13 +227,6 @@ export function Footer() {
                 Support
               </Link>
             </div>
-
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08]">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                System Ready
-              </span>
-            </div>
           </div>
         </div>
       </div>
