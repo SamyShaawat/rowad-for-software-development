@@ -1,81 +1,35 @@
 # Rowad
 
-Website for **Rowad for Software Development**, a software company in Alexandria, Egypt.
-We design, build and run:
+**Rowad for Software Development** is a software company in Alexandria, Egypt. We design, build and
+run custom software for businesses, from idea to production.
 
-- **Websites and web apps**: company sites, online stores, customer portals
-- **Mobile apps**: iOS and Android from one codebase
-- **ERP systems**: implementation, data migration, custom modules (built on Odoo)
-- **AI agents**: agents that read your data, use your tools and finish tasks, with human approval
-- **Chatbots**: Arabic and English bots for WhatsApp and web, connected to your CRM
-- **Hosting and DevOps**: managed hosting, CI/CD, backups and monitoring
+Website: https://rowad.com
 
-## Tech stack
+## About us
 
-| Area | Choice |
+Rowad began by building and hosting websites. As clients grew, they asked for mobile apps, then for
+ERP systems to run their operations, then for AI agents and chatbots to automate routine work. We
+learned each one, and one team now covers all of it, including the hosting and DevOps that keeps it
+running.
+
+Our mission is simple: give businesses software that works, delivered by people who pick up the
+phone. We want to be known for quality, reliability and a customer-first approach across the region.
+
+## How we work
+
+1. **Discover**: we listen, map the problem and agree the plan.
+2. **Design**: you click through a prototype before we write code.
+3. **Build**: short sprints, with a demo every two weeks.
+4. **Launch**: we go live, train your team and stay on call.
+
+## Screenshots
+
+| Home | Services |
 | --- | --- |
-| Framework | Next.js 15 (App Router, static export), React 19, TypeScript 5 |
-| Styling | Tailwind CSS 3, IBM Carbon design tokens, IBM Plex Sans / Mono |
-| Forms | React Hook Form, Zod, reCAPTCHA; PHP mailer on cPanel (`public/contact-mailer.php`) |
-| Icons | Heroicons; service diagrams are drawn in code (SVG) |
-| Tooling | Nx 21, pnpm, Prettier, Playwright (e2e) |
-| CI/CD | GitHub Actions, deployed to cPanel through the `deploy` branch |
+| ![Home](docs/screenshots/home.png) | ![Services](docs/screenshots/services.png) |
 
-## Getting started
-
-Requirements: Node.js 22 and pnpm 10.
-
-```bash
-git clone https://github.com/SamyShaawat/Rowad.git
-cd Rowad
-pnpm install
-cp .env.example .env.local   # add your reCAPTCHA and SMTP values for the contact form
-pnpm dev                     # runs `nx serve rowad` at http://localhost:3001
-```
-
-If the dev server will not start, check that port 3001 is free and delete the `.next` folder.
-
-## Scripts
-
-```bash
-pnpm dev            # development server (Turbopack) on :3001
-pnpm build          # production build, static export to build/
-pnpm start          # production server on :3001
-pnpm nx:typecheck   # TypeScript check
-pnpm format         # Prettier
-pnpm test:e2e       # Playwright tests
-```
-
-## Pages
-
-| Route | Content |
+| About | Clients |
 | --- | --- |
-| `/` | Hero, clients strip, six services, how we work, call to action |
-| `/services` | One section per service: diagram, what we build, how we deliver, stack, ways to work with us |
-| `/about` | Story, numbers, how we work, expertise |
-| `/clients` | Searchable, paginated client list |
-| `/contact` | Contact form, company details, FAQ |
+| ![About](docs/screenshots/about.png) | ![Clients](docs/screenshots/clients.png) |
 
-## Design
-
-Built on the **IBM Carbon** design system: IBM Plex type, a black header bar, grey layers and
-tile grids, with Rowad orange as the accent. Buttons are pills, frames are rounded, client logos
-sit in circles. There are no gradients. Light and dark themes use soft off-white and off-black,
-plus one calm accent colour per service.
-
-## Project structure
-
-```
-src/
-  app/                 routes: /, services, about, clients, contact, api/contact, not-found
-  components/
-    layout/            Header, Footer, ThemeToggle
-    sections/          Hero, Services, Process, TrustStrip, Clients, CTA, illustrations
-    ui/                Logo, PageHero, CurrentYear
-  constants/           company, services, stats, clients and copy
-  features/contact/    contact form
-public/
-  images/brand/        favicon, app icons, Open Graph image
-  images/clientsImages client logos
-.github/workflows/     CI and deploy
-```
+![Contact](docs/screenshots/contact.png)
