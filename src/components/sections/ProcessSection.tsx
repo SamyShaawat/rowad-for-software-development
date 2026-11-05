@@ -1,53 +1,78 @@
-const steps = [
+import {
+  CodeBracketIcon,
+  MagnifyingGlassIcon,
+  RocketLaunchIcon,
+  SwatchIcon,
+} from '@heroicons/react/24/outline';
+
+const stops = [
   {
     title: 'Discover',
-    text: 'A working session to pin down the problem, the users and the budget.',
+    text: 'We listen, map the problem and agree the plan.',
+    Icon: MagnifyingGlassIcon,
+    color: 'bg-blue-600 dark:bg-blue-400 dark:text-slate-900',
   },
   {
     title: 'Design',
-    text: 'Clickable prototypes you can test before any code is written.',
+    text: 'You click through a prototype before we write code.',
+    Icon: SwatchIcon,
+    color: 'bg-violet-600 dark:bg-violet-400 dark:text-slate-900',
   },
   {
     title: 'Build',
-    text: 'Short sprints with a demo every two weeks. You own the code from day one.',
+    text: 'Short sprints, with a demo every two weeks.',
+    Icon: CodeBracketIcon,
+    color: 'bg-teal-600 dark:bg-teal-400 dark:text-slate-900',
   },
   {
-    title: 'Launch & support',
-    text: 'Deployment, training and monitoring, with a team on call afterwards.',
+    title: 'Launch',
+    text: 'We go live, train your team and stay on call.',
+    Icon: RocketLaunchIcon,
+    color: 'bg-orange-600 dark:bg-orange-400 dark:text-slate-900',
   },
 ];
 
-/** Editorial split: sticky intro on the left, a ruled list of stages on the right. */
+/**
+ * A route with four stops, like a transit line. The line runs behind the stops; each stop's ring
+ * uses the section colour so the line looks cut around it.
+ */
 export function ProcessSection() {
   return (
     <section
-      className="section-padding border-y border-blue-100 bg-blue-50 dark:border-slate-700 dark:bg-blue-400/[0.06]"
+      className="section-padding border-y border-blue-100 bg-blue-50 dark:border-slate-700 dark:bg-[#171b22]"
       aria-labelledby="process-title"
     >
-      <div className="container-custom mx-auto grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-20">
-        <div className="lg:sticky lg:top-28 lg:self-start">
+      <div className="container-custom mx-auto">
+        <div className="mx-auto max-w-2xl text-center">
           <p className="section-badge mb-4">How we work</p>
           <h2
             id="process-title"
             className="text-3xl leading-tight text-slate-900 dark:text-white sm:text-4xl"
           >
-            From first call to a product people use.
+            From idea to live in four stops.
           </h2>
-          <p className="mt-5 max-w-md leading-relaxed text-slate-600 dark:text-slate-300">
-            You see progress every two weeks and decide what happens next. No long silences, no
-            surprises on the invoice.
-          </p>
         </div>
 
-        <ol className="border-t border-blue-200 dark:border-slate-700">
-          {steps.map((s) => (
-            <li key={s.title} className="border-b border-blue-200 py-8 dark:border-slate-700">
-              <div>
-                <h3 className="text-2xl font-light text-slate-900 dark:text-white">{s.title}</h3>
-                <p className="mt-2 max-w-md text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                  {s.text}
-                </p>
-              </div>
+        <ol className="relative mx-auto mt-16 grid max-w-5xl gap-2 md:grid-cols-4 md:gap-6">
+          {/* the route (desktop) */}
+          <span
+            aria-hidden="true"
+            className="absolute left-[12.5%] right-[12.5%] top-9 hidden h-1.5 rounded-full bg-blue-200 dark:bg-slate-600 md:block"
+          />
+          {stops.map(({ title, text, Icon, color }) => (
+            <li
+              key={title}
+              className="relative flex flex-col items-center text-center after:mx-auto after:mt-6 after:block after:h-8 after:w-1.5 after:rounded-full after:bg-blue-200 last:after:hidden dark:after:bg-slate-600 md:after:hidden"
+            >
+              <span
+                className={`relative z-10 grid h-[72px] w-[72px] place-items-center rounded-full text-white ring-8 ring-blue-50 dark:ring-[#171b22] ${color}`}
+              >
+                <Icon className="h-8 w-8" strokeWidth={1.6} />
+              </span>
+              <h3 className="mt-5 text-xl font-normal text-slate-900 dark:text-white">{title}</h3>
+              <p className="mt-2 max-w-[16rem] text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                {text}
+              </p>
             </li>
           ))}
         </ol>

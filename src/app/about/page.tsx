@@ -2,17 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { RouteConstants, CompanyConstants, StatsConstants } from '@constants';
 import { CTASection } from '@/components/sections/CTASection';
+import { ProcessSection } from '@/components/sections/ProcessSection';
 import { PageHero } from '@/components/ui/PageHero';
 import { aboutMetadata } from './metadata';
 
 export const metadata: Metadata = aboutMetadata;
-
-const values = [
-  ['Plain talk', 'Honest estimates, clear pricing and no jargon in status updates.'],
-  ['Built to last', 'Tested, documented code that your next developer can pick up.'],
-  ['Your team, extended', 'We work inside your process and tools, not around them.'],
-  ['Accountable', 'We stay after launch. If something breaks, we fix it.'],
-];
 
 const capabilities = [
   'Websites and web apps',
@@ -71,21 +65,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-padding border-y border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.02]">
-        <div className="container-custom mx-auto max-w-5xl">
-          <h2 className="mb-12 text-sm text-slate-600 dark:text-slate-300">How we work</h2>
-          <div className="space-y-10">
-            {values.map(([t, d]) => (
-              <p
-                key={t}
-                className="text-2xl font-light leading-snug text-slate-500 dark:text-slate-400 sm:text-3xl"
-              >
-                <strong className="font-normal text-slate-900 dark:text-white">{t}.</strong> {d}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProcessSection />
 
       <section className="section-padding bg-white dark:bg-[#161616]">
         <div className="container-custom mx-auto grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
