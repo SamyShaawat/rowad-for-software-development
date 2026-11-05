@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import {
   ArrowTopRightOnSquareIcon,
@@ -19,6 +19,35 @@ const pageBtn =
 export function ClientsSection() {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
+  const [focusedId, setFocusedId] = useState<number | null>(null);
+
+  // Deep link from the home strip: /clients#client-<id> opens the right page, scrolls to the card
+  // and highlights it for a moment.
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const openFromHash = () => {
+      const match = window.location.hash.match(/^#client-(\d+)$/);
+      if (!match) return;
+      const id = Number(match[1]);
+      const index = ClientsConstants.findIndex((c) => c.id === id);
+      if (index < 0) return;
+      setQuery('');
+      setPage(Math.floor(index / ITEMS_PER_PAGE) + 1);
+      setFocusedId(id);
+      timer = setTimeout(() => {
+        document
+          .getElementById(`client-${id}`)
+          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 80);
+      setTimeout(() => setFocusedId(null), 3000);
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('hashchange', openFromHash);
+    };
+  }, []);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
@@ -54,7 +83,14 @@ export function ClientsSection() {
         {visible.length > 0 ? (
           <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {visible.map((c) => (
-              <li key={c.id} className="glass-card flex flex-col p-6 text-center sm:text-left">
+              <li
+                key={c.id}
+                id={`client-${c.id}`}
+                className={cn(
+                  'glass-card flex scroll-mt-28 flex-col p-6 text-center transition-shadow sm:text-left',
+                  focusedId === c.id && 'ring-2 ring-orange-500'
+                )}
+              >
                 <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full border border-slate-200 bg-[#ffffff] p-6">
                   <Image
                     src={c.logo}
