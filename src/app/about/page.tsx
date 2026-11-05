@@ -2,25 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { RouteConstants, CompanyConstants, StatsConstants } from '@constants';
 import { CTASection } from '@/components/sections/CTASection';
+import { ProcessSection } from '@/components/sections/ProcessSection';
 import { PageHero } from '@/components/ui/PageHero';
 import { aboutMetadata } from './metadata';
 
 export const metadata: Metadata = aboutMetadata;
 
-const values = [
-  ['Plain talk', 'Honest estimates, clear pricing and no jargon in status updates.'],
-  ['Built to last', 'Tested, documented code that your next developer can pick up.'],
-  ['Your team, extended', 'We work inside your process and tools, not around them.'],
-  ['Accountable', 'We stay after launch. If something breaks, we fix it.'],
-];
-
 const capabilities = [
   'Websites and web apps',
   'Mobile apps (iOS and Android)',
-  'Odoo ERP implementation and modules',
+  'ERP implementation, migration and custom modules',
   'AI agents and automation',
   'Chatbots on WhatsApp and web',
-  'Cloud hosting and DevOps',
+  'Hosting, CI/CD and DevOps',
   'UI/UX design and prototyping',
   'QA and test automation',
   'Maintenance and 24/7 support',
@@ -33,8 +27,8 @@ export default function AboutPage() {
         eyebrow={`About ${CompanyConstants.NAME}`}
         title="A software team that stays for the long run."
       >
-        We are engineers and designers in Alexandria, Egypt. We build and run software for companies
-        across the region, from first website to full ERP.
+        We are engineers and designers in Alexandria, Egypt. We build and run websites, mobile apps,
+        ERP systems, AI agents and chatbots for companies across the region.
       </PageHero>
 
       <section className="border-b border-slate-200 dark:border-white/10">
@@ -59,8 +53,9 @@ export default function AboutPage() {
           <div className="space-y-5 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
             <p>
               {CompanyConstants.NAME} began by building and hosting websites. As clients grew, they
-              asked for apps, then for systems to run their operations, then for automation. We
-              learned each one and now cover all of it.
+              asked for mobile apps, then for ERP systems to run their operations, then for AI
+              agents and chatbots to automate the routine work. We learned each one, and one team
+              now covers all of it, including the hosting and DevOps that keeps it running.
             </p>
             <p>
               Our mission is simple: give businesses software that works, delivered by people who
@@ -71,24 +66,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-padding border-y border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.02]">
-        <div className="container-custom mx-auto">
-          <p className="section-badge mb-3">How we work</p>
-          <h2 className="max-w-2xl text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
-            What you can expect from us
-          </h2>
-          <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map(([t, d]) => (
-              <li key={t} className="border-t-2 border-slate-900 pt-5 dark:border-orange-500">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                  {d}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <ProcessSection />
 
       <section className="section-padding bg-white dark:bg-[#161616]">
         <div className="container-custom mx-auto grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">

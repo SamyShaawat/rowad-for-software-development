@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHero } from '@/components/ui/PageHero';
+import { CTASection } from '@/components/sections/CTASection';
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, ContactConstants, CompanyConstants } from '@constants';
 import ContactForm from '@/features/contact/components/ContactForm';
@@ -38,7 +39,7 @@ const contactInfo = [
 const faqs = [
   {
     q: 'How long does a typical project take?',
-    a: 'Most standard websites take 2–6 weeks from kickoff to launch. Larger projects such as mobile apps, Odoo implementations or AI agents depend on scope and integrations. You get a firm estimate after the first call.',
+    a: 'Most standard websites take 2–6 weeks from kickoff to launch. Larger projects such as mobile apps, ERP implementations or AI agents depend on scope and integrations. You get a firm estimate after the first call.',
   },
   {
     q: 'What is your pricing structure?',
@@ -136,6 +137,7 @@ export default function ContactPage() {
           </dl>
         </div>
       </section>
+      <CTASection />
     </>
   );
 }

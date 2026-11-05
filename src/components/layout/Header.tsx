@@ -25,7 +25,7 @@ export function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-700 bg-slate-900">
-      <nav className="mx-auto flex h-12 max-w-[1584px] items-stretch justify-between pl-4 sm:pl-6 lg:pl-8">
+      <nav className="mx-auto flex h-16 max-w-[1584px] items-stretch justify-between pl-4 sm:pl-6 lg:pl-8">
         <Link href={RouteConstants.HOME} aria-label="Rowad home" className="flex items-center pr-6">
           <Logo light compact />
         </Link>
@@ -50,7 +50,7 @@ export function Header() {
           <ThemeToggle />
           <Link
             href={RouteConstants.CONTACT}
-            className="my-1.5 ml-2 mr-3 flex items-center rounded-full bg-orange-500 px-6 text-sm font-medium text-slate-900 transition-colors hover:bg-orange-400"
+            className="my-3 ml-2 mr-3 flex items-center rounded-full px-6 bg-orange-500 px-6 text-sm font-medium text-slate-900 transition-colors hover:bg-orange-400"
           >
             {NavigationConstants.GET_STARTED}
           </Link>
@@ -62,7 +62,7 @@ export function Header() {
             type="button"
             id="mobile-menu-btn"
             onClick={() => setOpen(!open)}
-            className="grid h-12 w-12 place-items-center text-white hover:bg-slate-800"
+            className="grid h-16 w-12 place-items-center text-white hover:bg-slate-800"
             aria-label="Toggle navigation menu"
             aria-expanded={open}
           >

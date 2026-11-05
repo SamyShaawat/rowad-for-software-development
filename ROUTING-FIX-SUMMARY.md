@@ -108,7 +108,7 @@ All errors now show **professional, branded pages** with:
 
 1. **Check if build completed**:
    ```
-   https://github.com/SamyShaawat/rowad-for-software-development/actions
+   https://github.com/SamyShaawat/Rowad/actions
    ```
    Wait for green checkmark ✅
 

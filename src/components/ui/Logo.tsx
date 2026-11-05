@@ -25,12 +25,12 @@ export function Logo({
 }) {
   return (
     <span className={cn('inline-flex items-center gap-3', className)}>
-      <LogoMark className={cn('shrink-0', compact ? 'h-7 w-7' : 'h-10 w-10')} />
+      <LogoMark className={cn('shrink-0', compact ? 'h-10 w-10' : 'h-10 w-10')} />
       <span className="leading-none">
         <span
           className={cn(
             'block font-semibold tracking-wide',
-            compact ? 'text-base' : 'text-xl',
+            compact ? 'text-xl' : 'text-xl',
             light ? 'text-white' : 'text-slate-900 dark:text-white'
           )}
         >

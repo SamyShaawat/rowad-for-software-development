@@ -3,6 +3,6 @@
  */
 export const FooterConstants = {
   DESCRIPTION:
-    'Your trusted partner for digital transformation. We deliver cutting-edge software solutions that drive business growth and success.',
+    'One team for websites, mobile apps, ERP systems, AI agents and chatbots, from idea to production.',
   COPYRIGHT: '© {year} Rowad For Software Development. All rights reserved.',
 } as const;

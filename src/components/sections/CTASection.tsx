@@ -5,7 +5,7 @@ import { RouteConstants, CompanyConstants } from '@constants';
 export function CTASection() {
   return (
     <section
-      className="bg-slate-900 px-4 py-20 sm:px-6 lg:px-8 lg:py-24"
+      className="border-t border-transparent bg-slate-900 px-4 dark:border-white/15 py-20 sm:px-6 lg:px-8 lg:py-24"
       aria-labelledby="cta-title"
     >
       <div className="container-custom mx-auto flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">

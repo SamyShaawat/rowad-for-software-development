@@ -24,11 +24,11 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://rowad.com'),
   title: {
-    default: 'Rowad - Software Development Company | Web, Mobile, Odoo ERP & AI',
+    default: 'Rowad - Software Development Company | Web, Mobile, ERP & AI',
     template: `%s | ${CompanyConstants.NAME}`,
   },
   description:
-    'Rowad for Software Development is a premier software company specializing in web development, mobile app development, AI chatbots, digital marketing, and web hosting. Based in Alexandria, Egypt, we deliver innovative digital solutions that drive business growth.',
+    'Rowad for Software Development is a premier software company specializing in web development, mobile apps, ERP systems, AI agents, chatbots, and hosting & DevOps. Based in Alexandria, Egypt, we deliver innovative digital solutions that drive business growth.',
   keywords: [
     'rowad',
     'rowad software',
@@ -43,8 +43,13 @@ export const metadata: Metadata = {
     'mobile app development egypt',
     'AI chatbot',
     'AI chatbot development',
-    'digital marketing',
-    'digital marketing egypt',
+    'AI agents',
+    'AI agent development',
+    'WhatsApp chatbot',
+    'ERP system',
+    'ERP implementation',
+    'ERP egypt',
+    'Odoo development',
     'web hosting',
     'web hosting egypt',
     'managed hosting',
@@ -86,7 +91,7 @@ export const metadata: Metadata = {
     siteName: 'Rowad for Software Development',
     title: 'Rowad - Leading Software Development Company | Web, Mobile & AI Solutions',
     description:
-      'Premier software development company in Alexandria, Egypt. Specializing in web development, mobile apps, AI chatbots, digital marketing, and cloud hosting solutions.',
+      'Premier software development company in Alexandria, Egypt. Specializing in websites, mobile apps, ERP systems, AI agents, chatbots, and cloud hosting & DevOps.',
     images: [
       {
         url: '/images/brand/og-image.jpg',
@@ -101,7 +106,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Rowad - Leading Software Development Company',
     description:
-      'Premier software development company specializing in web, mobile, AI chatbots, digital marketing & cloud hosting.',
+      'Premier software development company specializing in web, mobile, ERP, AI agents, chatbots & DevOps.',
     images: ['/images/brand/og-image.jpg'],
     creator: '@rowad',
     site: '@rowad',
@@ -141,7 +146,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         },
         image: 'https://rowad.com/images/brand/og-image.jpg',
         description:
-          'Rowad for Software Development is a premier software company specializing in web development, mobile app development, AI chatbots, digital marketing, and web hosting.',
+          'Rowad for Software Development is a premier software company specializing in web development, mobile apps, ERP systems, AI agents, chatbots, and hosting & DevOps.',
         foundingDate: '2020',
         numberOfEmployees: {
           '@type': 'QuantitativeValue',
@@ -176,7 +181,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           'Web Development',
           'Mobile App Development',
           'AI Chatbot Development',
-          'Digital Marketing',
+          'ERP Systems',
+          'AI Agents',
           'Web Hosting',
           'Cloud Computing',
           'DevOps',
@@ -190,7 +196,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         url: 'https://rowad.com',
         name: 'Rowad for Software Development',
         description:
-          'Premier software development company specializing in web development, mobile apps, AI chatbots, digital marketing, and cloud hosting.',
+          'Premier software development company specializing in web development, mobile apps, ERP systems, AI agents, chatbots, and cloud hosting & DevOps.',
         publisher: {
           '@id': 'https://rowad.com/#organization',
         },
@@ -266,9 +272,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
-                name: 'Digital Marketing',
+                name: 'ERP Systems',
                 description:
-                  'Comprehensive digital marketing strategies including SEO, social media, and content marketing.',
+                  'ERP implementation, data migration, custom modules and integrations so sales, inventory, accounting, HR and production run on one system.',
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'AI Agents',
+                description:
+                  'AI agents that read your data, use your tools and complete real tasks, with human approval and monitoring.',
               },
             },
             {

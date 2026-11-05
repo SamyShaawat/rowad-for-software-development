@@ -4,7 +4,7 @@ import { CompanyConstants } from '@constants';
 export const contactMetadata: Metadata = {
   title: 'Contact Us - Get a Free Consultation',
   description:
-    'Get in touch with Rowad for Software Development. Request a free consultation for your web development, mobile app, AI chatbot, digital marketing, or web hosting project. Located in Alexandria, Egypt - serving clients worldwide.',
+    'Get in touch with Rowad for Software Development. Request a free consultation for your website, mobile app, ERP, AI agent, chatbot, or hosting project. Located in Alexandria, Egypt - serving clients worldwide.',
   keywords: [
     'contact rowad',
     'rowad consultation',
@@ -16,7 +16,8 @@ export const contactMetadata: Metadata = {
     'get website quote',
     'mobile app development quote',
     'web hosting inquiry',
-    'digital marketing consultation',
+    'ERP consultation',
+    'AI agent consultation',
   ],
   openGraph: {
     title: 'Contact Us - Get a Free Consultation',

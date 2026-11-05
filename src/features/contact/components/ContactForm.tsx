@@ -159,7 +159,7 @@ export default function ContactForm() {
             <option value="">{FormConstants.SERVICE_SELECT}</option>
             <option value={ServiceType.DEVELOPMENT}>Website / Web App</option>
             <option value={ServiceType.MOBILE}>Mobile App</option>
-            <option value={ServiceType.ERP}>Odoo ERP</option>
+            <option value={ServiceType.ERP}>ERP system</option>
             <option value={ServiceType.AI_AGENTS}>AI Agent</option>
             <option value={ServiceType.CHATBOTS}>Chatbot</option>
             <option value={ServiceType.HOSTING}>Hosting &amp; Cloud</option>
