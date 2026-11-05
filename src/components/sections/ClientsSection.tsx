@@ -14,7 +14,7 @@ import { cn } from '@lib/utils';
 const ITEMS_PER_PAGE = 6;
 
 const pageBtn =
-  'grid h-10 w-10 place-items-center rounded-lg border border-slate-300 text-sm font-medium text-slate-700 transition-colors hover:border-slate-900 disabled:opacity-30 dark:border-white/15 dark:text-slate-300 dark:hover:border-white';
+  'grid h-10 w-10 place-items-center rounded-full border border-slate-300 text-sm font-medium text-slate-700 transition-colors hover:border-slate-900 disabled:opacity-30 dark:border-white/15 dark:text-slate-300 dark:hover:border-white';
 
 export function ClientsSection() {
   const [query, setQuery] = useState('');
@@ -34,7 +34,7 @@ export function ClientsSection() {
   const visible = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   return (
-    <section className="section-padding bg-white dark:bg-[#0B1220]" aria-label="Client list">
+    <section className="section-padding bg-white dark:bg-[#161616]" aria-label="Client list">
       <div className="container-custom mx-auto">
         <div className="relative mb-12 max-w-xl">
           <MagnifyingGlassIcon className="pointer-events-none absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
@@ -54,14 +54,14 @@ export function ClientsSection() {
         {visible.length > 0 ? (
           <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {visible.map((c) => (
-              <li key={c.id} className="glass-card flex flex-col p-6">
-                <div className="flex h-24 items-center justify-center rounded-lg border border-slate-200 bg-white p-3">
+              <li key={c.id} className="glass-card flex flex-col p-6 text-center sm:text-left">
+                <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full border border-slate-200 bg-[#ffffff] p-6">
                   <Image
                     src={c.logo}
                     alt={c.name}
                     width={160}
                     height={72}
-                    className="max-h-[72px] w-auto object-contain"
+                    className="max-h-20 w-auto max-w-full object-contain"
                   />
                 </div>
                 <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-orange-700 dark:text-orange-400">

@@ -38,7 +38,7 @@ const contactInfo = [
 const faqs = [
   {
     q: 'How long does a typical project take?',
-    a: 'Standard websites take 2–6 weeks. Mobile apps, Odoo implementations and AI agents usually take 6–12 weeks depending on scope and integrations. You get a firm estimate after the first call.',
+    a: 'Most standard websites take 2–6 weeks from kickoff to launch. Larger projects such as mobile apps, Odoo implementations or AI agents depend on scope and integrations. You get a firm estimate after the first call.',
   },
   {
     q: 'What is your pricing structure?',
@@ -61,7 +61,7 @@ export default function ContactPage() {
         {ContactConstants.SUBTITLE}
       </PageHero>
 
-      <section className="section-padding bg-white dark:bg-[#0B1220]">
+      <section className="section-padding bg-white dark:bg-[#161616]">
         <div className="container-custom mx-auto grid gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-7">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">

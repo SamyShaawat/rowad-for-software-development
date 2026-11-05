@@ -11,7 +11,7 @@ const links = [
 // Catches all 404 errors
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen items-center bg-slate-50 px-4 pb-20 pt-32 dark:bg-[#0B1220]">
+    <main className="flex min-h-screen items-center bg-slate-50 px-4 pb-20 pt-28 dark:bg-[#161616]">
       <div className="container-custom mx-auto">
         <p className="font-mono text-sm text-orange-700 dark:text-orange-400">Error 404</p>
         <h1 className="mt-3 text-4xl font-extrabold text-slate-900 dark:text-white sm:text-5xl">

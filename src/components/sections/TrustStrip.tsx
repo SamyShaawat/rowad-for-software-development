@@ -1,42 +1,57 @@
 import Image from 'next/image';
+import { ClientsConstants } from '@constants';
 
-const clients = [
-  'BCME',
-  'Beit',
-  'CSI',
-  'EGL',
-  'EgyptMedical',
-  'KadmarGroup',
-  'ProkenChemicals',
-  'SmartSystem',
-];
+/** Client ids to keep out of the home strip (they still appear on the Clients page). */
+const HIDDEN_IDS: number[] = [];
 
+const clients = ClientsConstants.filter((c) => !HIDDEN_IDS.includes(c.id));
+
+/**
+ * One copy of the list. It is at least one viewport wide (+8rem) so the second copy, which makes
+ * the loop seamless, is never on screen at the same time: a logo cannot appear twice in one view.
+ */
+function Row({ hidden }: { hidden?: boolean }) {
+  return (
+    <ul
+      className="flex min-w-[calc(100vw+8rem)] shrink-0 items-center justify-around gap-4 pr-4"
+      aria-hidden={hidden || undefined}
+    >
+      {clients.map((c) => (
+        <li
+          key={c.id}
+          className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-[#ffffff] p-5"
+        >
+          <Image
+            src={c.logo}
+            alt={hidden ? '' : c.name}
+            width={120}
+            height={64}
+            className="max-h-14 w-auto max-w-full object-contain"
+          />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Clients in a continuous marquee. Pauses on hover; static and scrollable if motion is reduced. */
 export function TrustStrip() {
   return (
     <section
-      className="border-b border-slate-200 bg-white py-10 dark:border-white/10 dark:bg-[#0B1220]"
+      className="border-b border-slate-200 bg-white py-12 dark:border-slate-700 dark:bg-[#161616]"
       aria-label="Clients"
     >
-      <div className="container-custom mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-          Trusted by teams across Egypt and the Gulf
-        </p>
-        <ul className="mx-auto grid max-w-5xl grid-cols-2 items-center gap-4 sm:grid-cols-4">
-          {clients.map((c) => (
-            <li
-              key={c}
-              className="flex h-24 items-center justify-center rounded-lg border border-slate-200 bg-white p-4"
-            >
-              <Image
-                src={`/images/clientsImages/${c}.png`}
-                alt={c}
-                width={200}
-                height={80}
-                className="max-h-16 w-auto max-w-full object-contain"
-              />
-            </li>
-          ))}
-        </ul>
+      <p className="mb-8 px-4 text-center text-sm text-slate-600 dark:text-slate-300">
+        Trusted by teams across Egypt and the Gulf
+      </p>
+      <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] motion-reduce:overflow-x-auto motion-reduce:[mask-image:none]">
+        <div
+          className="flex w-max animate-marquee hover:[animation-play-state:paused] motion-reduce:animate-none"
+          style={{ animationDuration: '60s' }}
+        >
+          <Row />
+          <Row hidden />
+        </div>
       </div>
     </section>
   );

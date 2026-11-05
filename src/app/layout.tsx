@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
@@ -7,11 +7,18 @@ import { Footer } from '@/components/layout/Footer';
 import { CompanyConstants } from '@constants';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 
-const inter = Inter({
+const plex = IBM_Plex_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-plex',
   display: 'swap',
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  weight: ['300', '400', '500', '600'],
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-plex-mono',
+  display: 'swap',
+  weight: ['400', '500'],
 });
 
 export const metadata: Metadata = {
@@ -316,7 +323,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${plex.variable} ${plexMono.variable}`} suppressHydrationWarning>
       <head>
         {/* JSON-LD Structured Data */}
         <Script
