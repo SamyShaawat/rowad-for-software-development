@@ -1,7 +1,7 @@
 {
   "name": "Rowad for Software Development",
   "short_name": "Rowad",
-  "description": "Software team in Alexandria, Egypt building websites, mobile apps, ERP systems, AI agents and chatbots, with hosting and DevOps.",
+  "description": "Software company in Alexandria, Egypt designing, building and running custom software, from idea to production.",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#f97316",
@@ -28,14 +28,14 @@
     {
       "name": "Our Services",
       "short_name": "Services",
-      "description": "Explore our software development services",
+      "description": "Software company in Alexandria, Egypt designing, building and running custom software, from idea to production.",
       "url": "/services",
       "icons": [{ "src": "/images/brand/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Contact Us",
       "short_name": "Contact",
-      "description": "Get in touch with our team",
+      "description": "Software company in Alexandria, Egypt designing, building and running custom software, from idea to production.",
       "url": "/contact",
       "icons": [{ "src": "/images/brand/icon-192.png", "sizes": "192x192" }]
     }
