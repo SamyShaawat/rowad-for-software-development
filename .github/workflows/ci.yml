@@ -108,6 +108,10 @@ jobs:
     needs: [quality-checks, e2e-tests]
     runs-on: ubuntu-24.04
     if: github.event_name == 'push' && github.ref == 'refs/heads/dev' && needs.quality-checks.result == 'success' && needs.e2e-tests.result == 'success'
+    # One deploy at a time. Queued ones re-check below that they are still the newest commit.
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
 
     steps:
       - name: Checkout code
@@ -133,10 +137,28 @@ jobs:
       - name: Build production bundle
         run: pnpm build
 
-      - name: Copy .htaccess to build output
-        run: cp .htaccess build/.htaccess
+      - name: Check this is still the newest commit on dev
+        id: fresh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # A slower, older run must never overwrite a newer deploy (it did: #36 over #37).
+          latest=$(gh api "repos/${{ github.repository }}/commits/dev" --jq .sha)
+          if [ "$latest" = "$GITHUB_SHA" ]; then
+            echo "latest=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "latest=false" >> "$GITHUB_OUTPUT"
+            echo "dev is now at $latest, this run is $GITHUB_SHA. Skipping deploy: the newer run deploys it."
+          fi
+
+      - name: Copy .htaccess and version marker to build output
+        if: steps.fresh.outputs.latest == 'true'
+        run: |
+          cp .htaccess build/.htaccess
+          echo "$GITHUB_SHA" > build/version.txt
 
       - name: Deploy build to cPanel over SSH
+        if: steps.fresh.outputs.latest == 'true'
         env:
           SSH_KEY: ${{ secrets.CPANEL_SSH_KEY }}
           HOST: ${{ secrets.CPANEL_HOST }}
@@ -163,6 +185,7 @@ jobs:
           fi
 
       - name: Smoke test the live site
+        if: steps.fresh.outputs.latest == 'true'
         run: |
           # Apache can behave differently from the static server used in e2e (e.g. a folder and a page sharing a name)
           for path in / /services /clients /about /contact /ar /ar/about /sitemap.xml; do
@@ -170,6 +193,11 @@ jobs:
             echo "$path -> $code"
             [ "$code" = "200" ] || { echo "Smoke test failed for $path"; exit 1; }
           done
+          # The live site must be this exact commit (200s alone cannot tell a stale deploy)
+          live=$(curl -s --retry 3 --retry-delay 5 --retry-all-errors "https://rowad.com/version.txt?x=$RANDOM" | tr -d '[:space:]')
+          echo "live version: $live (expected $GITHUB_SHA)"
+          [ "$live" = "$GITHUB_SHA" ] || { echo "Smoke test failed: live site is not this commit"; exit 1; }
 
       - name: Deployment Summary
-        run: echo "Deployed dev to https://rowad.com via rsync (public_html/)"
+        run: |
+          if [ "${{ steps.fresh.outputs.latest }}" = "true" ]; then echo "Deployed $GITHUB_SHA to https://rowad.com via rsync (public_html/)"; else echo "Skipped: a newer commit is on dev"; fi
