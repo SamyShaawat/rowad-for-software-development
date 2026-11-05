@@ -79,24 +79,3 @@ public/
   images/clientsImages client logos
 .github/workflows/     CI and deploy
 ```
-
-## Deployment
-
-1. Push or merge to `main`.
-2. GitHub Actions runs type checks and e2e tests, builds the static site and publishes it to the
-   `deploy` branch.
-3. cPanel pulls the `deploy` branch (Git Version Control) and copies the files to `public_html`.
-
-Details: [CPANEL-DEPLOY-GUIDE.md](CPANEL-DEPLOY-GUIDE.md) and [DEPLOYMENT.md](DEPLOYMENT.md).
-Work on a branch and open a pull request into `main`.
-
-## Contact
-
-- Website: https://rowad.com
-- Email: info@rowad.com
-- Phone: +20 109 1539 396
-- Office: 584 El-Horreya Road, Gleem, Alexandria, Egypt
-
-## License
-
-Proprietary and confidential.
