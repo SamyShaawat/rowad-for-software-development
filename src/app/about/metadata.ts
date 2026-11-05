@@ -20,8 +20,7 @@ export const aboutMetadata: Metadata = {
   ],
   openGraph: {
     title: 'About Rowad - A Software Team in Alexandria, Egypt',
-    description:
-      'Meet the Alexandria software team that takes your idea to production.',
+    description: 'Meet the Alexandria software team that takes your idea to production.',
     url: 'https://rowad.com/about',
     siteName: 'Rowad for Software Development',
     type: 'website',
