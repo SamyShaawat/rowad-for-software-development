@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
 import { CurrentYear } from '@/components/ui/CurrentYear';
 import { motion } from 'framer-motion';
-import { PhoneIcon, EnvelopeIcon, MapPinIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { RouteConstants, CompanyConstants } from '@constants';
 import { getDictionary, localePath, type Locale } from '@/i18n';
 
@@ -54,20 +54,12 @@ export function Footer({ locale }: { locale: Locale }) {
       { name: t.nav.clients, href: localePath(locale, RouteConstants.CLIENTS) },
       { name: t.nav.contact, href: localePath(locale, RouteConstants.CONTACT) },
     ],
-    services: [
-      { name: 'Websites & web apps', href: `${localePath(locale, RouteConstants.SERVICES)}#web` },
-      { name: 'Mobile apps', href: `${localePath(locale, RouteConstants.SERVICES)}#mobile` },
-      { name: 'ERP systems', href: `${localePath(locale, RouteConstants.SERVICES)}#erp` },
-      { name: 'AI agents', href: `${localePath(locale, RouteConstants.SERVICES)}#agents` },
-      { name: 'Chatbots', href: `${localePath(locale, RouteConstants.SERVICES)}#chatbot` },
-      { name: 'Hosting & DevOps', href: `${localePath(locale, RouteConstants.SERVICES)}#cloud` },
-    ],
   };
 
   return (
     <footer className="relative bg-white dark:bg-[#161616] border-t border-slate-200 dark:border-white/[0.06] overflow-hidden transition-colors pt-20">
       <div className="relative container-custom mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           {/* ── Brand & Description ── */}
           <div className="lg:col-span-1 space-y-8">
             <Link href={localePath(locale, RouteConstants.HOME)} aria-label={t.a11y.homeLabel}>
@@ -96,8 +88,8 @@ export function Footer({ locale }: { locale: Locale }) {
 
           {/* ── Exploration Links ── */}
           <div>
-            <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-6 text-xs uppercase tracking-[0.2em]">
-              Explore
+            <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-6 text-xs uppercase tracking-[0.2em] rtl:tracking-normal">
+              {t.footer.explore}
             </h3>
             <ul className="space-y-4">
               {navLinks.company.map((item) => (
@@ -114,39 +106,10 @@ export function Footer({ locale }: { locale: Locale }) {
             </ul>
           </div>
 
-          {/* ── Newsletter ── */}
-          <div className="space-y-6">
-            <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-2 text-xs uppercase tracking-[0.2em]">
-              Stay Updated
-            </h3>
-            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-              Subscribe to our newsletter for latest tech insights and company news.
-            </p>
-            <form
-              className="relative group"
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert('Thanks for subscribing!');
-              }}
-            >
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="w-full ps-4 pe-12 py-3 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] rounded-xl text-sm text-slate-900 dark:text-white placeholder:text-slate-500 focus:outline-none focus:border-orange-500/50 transition-all shadow-sm"
-              />
-              <button
-                type="submit"
-                className="absolute end-1.5 top-1.5 bottom-1.5 px-3 rounded-lg bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center justify-center"
-              >
-                <ArrowRightIcon className="w-4 h-4 rtl:rotate-180" />
-              </button>
-            </form>
-          </div>
-
           {/* ── Reach Us ── */}
           <div className="space-y-6">
-            <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-2 text-xs uppercase tracking-[0.2em]">
-              Reach Us
+            <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-2 text-xs uppercase tracking-[0.2em] rtl:tracking-normal">
+              {t.footer.reachUs}
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-4 text-slate-600 dark:text-slate-400 text-sm">
@@ -154,14 +117,14 @@ export function Footer({ locale }: { locale: Locale }) {
                   <PhoneIcon className="h-5 w-5 text-orange-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
-                    Call Center
+                  <span className="text-[10px] uppercase tracking-wider rtl:tracking-normal text-slate-400 font-bold">
+                    {t.footer.callCenter}
                   </span>
                   <a
                     href={`tel:${CompanyConstants.PHONE_HREF}`}
                     className="hover:text-orange-500 font-bold transition-colors"
                   >
-                    {CompanyConstants.PHONE}
+                    <bdi dir="ltr">{CompanyConstants.PHONE}</bdi>
                   </a>
                 </div>
               </li>
@@ -170,14 +133,14 @@ export function Footer({ locale }: { locale: Locale }) {
                   <EnvelopeIcon className="h-5 w-5 text-blue-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
-                    Inquiries
+                  <span className="text-[10px] uppercase tracking-wider rtl:tracking-normal text-slate-400 font-bold">
+                    {t.footer.inquiries}
                   </span>
                   <a
                     href={`mailto:${CompanyConstants.EMAIL}`}
                     className="hover:text-orange-500 font-bold transition-colors truncate max-w-[180px]"
                   >
-                    {CompanyConstants.EMAIL}
+                    <bdi dir="ltr">{CompanyConstants.EMAIL}</bdi>
                   </a>
                 </div>
               </li>
@@ -186,8 +149,8 @@ export function Footer({ locale }: { locale: Locale }) {
                   <MapPinIcon className="h-5 w-5 text-green-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">
-                    Main Office
+                  <span className="text-[10px] uppercase tracking-wider rtl:tracking-normal text-slate-400 font-bold">
+                    {t.footer.mainOffice}
                   </span>
                   <a
                     href={CompanyConstants.MAPS_LINK}
@@ -195,7 +158,7 @@ export function Footer({ locale }: { locale: Locale }) {
                     rel="noopener noreferrer"
                     className="hover:text-orange-500 font-bold transition-colors"
                   >
-                    {CompanyConstants.LOCATION}
+                    {t.company.location}
                   </a>
                 </div>
               </li>
@@ -207,29 +170,29 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className="border-t border-slate-200 dark:border-white/[0.06] pt-10 mt-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col items-center md:items-start">
-              <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-start">
-                © <CurrentYear /> {CompanyConstants.FULL_NAME}
+              <p className="text-slate-500 text-xs font-medium uppercase tracking-widest rtl:tracking-normal text-center md:text-start">
+                © <CurrentYear /> {t.company.fullName}
               </p>
             </div>
 
             <div className="flex gap-8">
               <Link
                 href="#"
-                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors"
+                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest rtl:tracking-normal transition-colors"
               >
-                Privacy
+                {t.footer.privacy}
               </Link>
               <Link
                 href="#"
-                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors"
+                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest rtl:tracking-normal transition-colors"
               >
-                Terms
+                {t.footer.terms}
               </Link>
               <Link
                 href="#"
-                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest transition-colors"
+                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest rtl:tracking-normal transition-colors"
               >
-                Support
+                {t.footer.support}
               </Link>
             </div>
           </div>
