@@ -162,5 +162,14 @@ jobs:
             $SSH "$USER_@$HOST" 'cd public_html && xargs -d "\n" rm -f --' < stale.txt
           fi
 
+      - name: Smoke test the live site
+        run: |
+          # Apache can behave differently from the static server used in e2e (e.g. a folder and a page sharing a name)
+          for path in / /services /clients /about /contact /ar /ar/about /sitemap.xml; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 5 --retry-all-errors "https://rowad.com$path")
+            echo "$path -> $code"
+            [ "$code" = "200" ] || { echo "Smoke test failed for $path"; exit 1; }
+          done
+
       - name: Deployment Summary
         run: echo "Deployed dev to https://rowad.com via rsync (public_html/)"
