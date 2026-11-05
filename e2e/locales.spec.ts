@@ -35,6 +35,29 @@ test.describe('Languages', () => {
     );
   });
 
+  test('Arabic footer is fully Arabic, English footer unchanged', async ({ page }) => {
+    await page.goto('/ar');
+    const footer = page.locator('footer');
+    for (const text of ['استكشف', 'المقر الرئيسي', 'الاستفسارات', 'الخصوصية']) {
+      await expect(footer).toContainText(text);
+    }
+    await expect(footer).not.toContainText('Main Office');
+    await page.goto('/');
+    await expect(page.locator('footer')).toContainText('Main Office');
+  });
+
+  test('Footer has no fake newsletter form', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('footer form')).toHaveCount(0);
+  });
+
+  test('Error pages are bilingual', async ({ page }) => {
+    for (const code of ['404', '500', '403']) {
+      await page.goto(`/${code}.html`);
+      await expect(page.locator('[lang="ar"][dir="rtl"]').first()).toBeVisible();
+    }
+  });
+
   test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);

@@ -31,15 +31,17 @@ cat > "$BUILD_DIR/404.html" << 'HTML'
     <div class="error-code">404</div>
     <h2>Oops! Page Not Found</h2>
     <p>The page you're looking for seems to have been moved, renamed, or never existed. Don't worry, we'll help you find your way back!</p>
+    <h2 lang="ar" dir="rtl">الصفحة غير موجودة</h2>
+    <p lang="ar" dir="rtl">ربما نُقلت الصفحة أو تغيّر اسمها أو لم تكن موجودة أصلًا. يمكنك العودة من الروابط التالية.</p>
     <div class="buttons">
-      <a href="/" class="btn-primary">🏠 Go to Homepage</a>
-      <a href="/contact" class="btn-secondary">📧 Contact Support</a>
+      <a href="/" class="btn-primary">🏠 Go to Homepage · الصفحة الرئيسية</a>
+      <a href="/contact" class="btn-secondary">📧 Contact Support · تواصل معنا</a>
     </div>
     <div class="quick-links">
-      <a href="/" class="quick-link"><span>🏠</span><small>Home</small></a>
-      <a href="/services" class="quick-link"><span>⚡</span><small>Services</small></a>
-      <a href="/about" class="quick-link"><span>👥</span><small>About Us</small></a>
-      <a href="/contact" class="quick-link"><span>📧</span><small>Contact</small></a>
+      <a href="/" class="quick-link"><span>🏠</span><small>Home · الرئيسية</small></a>
+      <a href="/services" class="quick-link"><span>⚡</span><small>Services · خدماتنا</small></a>
+      <a href="/about" class="quick-link"><span>👥</span><small>About Us · من نحن</small></a>
+      <a href="/contact" class="quick-link"><span>📧</span><small>Contact · تواصل معنا</small></a>
     </div>
   </div>
 </body>
@@ -64,9 +66,11 @@ cat > "$BUILD_DIR/500.html" << 'HTML'
     <div class="error-code">500</div>
     <h2>Server Error</h2>
     <p>Something went wrong on our end. Please try again later or contact support if the problem persists.</p>
+    <h2 lang="ar" dir="rtl">خطأ في الخادم</h2>
+    <p lang="ar" dir="rtl">حدث خطأ من جانبنا. حاول مرة أخرى لاحقًا، أو تواصل معنا إذا استمرت المشكلة.</p>
     <div class="buttons">
-      <a href="/" class="btn-primary">🏠 Go to Homepage</a>
-      <a href="javascript:location.reload()" class="btn-secondary">🔄 Retry</a>
+      <a href="/" class="btn-primary">🏠 Go to Homepage · الصفحة الرئيسية</a>
+      <a href="javascript:location.reload()" class="btn-secondary">🔄 Retry · إعادة المحاولة</a>
     </div>
   </div>
 </body>
@@ -91,7 +95,9 @@ cat > "$BUILD_DIR/403.html" << 'HTML'
     <div class="error-code">403</div>
     <h2>Access Denied</h2>
     <p>You don't have permission to access this resource. Please check your credentials or contact the administrator.</p>
-    <a href="/" class="btn-primary">🏠 Go to Homepage</a>
+    <h2 lang="ar" dir="rtl">غير مسموح بالدخول</h2>
+    <p lang="ar" dir="rtl">ليس لديك صلاحية للوصول إلى هذه الصفحة.</p>
+    <a href="/" class="btn-primary">🏠 Go to Homepage · الصفحة الرئيسية</a>
   </div>
 </body>
 </html>
