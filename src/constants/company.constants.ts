@@ -6,7 +6,7 @@ export const CompanyConstants = {
   FULL_NAME: 'Rowad For Software Development',
   TAGLINE: 'Transform Your Business with Digital Excellence',
   DESCRIPTION:
-    'We specialize in reliable and secure website hosting, developing and deploying high-quality, responsive websites, and creating innovative digital marketing strategies.',
+    'We design, build and run websites, mobile apps, ERP systems, AI agents and chatbots, with reliable hosting and DevOps behind them.',
   EMAIL: 'info@rowad.com',
   PHONE: '+20 109 1539 396',
   PHONE_HREF: '+201091539396',

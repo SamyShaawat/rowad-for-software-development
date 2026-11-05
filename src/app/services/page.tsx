@@ -144,7 +144,7 @@ export default function ServicesPage() {
       {/* Carbon content switcher: sticky anchor tabs */}
       <nav
         aria-label="Services"
-        className="sticky top-12 z-40 border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-[#161616]"
+        className="sticky top-16 z-40 border-b border-slate-200 bg-white dark:border-slate-700 dark:bg-[#161616]"
       >
         <ul className="container-custom mx-auto flex overflow-x-auto px-4 sm:px-6 lg:px-8">
           {services.map((s) => (
@@ -164,7 +164,7 @@ export default function ServicesPage() {
         <section
           key={s.id}
           id={s.id}
-          className={`scroll-mt-28 border-b border-slate-200 px-4 py-16 dark:border-slate-700 sm:px-6 lg:px-8 lg:py-24 ${
+          className={`scroll-mt-36 border-b border-slate-200 px-4 py-16 dark:border-slate-700 sm:px-6 lg:px-8 lg:py-24 ${
             i % 2 === 0 ? 'bg-white dark:bg-[#161616]' : serviceTheme[s.id].tint
           }`}
         >

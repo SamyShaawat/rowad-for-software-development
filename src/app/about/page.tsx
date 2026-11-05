@@ -11,10 +11,10 @@ export const metadata: Metadata = aboutMetadata;
 const capabilities = [
   'Websites and web apps',
   'Mobile apps (iOS and Android)',
-  'ERP implementation and custom modules',
+  'ERP implementation, migration and custom modules',
   'AI agents and automation',
   'Chatbots on WhatsApp and web',
-  'Cloud hosting and DevOps',
+  'Hosting, CI/CD and DevOps',
   'UI/UX design and prototyping',
   'QA and test automation',
   'Maintenance and 24/7 support',
@@ -27,8 +27,8 @@ export default function AboutPage() {
         eyebrow={`About ${CompanyConstants.NAME}`}
         title="A software team that stays for the long run."
       >
-        We are engineers and designers in Alexandria, Egypt. We build and run software for companies
-        across the region, from first website to full ERP.
+        We are engineers and designers in Alexandria, Egypt. We build and run websites, mobile apps,
+        ERP systems, AI agents and chatbots for companies across the region.
       </PageHero>
 
       <section className="border-b border-slate-200 dark:border-white/10">
@@ -53,8 +53,9 @@ export default function AboutPage() {
           <div className="space-y-5 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
             <p>
               {CompanyConstants.NAME} began by building and hosting websites. As clients grew, they
-              asked for apps, then for systems to run their operations, then for automation. We
-              learned each one and now cover all of it.
+              asked for mobile apps, then for ERP systems to run their operations, then for AI
+              agents and chatbots to automate the routine work. We learned each one, and one team
+              now covers all of it, including the hosting and DevOps that keeps it running.
             </p>
             <p>
               Our mission is simple: give businesses software that works, delivered by people who

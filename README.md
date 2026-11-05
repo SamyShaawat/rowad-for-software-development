@@ -1,127 +1,102 @@
-# Rowad For Software Development
+# Rowad
 
-Welcome to **Rowad For Software Development** - your trusted partner for digital transformation. We specialize in delivering cutting-edge digital solutions that drive business growth and success.
+Website for **Rowad for Software Development**, a software company in Alexandria, Egypt.
+We design, build and run:
 
-## 🚀 Our Services
+- **Websites and web apps**: company sites, online stores, customer portals
+- **Mobile apps**: iOS and Android from one codebase
+- **ERP systems**: implementation, data migration, custom modules (built on Odoo)
+- **AI agents**: agents that read your data, use your tools and finish tasks, with human approval
+- **Chatbots**: Arabic and English bots for WhatsApp and web, connected to your CRM
+- **Hosting and DevOps**: managed hosting, CI/CD, backups and monitoring
 
-- **Website Development**: Custom-built websites tailored to your business needs
-- **Web Hosting**: Reliable, secure, and scalable hosting solutions
-- **Deployment Services**: Seamless deployment and continuous integration
+## Tech stack
 
-## 🛠️ Tech Stack
+| Area | Choice |
+| --- | --- |
+| Framework | Next.js 15 (App Router, static export), React 19, TypeScript 5 |
+| Styling | Tailwind CSS 3, IBM Carbon design tokens, IBM Plex Sans / Mono |
+| Forms | React Hook Form, Zod, reCAPTCHA; PHP mailer on cPanel (`public/contact-mailer.php`) |
+| Icons | Heroicons; service diagrams are drawn in code (SVG) |
+| Tooling | Nx 21, pnpm, Prettier, Playwright (e2e) |
+| CI/CD | GitHub Actions, deployed to cPanel through the `deploy` branch |
 
-- **Frontend**: Next.js 14, React 18, TypeScript, Tailwind CSS
-- **Animation**: Framer Motion
-- **Forms**: React Hook Form
-- **Notifications**: React Hot Toast
-- **Icons**: Heroicons
-- **Build Tool**: Nx Workspace
-- **Package Manager**: pnpm
+## Getting started
 
-## 📦 Getting Started
+Requirements: Node.js 22 and pnpm 10.
 
-### Prerequisites
-
-- Node.js 18+ 
-- pnpm 9+
-
-### Installation
-
-1. Clone the repository:
 ```bash
 git clone https://github.com/SamyShaawat/Rowad.git
 cd Rowad
-```
-
-2. Install dependencies:
-```bash
 pnpm install
+cp .env.example .env.local   # add your reCAPTCHA and SMTP values for the contact form
+pnpm dev                     # runs `nx serve rowad` at http://localhost:3001
 ```
 
-3. Run the development server:
-```bash
-pnpm dev
-```
+If the dev server will not start, check that port 3001 is free and delete the `.next` folder.
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## 📁 Project Structure
-
-```
-Rowad/
-├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── about/             # About Us page
-│   │   ├── contact/           # Contact page
-│   │   ├── services/          # Services page
-│   │   ├── globals.css        # Global styles
-│   │   ├── layout.tsx         # Root layout
-│   │   └── page.tsx           # Homepage
-│   ├── components/
-│   │   ├── layout/            # Header, Footer
-│   │   ├── sections/          # Page sections
-│   │   └── ui/                # Reusable UI components
-│   ├── lib/                   # Utility functions
-│   └── types/                 # TypeScript types
-├── public/
-│   └── images/                # Static assets
-├── nx.json                    # Nx configuration
-├── next.config.js             # Next.js configuration
-├── tailwind.config.js         # Tailwind CSS configuration
-├── tsconfig.json              # TypeScript configuration
-└── package.json               # Dependencies
-```
-
-## 🎨 Design Features
-
-- **Modern UI**: Clean, professional design with gradient accents
-- **Responsive**: Mobile-first, works on all devices
-- **Animated**: Smooth animations with Framer Motion
-- **Accessible**: WCAG compliant
-- **SEO Optimized**: Meta tags, semantic HTML, fast loading
-
-## 📄 Pages
-
-1. **Home**: Hero section, services overview, about preview, testimonials, CTA
-2. **Services**: Detailed service offerings with features and technologies
-3. **About Us**: Company story, mission, vision, values, team
-4. **Contact**: Contact form, company info, FAQ
-
-## 🔧 Available Scripts
+## Scripts
 
 ```bash
-pnpm dev          # Start development server
-pnpm build        # Build for production
-pnpm start        # Start production server
-pnpm lint         # Run ESLint
-pnpm format       # Format code with Prettier
+pnpm dev            # development server (Turbopack) on :3001
+pnpm build          # production build, static export to build/
+pnpm start          # production server on :3001
+pnpm nx:typecheck   # TypeScript check
+pnpm format         # Prettier
+pnpm test:e2e       # Playwright tests
 ```
 
-## 🌐 Deployment
+## Pages
 
-The site can be deployed to any platform that supports Next.js:
+| Route | Content |
+| --- | --- |
+| `/` | Hero, clients strip, six services, how we work, call to action |
+| `/services` | One section per service: diagram, what we build, how we deliver, stack, ways to work with us |
+| `/about` | Story, numbers, how we work, expertise |
+| `/clients` | Searchable, paginated client list |
+| `/contact` | Contact form, company details, FAQ |
 
-- Vercel (recommended)
-- Netlify
-- AWS Amplify
-- Your own server
+## Design
 
-Build the production bundle:
-```bash
-pnpm build
+Built on the **IBM Carbon** design system: IBM Plex type, a black header bar, grey layers and
+tile grids, with Rowad orange as the accent. Buttons are pills, frames are rounded, client logos
+sit in circles. There are no gradients. Light and dark themes use soft off-white and off-black,
+plus one calm accent colour per service.
+
+## Project structure
+
+```
+src/
+  app/                 routes: /, services, about, clients, contact, api/contact, not-found
+  components/
+    layout/            Header, Footer, ThemeToggle
+    sections/          Hero, Services, Process, TrustStrip, Clients, CTA, illustrations
+    ui/                Logo, PageHero, CurrentYear
+  constants/           company, services, stats, clients and copy
+  features/contact/    contact form
+public/
+  images/brand/        favicon, app icons, Open Graph image
+  images/clientsImages client logos
+.github/workflows/     CI and deploy
 ```
 
-## 📞 Contact
+## Deployment
 
-- **Website**: https://rowad.com
-- **Email**: info@rowad.com
-- **Location**: Damascus, Syria
+1. Push or merge to `main`.
+2. GitHub Actions runs type checks and e2e tests, builds the static site and publishes it to the
+   `deploy` branch.
+3. cPanel pulls the `deploy` branch (Git Version Control) and copies the files to `public_html`.
 
-## 📝 License
+Details: [CPANEL-DEPLOY-GUIDE.md](CPANEL-DEPLOY-GUIDE.md) and [DEPLOYMENT.md](DEPLOYMENT.md).
+Work on a branch and open a pull request into `main`.
 
-This project is proprietary and confidential.
+## Contact
 
----
+- Website: https://rowad.com
+- Email: info@rowad.com
+- Phone: +20 109 1539 396
+- Office: 584 El-Horreya Road, Gleem, Alexandria, Egypt
 
-Built with ❤️ by Rowad Team
+## License
 
+Proprietary and confidential.
