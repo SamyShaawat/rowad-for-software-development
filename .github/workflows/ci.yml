@@ -82,14 +82,6 @@ jobs:
       - name: Run E2E tests
         continue-on-error: true
         run: BASE_URL=http://localhost:3001 pnpm playwright test
-        env:
-          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
-          RECAPTCHA_SECRET_KEY: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
-          SMTP_HOST: localhost
-          SMTP_PORT: '1025'
-          SMTP_USER: test
-          SMTP_PASS: test
-          CONTACT_EMAIL: test@rowad.com
 
       - name: Upload test results
         if: always()
@@ -138,8 +130,6 @@ jobs:
 
       - name: Build production bundle
         run: pnpm build
-        env:
-          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
 
       - name: Copy .htaccess to build output
         run: cp .htaccess build/.htaccess
