@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: `%s | ${CompanyConstants.NAME}`,
   },
   description:
-    'Rowad for Software Development is a premier software company specializing in web development, mobile apps, ERP systems, AI agents, chatbots, and hosting & DevOps. Based in Alexandria, Egypt, we deliver innovative digital solutions that drive business growth.',
+    'Rowad for Software Development is a software team in Alexandria, Egypt. We design, build and run websites, mobile apps, ERP systems, AI agents and chatbots, with reliable hosting and DevOps behind them.',
   keywords: [
     'rowad',
     'rowad software',
@@ -89,9 +89,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://rowad.com',
     siteName: 'Rowad for Software Development',
-    title: 'Rowad - Leading Software Development Company | Web, Mobile & AI Solutions',
+    title: 'Rowad - Software Development Company | Web, Mobile, ERP & AI',
     description:
-      'Premier software development company in Alexandria, Egypt. Specializing in websites, mobile apps, ERP systems, AI agents, chatbots, and cloud hosting & DevOps.',
+      'Software team in Alexandria, Egypt building websites, mobile apps, ERP systems, AI agents and chatbots, with hosting and DevOps.',
     images: [
       {
         url: '/images/brand/og-image.jpg',
@@ -104,9 +104,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rowad - Leading Software Development Company',
+    title: 'Rowad - Software Development Company',
     description:
-      'Premier software development company specializing in web, mobile, ERP, AI agents, chatbots & DevOps.',
+      'Software team in Alexandria, Egypt building websites, mobile apps, ERP systems, AI agents and chatbots, with hosting and DevOps.',
     images: ['/images/brand/og-image.jpg'],
     creator: '@rowad',
     site: '@rowad',
@@ -146,7 +146,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         },
         image: 'https://rowad.com/images/brand/og-image.jpg',
         description:
-          'Rowad for Software Development is a premier software company specializing in web development, mobile apps, ERP systems, AI agents, chatbots, and hosting & DevOps.',
+          'Rowad for Software Development is a software team in Alexandria, Egypt. We design, build and run websites, mobile apps, ERP systems, AI agents and chatbots, with reliable hosting and DevOps behind them.',
         foundingDate: '2020',
         numberOfEmployees: {
           '@type': 'QuantitativeValue',
@@ -196,7 +196,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         url: 'https://rowad.com',
         name: 'Rowad for Software Development',
         description:
-          'Premier software development company specializing in web development, mobile apps, ERP systems, AI agents, chatbots, and cloud hosting & DevOps.',
+          'Software team in Alexandria, Egypt building websites, mobile apps, ERP systems, AI agents and chatbots, with hosting and DevOps.',
         publisher: {
           '@id': 'https://rowad.com/#organization',
         },
