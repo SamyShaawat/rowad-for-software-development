@@ -600,27 +600,23 @@ function ChatbotArt() {
       <Txt x={178} y={33} size={10} weight={600} mono={false} fill="#fff">
         Support bot
       </Txt>
-      <Box x={212} y={56} w={108} h={26} tone={layer} stroke="none" />
-      <text x={312} y={74} fontSize="12" textAnchor="end" direction="rtl" fill="currentColor">
-        أين طلبي؟
-      </text>
-      <Box x={160} y={90} w={152} h={40} stroke={ORANGE} />
-      <Txt x={168} y={106} size={9} mono={false}>
+      <Box x={160} y={56} w={152} h={40} stroke={ORANGE} />
+      <Txt x={168} y={72} size={9} mono={false}>
         Order #4821 ships today.
       </Txt>
-      <Txt x={168} y={120} size={9} mono={false}>
+      <Txt x={168} y={86} size={9} mono={false}>
         Arrives Thursday.
       </Txt>
-      <Box x={222} y={142} w={98} h={26} tone={layer} stroke="none" />
-      <Txt x={230} y={159} size={9} mono={false}>
+      <Box x={222} y={108} w={98} h={26} tone={layer} stroke="none" />
+      <Txt x={230} y={125} size={9} mono={false}>
         Talk to a person
       </Txt>
-      <Box x={160} y={180} w={152} h={26} stroke={ORANGE} />
-      <Txt x={168} y={197} size={9} mono={false}>
+      <Box x={160} y={146} w={152} h={26} stroke={ORANGE} />
+      <Txt x={168} y={163} size={9} mono={false}>
         Connecting you to an agent…
       </Txt>
-      <rect x={160} y={220} width={160} height={26} fill={ORANGE} />
-      <Txt x={170} y={237} size={9} weight={600} mono={false} fill="#161616">
+      <rect x={160} y={186} width={160} height={26} fill={ORANGE} />
+      <Txt x={170} y={203} size={9} weight={600} mono={false} fill="#161616">
         ↳ Handed over to human
       </Txt>
       <Box x={160} y={270} w={160} h={26} tone={layer} />
