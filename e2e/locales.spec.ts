@@ -86,6 +86,35 @@ test.describe('Languages', () => {
     );
   });
 
+  test('Arabic services page is fully translated and stays inside /ar', async ({ page }) => {
+    await page.goto('/ar/services');
+    await expect(page.locator('h1')).toHaveText('ويب وموبايل وERP وذكاء اصطناعي من فريق واحد.');
+    await expect(page.locator('section[id]')).toHaveCount(6);
+    const main = page.locator('main');
+    for (const english of [
+      'What we build',
+      'How we deliver',
+      'Ways to work with us',
+      'Start a project',
+    ]) {
+      await expect(main).not.toContainText(english);
+    }
+    const hrefs = await main
+      .locator('a[href^="/"]')
+      .evaluateAll((els) => els.map((e) => e.getAttribute('href') ?? ''));
+    expect(hrefs.length).toBeGreaterThan(5);
+    expect(hrefs.filter((h) => !h.startsWith('/ar'))).toEqual([]);
+  });
+
+  test('English services page keeps its text and names no unconfirmed tools', async ({ page }) => {
+    await page.goto('/services');
+    await expect(page.locator('h1')).toHaveText('Web, mobile, ERP and AI from one team.');
+    await expect(page.getByText('What we build').first()).toBeVisible();
+    for (const tool of ['Odoo', 'Flutter', 'React Native', 'LangChain']) {
+      await expect(page.locator('main')).not.toContainText(tool);
+    }
+  });
+
   test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);

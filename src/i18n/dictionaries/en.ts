@@ -94,6 +94,125 @@ export const en = {
       ],
     },
   },
+  servicesPage: {
+    eyebrow: 'Services',
+    title: 'Web, mobile, ERP and AI from one team.',
+    intro:
+      'Pick one service or combine them. Each section shows what we build and how we deliver it.',
+    navLabel: 'Services',
+    startProject: 'Start a project',
+    whatWeBuild: 'What we build',
+    howWeDeliver: 'How we deliver',
+    details: {
+      web: {
+        lead: 'A site that loads fast, ranks well and turns visitors into customers.',
+        text: 'Company websites, online stores, customer portals and SaaS dashboards. We start from your goals and users, then build a fast, accessible, search-friendly product you can update yourself.',
+        projects: [
+          'Corporate and marketing websites',
+          'E-commerce with local and international payments',
+          'Customer and partner portals',
+          'Internal dashboards and SaaS products',
+        ],
+        steps: [
+          'Plan content, structure and wireframes',
+          'Design system and build in short sprints',
+          'Launch, measure and improve',
+        ],
+      },
+      mobile: {
+        lead: 'One codebase, two stores, a real native feel.',
+        text: 'iOS and Android apps for customers, field teams and partners. We prototype first so you can test the idea, then build, release and maintain the app.',
+        projects: [
+          'Customer ordering and loyalty apps',
+          'Field-staff and delivery apps',
+          'Booking and on-demand services',
+          'Companion apps for your ERP',
+        ],
+        steps: [
+          'Clickable prototype and user testing',
+          'Build and test on real devices',
+          'Store release, analytics and updates',
+        ],
+      },
+      erp: {
+        lead: 'Every department on one system and one source of truth.',
+        text: 'We implement, customise and support ERP systems so sales, inventory, accounting, HR and manufacturing work together instead of in separate spreadsheets. We adapt the system to the way your business runs.',
+        projects: [
+          'ERP implementation and data migration',
+          'Custom modules and workflows',
+          'Integrations with e-commerce, payments and shipping',
+          'Reports, dashboards and user training',
+        ],
+        steps: [
+          'Map your processes and pick the modules',
+          'Configure, customise and test with your data',
+          'Migrate, train your team and go live',
+        ],
+      },
+      agents: {
+        lead: 'Software that does the work, not just answers questions.',
+        text: 'Agents read your documents and systems, decide what to do, call your tools and finish tasks like triage, quoting and reporting. People stay in control with approval steps and full logs.',
+        projects: [
+          'Question answering over your own documents',
+          'Sales and support triage',
+          'Back-office automation: quotes, invoices, reports',
+          'Agents connected to your ERP and CRM',
+        ],
+        steps: [
+          'Choose one workflow worth automating',
+          'Prototype on your data and measure accuracy',
+          'Deploy with guardrails and monitoring',
+        ],
+      },
+      chatbot: {
+        lead: 'Answer customers instantly in Arabic and English, then hand over to a person.',
+        text: 'Bots on WhatsApp, Messenger and your website that handle common questions, capture leads and book appointments, then pass the conversation to your team when it matters.',
+        projects: [
+          'WhatsApp customer support',
+          'Lead capture and appointment booking',
+          'Order status and FAQ bots',
+          'Human handover with full context',
+        ],
+        steps: [
+          'Collect real questions and design flows',
+          'Build, connect to CRM and test in both languages',
+          'Launch and improve from conversation data',
+        ],
+      },
+      cloud: {
+        lead: 'Releases that are routine and downtime that is rare.',
+        text: 'Managed hosting, automated pipelines and monitoring for the systems we build and the ones you already run.',
+        projects: [
+          'Managed hosting with SSL and daily backups',
+          'CI/CD pipelines and zero-downtime releases',
+          'Disaster recovery and rollbacks',
+          'Monitoring and on-call support',
+        ],
+        steps: [
+          'Audit your current setup',
+          'Automate build, test and deploy',
+          'Monitor, back up and improve',
+        ],
+      },
+    },
+    engage: {
+      title: 'Ways to work with us',
+      items: [
+        {
+          title: 'Fixed-scope project',
+          text: 'A defined outcome, timeline and price. Best for a new website, app or ERP rollout.',
+        },
+        {
+          title: 'Dedicated team',
+          text: 'Developers and a designer working as part of your team month to month.',
+        },
+        {
+          title: 'Support retainer',
+          text: 'Monitoring, updates and a fast response for software already in production.',
+        },
+      ],
+    },
+  },
   cta: {
     title: "Have an idea or a messy process? Let's talk.",
     body: 'A 30-minute call is free. You leave with a clear next step, whether you work with us or not.',
