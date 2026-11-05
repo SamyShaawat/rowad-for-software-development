@@ -18,49 +18,51 @@ const navigation: NavigationItem[] = [
   { name: NavigationConstants.CONTACT, href: RouteConstants.CONTACT },
 ];
 
+/** IBM Carbon UI Shell: 48px black bar, text-only nav, 3px active indicator. */
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-[#0B1220]/95">
-      <nav className="container-custom mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href={RouteConstants.HOME} aria-label="Rowad home">
-          <Logo />
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-700 bg-slate-900">
+      <nav className="mx-auto flex h-12 max-w-[1584px] items-stretch justify-between pl-4 sm:pl-6 lg:pl-8">
+        <Link href={RouteConstants.HOME} aria-label="Rowad home" className="flex items-center pr-6">
+          <Logo light compact />
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              aria-current={pathname === item.href ? 'page' : undefined}
-              className={cn(
-                'rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                pathname === item.href
-                  ? 'text-slate-900 dark:text-white'
-                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
-              )}
-            >
-              {item.name}
-              {pathname === item.href && (
-                <span className="mx-auto mt-0.5 block h-0.5 w-4 rounded bg-orange-600" />
-              )}
-            </Link>
-          ))}
+        <div className="hidden items-stretch md:flex">
+          {navigation.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                className={cn(
+                  'flex items-center border-b-[3px] px-4 text-sm transition-colors hover:bg-slate-800 hover:text-white',
+                  active ? 'border-orange-500 text-white' : 'border-transparent text-slate-300'
+                )}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
           <ThemeToggle />
-          <Link href={RouteConstants.CONTACT} className="btn-primary ml-2 !py-2.5">
+          <Link
+            href={RouteConstants.CONTACT}
+            className="my-1.5 ml-2 mr-3 flex items-center rounded-full bg-orange-500 px-6 text-sm font-medium text-slate-900 transition-colors hover:bg-orange-400"
+          >
             {NavigationConstants.GET_STARTED}
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-stretch md:hidden">
           <ThemeToggle />
           <button
             type="button"
             id="mobile-menu-btn"
             onClick={() => setOpen(!open)}
-            className="rounded-md p-2 text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/10"
+            className="grid h-12 w-12 place-items-center text-white hover:bg-slate-800"
             aria-label="Toggle navigation menu"
             aria-expanded={open}
           >
@@ -70,17 +72,17 @@ export function Header() {
       </nav>
 
       {open && (
-        <div className="border-t border-slate-200 bg-white px-4 py-3 dark:border-white/10 dark:bg-[#0B1220] md:hidden">
+        <div className="border-t border-slate-700 bg-slate-900 md:hidden">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               onClick={() => setOpen(false)}
               className={cn(
-                'block rounded-md px-3 py-3 text-sm font-medium',
+                'block border-l-[3px] px-4 py-3.5 text-sm hover:bg-slate-800',
                 pathname === item.href
-                  ? 'bg-slate-100 text-slate-900 dark:bg-white/10 dark:text-white'
-                  : 'text-slate-600 dark:text-slate-300'
+                  ? 'border-orange-500 text-white'
+                  : 'border-transparent text-slate-300'
               )}
             >
               {item.name}
@@ -89,7 +91,7 @@ export function Header() {
           <Link
             href={RouteConstants.CONTACT}
             onClick={() => setOpen(false)}
-            className="btn-primary mt-2 w-full"
+            className="m-4 block rounded-full bg-orange-500 px-4 py-3 text-center text-sm font-medium text-slate-900"
           >
             {NavigationConstants.GET_STARTED}
           </Link>

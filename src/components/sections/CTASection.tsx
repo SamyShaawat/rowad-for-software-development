@@ -21,13 +21,13 @@ export function CTASection() {
         <div className="flex flex-wrap gap-3">
           <Link
             href={RouteConstants.CONTACT}
-            className="inline-flex items-center rounded-lg bg-orange-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-orange-400"
+            className="inline-flex items-center rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-orange-400"
           >
             Book a free consultation <ArrowRightIcon className="ml-2 h-4 w-4" />
           </Link>
           <a
             href={CompanyConstants.WHATSAPP}
-            className="inline-flex items-center rounded-lg border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white"
+            className="inline-flex items-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white"
           >
             WhatsApp us
           </a>

@@ -9,6 +9,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Carbon gray ramp (gray 10 -> gray 100) mapped onto slate so every existing class follows
+        slate: {
+          50: '#f4f4f4', 100: '#e8e8e8', 200: '#e0e0e0', 300: '#c6c6c6', 400: '#a8a8a8',
+          500: '#6f6f6f', 600: '#525252', 700: '#393939', 800: '#262626', 900: '#161616', 950: '#0d0d0d',
+        },
         primary: {
           50:  '#fff7ed',
           100: '#ffedd5',
@@ -49,9 +54,8 @@ module.exports = {
           600: '#ea580c',
         },
         orange: {
-          400: '#fb923c',
-          500: '#f97316',
-          600: '#ea580c',
+          50: '#fff2e8', 100: '#ffe3cc', 200: '#ffc799', 300: '#ffa766', 400: '#ff9a4d',
+          500: '#ff832b', 600: '#ba4e00', 700: '#8a3800', 800: '#5e2900', 900: '#3e1a00',
         },
         amber: {
           400: '#fbbf24',
@@ -59,9 +63,15 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans:    ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        sans:    ['var(--font-plex)', 'IBM Plex Sans', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-plex)', 'IBM Plex Sans', 'system-ui', 'sans-serif'],
+        mono:    ['var(--font-plex-mono)', 'IBM Plex Mono', 'ui-monospace', 'monospace'],
       },
+      // IBM Carbon: square corners, light/regular/semibold weights
+      borderRadius: {
+        DEFAULT: '0', sm: '0', md: '0', lg: '0', xl: '0', '2xl': '0', '3xl': '0',
+      },
+      fontWeight: { bold: '600', extrabold: '600', black: '600' },
       fontSize: {
         'heading-1': ['3.5rem',  { lineHeight: '1.1', fontWeight: '800' }],
         'heading-2': ['2.5rem',  { lineHeight: '1.2', fontWeight: '700' }],

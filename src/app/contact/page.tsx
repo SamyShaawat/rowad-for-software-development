@@ -61,7 +61,7 @@ export default function ContactPage() {
         {ContactConstants.SUBTITLE}
       </PageHero>
 
-      <section className="section-padding bg-white dark:bg-[#0B1220]">
+      <section className="section-padding bg-white dark:bg-[#161616]">
         <div className="container-custom mx-auto grid gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-7">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
