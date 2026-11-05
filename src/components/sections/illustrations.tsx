@@ -23,7 +23,7 @@ function Box({
   w,
   h,
   tone = paper,
-  r = 0,
+  r = 8,
   stroke = 'currentColor',
   dash,
 }: {
@@ -151,15 +151,15 @@ function WebArt() {
         rowad.com/shop
       </Txt>
       {/* page content */}
-      <rect x={40} y={64} width={40} height={8} fill="currentColor" />
+      <rect rx={4} x={40} y={64} width={40} height={8} fill="currentColor" />
       {[216, 240, 264].map((x) => (
-        <rect key={x} x={x} y={64} width={18} height={8} className={mute} />
+        <rect rx={4} key={x} x={x} y={64} width={18} height={8} className={mute} />
       ))}
-      <rect x={40} y={86} width={130} height={12} fill="currentColor" />
-      <rect x={40} y={104} width={96} height={12} fill="currentColor" />
-      <rect x={40} y={126} width={120} height={5} className={mute} />
-      <rect x={40} y={136} width={92} height={5} className={mute} />
-      <rect x={40} y={150} width={58} height={18} fill={ORANGE} />
+      <rect rx={4} x={40} y={86} width={130} height={12} fill="currentColor" />
+      <rect rx={4} x={40} y={104} width={96} height={12} fill="currentColor" />
+      <rect rx={4} x={40} y={126} width={120} height={5} className={mute} />
+      <rect rx={4} x={40} y={136} width={92} height={5} className={mute} />
+      <rect rx={4} x={40} y={150} width={58} height={18} fill={ORANGE} />
       <Box x={188} y={84} w={116} h={86} tone={layer} />
       <circle cx={262} cy={108} r={10} fill={ORANGE} />
       <path d="M190 168 L222 132 L244 154 L268 124 L302 168 Z" className={mute} />
@@ -168,13 +168,13 @@ function WebArt() {
       ))}
       {/* phone, same site */}
       <Box x={286} y={96} w={84} h={170} r={10} />
-      <rect x={314} y={104} width={28} height={4} fill="currentColor" />
-      <rect x={296} y={118} width={64} height={10} fill={ORANGE} />
+      <rect rx={4} x={314} y={104} width={28} height={4} fill="currentColor" />
+      <rect rx={4} x={296} y={118} width={64} height={10} fill={ORANGE} />
       <Box x={296} y={134} w={64} h={34} tone={layer} stroke="none" />
-      <rect x={296} y={176} width={54} height={5} className={mute} />
-      <rect x={296} y={186} width={42} height={5} className={mute} />
+      <rect rx={4} x={296} y={176} width={54} height={5} className={mute} />
+      <rect rx={4} x={296} y={186} width={42} height={5} className={mute} />
       <Box x={296} y={200} w={64} h={22} tone={layer} stroke="none" />
-      <rect x={296} y={232} width={64} height={16} fill="currentColor" />
+      <rect rx={4} x={296} y={232} width={64} height={16} fill="currentColor" />
       {/* score ring */}
       <circle cx={424} cy={72} r={34} fill="none" strokeWidth={6} stroke={GREEN} />
       <Txt x={424} y={80} size={22} anchor="middle" weight={600} mono={false}>
@@ -238,7 +238,7 @@ function Phone({
   return (
     <g transform={`rotate(${rot} ${x + w / 2} ${y + h / 2})`}>
       <Box x={x} y={y} w={w} h={h} r={12} />
-      <rect x={x + w / 2 - 14} y={y + 7} width={28} height={4} fill="currentColor" />
+      <rect rx={4} x={x + w / 2 - 14} y={y + 7} width={28} height={4} fill="currentColor" />
       {children}
     </g>
   );
@@ -261,11 +261,11 @@ function MobileArt() {
         <circle cx={142} cy={104} r={6} fill={ORANGE} />
         <circle cx={74} cy={180} r={4} fill="currentColor" />
         <Box x={68} y={198} w={80} h={20} tone={layer} stroke="none" />
-        <rect x={74} y={206} width={44} height={5} className={mute} />
-        <rect x={68} y={228} width={80} height={16} fill="currentColor" />
+        <rect rx={4} x={74} y={206} width={44} height={5} className={mute} />
+        <rect rx={4} x={68} y={228} width={80} height={16} fill="currentColor" />
       </Phone>
       <Phone x={324} y={76} rot={8}>
-        <rect x={332} y={96} width={52} height={8} fill="currentColor" />
+        <rect rx={4} x={332} y={96} width={52} height={8} fill="currentColor" />
         <circle
           cx={372}
           cy={152}
@@ -298,7 +298,7 @@ function MobileArt() {
         <Line x1={332} y1={208} x2={388} y2={208} strokeWidth={1.5} />
       </Phone>
       <Phone x={186} y={50} w={108} h={214}>
-        <rect x={196} y={70} width={88} height={20} fill={ORANGE} />
+        <rect rx={4} x={196} y={70} width={88} height={20} fill={ORANGE} />
         <Txt x={204} y={84} size={9} weight={600} mono={false} fill="#161616">
           My orders
         </Txt>
@@ -306,8 +306,8 @@ function MobileArt() {
           <g key={i}>
             <Box x={196} y={100 + i * 40} w={88} h={32} tone={layer} stroke="none" />
             <circle cx={211} cy={116 + i * 40} r={8} fill={i === 0 ? ORANGE : '#a8a8a8'} />
-            <rect x={225} y={108 + i * 40} width={48} height={5} fill="currentColor" />
-            <rect x={225} y={118 + i * 40} width={32} height={5} className={mute} />
+            <rect rx={4} x={225} y={108 + i * 40} width={48} height={5} fill="currentColor" />
+            <rect rx={4} x={225} y={118 + i * 40} width={32} height={5} className={mute} />
           </g>
         ))}
         <Line x1={186} y1={228} x2={294} y2={228} strokeWidth={1.5} />
@@ -331,7 +331,7 @@ function MobileArt() {
         ['Android · Google Play', 250],
       ].map(([t, x]) => (
         <g key={t as string}>
-          <rect x={x as number} y={282} width={112} height={26} fill="currentColor" />
+          <rect rx={4} x={x as number} y={282} width={112} height={26} fill="currentColor" />
           <Txt x={(x as number) + 56} y={299} size={9} anchor="middle" cls={onInk} fill="">
             {t}
           </Txt>
@@ -360,9 +360,9 @@ const modules: [string, number, number, ReactNode][] = [
     28,
     138,
     <g key="i">
-      <rect x="0" y="9" width="8" height="8" fill="currentColor" />
-      <rect x="10" y="9" width="8" height="8" fill={ORANGE} />
-      <rect x="5" y="0" width="8" height="8" fill="currentColor" />
+      <rect rx={4} x="0" y="9" width="8" height="8" fill="currentColor" />
+      <rect rx={4} x="10" y="9" width="8" height="8" fill={ORANGE} />
+      <rect rx={4} x="5" y="0" width="8" height="8" fill="currentColor" />
     </g>,
   ],
   [
@@ -388,12 +388,21 @@ const modules: [string, number, number, ReactNode][] = [
     360,
     138,
     <g key="a">
-      <rect x="0" y="0" width="16" height="18" fill="none" stroke="currentColor" strokeWidth="2" />
+      <rect
+        rx={4}
+        x="0"
+        y="0"
+        width="16"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
       <path d="M4 6h8M4 11h8" stroke={ORANGE} strokeWidth="2" />
     </g>,
   ],
   [
-    'Manufacturing',
+    'Production',
     360,
     248,
     <polygon
@@ -456,7 +465,7 @@ function ErpArt() {
         stroke="currentColor"
         strokeWidth={2}
       />
-      <rect x={210} y={104} width={60} height={20} fill={ORANGE} />
+      <rect rx={4} x={210} y={104} width={60} height={20} fill={ORANGE} />
       <Txt x={240} y={118} size={10} anchor="middle" weight={600} fill="#161616" mono={false}>
         ODOO
       </Txt>
@@ -595,7 +604,7 @@ function ChatbotArt() {
       ))}
       {/* chat window */}
       <Box x={150} y={14} w={180} h={292} />
-      <rect x={150} y={14} width={180} height={30} fill="#161616" />
+      <rect rx={4} x={150} y={14} width={180} height={30} fill="#161616" />
       <Dot x={166} y={29} r={4} fill="#42be65" />
       <Txt x={178} y={33} size={10} weight={600} mono={false} fill="#fff">
         Support bot
@@ -615,7 +624,7 @@ function ChatbotArt() {
       <Txt x={168} y={163} size={9} mono={false}>
         Connecting you to an agent…
       </Txt>
-      <rect x={160} y={186} width={160} height={26} fill={ORANGE} />
+      <rect rx={4} x={160} y={186} width={160} height={26} fill={ORANGE} />
       <Txt x={170} y={203} size={9} weight={600} mono={false} fill="#161616">
         ↳ Handed over to human
       </Txt>
@@ -626,7 +635,7 @@ function ChatbotArt() {
       {/* CRM */}
       <Line x1={330} y1={160} x2={366} y2={160} {...arrow('cb')} />
       <Box x={366} y={84} w={98} h={150} />
-      <rect x={366} y={84} width={98} height={22} className={layer} />
+      <rect rx={4} x={366} y={84} width={98} height={22} className={layer} />
       <Txt x={374} y={99} size={9} weight={600} mono={false}>
         Odoo CRM
       </Txt>
@@ -669,7 +678,7 @@ function CloudArt() {
               className={last ? '' : paper}
               fill={last ? 'currentColor' : undefined}
             />
-            {i === 3 && <rect x={x} y={32} width={72} height={5} fill={ORANGE} />}
+            {i === 3 && <rect rx={4} x={x} y={32} width={72} height={5} fill={ORANGE} />}
             <Txt
               x={x + 36}
               y={78}
@@ -756,7 +765,7 @@ export function ServiceIllustration({ id, className }: { id: string; className?:
   return (
     <div
       className={cn(
-        'aspect-[3/2] w-full border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900',
+        'aspect-[3/2] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900',
         className
       )}
     >

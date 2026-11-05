@@ -38,7 +38,7 @@ export default function AboutPage() {
       </PageHero>
 
       <section className="border-b border-slate-200 dark:border-white/10">
-        <dl className="container-custom mx-auto grid grid-cols-2 gap-px bg-slate-200 dark:bg-white/10 lg:grid-cols-4">
+        <dl className="container-custom mx-auto grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-slate-200 dark:bg-white/10 lg:grid-cols-4">
           {StatsConstants.map((s) => (
             <div key={s.label} className="bg-white px-6 py-10 dark:bg-[#161616]">
               <dd className="text-4xl font-extrabold text-slate-900 dark:text-white">{s.value}</dd>
@@ -101,7 +101,7 @@ export default function AboutPage() {
               See all services →
             </Link>
           </div>
-          <ul className="grid gap-px overflow-hidden rounded-xl border border-slate-200 bg-slate-200 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2">
+          <ul className="grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2">
             {capabilities.map((c) => (
               <li
                 key={c}

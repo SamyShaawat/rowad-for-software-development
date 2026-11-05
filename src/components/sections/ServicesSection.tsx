@@ -75,7 +75,7 @@ export function ServicesSection() {
             Pick one service or combine them. Each page below shows how we deliver it.
           </p>
         </div>
-        <ul className="grid gap-px bg-slate-200 dark:bg-slate-700 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-px overflow-hidden rounded-2xl bg-slate-200 dark:bg-slate-700 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ id, Icon, name, text, tech }) => (
             <li key={id} className="bg-white dark:bg-[#161616]">
               <Link

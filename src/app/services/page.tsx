@@ -187,7 +187,7 @@ export default function ServicesPage() {
               <ServiceIllustration id={s.id} className={i % 2 === 1 ? 'lg:order-1' : ''} />
             </div>
 
-            <div className="mt-14 grid gap-px bg-slate-200 dark:bg-slate-700 md:grid-cols-3">
+            <div className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-slate-200 dark:bg-slate-700 md:grid-cols-3">
               <div className="bg-white p-6 dark:bg-[#161616]">
                 <h3 className="text-sm text-slate-600 dark:text-slate-300">What we build</h3>
                 <ul className="mt-4 space-y-3 text-sm text-slate-900 dark:text-slate-100">
@@ -244,7 +244,7 @@ export default function ServicesPage() {
           >
             Ways to work with us
           </h2>
-          <ul className="mt-10 grid gap-px bg-slate-200 dark:bg-slate-700 md:grid-cols-3">
+          <ul className="mt-10 grid gap-px overflow-hidden rounded-2xl bg-slate-200 dark:bg-slate-700 md:grid-cols-3">
             {engagements.map(([t, d]) => (
               <li key={t} className="bg-slate-50 p-6 dark:bg-slate-800">
                 <h3 className="text-xl font-normal text-slate-900 dark:text-white">{t}</h3>
