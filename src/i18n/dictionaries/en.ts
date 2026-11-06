@@ -19,8 +19,8 @@ export const en = {
   company: {
     fullName: 'Rowad For Software Development',
     location: '584 El-Horreya Road, Gleem, Alexandria, Egypt',
-    workingHours: 'Mon - Fri: 9:00 AM - 6:00 PM',
-    weekend: 'Weekend: By Appointment',
+    workingHours: 'Sun - Thu: 9:00 AM - 5:00 PM',
+    weekend: 'Fri - Sat: Closed',
   },
   footer: {
     description: 'One team for all your software, from idea to production.',

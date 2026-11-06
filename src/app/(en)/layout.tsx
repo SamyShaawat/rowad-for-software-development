@@ -208,9 +208,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         openingHoursSpecification: [
           {
             '@type': 'OpeningHoursSpecification',
-            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
             opens: '09:00',
-            closes: '18:00',
+            closes: '17:00',
           },
         ],
         areaServed: [
