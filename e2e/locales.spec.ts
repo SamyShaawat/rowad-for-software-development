@@ -87,6 +87,26 @@ test.describe('Languages', () => {
     await expect(page.getByText('5+', { exact: true })).toHaveCount(0);
   });
 
+  test('The small label words above the headings are gone, in both languages', async ({ page }) => {
+    const gone: Record<string, string[]> = {
+      '/about': ['About Rowad', 'Our story', 'Expertise', 'How we work'],
+      '/contact': ['FAQ'],
+      '/services': ['Services'],
+      '/clients': ['Clients'],
+      '/ar/about': ['عن رواد', 'قصتنا', 'خبراتنا', 'طريقة عملنا'],
+      '/ar/contact': ['الأسئلة الشائعة'],
+      '/ar/services': ['خدماتنا'],
+      '/ar/clients': ['عملاؤنا'],
+    };
+    for (const [path, labels] of Object.entries(gone)) {
+      await page.goto(path);
+      const lines = (await page.locator('main').innerText()).split('\n').map((l) => l.trim());
+      for (const label of labels)
+        expect(lines, `${path} still has "${label}"`).not.toContain(label);
+      expect(lines.filter((l) => /^\d\d \/ \d\d$/.test(l))).toEqual([]);
+    }
+  });
+
   test('English home keeps its text and links', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('One team for every piece of your software.');

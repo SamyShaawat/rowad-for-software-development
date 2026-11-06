@@ -92,7 +92,6 @@ export const en = {
     },
     services: { title: 'Anything you need in the tech world, built end to end.' },
     process: {
-      badge: 'How we work',
       title: 'From idea to live in four stops.',
       stops: [
         { title: 'Discover', text: 'We listen, map the problem and agree the plan.' },
@@ -103,7 +102,6 @@ export const en = {
     },
   },
   servicesPage: {
-    eyebrow: 'Services',
     title: 'Web, mobile, ERP and AI from one team.',
     intro:
       'Pick one service or combine them. Each section shows what we build and how we deliver it.',
@@ -222,7 +220,6 @@ export const en = {
     },
   },
   contactPage: {
-    eyebrow: 'Contact',
     title: 'Tell us what you want to build.',
     intro:
       'Have a project in mind? We would love to hear from you. Let us discuss how we can help.',
@@ -239,7 +236,6 @@ export const en = {
       office: { title: 'Office', note: 'Available for in-person meetings by appointment' },
       hours: { title: 'Working Hours' },
     },
-    faqBadge: 'FAQ',
     faqTitle: 'Frequently Asked Questions',
     faqs: [
       {
@@ -261,17 +257,14 @@ export const en = {
     ],
   },
   aboutPage: {
-    eyebrow: 'About Rowad',
     title: 'A software team that stays for the long run.',
     intro:
       'We are engineers and designers in Alexandria, Egypt. We build and run websites, mobile apps, ERP systems, AI agents and chatbots for companies across the region.',
-    storyBadge: 'Our story',
     storyTitle: 'We started with websites and kept growing with our clients.',
     story: [
       'Rowad began by building and hosting websites. As clients grew, they asked for mobile apps, then for ERP systems to run their operations, then for AI agents and chatbots to automate the routine work. We learned each one, and one team now covers all of it, including the hosting and DevOps that keeps it running.',
       'Our mission is simple: give businesses software that works, delivered by people who pick up the phone. We want to be known for quality, reliability and a customer-first approach across the region.',
     ],
-    expertiseBadge: 'Expertise',
     expertiseTitle: 'Everything in one place',
     seeServices: 'See all services',
     capabilities: [
@@ -287,7 +280,6 @@ export const en = {
     ],
   },
   clientsPage: {
-    eyebrow: 'Clients',
     title: 'Companies that run on our software.',
     intro:
       'Logistics, maritime, healthcare, law and more. Here are some of the organisations we have built for.',

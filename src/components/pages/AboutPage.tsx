@@ -12,27 +12,37 @@ export function AboutPage({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <PageHero eyebrow={p.eyebrow} title={p.title}>
-        {p.intro}
-      </PageHero>
+      <PageHero title={p.title}>{p.intro}</PageHero>
 
       <section className="border-b border-slate-200 dark:border-white/10">
-        <dl className="container-custom mx-auto grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-slate-200 dark:bg-white/10 lg:grid-cols-4">
-          {t.stats.map((s) => (
-            <div key={s.label} className="bg-white px-6 py-10 dark:bg-[#161616]">
-              <dd className="text-4xl font-extrabold text-slate-900 dark:text-white">
-                <bdi dir="ltr">{s.value}</bdi>
-              </dd>
-              <dt className="mt-1 text-sm text-slate-500">{s.label}</dt>
-            </div>
-          ))}
+        <dl className="container-custom mx-auto grid grid-cols-2 gap-4 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-4 lg:gap-6 lg:px-8">
+          {t.stats.map((s) => {
+            // "50+" -> number 50, suffix + ; "24/7" -> number 24, suffix /7 (the suffix is the accent)
+            const [, number, suffix] = s.value.match(/^(\d+)(.*)$/) ?? [, s.value, ''];
+            return (
+              <div
+                key={s.label}
+                className="relative flex flex-col-reverse justify-end gap-3 overflow-hidden rounded-2xl border border-slate-200 bg-white px-6 pb-7 pt-9 dark:border-white/10 dark:bg-white/[0.03] sm:px-8"
+              >
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-orange-500" />
+                <dt className="text-sm leading-snug text-slate-600 dark:text-slate-400">
+                  {s.label}
+                </dt>
+                <dd className="text-5xl font-light leading-none tracking-tight text-slate-900 dark:text-white sm:text-6xl">
+                  <bdi dir="ltr">
+                    {number}
+                    <span className="text-orange-500">{suffix}</span>
+                  </bdi>
+                </dd>
+              </div>
+            );
+          })}
         </dl>
       </section>
 
       <section className="section-padding bg-white dark:bg-[#161616]">
         <div className="container-custom mx-auto grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <p className="section-badge mb-3">{p.storyBadge}</p>
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
               {p.storyTitle}
             </h2>
@@ -50,7 +60,6 @@ export function AboutPage({ locale }: { locale: Locale }) {
       <section className="section-padding bg-white dark:bg-[#161616]">
         <div className="container-custom mx-auto grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
           <div>
-            <p className="section-badge mb-3">{p.expertiseBadge}</p>
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
               {p.expertiseTitle}
             </h2>

@@ -13,13 +13,10 @@ const ids = ['web', 'mobile', 'erp', 'agents', 'chatbot', 'cloud'] as const;
 export function ServicesPage({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
   const p = t.servicesPage;
-  const total = String(ids.length).padStart(2, '0');
 
   return (
     <>
-      <PageHero eyebrow={p.eyebrow} title={p.title}>
-        {p.intro}
-      </PageHero>
+      <PageHero title={p.title}>{p.intro}</PageHero>
 
       {/* Carbon content switcher: sticky anchor tabs */}
       <nav
@@ -53,11 +50,6 @@ export function ServicesPage({ locale }: { locale: Locale }) {
             <div className="container-custom mx-auto">
               <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                 <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-                  <p className={`font-mono text-sm ${serviceTheme[id].text}`}>
-                    <bdi dir="ltr">
-                      {String(i + 1).padStart(2, '0')} / {total}
-                    </bdi>
-                  </p>
                   <h2 className="mt-3 text-3xl leading-tight text-slate-900 dark:text-white sm:text-4xl">
                     {t.serviceItems[id].name}
                   </h2>

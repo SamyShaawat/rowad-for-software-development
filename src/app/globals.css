@@ -109,10 +109,6 @@ body {
   }
 
   /* Carbon label-01: small, sentence case, secondary text */
-  .section-badge {
-    @apply inline-flex items-center gap-2 text-xs tracking-[0.32px] text-slate-600 dark:text-slate-300 rtl:tracking-normal;
-  }
-
   .glow-orange,
   .glow-sm {
     box-shadow: none;
