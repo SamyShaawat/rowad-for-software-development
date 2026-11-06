@@ -42,7 +42,10 @@ function Row({ hidden, locale }: { hidden?: boolean; locale: Locale }) {
   );
 }
 
-/** Clients in a continuous marquee. Pauses on hover; static and scrollable if motion is reduced. */
+/**
+ * Clients in a continuous marquee. Pauses on hover; static and scrollable if motion is reduced.
+ * Moves left to right in English and right to left in Arabic.
+ */
 export function TrustStrip({ locale = 'en' }: { locale?: Locale }) {
   const t = getDictionary(locale).home.trust;
   return (
@@ -55,10 +58,15 @@ export function TrustStrip({ locale = 'en' }: { locale?: Locale }) {
         dir="ltr"
         className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] motion-reduce:overflow-x-auto motion-reduce:[mask-image:none]"
       >
-        {/* dir="ltr" on the clipping box in both languages: the logos always slide from right to left and the loop stays seamless */}
+        {/* dir="ltr" on the clipping box keeps the loop seamless. Direction follows the reading
+            direction: Arabic logos slide right to left, English logos slide left to right. */}
         <div
           className="flex w-max animate-marquee hover:[animation-play-state:paused] motion-reduce:animate-none"
-          style={{ animationDuration: '60s' }}
+          style={{
+            animationDuration: '60s',
+            // inline, because the animation shorthand in globals.css would reset a class
+            animationDirection: locale === 'en' ? 'reverse' : 'normal',
+          }}
         >
           <Row locale={locale} />
           <Row hidden locale={locale} />

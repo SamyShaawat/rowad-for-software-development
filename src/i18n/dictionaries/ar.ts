@@ -38,7 +38,7 @@ export const ar: typeof en = {
   stats: [
     { value: '50+', label: 'عميل' },
     { value: '100+', label: 'مشروع منفّذ' },
-    { value: '5+', label: 'سنوات خبرة' },
+    { value: '15+', label: 'سنوات خبرة' },
     { value: '24/7', label: 'دعم فني' },
   ],
   serviceItems: {

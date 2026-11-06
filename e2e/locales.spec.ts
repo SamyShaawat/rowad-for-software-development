@@ -77,6 +77,16 @@ test.describe('Languages', () => {
     expect(hrefs.filter((h) => !h.startsWith('/ar'))).toEqual([]);
   });
 
+  test('Home stats say 15+ years of experience in both languages', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByText('15+', { exact: true }).first()).toBeVisible();
+    await expect(page.getByText('Years Experience')).toBeVisible();
+    await expect(page.getByText('5+', { exact: true })).toHaveCount(0);
+    await page.goto('/ar');
+    await expect(page.locator('bdi[dir="ltr"]', { hasText: '15+' })).toBeVisible();
+    await expect(page.getByText('5+', { exact: true })).toHaveCount(0);
+  });
+
   test('English home keeps its text and links', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('One team for every piece of your software.');
@@ -228,7 +238,7 @@ test.describe('Languages', () => {
     ['/', 'Trusted by our clients and partners'],
     ['/ar', 'يثق بنا شركاؤنا'],
   ] as const) {
-    test(`Trust strip on ${path}: wording, moves right to left, never leaves a gap`, async ({
+    test(`Trust strip on ${path}: wording, moves ${path === '/' ? 'left to right' : 'right to left'}, never leaves a gap`, async ({
       page,
     }) => {
       await page.goto(path);
@@ -246,7 +256,9 @@ test.describe('Languages', () => {
       const a = await sample();
       await page.waitForTimeout(1200);
       const b = await sample();
-      expect(b.x).toBeLessThan(a.x);
+      // English slides left to right (x grows), Arabic slides right to left (x shrinks)
+      if (path === '/') expect(b.x).toBeGreaterThan(a.x);
+      else expect(b.x).toBeLessThan(a.x);
       expect(a.covers && b.covers).toBe(true);
     });
   }
