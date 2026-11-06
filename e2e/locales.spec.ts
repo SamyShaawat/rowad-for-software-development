@@ -235,6 +235,29 @@ test.describe('Languages', () => {
     });
   }
 
+  test('Arabic about page is fully translated and stays inside /ar', async ({ page }) => {
+    await page.goto('/ar/about');
+    await expect(page.locator('h1')).toHaveText('فريق برمجة يبقى معك على المدى الطويل.');
+    const main = page.locator('main');
+    for (const english of ['Our story', 'Expertise', 'Everything in one place', 'How we work']) {
+      await expect(main).not.toContainText(english);
+    }
+    await expect(main.locator('ul li').filter({ hasText: 'ضمان الجودة' })).toHaveCount(1);
+    await expect(main.locator('bdi[dir="ltr"]', { hasText: '50+' })).toBeVisible();
+    const hrefs = await main
+      .locator('a[href^="/"]')
+      .evaluateAll((els) => els.map((e) => e.getAttribute('href') ?? ''));
+    expect(hrefs.length).toBeGreaterThanOrEqual(2);
+    expect(hrefs.filter((h) => !h.startsWith('/ar'))).toEqual([]);
+  });
+
+  test('English about page keeps its text', async ({ page }) => {
+    await page.goto('/about');
+    await expect(page.locator('h1')).toHaveText('A software team that stays for the long run.');
+    await expect(page.getByText('Everything in one place')).toBeVisible();
+    await expect(page.getByText('QA and test automation')).toBeVisible();
+  });
+
   test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);
