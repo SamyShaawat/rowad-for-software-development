@@ -12,6 +12,9 @@ export const en = {
     homeLabel: 'Rowad home',
     toggleMenu: 'Toggle navigation menu',
   },
+  brand: {
+    subtitle: 'Software Development',
+  },
   company: {
     fullName: 'Rowad For Software Development',
     location: '584 El-Horreya Road, Gleem, Alexandria, Egypt',

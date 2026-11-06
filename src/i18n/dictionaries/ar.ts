@@ -14,6 +14,9 @@ export const ar: typeof en = {
     homeLabel: 'رواد - الصفحة الرئيسية',
     toggleMenu: 'فتح أو إغلاق قائمة التنقل',
   },
+  brand: {
+    subtitle: 'لتطوير البرمجيات',
+  },
   company: {
     fullName: 'رواد لتطوير البرمجيات',
     location: '584 طريق الحرية، جليم، الإسكندرية، مصر',
