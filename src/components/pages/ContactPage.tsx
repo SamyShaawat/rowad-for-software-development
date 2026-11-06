@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
+import {
+  PhoneIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  ClockIcon,
+  PlusIcon,
+} from '@heroicons/react/24/outline';
 import { CTASection } from '@/components/sections/CTASection';
 import { PageHero } from '@/components/ui/PageHero';
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
@@ -46,7 +52,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
       <section className="section-padding bg-white dark:bg-[#161616]">
         <div className="container-custom mx-auto grid gap-8 lg:grid-cols-12 lg:gap-10">
           {/* Message card: solid ink panel, one orange bar, two large actions */}
-          <div className="self-start lg:sticky lg:top-28 lg:col-span-5">
+          <div className="self-start lg:sticky lg:top-28 lg:order-2 lg:col-span-5">
             <div className="relative flex flex-col overflow-hidden rounded-3xl bg-slate-900 p-8 text-white dark:bg-white/[0.05] dark:ring-1 dark:ring-white/10 sm:p-10">
               <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-orange-500" />
               <h2 className="mt-2 text-3xl font-light leading-tight sm:text-4xl">
@@ -75,7 +81,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
           </div>
 
           {/* Details: four tiles, then the quick actions */}
-          <div className="lg:col-span-7">
+          <div className="lg:order-1 lg:col-span-7">
             <h2 className="text-3xl font-light text-slate-900 dark:text-white sm:text-4xl">
               {p.infoTitle}
             </h2>
@@ -124,20 +130,30 @@ export function ContactPage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="section-padding border-t border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.02]">
-        <div className="container-custom mx-auto">
-          <h2 className="max-w-2xl text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+        <div className="container-custom mx-auto grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <h2 className="text-3xl font-light leading-tight text-slate-900 dark:text-white sm:text-4xl lg:col-span-4">
             {p.faqTitle}
           </h2>
-          <dl className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
-            {p.faqs.map((f) => (
-              <div key={f.q} className="border-t border-slate-300 pt-5 dark:border-white/15">
-                <dt className="font-bold text-slate-900 dark:text-white">{f.q}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          {/* Native <details>: no JavaScript, keyboard and screen-reader friendly, answers stay in the HTML */}
+          <div className="space-y-3 lg:col-span-8">
+            {p.faqs.map((f, i) => (
+              <details
+                key={f.q}
+                open={i === 0}
+                className="group rounded-2xl border border-slate-200 bg-white transition-colors open:border-orange-400 dark:border-white/10 dark:bg-white/[0.03] dark:open:border-orange-400/60"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 p-6 text-lg font-medium text-slate-900 marker:hidden dark:text-white [&::-webkit-details-marker]:hidden">
+                  <span>{f.q}</span>
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-orange-100 text-orange-600 transition-transform duration-200 group-open:rotate-45 dark:bg-orange-500/15 dark:text-orange-400">
+                    <PlusIcon className="h-5 w-5" />
+                  </span>
+                </summary>
+                <p className="px-6 pb-6 text-base leading-relaxed text-slate-600 dark:text-slate-300">
                   {f.a}
-                </dd>
-              </div>
+                </p>
+              </details>
             ))}
-          </dl>
+          </div>
         </div>
       </section>
       <CTASection locale={locale} />

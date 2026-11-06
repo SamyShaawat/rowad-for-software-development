@@ -46,6 +46,10 @@ cat > "$SITEMAP_FILE" << 'HEADER'
 HEADER
 
 # ── Generate URL Entries: English and Arabic, each linking to both (hreflang) ─
+# sitemap.txt: the same pages as plain text, one URL per line (an old copy on the server listed
+# redirecting URLs such as /about-us)
+: > "$BUILD_DIR/sitemap.txt"
+
 for route_info in "${ROUTES[@]}"; do
   IFS='|' read -r path priority changefreq <<< "$route_info"
 
@@ -73,6 +77,7 @@ for route_info in "${ROUTES[@]}"; do
 EOF
   done
 
+  printf '%s\n%s\n' "$en_url" "$ar_url" >> "$BUILD_DIR/sitemap.txt"
   echo "   ✅ Added: $en_url and $ar_url (priority: $priority, frequency: $changefreq)"
 done
 

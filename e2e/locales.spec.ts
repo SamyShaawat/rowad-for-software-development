@@ -107,6 +107,51 @@ test.describe('Languages', () => {
     }
   });
 
+  test('Contact: sides swapped (card on the right in English, on the left in Arabic), FAQ is an accordion', async ({
+    page,
+  }) => {
+    for (const [path, cardIsRight] of [
+      ['/contact', true],
+      ['/ar/contact', false],
+    ] as const) {
+      await page.goto(path);
+      const card = await page
+        .locator('main section a[href^="https://wa.me"]')
+        .first()
+        .boundingBox();
+      const tiles = await page.locator('main section ul li').first().boundingBox();
+      expect(card && tiles).toBeTruthy();
+      expect(card!.x > tiles!.x).toBe(cardIsRight);
+      const faq = page.locator('main details');
+      await expect(faq).toHaveCount(4);
+      await expect(faq.first()).toHaveAttribute('open', '');
+      await expect(faq.nth(1)).not.toHaveAttribute('open', '');
+      await faq.nth(1).locator('summary').click();
+      await expect(faq.nth(1)).toHaveAttribute('open', '');
+    }
+  });
+
+  test('Services: three ways to work with us, each with an icon', async ({ page }) => {
+    for (const path of ['/services', '/ar/services']) {
+      await page.goto(path);
+      const items = page.locator('section[aria-labelledby="engage-title"] ul li');
+      await expect(items).toHaveCount(3);
+      await expect(items.locator('svg')).toHaveCount(3);
+    }
+  });
+
+  test('sitemap.txt lists the same ten real pages and no old redirecting URLs', async ({
+    request,
+  }) => {
+    const txt = await (await request.get('/sitemap.txt')).text();
+    const urls = txt.split('\n').filter(Boolean);
+    expect(urls).toHaveLength(10);
+    expect(urls).toContain('https://rowad.com/ar/services');
+    for (const old of ['about-us', 'our-services', 'our-clients', 'contact-us']) {
+      expect(txt).not.toContain(old);
+    }
+  });
+
   test('English home keeps its text and links', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('One team for every piece of your software.');
@@ -150,7 +195,7 @@ test.describe('Languages', () => {
   }) => {
     await page.goto('/ar/contact');
     await expect(page.locator('h1')).toHaveText('أخبرنا بما تريد أن تبنيه.');
-    await expect(page.locator('dt')).toHaveCount(4);
+    await expect(page.locator('main details summary')).toHaveCount(4);
     const main = page.locator('main');
     for (const english of [
       'Message us directly',
@@ -187,7 +232,7 @@ test.describe('Languages', () => {
   test('English contact page keeps its text, FAQ and confirmed timelines', async ({ page }) => {
     await page.goto('/contact');
     await expect(page.locator('h1')).toHaveText('Tell us what you want to build.');
-    await expect(page.locator('dt')).toHaveCount(4);
+    await expect(page.locator('main details summary')).toHaveCount(4);
     await expect(page.getByText('2–6 weeks')).toBeVisible();
     await expect(page.getByText('Sun - Thu: 9:00 AM - 5:00 PM').first()).toBeVisible();
   });
