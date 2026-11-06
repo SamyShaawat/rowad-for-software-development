@@ -259,6 +259,32 @@ export const en = {
       },
     ],
   },
+  aboutPage: {
+    eyebrow: 'About Rowad',
+    title: 'A software team that stays for the long run.',
+    intro:
+      'We are engineers and designers in Alexandria, Egypt. We build and run websites, mobile apps, ERP systems, AI agents and chatbots for companies across the region.',
+    storyBadge: 'Our story',
+    storyTitle: 'We started with websites and kept growing with our clients.',
+    story: [
+      'Rowad began by building and hosting websites. As clients grew, they asked for mobile apps, then for ERP systems to run their operations, then for AI agents and chatbots to automate the routine work. We learned each one, and one team now covers all of it, including the hosting and DevOps that keeps it running.',
+      'Our mission is simple: give businesses software that works, delivered by people who pick up the phone. We want to be known for quality, reliability and a customer-first approach across the region.',
+    ],
+    expertiseBadge: 'Expertise',
+    expertiseTitle: 'Everything in one place',
+    seeServices: 'See all services',
+    capabilities: [
+      'Websites and web apps',
+      'Mobile apps (iOS and Android)',
+      'ERP implementation, migration and custom modules',
+      'AI agents and automation',
+      'Chatbots on WhatsApp and web',
+      'Hosting, CI/CD and DevOps',
+      'UI/UX design and prototyping',
+      'QA and test automation',
+      'Maintenance and 24/7 support',
+    ],
+  },
   cta: {
     title: "Have an idea or a messy process? Let's talk.",
     body: 'A 30-minute call is free. You leave with a clear next step, whether you work with us or not.',
