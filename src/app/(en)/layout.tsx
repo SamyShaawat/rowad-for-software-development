@@ -1,22 +1,8 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import '../globals.css';
 import { CompanyConstants } from '@constants';
 import { RootDocument } from '@/components/layout/RootDocument';
-
-const plex = IBM_Plex_Sans({
-  subsets: ['latin'],
-  variable: '--font-plex',
-  display: 'swap',
-  weight: ['300', '400', '500', '600'],
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  variable: '--font-plex-mono',
-  display: 'swap',
-  weight: ['400', '500'],
-});
+import { plexSans, plexMono } from '../fonts';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rowad.com'),
@@ -335,7 +321,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <RootDocument locale="en" fontClass={`${plex.variable} ${plexMono.variable}`} jsonLd={jsonLd}>
+    <RootDocument
+      locale="en"
+      fontClass={`${plexSans.variable} ${plexMono.variable}`}
+      jsonLd={jsonLd}
+    >
       {children}
     </RootDocument>
   );

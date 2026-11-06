@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Arabic pages: Arabic letters from IBM Plex Sans Arabic, Latin letters (ERP, WhatsApp...) from IBM Plex Sans. */
+html[dir='rtl'] {
+  --font-plex: var(--font-plex-arabic), var(--font-plex-latin);
+}
+
+
 * {
   box-sizing: border-box;
   padding: 0;
