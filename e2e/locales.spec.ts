@@ -151,9 +151,9 @@ test.describe('Languages', () => {
   }) => {
     await page.goto('/ar');
     const header = page.locator('header');
-    // رواد with a shadda (U+0651) on the و
-    await expect(header.getByText('رو\u0651اد')).toBeVisible();
-    await expect(header.locator('span.text-orange-500')).toHaveText('و\u0651');
+    // رواد with a shadda (U+0651) and a fatha (U+064E) on the و
+    await expect(header.getByText('رو\u0651\u064eاد')).toBeVisible();
+    await expect(header.locator('span.text-orange-500')).toHaveText('و\u0651\u064e');
     await expect(header.locator('img[src*="icon-96"]')).toBeVisible();
     await expect(page.locator('footer')).toContainText('لتطوير البرمجيات');
     await expect(page.locator('footer')).not.toContainText('Software Development');
