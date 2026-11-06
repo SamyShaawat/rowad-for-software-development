@@ -15,6 +15,8 @@ export const en = {
   company: {
     fullName: 'Rowad For Software Development',
     location: '584 El-Horreya Road, Gleem, Alexandria, Egypt',
+    workingHours: 'Mon - Fri: 9:00 AM - 6:00 PM',
+    weekend: 'Weekend: By Appointment',
   },
   footer: {
     description: 'One team for all your software, from idea to production.',
@@ -212,6 +214,45 @@ export const en = {
         },
       ],
     },
+  },
+  contactPage: {
+    eyebrow: 'Contact',
+    title: 'Tell us what you want to build.',
+    intro:
+      'Have a project in mind? We would love to hear from you. Let us discuss how we can help.',
+    messageTitle: 'Message us directly',
+    messageBody:
+      'Tell us what you want to build. WhatsApp is the fastest way to reach us, and email works for longer briefs.',
+    whatsapp: 'Chat on WhatsApp',
+    infoTitle: 'Contact Information',
+    callNow: 'Call Us Now',
+    openMaps: 'Open in Google Maps',
+    cards: {
+      phone: { title: 'Phone' },
+      email: { title: 'Email', note: 'Best for longer project briefs' },
+      office: { title: 'Office', note: 'Available for in-person meetings by appointment' },
+      hours: { title: 'Working Hours' },
+    },
+    faqBadge: 'FAQ',
+    faqTitle: 'Frequently Asked Questions',
+    faqs: [
+      {
+        q: 'How long does a typical project take?',
+        a: 'Most standard websites take 2–6 weeks from kickoff to launch. Larger projects such as mobile apps, ERP implementations or AI agents depend on scope and integrations. You get a firm estimate after the first call.',
+      },
+      {
+        q: 'What is your pricing structure?',
+        a: 'Because every project is unique, we provide custom quotes based on your specific requirements, timeline, and requested features. Contact us to schedule a free initial consultation.',
+      },
+      {
+        q: 'Do you provide ongoing support?',
+        a: 'Yes! We offer flexible maintenance packages for routine updates and backups, and 24/7 priority support for clients on our managed hosting plans.',
+      },
+      {
+        q: 'Can you work alongside our existing team?',
+        a: 'Absolutely! We regularly collaborate with in-house developers, designers, and marketing teams to augment your capabilities and accelerate project delivery.',
+      },
+    ],
   },
   cta: {
     title: "Have an idea or a messy process? Let's talk.",

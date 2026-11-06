@@ -115,6 +115,37 @@ test.describe('Languages', () => {
     }
   });
 
+  test('Arabic contact page is fully translated and keeps phone and email left-to-right', async ({
+    page,
+  }) => {
+    await page.goto('/ar/contact');
+    await expect(page.locator('h1')).toHaveText('أخبرنا بما تريد أن تبنيه.');
+    await expect(page.locator('dt')).toHaveCount(4);
+    const main = page.locator('main');
+    for (const english of [
+      'Message us directly',
+      'Working Hours',
+      'Frequently Asked Questions',
+      'Open in Google Maps',
+    ]) {
+      await expect(main).not.toContainText(english);
+    }
+    await expect(main.locator('bdi[dir="ltr"]', { hasText: '+20 109 1539 396' })).toBeVisible();
+    await expect(main.locator('a[href="mailto:info@rowad.com"]').first()).toBeVisible();
+    const hrefs = await main
+      .locator('a[href^="/"]')
+      .evaluateAll((els) => els.map((e) => e.getAttribute('href') ?? ''));
+    expect(hrefs.filter((h) => !h.startsWith('/ar'))).toEqual([]);
+  });
+
+  test('English contact page keeps its text, FAQ and confirmed timelines', async ({ page }) => {
+    await page.goto('/contact');
+    await expect(page.locator('h1')).toHaveText('Tell us what you want to build.');
+    await expect(page.locator('dt')).toHaveCount(4);
+    await expect(page.getByText('2–6 weeks')).toBeVisible();
+    await expect(page.getByText('Mon - Fri: 9:00 AM - 6:00 PM').first()).toBeVisible();
+  });
+
   test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);

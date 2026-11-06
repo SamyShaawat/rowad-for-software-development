@@ -13,8 +13,5 @@ export const CompanyConstants = {
   WHATSAPP: 'https://wa.me/201091539396',
   LINKEDIN: 'https://www.linkedin.com/company/rowad-for-software-development',
   FACEBOOK: 'https://facebook.com/rowad',
-  LOCATION: '584 El-Horreya Road, Gleem, Alexandria, Egypt',
   MAPS_LINK: 'https://www.google.com/maps/place/Smart+System+LLC/@31.2391182,29.9597572,18z',
-  WORKING_HOURS: 'Mon - Fri: 9:00 AM - 6:00 PM',
-  WEEKEND: 'Weekend: By Appointment',
 } as const;
