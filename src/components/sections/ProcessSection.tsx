@@ -38,7 +38,6 @@ export function ProcessSection({ locale = 'en' }: { locale?: Locale }) {
     >
       <div className="container-custom mx-auto">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="section-badge mb-4">{t.badge}</p>
           <h2
             id="process-title"
             className="text-3xl leading-tight text-slate-900 dark:text-white sm:text-4xl"

@@ -8,9 +8,7 @@ export function ClientsPage({ locale }: { locale: Locale }) {
   const p = getDictionary(locale).clientsPage;
   return (
     <>
-      <PageHero eyebrow={p.eyebrow} title={p.title}>
-        {p.intro}
-      </PageHero>
+      <PageHero title={p.title}>{p.intro}</PageHero>
       <ClientsSection locale={locale} />
       <CTASection locale={locale} />
     </>
