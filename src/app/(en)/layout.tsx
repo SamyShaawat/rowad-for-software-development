@@ -130,7 +130,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         image: 'https://rowad.com/images/brand/og-image.jpg',
         description:
           'Rowad for Software Development is a software company in Alexandria, Egypt. We design, build and run custom software for businesses, from idea to production.',
-        foundingDate: '2020',
         numberOfEmployees: {
           '@type': 'QuantitativeValue',
           minValue: 10,
