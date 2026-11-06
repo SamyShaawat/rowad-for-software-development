@@ -3,9 +3,9 @@ import { alternatesFor } from '@/i18n/seo';
 import { CompanyConstants } from '@constants';
 
 export const clientsMetadata: Metadata = {
-  title: 'Our Clients & Success Stories - Trusted by Industry Leaders',
+  title: 'Our Clients: Companies That Trust Rowad',
   description:
-    'See the businesses and industry leaders that trust Rowad for Software Development. Discover how our web development, mobile apps, and digital solutions have driven success for clients across Egypt and the Middle East.',
+    'Logistics, maritime, legal, real estate and more: the companies in Egypt and the Gulf that run on software built by Rowad.',
   keywords: [
     'rowad clients',
     'rowad success stories',
@@ -19,7 +19,7 @@ export const clientsMetadata: Metadata = {
     'rowad partners',
   ],
   openGraph: {
-    title: 'Our Clients & Success Stories - Trusted by Industry Leaders',
+    title: 'Our Clients: Companies That Trust Rowad',
     description:
       'See the businesses and industry leaders that trust Rowad for Software Development for web development, mobile apps, and digital solutions.',
     url: 'https://rowad.com/clients',
@@ -37,7 +37,7 @@ export const clientsMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Clients & Success Stories | Rowad',
+    title: 'Our Clients: Companies That Trust Rowad',
     description: 'Discover the industry leaders that trust Rowad for their digital transformation.',
     images: ['/images/brand/og-image.jpg'],
   },

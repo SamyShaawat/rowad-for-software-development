@@ -7,5 +7,6 @@ export interface Client {
   category: string;
   logo: string;
   description: string;
-  website: string;
+  /** Omitted when the client has no working website. */
+  website?: string;
 }

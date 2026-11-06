@@ -3,9 +3,9 @@ import { alternatesFor } from '@/i18n/seo';
 import { CompanyConstants } from '@constants';
 
 export const contactMetadata: Metadata = {
-  title: 'Contact Us - Get a Free Consultation',
+  title: 'Contact Rowad: Get a Free Consultation',
   description:
-    'Get in touch with Rowad for Software Development. Request a free consultation for your website, mobile app, ERP, AI agent, chatbot, or hosting project. Located in Alexandria, Egypt - serving clients worldwide.',
+    'Contact Rowad on WhatsApp or email for a free consultation on your website, mobile app, ERP, AI agent or chatbot. Alexandria, Egypt.',
   keywords: [
     'contact rowad',
     'rowad consultation',
@@ -21,7 +21,7 @@ export const contactMetadata: Metadata = {
     'AI agent consultation',
   ],
   openGraph: {
-    title: 'Contact Us - Get a Free Consultation',
+    title: 'Contact Rowad: Get a Free Consultation',
     description:
       'Get in touch with Rowad for Software Development. Request a free consultation for your next digital project.',
     url: 'https://rowad.com/contact',
@@ -39,7 +39,7 @@ export const contactMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Rowad - Get a Free Consultation',
+    title: 'Contact Rowad: Get a Free Consultation',
     description:
       'Get in touch with Rowad for your next web development, mobile app, or digital project.',
     images: ['/images/brand/og-image.jpg'],

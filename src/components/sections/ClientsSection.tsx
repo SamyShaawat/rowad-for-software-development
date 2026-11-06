@@ -115,7 +115,7 @@ export function ClientsSection({ locale = 'en' }: { locale?: Locale }) {
                 <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] rtl:tracking-normal text-orange-700 dark:text-orange-400">
                   {c.category}
                 </p>
-                <h3 className="mt-1 text-lg font-bold text-slate-900 dark:text-white">{c.name}</h3>
+                <h2 className="mt-1 text-lg font-bold text-slate-900 dark:text-white">{c.name}</h2>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                   {c.description}
                 </p>
