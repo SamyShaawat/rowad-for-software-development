@@ -10,13 +10,25 @@ import {
 } from '@heroicons/react/24/outline';
 import { ClientsConstants } from '@constants';
 import { cn } from '@lib/utils';
+import { getDictionary, type Locale } from '@/i18n';
 
 const ITEMS_PER_PAGE = 6;
 
 const pageBtn =
   'grid h-10 w-10 place-items-center rounded-full border border-slate-300 text-sm font-medium text-slate-700 transition-colors hover:border-slate-900 disabled:opacity-30 dark:border-white/15 dark:text-slate-300 dark:hover:border-white';
 
-export function ClientsSection() {
+export function ClientsSection({ locale = 'en' }: { locale?: Locale }) {
+  const p = getDictionary(locale).clientsPage;
+  // Names stay as on the logos; category and description come from the Arabic dictionary when present.
+  const clients = useMemo(
+    () =>
+      ClientsConstants.map((c) => ({
+        ...c,
+        category: p.categories[c.category] ?? c.category,
+        description: p.descriptions[c.id] ?? c.description,
+      })),
+    [p]
+  );
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [focusedId, setFocusedId] = useState<number | null>(null);
@@ -51,26 +63,26 @@ export function ClientsSection() {
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
-    return ClientsConstants.filter(
+    return clients.filter(
       (c) =>
         c.name.toLowerCase().includes(q) ||
         c.description.toLowerCase().includes(q) ||
         c.category.toLowerCase().includes(q)
     );
-  }, [query]);
+  }, [query, clients]);
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const visible = filtered.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   return (
-    <section className="section-padding bg-white dark:bg-[#161616]" aria-label="Client list">
+    <section className="section-padding bg-white dark:bg-[#161616]" aria-label={p.listLabel}>
       <div className="container-custom mx-auto">
         <div className="relative mb-12 max-w-xl">
           <MagnifyingGlassIcon className="pointer-events-none absolute start-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
           <input
             type="search"
-            aria-label="Search clients"
-            placeholder="Search by name or industry"
+            aria-label={p.searchLabel}
+            placeholder={p.searchPlaceholder}
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -100,7 +112,7 @@ export function ClientsSection() {
                     className="max-h-20 w-auto max-w-full object-contain"
                   />
                 </div>
-                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-orange-700 dark:text-orange-400">
+                <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] rtl:tracking-normal text-orange-700 dark:text-orange-400">
                   {c.category}
                 </p>
                 <h3 className="mt-1 text-lg font-bold text-slate-900 dark:text-white">{c.name}</h3>
@@ -114,7 +126,7 @@ export function ClientsSection() {
                     rel="noopener noreferrer"
                     className="btn-ghost mt-5 text-sm"
                   >
-                    Visit website
+                    {p.visit}
                     <ArrowTopRightOnSquareIcon className="ms-1.5 h-4 w-4" />
                   </a>
                 )}
@@ -122,14 +134,14 @@ export function ClientsSection() {
             ))}
           </ul>
         ) : (
-          <p className="py-16 text-center text-slate-500">No clients match your search.</p>
+          <p className="py-16 text-center text-slate-500">{p.empty}</p>
         )}
 
         {totalPages > 1 && (
-          <nav className="mt-12 flex items-center gap-2" aria-label="Pagination">
+          <nav className="mt-12 flex items-center gap-2" aria-label={p.paginationLabel}>
             <button
               type="button"
-              aria-label="Previous page"
+              aria-label={p.previous}
               className={pageBtn}
               disabled={page === 1}
               onClick={() => setPage((p) => Math.max(1, p - 1))}
@@ -153,7 +165,7 @@ export function ClientsSection() {
             ))}
             <button
               type="button"
-              aria-label="Next page"
+              aria-label={p.next}
               className={pageBtn}
               disabled={page === totalPages}
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}

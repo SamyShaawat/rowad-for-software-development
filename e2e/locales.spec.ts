@@ -258,6 +258,41 @@ test.describe('Languages', () => {
     await expect(page.getByText('QA and test automation')).toBeVisible();
   });
 
+  test('Arabic clients page: translated text, Arabic search and the home-strip deep link', async ({
+    page,
+  }) => {
+    await page.goto('/ar/clients');
+    await expect(page.locator('h1')).toHaveText('شركات تعمل ببرمجياتنا.');
+    const cards = page.locator('main li[id^="client-"]');
+    await expect(cards).toHaveCount(6);
+    await expect(cards.first()).toContainText('الخدمات اللوجستية');
+    await expect(page.getByRole('searchbox')).toHaveAttribute(
+      'placeholder',
+      'ابحث بالاسم أو المجال'
+    );
+    await page.getByRole('searchbox').fill('الخليج');
+    await expect(cards).toHaveCount(1);
+    await expect(cards.first()).toContainText('Malak Al Reem Properties Development');
+    await page.getByRole('searchbox').fill('zzzz');
+    await expect(page.getByText('لا يوجد عملاء مطابقون لبحثك.')).toBeVisible();
+    // link from the logo strip on the Arabic home page
+    await page.goto('/ar/clients#client-11');
+    await expect(page.locator('#client-11')).toBeVisible();
+    await expect(page.locator('#client-11')).toHaveClass(/ring-orange-500/);
+  });
+
+  test('English clients page keeps its text and search', async ({ page }) => {
+    await page.goto('/clients');
+    await expect(page.locator('h1')).toHaveText('Companies that run on our software.');
+    await page.getByRole('searchbox').fill('maritime');
+    const names = await page.locator('main li[id^="client-"] h3').allInnerTexts();
+    expect(names).toEqual(
+      expect.arrayContaining(['BC Marine Electronics (BCME)', 'International Maritime Group (IMG)'])
+    );
+    await page.getByRole('searchbox').fill('zzzz');
+    await expect(page.getByText('No clients match your search.')).toBeVisible();
+  });
+
   test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);

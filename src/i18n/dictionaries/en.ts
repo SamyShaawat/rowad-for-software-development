@@ -285,6 +285,23 @@ export const en = {
       'Maintenance and 24/7 support',
     ],
   },
+  clientsPage: {
+    eyebrow: 'Clients',
+    title: 'Companies that run on our software.',
+    intro:
+      'Logistics, maritime, healthcare, law and more. Here are some of the organisations we have built for.',
+    listLabel: 'Client list',
+    searchLabel: 'Search clients',
+    searchPlaceholder: 'Search by name or industry',
+    visit: 'Visit website',
+    empty: 'No clients match your search.',
+    paginationLabel: 'Pagination',
+    previous: 'Previous page',
+    next: 'Next page',
+    // English text lives in src/constants/clients.constants.ts; Arabic fills these in (see ar.ts).
+    categories: {} as Record<string, string>,
+    descriptions: {} as Record<number, string>,
+  },
   cta: {
     title: "Have an idea or a messy process? Let's talk.",
     body: 'A 30-minute call is free. You leave with a clear next step, whether you work with us or not.',
