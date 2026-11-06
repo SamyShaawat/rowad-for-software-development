@@ -33,7 +33,8 @@ test.describe('Structured data and unverified claims', () => {
 
   test('services page does not show unverified technology lists', async ({ page }) => {
     await page.goto('/services');
-    await expect(page.getByText('Built with')).toHaveCount(0);
+    // the removed "Built with" tools box (exact heading), not the sentence about n8n
+    await expect(page.getByText('Built with', { exact: true })).toHaveCount(0);
     await expect(page.getByText('Tailwind CSS')).toHaveCount(0);
   });
 

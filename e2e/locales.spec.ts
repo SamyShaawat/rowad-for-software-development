@@ -152,6 +152,21 @@ test.describe('Languages', () => {
     }
   });
 
+  test('AI agents means automation with n8n, in English and Arabic', async ({ page }) => {
+    await page.goto('/services');
+    await expect(page.locator('#agents h2')).toHaveText('AI agents & automation');
+    await expect(page.locator('#agents')).toContainText('n8n');
+    await expect(page.locator('#agents ul li')).toHaveCount(5);
+    await page.goto('/ar/services');
+    await expect(page.locator('#agents h2')).toHaveText('وكلاء الذكاء الاصطناعي والأتمتة');
+    await expect(page.locator('#agents')).toContainText('n8n');
+    await expect(page.locator('#agents ul li')).toHaveCount(5);
+    await page.goto('/');
+    await expect(page.getByText('AI agents, automation and chatbots.')).toBeVisible();
+    await page.goto('/ar');
+    await expect(page.getByText('ووكلاء ذكاء اصطناعي وأتمتة وشات بوت')).toBeVisible();
+  });
+
   test('English home keeps its text and links', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('One team for every piece of your software.');
