@@ -1,26 +1,21 @@
 import { getDictionary, type Locale } from '@/i18n';
-import {
-  CodeBracketIcon,
-  MagnifyingGlassIcon,
-  RocketLaunchIcon,
-  SwatchIcon,
-} from '@heroicons/react/24/outline';
+import { BuildIcon, DesignIcon, DiscoverIcon, LaunchIcon } from '@/components/ui/icons';
 
 const stopStyles = [
   {
-    Icon: MagnifyingGlassIcon,
+    Icon: DiscoverIcon,
     color: 'bg-blue-600 dark:bg-blue-400 dark:text-slate-900',
   },
   {
-    Icon: SwatchIcon,
+    Icon: DesignIcon,
     color: 'bg-violet-600 dark:bg-violet-400 dark:text-slate-900',
   },
   {
-    Icon: CodeBracketIcon,
+    Icon: BuildIcon,
     color: 'bg-teal-600 dark:bg-teal-400 dark:text-slate-900',
   },
   {
-    Icon: RocketLaunchIcon,
+    Icon: LaunchIcon,
     color: 'bg-orange-600 dark:bg-orange-400 dark:text-slate-900',
   },
 ];
@@ -62,7 +57,7 @@ export function ProcessSection({ locale = 'en' }: { locale?: Locale }) {
                 <span
                   className={`relative z-10 grid h-[72px] w-[72px] place-items-center rounded-full text-white ring-8 ring-blue-50 dark:ring-[#171b22] ${color}`}
                 >
-                  <Icon className="h-8 w-8" strokeWidth={1.6} />
+                  <Icon className="h-8 w-8" />
                 </span>
                 <h3 className="mt-5 text-xl font-normal text-slate-900 dark:text-white">{title}</h3>
                 <p className="mt-2 max-w-[16rem] text-sm leading-relaxed text-slate-600 dark:text-slate-300">
