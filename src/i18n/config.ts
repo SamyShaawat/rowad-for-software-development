@@ -1,11 +1,12 @@
 /**
  * Locales. English keeps today's URLs (/about); Arabic lives under /ar (/ar/about).
- * Arabic stays hidden (noindex, no switcher) until ARABIC_PUBLIC is true.
+ * ARABIC_PUBLIC shows the language button in the header. The Arabic pages are still noindex
+ * until the SEO switch-on (hreflang, sitemap) is done.
  */
 export const locales = ['en', 'ar'] as const;
 export type Locale = (typeof locales)[number];
 
-export const ARABIC_PUBLIC = false;
+export const ARABIC_PUBLIC = true;
 
 export const isRtl = (locale: Locale) => locale === 'ar';
 export const dirOf = (locale: Locale) => (isRtl(locale) ? 'rtl' : 'ltr');

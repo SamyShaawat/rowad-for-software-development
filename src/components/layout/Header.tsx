@@ -23,9 +23,6 @@ export function Header({ locale }: { locale: Locale }) {
     { name: t.nav.about, href: RouteConstants.ABOUT },
     { name: t.nav.contact, href: RouteConstants.CONTACT },
   ];
-  const switcherClass =
-    'flex items-center px-4 text-sm text-slate-300 transition-colors hover:bg-slate-800 hover:text-white';
-
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-700 bg-slate-900">
       <nav className="mx-auto flex h-16 max-w-[1584px] items-stretch justify-between ps-4 sm:ps-6 lg:ps-8">
@@ -55,7 +52,7 @@ export function Header({ locale }: { locale: Locale }) {
             );
           })}
           <ThemeToggle />
-          <LanguageSwitcher locale={locale} className={switcherClass} />
+          <LanguageSwitcher locale={locale} />
           <Link
             href={localePath(locale, RouteConstants.CONTACT)}
             className="my-3 ms-2 me-3 flex items-center rounded-full bg-orange-500 px-6 text-sm font-medium text-slate-900 transition-colors hover:bg-orange-400"
@@ -66,7 +63,7 @@ export function Header({ locale }: { locale: Locale }) {
 
         <div className="flex items-stretch md:hidden">
           <ThemeToggle />
-          <LanguageSwitcher locale={locale} className={switcherClass} />
+          <LanguageSwitcher locale={locale} />
           <button
             type="button"
             id="mobile-menu-btn"

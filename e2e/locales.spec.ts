@@ -293,8 +293,37 @@ test.describe('Languages', () => {
     await expect(page.getByText('No clients match your search.')).toBeVisible();
   });
 
-  test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
+  test('Language button sits next to the dark-mode button and goes to the same page', async ({
+    page,
+  }) => {
+    for (const [en, ar] of [
+      ['/', '/ar'],
+      ['/services', '/ar/services'],
+      ['/clients', '/ar/clients'],
+      ['/about', '/ar/about'],
+      ['/contact', '/ar/contact'],
+    ]) {
+      await page.goto(en);
+      const toArabic = page.locator('header a[hreflang="ar"]:visible');
+      await expect(toArabic).toHaveText('العربية');
+      await expect(toArabic).toHaveAttribute('href', ar);
+      await toArabic.click();
+      await expect(page).toHaveURL(new RegExp(`${ar}$`));
+      await expect(page.locator('html')).toHaveAttribute('lang', 'ar');
+      const toEnglish = page.locator('header a[hreflang="en"]:visible');
+      await expect(toEnglish).toHaveText('English');
+      await expect(toEnglish).toHaveAttribute('href', en);
+      await toEnglish.click();
+      await expect(page).toHaveURL(new RegExp(`${en === '/' ? '/' : en}$`));
+      await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    }
+  });
+
+  test('Language button is visible on a phone without opening the menu', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');
-    await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);
+    await expect(page.locator('header a[hreflang="ar"]:visible')).toBeVisible();
+    await page.goto('/ar');
+    await expect(page.locator('header a[hreflang="en"]:visible')).toBeVisible();
   });
 });
