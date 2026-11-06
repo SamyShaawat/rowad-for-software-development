@@ -1,32 +1,32 @@
 import Link from 'next/link';
-import {
-  ChatBubbleLeftRightIcon,
-  CheckBadgeIcon,
-  CloudArrowUpIcon,
-  ComputerDesktopIcon,
-  CpuChipIcon,
-  DevicePhoneMobileIcon,
-  Squares2X2Icon,
-  SwatchIcon,
-  WrenchScrewdriverIcon,
-} from '@heroicons/react/24/outline';
 import { CTASection } from '@/components/sections/CTASection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { PageHero } from '@/components/ui/PageHero';
 import { RouteConstants } from '@constants';
 import { getDictionary, localePath, type Locale } from '@/i18n';
+import {
+  AgentsIcon,
+  ChatbotIcon,
+  CloudIcon,
+  DesignIcon,
+  ErpIcon,
+  MaintenanceIcon,
+  MobileIcon,
+  QaIcon,
+  WebIcon,
+} from '@/components/ui/icons';
 
 // One icon per capability, in the order of the dictionary list (same icons as the service cards).
 const capabilityIcons = [
-  ComputerDesktopIcon, // websites and web apps
-  DevicePhoneMobileIcon, // mobile apps
-  Squares2X2Icon, // ERP
-  CpuChipIcon, // AI agents and automation
-  ChatBubbleLeftRightIcon, // chatbots
-  CloudArrowUpIcon, // hosting, CI/CD, DevOps
-  SwatchIcon, // UI/UX design
-  CheckBadgeIcon, // QA and test automation
-  WrenchScrewdriverIcon, // maintenance and support
+  WebIcon, // websites and web apps
+  MobileIcon, // mobile apps
+  ErpIcon, // ERP
+  AgentsIcon, // AI agents and automation
+  ChatbotIcon, // chatbots
+  CloudIcon, // hosting, CI/CD, DevOps
+  DesignIcon, // UI/UX design
+  QaIcon, // QA and test automation
+  MaintenanceIcon, // maintenance and support
 ];
 
 /** About page body, shared by the English route (/about) and the Arabic route (/ar/about). */

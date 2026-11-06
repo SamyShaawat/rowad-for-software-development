@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
 import { CurrentYear } from '@/components/ui/CurrentYear';
 import { motion } from 'framer-motion';
-import { PhoneIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { MailIcon, PhoneIcon, PinIcon } from '@/components/ui/icons';
 import { RouteConstants, CompanyConstants } from '@constants';
 import { getDictionary, localePath, type Locale } from '@/i18n';
 
@@ -130,7 +130,7 @@ export function Footer({ locale }: { locale: Locale }) {
               </li>
               <li className="flex items-start gap-4 text-slate-600 dark:text-slate-400 text-sm">
                 <div className="h-10 w-10 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0">
-                  <EnvelopeIcon className="h-5 w-5 text-blue-500" />
+                  <MailIcon className="h-5 w-5 text-blue-500" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase tracking-wider rtl:tracking-normal text-slate-400 font-bold">
@@ -146,7 +146,7 @@ export function Footer({ locale }: { locale: Locale }) {
               </li>
               <li className="flex items-start gap-4 text-slate-600 dark:text-slate-400 text-sm">
                 <div className="h-10 w-10 rounded-full bg-green-500/10 flex items-center justify-center shrink-0">
-                  <MapPinIcon className="h-5 w-5 text-green-500" />
+                  <PinIcon className="h-5 w-5 text-green-500" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase tracking-wider rtl:tracking-normal text-slate-400 font-bold">

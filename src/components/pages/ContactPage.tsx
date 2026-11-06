@@ -1,11 +1,6 @@
 import Link from 'next/link';
-import {
-  PhoneIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  ClockIcon,
-  PlusIcon,
-} from '@heroicons/react/24/outline';
+import { PlusIcon } from '@heroicons/react/24/outline';
+import { ClockIcon, MailIcon, PhoneIcon, PinIcon } from '@/components/ui/icons';
 import { CTASection } from '@/components/sections/CTASection';
 import { PageHero } from '@/components/ui/PageHero';
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon';
@@ -26,13 +21,13 @@ export function ContactPage({ locale }: { locale: Locale }) {
       subtext: t.company.workingHours,
     },
     {
-      icon: EnvelopeIcon,
+      icon: MailIcon,
       title: p.cards.email.title,
       content: <bdi dir="ltr">{CompanyConstants.EMAIL}</bdi>,
       subtext: p.cards.email.note,
     },
     {
-      icon: MapPinIcon,
+      icon: PinIcon,
       title: p.cards.office.title,
       content: t.company.location,
       subtext: p.cards.office.note,
@@ -73,7 +68,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
                   href={`mailto:${CompanyConstants.EMAIL}`}
                   className="inline-flex items-center justify-center gap-2.5 rounded-full border border-white/30 px-6 py-4 text-base font-semibold text-white transition-colors hover:border-white"
                 >
-                  <EnvelopeIcon className="h-5 w-5" />
+                  <MailIcon className="h-5 w-5" />
                   <bdi dir="ltr">{CompanyConstants.EMAIL}</bdi>
                 </a>
               </div>

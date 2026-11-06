@@ -1,23 +1,23 @@
 import Link from 'next/link';
-import {
-  ChatBubbleLeftRightIcon,
-  CloudArrowUpIcon,
-  ComputerDesktopIcon,
-  CpuChipIcon,
-  DevicePhoneMobileIcon,
-  Squares2X2Icon,
-} from '@heroicons/react/24/outline';
 import { RouteConstants } from '@constants';
+import {
+  AgentsIcon,
+  ChatbotIcon,
+  CloudIcon,
+  ErpIcon,
+  MobileIcon,
+  WebIcon,
+} from '@/components/ui/icons';
 import { getDictionary, localePath, type Locale } from '@/i18n';
 import { serviceTheme } from './service-theme';
 
 const icons = {
-  web: ComputerDesktopIcon,
-  mobile: DevicePhoneMobileIcon,
-  erp: Squares2X2Icon,
-  agents: CpuChipIcon,
-  chatbot: ChatBubbleLeftRightIcon,
-  cloud: CloudArrowUpIcon,
+  web: WebIcon,
+  mobile: MobileIcon,
+  erp: ErpIcon,
+  agents: AgentsIcon,
+  chatbot: ChatbotIcon,
+  cloud: CloudIcon,
 } as const;
 
 /** Carbon tile grid: 1px gaps, whole tile is the link, arrow bottom-right. */
@@ -51,7 +51,7 @@ export function ServicesSection({ locale = 'en' }: { locale?: Locale }) {
                   <span
                     className={`grid h-16 w-16 place-items-center rounded-full ${serviceTheme[id].icon}`}
                   >
-                    <Icon className="h-8 w-8" strokeWidth={1.5} />
+                    <Icon className="h-8 w-8" />
                   </span>
                   <h3 className="mt-8 text-xl text-slate-900 dark:text-white">{name}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">

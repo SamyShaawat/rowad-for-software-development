@@ -1,10 +1,6 @@
 import Link from 'next/link';
-import {
-  ArrowRightIcon,
-  ClipboardDocumentCheckIcon,
-  LifebuoyIcon,
-  UsersIcon,
-} from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ProjectIcon, SupportIcon, TeamIcon } from '@/components/ui/icons';
 import { CTASection } from '@/components/sections/CTASection';
 import { ServiceIllustration } from '@/components/sections/illustrations';
 import { serviceTheme } from '@/components/sections/service-theme';
@@ -15,7 +11,7 @@ import { getDictionary, localePath, type Locale } from '@/i18n';
 const ids = ['web', 'mobile', 'erp', 'agents', 'chatbot', 'cloud'] as const;
 
 // One icon per way of working, in the order of the dictionary: fixed project, dedicated team, support.
-const engageIcons = [ClipboardDocumentCheckIcon, UsersIcon, LifebuoyIcon];
+const engageIcons = [ProjectIcon, TeamIcon, SupportIcon];
 
 /** Services page body, shared by the English route (/services) and the Arabic route (/ar/services). */
 export function ServicesPage({ locale }: { locale: Locale }) {
