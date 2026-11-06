@@ -51,7 +51,11 @@ export function TrustStrip({ locale = 'en' }: { locale?: Locale }) {
       aria-label={t.aria}
     >
       <p className="mb-8 px-4 text-center text-sm text-slate-600 dark:text-slate-300">{t.label}</p>
-      <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] motion-reduce:overflow-x-auto motion-reduce:[mask-image:none]">
+      <div
+        dir="ltr"
+        className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)] motion-reduce:overflow-x-auto motion-reduce:[mask-image:none]"
+      >
+        {/* dir="ltr" on the clipping box in both languages: the logos always slide from right to left and the loop stays seamless */}
         <div
           className="flex w-max animate-marquee hover:[animation-play-state:paused] motion-reduce:animate-none"
           style={{ animationDuration: '60s' }}

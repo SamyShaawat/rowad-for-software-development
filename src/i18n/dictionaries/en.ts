@@ -64,6 +64,8 @@ export const en = {
       text: 'Managed hosting, CI/CD, backups and monitoring so releases stay uneventful.',
     },
   },
+  // English labels are written in the diagram code; Arabic maps each one (see ar.ts).
+  diagramText: {} as Record<string, string>,
   illustrations: {
     web: 'Responsive website shown on desktop and phone with a perfect performance score and a passing build',
     mobile: 'Three mobile app screens with a push notification and iOS and Android store badges',
@@ -83,7 +85,7 @@ export const en = {
       secondary: 'Explore services',
     },
     trust: {
-      label: 'Trusted by teams across Egypt and the Gulf',
+      label: 'Trusted by our clients and partners',
       aria: 'Clients',
       viewClient: 'view client',
     },

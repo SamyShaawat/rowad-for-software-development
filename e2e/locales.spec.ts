@@ -166,6 +166,75 @@ test.describe('Languages', () => {
     await expect(page.locator('footer')).toContainText('Software Development');
   });
 
+  for (const path of ['/ar', '/ar/services']) {
+    test(`Arabic diagrams on ${path} have no untranslated English labels`, async ({ page }) => {
+      await page.goto(path);
+      const texts = await page
+        .locator('svg[viewBox="0 0 480 320"] text')
+        .evaluateAll((els) => els.map((e) => e.textContent ?? ''));
+      expect(texts.length).toBeGreaterThan(10);
+      // Code, URLs and store or tool names are meant to stay as written.
+      const allowed = [
+        'rowad.com/shop',
+        'next build',
+        'iOS',
+        'App Store',
+        'Android',
+        'Google Play',
+        'ERP',
+        'SSL',
+        'SEO',
+        'PWA',
+      ];
+      const english = texts.filter((t) => {
+        let rest = t;
+        for (const a of allowed) rest = rest.split(a).join('');
+        return /[A-Za-z]{3,}/.test(rest);
+      });
+      expect(english).toEqual([]);
+    });
+  }
+
+  test('Arabic diagrams are mirrored so flows start at the right', async ({ page }) => {
+    await page.goto('/ar/services');
+    const svg = page.locator('svg[viewBox="0 0 480 320"]').first();
+    const transform = await svg.evaluate((el) => getComputedStyle(el).transform);
+    expect(transform).toMatch(/^matrix\(-1,/);
+    await page.goto('/services');
+    const en = await page
+      .locator('svg[viewBox="0 0 480 320"]')
+      .first()
+      .evaluate((el) => getComputedStyle(el).transform);
+    expect(en).toBe('none');
+  });
+
+  for (const [path, label] of [
+    ['/', 'Trusted by our clients and partners'],
+    ['/ar', 'يثق بنا شركاؤنا'],
+  ] as const) {
+    test(`Trust strip on ${path}: wording, moves right to left, never leaves a gap`, async ({
+      page,
+    }) => {
+      await page.goto(path);
+      await expect(page.locator('section[aria-label] p').first()).toHaveText(label);
+      const sample = () =>
+        page.evaluate(() => {
+          const track = document.querySelector('section[aria-label] .animate-marquee')!;
+          const box = track.parentElement!.getBoundingClientRect();
+          const r = track.getBoundingClientRect();
+          return {
+            x: track.querySelector('a')!.getBoundingClientRect().left,
+            covers: r.left <= box.left + 1 && r.right >= box.right - 1,
+          };
+        });
+      const a = await sample();
+      await page.waitForTimeout(1200);
+      const b = await sample();
+      expect(b.x).toBeLessThan(a.x);
+      expect(a.covers && b.covers).toBe(true);
+    });
+  }
+
   test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);

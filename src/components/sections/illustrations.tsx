@@ -51,7 +51,7 @@ function Box({
     />
   );
 }
-function Txt({
+function BaseTxt({
   x,
   y,
   children,
@@ -86,6 +86,32 @@ function Txt({
     </text>
   );
 }
+type TxtProps = React.ComponentProps<typeof BaseTxt>;
+
+/**
+ * Text for one diagram in one language. English labels in the code are looked up in the Arabic
+ * dictionary (diagramText); anything without an entry (code, numbers, URLs) stays as written.
+ * Arabic text drops the monospace class, since the mono font has no Arabic letters.
+ */
+function makeTxt(locale: Locale = 'en') {
+  const map: Record<string, string> = getDictionary(locale).diagramText;
+  const tr = (n: ReactNode): ReactNode =>
+    typeof n === 'string' ? (map[n] ?? n) : Array.isArray(n) ? n.map(tr) : n;
+  return function Txt(props: TxtProps) {
+    return (
+      <BaseTxt
+        {...props}
+        mono={locale === 'ar' ? false : props.mono}
+        cls={cn(
+          props.cls,
+          locale === 'ar' && 'origin-center -scale-x-100 [transform-box:fill-box]'
+        )}
+      >
+        {tr(props.children)}
+      </BaseTxt>
+    );
+  };
+}
 const Line = (p: React.SVGProps<SVGLineElement>) => (
   <line stroke="currentColor" strokeWidth={2} {...p} />
 );
@@ -101,7 +127,13 @@ const Dot = ({
   fill?: string;
 }) => <circle cx={x} cy={y} r={r} fill={fill} />;
 const Check = ({ x, y }: { x: number; y: number }) => (
-  <path d={`M${x} ${y} l3 3 l6 -7`} fill="none" stroke={GREEN} strokeWidth={2.2} />
+  <path
+    d={`M${x} ${y} l3 3 l6 -7`}
+    fill="none"
+    stroke={GREEN}
+    strokeWidth={2.2}
+    className="rtl:origin-center rtl:-scale-x-100 rtl:[transform-box:fill-box]"
+  />
 );
 
 function Canvas({ id, label, children }: { id: string; label: string; children: ReactNode }) {
@@ -110,7 +142,7 @@ function Canvas({ id, label, children }: { id: string; label: string; children: 
       viewBox="0 0 480 320"
       role="img"
       aria-label={label}
-      className="h-full w-full text-slate-900 [direction:ltr] dark:text-slate-100"
+      className="h-full w-full text-slate-900 [direction:ltr] rtl:-scale-x-100 dark:text-slate-100"
     >
       <defs>
         <pattern id={`g-${id}`} width="16" height="16" patternUnits="userSpaceOnUse">
@@ -136,7 +168,8 @@ function Canvas({ id, label, children }: { id: string; label: string; children: 
 const arrow = (id: string) => ({ markerEnd: `url(#a-${id})` });
 
 /* ---------- 1. WEB: one site, every screen, measured quality ---------- */
-function WebArt({ label }: { label?: string }) {
+function WebArt({ label, locale }: { label?: string; locale?: Locale }) {
+  const Txt = makeTxt(locale);
   return (
     <Canvas
       id="web"
@@ -247,7 +280,8 @@ function Phone({
     </g>
   );
 }
-function MobileArt({ label }: { label?: string }) {
+function MobileArt({ label, locale }: { label?: string; locale?: Locale }) {
+  const Txt = makeTxt(locale);
   return (
     <Canvas
       id="mob"
@@ -371,7 +405,8 @@ const erpRight: [string, string][] = [
 ];
 const flow = ['Quote', 'Order', 'Delivery', 'Invoice', 'Payment'];
 
-function ErpArt({ label }: { label?: string }) {
+function ErpArt({ label, locale }: { label?: string; locale?: Locale }) {
+  const Txt = makeTxt(locale);
   const chip = (label: string, color: string, x: number, y: number, side: 'l' | 'r') => (
     <g key={label}>
       <Line
@@ -527,7 +562,8 @@ function ErpArt({ label }: { label?: string }) {
 }
 
 /* ---------- 4. AI AGENT: perceive, reason, act, with a human gate ---------- */
-function AgentArt({ label }: { label?: string }) {
+function AgentArt({ label, locale }: { label?: string; locale?: Locale }) {
+  const Txt = makeTxt(locale);
   const inputs = ['Documents', 'Email', 'Database'];
   const tools = ['ERP API', 'CRM', 'Calendar'];
   return (
@@ -611,7 +647,8 @@ function AgentArt({ label }: { label?: string }) {
 }
 
 /* ---------- 5. CHATBOT: every channel in, handover to humans out ---------- */
-function ChatbotArt({ label }: { label?: string }) {
+function ChatbotArt({ label, locale }: { label?: string; locale?: Locale }) {
+  const Txt = makeTxt(locale);
   const channels: [string, number, string, ReactNode][] = [
     ['WhatsApp', 66, '#25d366', <path key="w" d="M-9 8 L-7 2 A10 10 0 1 1 -2 7 Z" fill="#fff" />],
     ['Messenger', 160, BLUE, <path key="m" d="M-3 -9 L-8 2 H-2 L-4 10 L7 -2 H1 Z" fill="#fff" />],
@@ -642,7 +679,11 @@ function ChatbotArt({ label }: { label?: string }) {
             {...arrow('cb')}
           />
           <circle cx={64} cy={y} r={26} fill={color} stroke="currentColor" strokeWidth={2} />
-          <g transform={`translate(64 ${y})`}>{glyph}</g>
+          <g transform={`translate(64 ${y})`}>
+            <g className="rtl:origin-center rtl:-scale-x-100 rtl:[transform-box:fill-box]">
+              {glyph}
+            </g>
+          </g>
           <Txt x={64} y={y + 42} size={8} anchor="middle">
             {name}
           </Txt>
@@ -701,7 +742,8 @@ function ChatbotArt({ label }: { label?: string }) {
 }
 
 /* ---------- 6. HOSTING & DEVOPS: ship safely, watch always ---------- */
-function CloudArt({ label }: { label?: string }) {
+function CloudArt({ label, locale }: { label?: string; locale?: Locale }) {
+  const Txt = makeTxt(locale);
   const stages = ['Commit', 'Build', 'Test', 'Deploy', 'Live'];
   return (
     <Canvas
@@ -799,7 +841,7 @@ function CloudArt({ label }: { label?: string }) {
   );
 }
 
-const art: Record<string, (props: { label?: string }) => ReactNode> = {
+const art: Record<string, (props: { label?: string; locale?: Locale }) => ReactNode> = {
   web: WebArt,
   mobile: MobileArt,
   erp: ErpArt,
@@ -831,7 +873,7 @@ export function ServiceIllustration({
         className
       )}
     >
-      <Art label={label} />
+      <Art label={label} locale={locale} />
     </div>
   );
 }
