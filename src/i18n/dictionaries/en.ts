@@ -10,6 +10,7 @@ export const en = {
   },
   a11y: {
     homeLabel: 'Rowad home',
+    switchLanguage: 'Switch to Arabic',
     toggleMenu: 'Toggle navigation menu',
   },
   brand: {

@@ -12,6 +12,7 @@ export const ar: typeof en = {
   },
   a11y: {
     homeLabel: 'رواد - الصفحة الرئيسية',
+    switchLanguage: 'التبديل إلى الإنجليزية',
     toggleMenu: 'فتح أو إغلاق قائمة التنقل',
   },
   brand: {
