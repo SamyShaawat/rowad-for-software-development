@@ -152,6 +152,16 @@ test.describe('Languages', () => {
     }
   });
 
+  test('About: nine capabilities, each as a card with an icon, in both languages', async ({
+    page,
+  }) => {
+    for (const path of ['/about', '/ar/about']) {
+      await page.goto(path);
+      const cards = page.locator('main section ul li').filter({ has: page.locator('svg') });
+      await expect(cards).toHaveCount(9);
+    }
+  });
+
   test('English home keeps its text and links', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('One team for every piece of your software.');

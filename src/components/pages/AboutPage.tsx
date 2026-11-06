@@ -1,9 +1,33 @@
 import Link from 'next/link';
+import {
+  ChatBubbleLeftRightIcon,
+  CheckBadgeIcon,
+  CloudArrowUpIcon,
+  ComputerDesktopIcon,
+  CpuChipIcon,
+  DevicePhoneMobileIcon,
+  Squares2X2Icon,
+  SwatchIcon,
+  WrenchScrewdriverIcon,
+} from '@heroicons/react/24/outline';
 import { CTASection } from '@/components/sections/CTASection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { PageHero } from '@/components/ui/PageHero';
 import { RouteConstants } from '@constants';
 import { getDictionary, localePath, type Locale } from '@/i18n';
+
+// One icon per capability, in the order of the dictionary list (same icons as the service cards).
+const capabilityIcons = [
+  ComputerDesktopIcon, // websites and web apps
+  DevicePhoneMobileIcon, // mobile apps
+  Squares2X2Icon, // ERP
+  CpuChipIcon, // AI agents and automation
+  ChatBubbleLeftRightIcon, // chatbots
+  CloudArrowUpIcon, // hosting, CI/CD, DevOps
+  SwatchIcon, // UI/UX design
+  CheckBadgeIcon, // QA and test automation
+  WrenchScrewdriverIcon, // maintenance and support
+];
 
 /** About page body, shared by the English route (/about) and the Arabic route (/ar/about). */
 export function AboutPage({ locale }: { locale: Locale }) {
@@ -58,24 +82,32 @@ export function AboutPage({ locale }: { locale: Locale }) {
       <ProcessSection locale={locale} />
 
       <section className="section-padding bg-white dark:bg-[#161616]">
-        <div className="container-custom mx-auto grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-          <div>
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+        <div className="container-custom mx-auto">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="text-3xl font-light leading-tight text-slate-900 dark:text-white sm:text-4xl">
               {p.expertiseTitle}
             </h2>
-            <Link href={localePath(locale, RouteConstants.SERVICES)} className="btn-ghost mt-6">
+            <Link href={localePath(locale, RouteConstants.SERVICES)} className="btn-ghost">
               {p.seeServices} <span className="inline-block rtl:rotate-180">→</span>
             </Link>
           </div>
-          <ul className="grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2">
-            {p.capabilities.map((c) => (
-              <li
-                key={c}
-                className="bg-white px-5 py-4 text-sm font-medium text-slate-800 dark:bg-[#161616] dark:text-slate-200"
-              >
-                {c}
-              </li>
-            ))}
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {p.capabilities.map((c, i) => {
+              const Icon = capabilityIcons[i];
+              return (
+                <li
+                  key={c}
+                  className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-colors hover:border-orange-400 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-orange-400/60"
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-orange-100 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <span className="text-base font-medium leading-snug text-slate-800 dark:text-slate-200">
+                    {c}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
