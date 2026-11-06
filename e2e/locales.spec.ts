@@ -122,6 +122,12 @@ test.describe('Languages', () => {
       const tiles = await page.locator('main section ul li').first().boundingBox();
       expect(card && tiles).toBeTruthy();
       expect(card!.x > tiles!.x).toBe(cardIsRight);
+      // the message card starts level with the first detail tile (below the heading)
+      const cardTop = await page
+        .locator('main section a[href^="https://wa.me"]')
+        .first()
+        .evaluate((el) => el.closest('div.relative')!.getBoundingClientRect().top);
+      expect(Math.abs(cardTop - tiles!.y)).toBeLessThan(2);
       const faq = page.locator('main details');
       await expect(faq).toHaveCount(4);
       await expect(faq.first()).toHaveAttribute('open', '');

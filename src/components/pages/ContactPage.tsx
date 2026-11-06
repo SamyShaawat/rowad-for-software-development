@@ -45,9 +45,9 @@ export function ContactPage({ locale }: { locale: Locale }) {
       <PageHero title={p.title}>{p.intro}</PageHero>
 
       <section className="section-padding bg-white dark:bg-[#161616]">
-        <div className="container-custom mx-auto grid gap-8 lg:grid-cols-12 lg:gap-10">
+        <div className="container-custom mx-auto grid gap-8 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-8">
           {/* Message card: solid ink panel, one orange bar, two large actions */}
-          <div className="self-start lg:sticky lg:top-28 lg:order-2 lg:col-span-5">
+          <div className="self-start lg:sticky lg:top-28 lg:col-span-5 lg:col-start-8 lg:row-start-2">
             <div className="relative flex flex-col overflow-hidden rounded-3xl bg-slate-900 p-8 text-white dark:bg-white/[0.05] dark:ring-1 dark:ring-white/10 sm:p-10">
               <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-orange-500" />
               <h2 className="mt-2 text-3xl font-light leading-tight sm:text-4xl">
@@ -76,11 +76,11 @@ export function ContactPage({ locale }: { locale: Locale }) {
           </div>
 
           {/* Details: four tiles, then the quick actions */}
-          <div className="lg:order-1 lg:col-span-7">
-            <h2 className="text-3xl font-light text-slate-900 dark:text-white sm:text-4xl">
-              {p.infoTitle}
-            </h2>
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+          <h2 className="text-3xl font-light text-slate-900 dark:text-white sm:text-4xl lg:col-span-7 lg:col-start-1 lg:row-start-1">
+            {p.infoTitle}
+          </h2>
+          <div className="lg:col-span-7 lg:col-start-1 lg:row-start-2">
+            <ul className="grid gap-4 sm:grid-cols-2">
               {contactInfo.map((item) => (
                 <li
                   key={item.title}
