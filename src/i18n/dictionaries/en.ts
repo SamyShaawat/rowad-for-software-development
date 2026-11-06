@@ -68,15 +68,15 @@ export const en = {
   // English labels are written in the diagram code; Arabic maps each one (see ar.ts).
   diagramText: {} as Record<string, string>,
   illustrations: {
-    web: 'Responsive website shown on desktop and phone with a perfect performance score and a passing build',
-    mobile: 'Three mobile app screens with a push notification and iOS and Android store badges',
-    erp: 'An ERP system: a quote-to-cash flow across the top, a central dashboard, and sales, CRM, purchasing, inventory, accounting, HR, production and reports all connected to one shared database',
+    web: 'A website shown on a desktop browser and on a phone, scoring 100',
+    mobile: 'Three mobile app screens with a push notification and two store badges',
+    erp: 'An ERP system: one hub connected to sales, purchasing, inventory, accounting, HR and production, on one shared database',
     agents:
-      'An AI agent reads documents, email and databases, reasons, calls tools like your ERP and CRM, with human approval before it acts',
+      'An automated workflow: a new email triggers an AI agent, a person approves, the ERP is updated and the job is done',
     chatbot:
-      'A chatbot receiving Arabic and English messages from WhatsApp, Messenger and web chat, answering, and handing over to a human agent while updating the CRM',
+      'A chatbot answering customers from WhatsApp, Messenger and web chat, then handing over to a person',
     cloud:
-      'A deployment pipeline from commit to live, with staging and production servers and a monitoring panel showing 99.9 percent uptime',
+      'Code is pushed, tested and deployed to dev, staging and production servers, with 99.9 percent uptime and backups',
   },
   home: {
     hero: {

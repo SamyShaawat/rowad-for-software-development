@@ -288,11 +288,11 @@ test.describe('Languages', () => {
       const texts = await page
         .locator('svg[viewBox="0 0 480 320"] text')
         .evaluateAll((els) => els.map((e) => e.textContent ?? ''));
-      expect(texts.length).toBeGreaterThan(10);
+      expect(texts.length).toBeGreaterThan(5);
       // Code, URLs and store or tool names are meant to stay as written.
       const allowed = [
         'rowad.com/shop',
-        'next build',
+        'git push',
         'iOS',
         'App Store',
         'Android',
