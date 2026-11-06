@@ -138,12 +138,28 @@ test.describe('Languages', () => {
     expect(hrefs.filter((h) => !h.startsWith('/ar'))).toEqual([]);
   });
 
+  test('Working hours are Sunday to Thursday 9 to 5 in both languages and in the structured data', async ({
+    page,
+    request,
+  }) => {
+    await page.goto('/ar/contact');
+    await expect(page.getByText('من الأحد إلى الخميس: 9:00 ص - 5:00 م').first()).toBeVisible();
+    await expect(page.getByText('الجمعة والسبت: مغلق')).toBeVisible();
+    await page.goto('/contact');
+    await expect(page.getByText('Fri - Sat: Closed')).toBeVisible();
+    const html = await (await request.get('/')).text();
+    const ld = JSON.parse(html.match(/ld\+json"[^>]*>([\s\S]*?)<\/script>/)![1]);
+    const hours = JSON.stringify(ld);
+    expect(hours).toContain('"dayOfWeek":["Sunday","Monday","Tuesday","Wednesday","Thursday"]');
+    expect(hours).toContain('"opens":"09:00","closes":"17:00"');
+  });
+
   test('English contact page keeps its text, FAQ and confirmed timelines', async ({ page }) => {
     await page.goto('/contact');
     await expect(page.locator('h1')).toHaveText('Tell us what you want to build.');
     await expect(page.locator('dt')).toHaveCount(4);
     await expect(page.getByText('2–6 weeks')).toBeVisible();
-    await expect(page.getByText('Mon - Fri: 9:00 AM - 6:00 PM').first()).toBeVisible();
+    await expect(page.getByText('Sun - Thu: 9:00 AM - 5:00 PM').first()).toBeVisible();
   });
 
   test('Arabic logo: orange و with a shadda, footer subtitle translated, R mark kept', async ({
