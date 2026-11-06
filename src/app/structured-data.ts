@@ -155,7 +155,7 @@ export const englishJsonLd = {
               '@type': 'Service',
               name: 'AI Agents',
               description:
-                'AI agents that read your data, use your tools and complete real tasks, with human approval and monitoring.',
+                'AI agents and workflow automation (n8n and similar tools) that read your data, use your tools and complete real tasks, with human approval and monitoring.',
             },
           },
           {

@@ -53,8 +53,8 @@ export const en = {
       text: 'Sales, stock, accounting, HR and production on one system, tailored to how your business runs.',
     },
     agents: {
-      name: 'AI agents',
-      text: 'Agents that read your data, use your tools and finish real tasks with human approval.',
+      name: 'AI agents & automation',
+      text: 'AI agents and workflow automation, with tools like n8n, that read your data, use your tools and finish real tasks with human approval.',
     },
     chatbot: {
       name: 'Chatbots',
@@ -81,7 +81,7 @@ export const en = {
   home: {
     hero: {
       title: 'One team for every piece of your software.',
-      body: 'Websites, mobile apps, ERP systems, AI agents and chatbots. We design, build and run them, so you deal with one partner from idea to production.',
+      body: 'Websites, mobile apps, ERP systems, AI agents, automation and chatbots. We design, build and run them, so you deal with one partner from idea to production.',
       primary: 'Book a free consultation',
       secondary: 'Explore services',
     },
@@ -157,12 +157,13 @@ export const en = {
       },
       agents: {
         lead: 'Software that does the work, not just answers questions.',
-        text: 'Agents read your documents and systems, decide what to do, call your tools and finish tasks like triage, quoting and reporting. People stay in control with approval steps and full logs.',
+        text: 'Agents and automations (built with n8n and similar tools) read your documents and systems, decide what to do, call your tools and finish tasks like triage, quoting and reporting. People stay in control with approval steps and full logs.',
         projects: [
           'Question answering over your own documents',
           'Sales and support triage',
           'Back-office automation: quotes, invoices, reports',
           'Agents connected to your ERP and CRM',
+          'Workflow automation with n8n and similar tools',
         ],
         steps: [
           'Choose one workflow worth automating',
