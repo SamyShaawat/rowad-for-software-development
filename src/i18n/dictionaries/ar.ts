@@ -156,7 +156,7 @@ export const ar: typeof en = {
       secondary: 'استكشف خدماتنا',
     },
     trust: {
-      label: 'يثق بنا شركاء من مصر والخليج',
+      label: 'يثق بنا شركاؤنا',
       aria: 'عملاؤنا',
       viewClient: 'عرض العميل',
     },

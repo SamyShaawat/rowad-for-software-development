@@ -85,7 +85,7 @@ export const en = {
       secondary: 'Explore services',
     },
     trust: {
-      label: 'Trusted by teams across Egypt and the Gulf',
+      label: 'Trusted by our clients and partners',
       aria: 'Clients',
       viewClient: 'view client',
     },
