@@ -36,4 +36,20 @@ test.describe('Structured data and unverified claims', () => {
     await expect(page.getByText('Built with')).toHaveCount(0);
     await expect(page.getByText('Tailwind CSS')).toHaveCount(0);
   });
+
+  for (const path of ['/', '/ar']) {
+    test(`${path} loads its fonts from this site, not from Google`, async ({ page, baseURL }) => {
+      const external: string[] = [];
+      page.on('request', (r) => {
+        if (!r.url().startsWith(baseURL!)) external.push(r.url());
+      });
+      await page.goto(path, { waitUntil: 'networkidle' });
+      const loaded = await page.evaluate(async () => {
+        await document.fonts.ready;
+        return [...document.fonts].filter((f) => f.status === 'loaded').length;
+      });
+      expect(loaded).toBeGreaterThan(3);
+      expect(external.filter((u) => /fonts\.(googleapis|gstatic)/.test(u))).toEqual([]);
+    });
+  }
 });
