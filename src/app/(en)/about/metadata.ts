@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { alternatesFor } from '@/i18n/seo';
 import { CompanyConstants } from '@constants';
 
 export const aboutMetadata: Metadata = {
@@ -41,7 +42,5 @@ export const aboutMetadata: Metadata = {
       'Discover Rowad for Software Development - your trusted partner in digital transformation.',
     images: ['/images/brand/og-image.jpg'],
   },
-  alternates: {
-    canonical: 'https://rowad.com/about',
-  },
+  alternates: alternatesFor('/about', 'en'),
 };

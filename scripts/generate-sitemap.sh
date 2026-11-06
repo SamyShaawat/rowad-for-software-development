@@ -15,7 +15,8 @@ set -e
 BUILD_DIR="build"
 SITEMAP_FILE="$BUILD_DIR/sitemap.xml"
 BASE_URL="https://rowad.com"
-TODAY=$(date +%Y-%m-%d)
+# lastmod: date of the last commit, so redeploying without changes does not change it
+TODAY=$(git log -1 --format=%cs 2>/dev/null || date +%Y-%m-%d)
 
 # ── Validate Build Directory ─────────────────────────────────────────────────
 if [ ! -d "$BUILD_DIR" ]; then
@@ -40,36 +41,39 @@ declare -a ROUTES=(
 cat > "$SITEMAP_FILE" << 'HEADER'
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
 HEADER
 
-# ── Generate URL Entries ─────────────────────────────────────────────────────
+# ── Generate URL Entries: English and Arabic, each linking to both (hreflang) ─
 for route_info in "${ROUTES[@]}"; do
   IFS='|' read -r path priority changefreq <<< "$route_info"
 
-  # Build the full URL
+  # English keeps today's URLs; Arabic lives under /ar
   if [ -z "$path" ]; then
-    url="$BASE_URL/"
+    en_url="$BASE_URL/"
+    ar_url="$BASE_URL/ar"
   else
-    url="$BASE_URL/$path"
+    en_url="$BASE_URL/$path"
+    ar_url="$BASE_URL/ar/$path"
   fi
 
-  # Write the URL entry
-  cat >> "$SITEMAP_FILE" << EOF
+  for loc in "$en_url" "$ar_url"; do
+    cat >> "$SITEMAP_FILE" << EOF
   <url>
-    <loc>$url</loc>
+    <loc>$loc</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="$en_url"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="$ar_url"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="$en_url"/>
     <lastmod>$TODAY</lastmod>
     <changefreq>$changefreq</changefreq>
     <priority>$priority</priority>
   </url>
 
 EOF
+  done
 
-  echo "   ✅ Added: $url (priority: $priority, frequency: $changefreq)"
+  echo "   ✅ Added: $en_url and $ar_url (priority: $priority, frequency: $changefreq)"
 done
 
 # ── Scan for Additional Pages (Dynamic Detection) ────────────────────────────
@@ -91,7 +95,7 @@ for html_file in $(find "$BUILD_DIR" -name "*.html" -not -name "404.html" -not -
 
   # Skip if it's a known route or in special directories
   if [[ "$dir_path" == "." ]] || [[ "$dir_path" == *"_"* ]] || [[ "$dir_path" == "images"* ]] || [[ "$dir_path" == "fonts"* ]] || [[ "$dir_path" == "ar"* ]]; then
-    # ar/* = Arabic pages: hidden (noindex) until the owner approves; add them here when they go public
+    # ar/* pages are listed explicitly above (with their hreflang links), so the scan skips them
     continue
   fi
 
