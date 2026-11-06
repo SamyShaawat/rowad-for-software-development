@@ -2,7 +2,9 @@
  * Clients Constants
  * Real clients with categories for filtering
  */
-export const ClientsConstants = [
+import type { Client } from '@types';
+
+export const ClientsConstants: readonly Client[] = [
   {
     id: 1,
     name: 'Kadmar Group',
@@ -19,7 +21,7 @@ export const ClientsConstants = [
     logo: '/images/clientsImages/Beit.png',
     description:
       'Beit Shipping and Logistics provides comprehensive transportation and logistics services, including air, ocean, road, and train freight. They emphasize efficiency and global coverage, offering tailored solutions such as customs clearance and warehouse management.',
-    website: 'http://beit-shipping.com',
+    website: 'https://beit-shipping.com',
   },
   {
     id: 3,
@@ -37,7 +39,7 @@ export const ClientsConstants = [
     logo: '/images/clientsImages/BCME.png',
     description:
       'BC Marine Electronics (BCME) specializes in GMDSS & NAVCOM services, ensuring compliance with maritime regulations. Founded in 2023 in British Columbia, BCME offers comprehensive services including radio surveys, compass servicing, and satellite communication solutions.',
-    website: 'http://img-bcme.com',
+    website: 'https://img-bcme.com',
   },
   {
     id: 5,
@@ -82,7 +84,7 @@ export const ClientsConstants = [
     logo: '/images/clientsImages/Taiba.png',
     description:
       'Taiba for Electrical Construction, established in 2008 in Egypt, specializes in electrical construction projects including installation and maintenance of electrical systems for industrial and commercial facilities.',
-    website: 'http://taibaelec.com',
+    website: 'https://taibaelec.com',
   },
   {
     id: 10,
@@ -91,7 +93,6 @@ export const ClientsConstants = [
     logo: '/images/clientsImages/ProkenChemicals.png',
     description:
       'Prokem Specialty Chemicals provides a wide range of chemical products for various construction needs, including mortar admixtures, bonding agents, repair and corrosion inhibitors, waterproofing, and protective coatings.',
-    website: 'https://prokemsc.com',
   },
   {
     id: 11,
@@ -118,6 +119,6 @@ export const ClientsConstants = [
     logo: '/images/clientsImages/EgyptMedical.png',
     description:
       'EGYMED, established in 1994, specializes in providing medical, surgical, pharmaceutical, and laboratory products. Their offerings include silicone surgical implants, compression garments, wound care products, and biocompatible implants.',
-    website: 'http://www.egymed.com.eg/',
+    website: 'https://www.egymed.com.eg/',
   },
-] as const;
+];

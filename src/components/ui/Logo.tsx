@@ -42,11 +42,11 @@ export function Logo({
             // Arabic wordmark: the orange letter is و with a shadda (ّ) and a fatha (َ) above it. No letter-spacing,
             // or the Arabic letters would no longer join.
             <>
-              ر<span className="text-orange-500">وَّ</span>اد
+              ر<span className="text-orange-600 dark:text-orange-500">وَّ</span>اد
             </>
           ) : (
             <>
-              R<span className="text-orange-500">O</span>WAD
+              R<span className="text-orange-600 dark:text-orange-500">O</span>WAD
             </>
           )}
         </span>

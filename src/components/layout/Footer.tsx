@@ -62,7 +62,7 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           {/* ── Brand & Description ── */}
           <div className="lg:col-span-1 space-y-8">
-            <Link href={localePath(locale, RouteConstants.HOME)} aria-label={t.a11y.homeLabel}>
+            <Link href={localePath(locale, RouteConstants.HOME)}>
               <Logo locale={locale} />
             </Link>
 
@@ -117,7 +117,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   <PhoneIcon className="h-5 w-5 text-orange-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider rtl:tracking-normal text-slate-400 font-bold">
+                  <span className="text-[11px] uppercase tracking-wider rtl:tracking-normal text-slate-600 dark:text-slate-400 font-bold">
                     {t.footer.callCenter}
                   </span>
                   <a
@@ -133,7 +133,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   <MailIcon className="h-5 w-5 text-blue-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider rtl:tracking-normal text-slate-400 font-bold">
+                  <span className="text-[11px] uppercase tracking-wider rtl:tracking-normal text-slate-600 dark:text-slate-400 font-bold">
                     {t.footer.inquiries}
                   </span>
                   <a
@@ -149,7 +149,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   <PinIcon className="h-5 w-5 text-green-500" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider rtl:tracking-normal text-slate-400 font-bold">
+                  <span className="text-[11px] uppercase tracking-wider rtl:tracking-normal text-slate-600 dark:text-slate-400 font-bold">
                     {t.footer.mainOffice}
                   </span>
                   <a
@@ -170,30 +170,9 @@ export function Footer({ locale }: { locale: Locale }) {
         <div className="border-t border-slate-200 dark:border-white/[0.06] pt-10 mt-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col items-center md:items-start">
-              <p className="text-slate-500 text-xs font-medium uppercase tracking-widest rtl:tracking-normal text-center md:text-start">
+              <p className="text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-widest rtl:tracking-normal text-center md:text-start">
                 © <CurrentYear /> {t.company.fullName}
               </p>
-            </div>
-
-            <div className="flex gap-8">
-              <Link
-                href="#"
-                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest rtl:tracking-normal transition-colors"
-              >
-                {t.footer.privacy}
-              </Link>
-              <Link
-                href="#"
-                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest rtl:tracking-normal transition-colors"
-              >
-                {t.footer.terms}
-              </Link>
-              <Link
-                href="#"
-                className="text-slate-500 hover:text-orange-500 text-[11px] font-bold uppercase tracking-widest rtl:tracking-normal transition-colors"
-              >
-                {t.footer.support}
-              </Link>
             </div>
           </div>
         </div>

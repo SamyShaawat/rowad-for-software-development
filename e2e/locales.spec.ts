@@ -38,7 +38,7 @@ test.describe('Languages', () => {
   test('Arabic footer is fully Arabic, English footer unchanged', async ({ page }) => {
     await page.goto('/ar');
     const footer = page.locator('footer');
-    for (const text of ['استكشف', 'المقر الرئيسي', 'الاستفسارات', 'الخصوصية']) {
+    for (const text of ['استكشف', 'المقر الرئيسي', 'الاستفسارات']) {
       await expect(footer).toContainText(text);
     }
     await expect(footer).not.toContainText('Main Office');
@@ -275,7 +275,7 @@ test.describe('Languages', () => {
     const header = page.locator('header');
     // رواد with a shadda (U+0651) and a fatha (U+064E) on the و
     await expect(header.getByText('رو\u0651\u064eاد')).toBeVisible();
-    await expect(header.locator('span.text-orange-500')).toHaveText('و\u0651\u064e');
+    await expect(header.locator('span.text-orange-600')).toHaveText('و\u0651\u064e');
     await expect(header.locator('img[src*="icon-96"]')).toBeVisible();
     await expect(page.locator('footer')).toContainText('لتطوير البرمجيات');
     await expect(page.locator('footer')).not.toContainText('Software Development');
@@ -284,7 +284,7 @@ test.describe('Languages', () => {
   test('English logo is unchanged', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('header').getByText('ROWAD')).toBeVisible();
-    await expect(page.locator('header span.text-orange-500')).toHaveText('O');
+    await expect(page.locator('header span.text-orange-600')).toHaveText('O');
     await expect(page.locator('footer')).toContainText('Software Development');
   });
 
@@ -409,7 +409,7 @@ test.describe('Languages', () => {
     await page.goto('/clients');
     await expect(page.locator('h1')).toHaveText('Companies that run on our software.');
     await page.getByRole('searchbox').fill('maritime');
-    const names = await page.locator('main li[id^="client-"] h3').allInnerTexts();
+    const names = await page.locator('main li[id^="client-"] h2').allInnerTexts();
     expect(names).toEqual(
       expect.arrayContaining(['BC Marine Electronics (BCME)', 'International Maritime Group (IMG)'])
     );

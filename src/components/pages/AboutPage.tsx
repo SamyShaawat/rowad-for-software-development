@@ -55,7 +55,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
                 <dd className="text-5xl font-light leading-none tracking-tight text-slate-900 dark:text-white sm:text-6xl">
                   <bdi dir="ltr">
                     {number}
-                    <span className="text-orange-500">{suffix}</span>
+                    <span className="text-orange-600 dark:text-orange-500">{suffix}</span>
                   </bdi>
                 </dd>
               </div>

@@ -11,8 +11,8 @@ export const ar: typeof en = {
     getStarted: 'ابدأ الآن',
   },
   a11y: {
-    homeLabel: 'رواد - الصفحة الرئيسية',
-    switchLanguage: 'التبديل إلى الإنجليزية',
+    skipToContent: 'انتقل إلى المحتوى',
+    homeLabel: 'روَّاد - الصفحة الرئيسية',
     toggleMenu: 'فتح أو إغلاق قائمة التنقل',
   },
   brand: {
@@ -31,9 +31,6 @@ export const ar: typeof en = {
     callCenter: 'اتصل بنا',
     inquiries: 'الاستفسارات',
     mainOffice: 'المقر الرئيسي',
-    privacy: 'الخصوصية',
-    terms: 'الشروط',
-    support: 'الدعم',
   },
   stats: [
     { value: '50+', label: 'عميل' },

@@ -1,7 +1,7 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
-import { dirOf, type Locale } from '@/i18n';
+import { dirOf, getDictionary, type Locale } from '@/i18n';
 
 interface RootDocumentProps {
   locale: Locale;
@@ -36,8 +36,16 @@ export function RootDocument({ locale, fontClass, jsonLd, children }: RootDocume
           enableSystem
           disableTransitionOnChange={false}
         >
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-orange-500 focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-slate-950"
+          >
+            {getDictionary(locale).a11y.skipToContent}
+          </a>
           <Header locale={locale} />
-          <main className="min-h-screen">{children}</main>
+          <main id="main" tabIndex={-1} className="min-h-screen outline-none">
+            {children}
+          </main>
           <Footer locale={locale} />
         </ThemeProvider>
       </body>

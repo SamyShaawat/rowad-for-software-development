@@ -3,9 +3,9 @@ import { alternatesFor } from '@/i18n/seo';
 import { CompanyConstants } from '@constants';
 
 export const servicesMetadata: Metadata = {
-  title: 'Our Services - Web, Mobile Apps, ERP Systems, AI Agents, Automation & Chatbots',
+  title: 'Services: Web, Mobile, ERP, AI Agents & Automation',
   description:
-    "Explore Rowad's comprehensive software development services: custom web development, mobile apps, ERP systems, AI agents, chatbots, DevOps & deployment, and managed web hosting.",
+    'Websites, mobile apps, ERP systems, AI agents and automation, chatbots and hosting, built and run by one team in Alexandria, Egypt.',
   keywords: [
     'rowad services',
     'web development services',
@@ -30,7 +30,7 @@ export const servicesMetadata: Metadata = {
     'deployment automation',
   ],
   openGraph: {
-    title: 'Our Services - Web, Mobile Apps, ERP Systems, AI Agents, Automation & Chatbots',
+    title: 'Services: Web, Mobile, ERP, AI Agents & Automation',
     description:
       "Explore Rowad's comprehensive software development services: custom web development, mobile apps, ERP systems, AI agents, chatbots, DevOps, and managed web hosting.",
     url: 'https://rowad.com/services',

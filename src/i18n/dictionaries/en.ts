@@ -9,8 +9,8 @@ export const en = {
     getStarted: 'Get Started',
   },
   a11y: {
+    skipToContent: 'Skip to content',
     homeLabel: 'Rowad home',
-    switchLanguage: 'Switch to Arabic',
     toggleMenu: 'Toggle navigation menu',
   },
   brand: {
@@ -29,9 +29,6 @@ export const en = {
     callCenter: 'Call Center',
     inquiries: 'Inquiries',
     mainOffice: 'Main Office',
-    privacy: 'Privacy',
-    terms: 'Terms',
-    support: 'Support',
   },
   stats: [
     { value: '50+', label: 'Happy Clients' },
