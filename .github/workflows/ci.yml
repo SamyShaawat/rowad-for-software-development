@@ -188,7 +188,7 @@ jobs:
         if: steps.fresh.outputs.latest == 'true'
         run: |
           # Apache can behave differently from the static server used in e2e (e.g. a folder and a page sharing a name)
-          for path in / /services /clients /about /contact /ar /ar/about /sitemap.xml; do
+          for path in / /services /clients /about /contact /ar /ar/services /ar/clients /ar/about /ar/contact /sitemap.xml; do
             code=$(curl -s -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 5 --retry-all-errors "https://rowad.com$path")
             echo "$path -> $code"
             [ "$code" = "200" ] || { echo "Smoke test failed for $path"; exit 1; }

@@ -13,12 +13,12 @@ test.describe('Languages', () => {
       await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /^index/);
     });
 
-    test(`Arabic ${arPath(route)} is rtl and hidden from search`, async ({ page }) => {
+    test(`Arabic ${arPath(route)} is rtl and indexable`, async ({ page }) => {
       const res = await page.goto(arPath(route));
       expect(res?.status()).toBe(200);
       await expect(page.locator('html')).toHaveAttribute('lang', 'ar');
       await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
-      await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /^index/);
     });
   }
 
