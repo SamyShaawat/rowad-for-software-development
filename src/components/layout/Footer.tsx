@@ -63,7 +63,7 @@ export function Footer({ locale }: { locale: Locale }) {
           {/* ── Brand & Description ── */}
           <div className="lg:col-span-1 space-y-8">
             <Link href={localePath(locale, RouteConstants.HOME)} aria-label={t.a11y.homeLabel}>
-              <Logo />
+              <Logo locale={locale} />
             </Link>
 
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed transition-colors">

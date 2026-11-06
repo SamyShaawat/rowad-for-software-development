@@ -146,6 +146,26 @@ test.describe('Languages', () => {
     await expect(page.getByText('Mon - Fri: 9:00 AM - 6:00 PM').first()).toBeVisible();
   });
 
+  test('Arabic logo: orange و with a shadda, footer subtitle translated, R mark kept', async ({
+    page,
+  }) => {
+    await page.goto('/ar');
+    const header = page.locator('header');
+    // رواد with a shadda (U+0651) on the و
+    await expect(header.getByText('رو\u0651اد')).toBeVisible();
+    await expect(header.locator('span.text-orange-500')).toHaveText('و\u0651');
+    await expect(header.locator('img[src*="icon-96"]')).toBeVisible();
+    await expect(page.locator('footer')).toContainText('لتطوير البرمجيات');
+    await expect(page.locator('footer')).not.toContainText('Software Development');
+  });
+
+  test('English logo is unchanged', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('header').getByText('ROWAD')).toBeVisible();
+    await expect(page.locator('header span.text-orange-500')).toHaveText('O');
+    await expect(page.locator('footer')).toContainText('Software Development');
+  });
+
   test('English pages do not link to Arabic while it is hidden', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('a[href^="/ar"]')).toHaveCount(0);

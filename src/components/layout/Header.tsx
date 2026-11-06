@@ -34,7 +34,7 @@ export function Header({ locale }: { locale: Locale }) {
           aria-label={t.a11y.homeLabel}
           className="flex items-center pe-6"
         >
-          <Logo light compact />
+          <Logo light compact locale={locale} />
         </Link>
 
         <div className="hidden items-stretch md:flex">
